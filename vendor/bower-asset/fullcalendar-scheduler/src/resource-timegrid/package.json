@@ -1,0 +1,9 @@
+{
+  "title": "FullCalendar Resource Time Grid Plugin",
+  "browserGlobal": "FullCalendarResourceTimeGrid",
+  "dependencies": {
+    "@fullcalendar/resource-common": "",
+    "@fullcalendar/timegrid": "",
+    "@fullcalendar/resource-daygrid": ""
+  }
+}

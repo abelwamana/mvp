@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+    <url>
+        <loc>https://sgi-fresancamoes.com/</loc>
+        <lastmod>2024-03-05</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://sgi-fresancamoes.com/"/>
+    </url>
+    <url>
+        <loc>https://sgi-fresancamoes.com/missao</loc>
+        <lastmod>2024-03-05</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <!-- Adicione outras URLs aqui -->
+    
+     <url>
+        <loc>https://sgi-fresancamoes.com/resultado</loc>
+        <lastmod>2024-03-05</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+     </url>
+
+     <url>
+        <loc>https://sgi-fresancamoes.com/galeria</loc>
+        <lastmod>2024-03-05</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+         <url>
+        <loc>https://sgi-fresancamoes.com/contacto</loc>
+        <lastmod>2024-03-05</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+    </url>  
+    
+     <url>
+        <loc>https://sgi-fresancamoes.com/politica/</loc>
+        <lastmod>2024-03-05</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+    </url>
+</urlset>

@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title></title>
+    <meta name="csrf-param" content="_csrf-backend">
+<meta name="csrf-token" content="dTnUh358gncVdASAnjpdeF8gIFqrrzWERspoLAWNHgwzS6e0JEz6B1sjT_rbDzgiBWxPOerHfdIxjgp9YNgtOA==">
+
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&amp;display=fallback" rel="stylesheet">
+<link href="/mvp/backend/web/assets/e78d6ec4/css/bootstrap.css" rel="stylesheet">
+<link href="/mvp/backend/web/assets/7fa81ab4/css/dropdown.css" rel="stylesheet">
+<link href="/mvp/backend/web/assets/6b9bf655/css/kv-grid.css" rel="stylesheet">
+<link href="/mvp/backend/web/assets/e17b7049/css/bootstrap-dialog-bs4.css" rel="stylesheet">
+<link href="/mvp/backend/web/assets/6b9bf655/css/jquery.resizableColumns.css" rel="stylesheet">
+<link href="/mvp/backend/web/assets/133dfdaf/css/select2.css" rel="stylesheet">
+<link href="/mvp/backend/web/assets/e5c88a07/css/select2-addl.css" rel="stylesheet">
+<link href="/mvp/backend/web/assets/e5c88a07/css/select2-bootstrap.css" rel="stylesheet">
+<link href="/mvp/backend/web/assets/e79ebe56/css/kv-widgets.css" rel="stylesheet">
+<link href="/mvp/backend/web/assets/aea19d33/css/all.min.css" rel="stylesheet">
+<link href="/mvp/backend/web/assets/9c6e6e9b/css/adminlte.min.css" rel="stylesheet">
+<script src="/mvp/backend/web/assets/e17b7049/js/dialog.js"></script>
+<script>var krajeeDialogDefaults_0269f7ad = {"alert":{"type":"type-info","title":"Information","buttonLabel":"<span class=\"fas fa-check\"></span> Ok"},"confirm":{"type":"type-warning","title":"Confirmation","btnOKClass":"btn-warning","btnOKLabel":"<span class=\"fas fa-check\"></span> Ok","btnCancelLabel":"<span class=\"fas fa-ban\"></span>  Cancel"},"prompt":{"draggable":false,"title":"Information","buttons":[{"label":"Cancel","icon":"fas fa-ban","cssClass":"btn-outline-secondary"},{"label":"Ok","icon":"fas fa-check","cssClass":"btn-primary"}],"closable":false},"dialog":{"draggable":true,"title":"Information","buttons":[{"label":"Cancel","icon":"fas fa-ban","cssClass":"btn-outline-secondary"},{"label":"Ok","icon":"fas fa-check","cssClass":"btn-primary"}]}};
+var krajeeDialog_ead3f524 = {"id":"w3"};
+var krajeeDialog=new KrajeeDialog(true,krajeeDialog_ead3f524,krajeeDialogDefaults_0269f7ad);
+window.s2options_6cc131ae = {"themeCss":".select2-container--bootstrap","sizeCss":"","doReset":true,"doToggle":false,"doOrder":false};
+window.select2_d02acf77 = {"allowClear":true,"theme":"bootstrap","width":"auto","placeholder":"Select...","language":"en-US"};
+</script></head>
+<body class="hold-transition sidebar-mini">
+
+<div class="wrapper">
+    <!-- Navbar -->
+    
+<!-- Navbar -->
+<nav class="main-header navbar navbar-expand navbar-white navbar-light">
+    <!-- Left navbar links -->
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+            <a href="/mvp/backend/web/index.php" class="nav-link">Home</a>
+        </li>
+
+
+    </ul>
+
+
+
+    <!-- Right navbar links -->
+    <ul class="navbar-nav ml-auto">
+        <!-- Navbar Search -->
+        <li class="nav-item">
+            <a class="nav-link" data-widget="navbar-search" href="#" role="button">
+                <i class="fas fa-search"></i>
+            </a>
+            <div class="navbar-search-block">
+                <form class="form-inline">
+                    <div class="input-group input-group-sm">
+                        <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
+                        <div class="input-group-append">
+                            <button class="btn btn-navbar" type="submit">
+                                <i class="fas fa-search"></i>
+                            </button>
+                            <button class="btn btn-navbar" type="button" data-widget="navbar-search">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </li>
+
+
+        <!-- Notifications Dropdown Menu -->
+        <li class="nav-item dropdown">
+            <a class="nav-link" data-toggle="dropdown" href="#">
+                <i class="far fa-bell"></i>
+                <span class="badge badge-warning navbar-badge"> 22 </span>
+            </a>
+
+
+
+
+
+            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                <span class="dropdown-header">22  Notificações</span>
+                <div class="dropdown-divider"></div>
+
+                    <a href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Fvalidar" class="dropdown-item">
+                        <i class="fas fa-envelope mr-2"></i> 21 Registos por Validar
+                    </a>
+                    <div class="dropdown-divider"></div>
+
+                                    <a href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Fpublicar" class="dropdown-item">
+                        <i class="fas fa-file mr-2"></i> 1 Por aprovar
+                    </a>
+
+                                    <a href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Faprovar" class="dropdown-item">
+                        <i class="fas fa-users mr-2"></i> 0 registos por Publicar
+                    </a>
+                    <div class="dropdown-divider"></div>
+
+
+
+                <div class="dropdown-divider"></div>
+                <a href="#" class="dropdown-item dropdown-footer">Ver todas as notificações</a>
+            </div>
+
+
+
+
+
+
+
+        </li>
+        <li class="nav-item">
+
+<a class="nav-link" href="/mvp/backend/web/index.php?r=site%2Flogout" data-method="post"><i class="fas fa-sign-out-alt"></i></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-widget="fullscreen" href="#" role="button">
+                <i class="fas fa-expand-arrows-alt"></i>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
+                <i class="fas fa-th-large"></i>
+            </a>
+        </li>
+    </ul>
+</nav>
+<!-- /.navbar -->    <!-- /.navbar -->
+
+    <!-- Main Sidebar Container -->
+    <style>
+    .nav-item .nav-link.active {
+        background-color: #919733; /* Substitua "red" pela cor desejada */
+    }
+</style>
+
+<aside class="main-sidebar elevation-4" style="background-color: #E4E5F1;">
+    <!-- Brand Logo -->
+
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <!-- Sidebar user panel (optional) -->
+        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+            <div class="image">
+                <img src="/mvp/backend/web/assets/9c6e6e9b/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+            </div>
+            <div class="info">
+                <a href="#" class="d-block">ROSARIO | CUAMM/C2</a>
+            </div>
+        </div>
+
+        <!-- SidebarSearch Form -->
+        <!-- href be escaped -->
+        <!-- <div class="form-inline">
+            <div class="input-group" data-widget="sidebar-search">
+                <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+                <div class="input-group-append">
+                    <button class="btn btn-sidebar">
+                        <i class="fas fa-search fa-fw"></i>
+                    </button>
+                </div>
+            </div>
+        </div> -->
+
+        <!-- Sidebar Menu -->
+        <nav class="mt-2" >
+            
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false"><li class="nav-item has-treeview"><a class="nav-link " href="#" ><i class="nav-icon fas fa-tachometer-alt"></i> <p>Dashboard <i class="right fas fa-angle-left"></i> </p></a>
+<ul class='nav nav-treeview'>
+<li class="nav-item"><a class="nav-link " href="/mvp/backend/web/index.php?r=site%2Findex" ><i class="nav-icon far fa-circle"></i> <p>Inicio  </p></a></li>
+<li class="nav-item"><a class="nav-link " href="http://localhost/mvp/frontend/web/" ><i class="nav-icon fas fa-circle"></i> <p>Plataforma Pública  </p></a></li>
+</ul>
+</li>
+<li class="nav-item"><a class="nav-link " href="/mvp/backend/web/index.php?r=agua%2Findex" ><i class="nav-icon fas fa-circle"></i> <p>O FRESAN  </p></a></li>
+<li class="nav-item has-treeview active menu-open"><a class="nav-link active" href="#" ><i class="nav-icon fas fa-tachometer-alt"></i> <p>Reportar Dados <i class="right fas fa-angle-left"></i> </p></a>
+<ul class='nav nav-treeview'>
+<li class="nav-header">COMPONENTE 1</li>
+<li class="nav-item"><a class="nav-link " href="/mvp/backend/web/index.php?r=grupo%2Findex" ><i class="nav-icon fas fa-circle"></i> <p>Agricultura e Pecuária  </p></a></li>
+<li class="nav-header">COMPONENTE 2</li>
+<li class="nav-item has-treeview active menu-open"><a class="nav-link active" href="#" ><i class="nav-icon fas fa-th"></i> <p>Nutrição <i class="right fas fa-angle-left"></i> </p></a>
+<ul class='nav nav-treeview'>
+<li class="nav-item active"><a class="nav-link active" href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Findex" ><i class="nav-icon far fa-circle"></i> <p>Demostrações Culinárias  </p></a></li>
+<li class="nav-item"><a class="nav-link " href="/mvp/backend/web/index.php?r=rastreio%2Findex" ><i class="nav-icon far fa-circle"></i> <p>Rastreio  </p></a></li>
+<li class="nav-item"><a class="nav-link " href="/mvp/backend/web/index.php?r=profissionaissaude%2Findex" ><i class="nav-icon far fa-circle"></i> <p>Profissionais de Saúde  </p></a></li>
+<li class="nav-item"><a class="nav-link " href="/mvp/backend/web/index.php?r=pacotepedagfresan%2Findex" ><i class="nav-icon far fa-circle"></i> <p>Pacote Ped. Fresan  </p></a></li>
+<li class="nav-item"><a class="nav-link " href="/mvp/backend/web/index.php?r=suplementacao%2Findex" ><i class="nav-icon far fa-circle"></i> <p>Suplementação  </p></a></li>
+<li class="nav-item"><a class="nav-link " href="/mvp/backend/web/index.php?r=merendaescolar%2Findex" ><i class="nav-icon far fa-circle"></i> <p>Merenda Escolar  </p></a></li>
+<li class="nav-item"><a class="nav-link " href="/mvp/backend/web/index.php?r=capacitacao%2Findex" ><i class="nav-icon far fa-circle"></i> <p>Capacitação  </p></a></li>
+<li class="nav-item"><a class="nav-link " href="/mvp/backend/web/index.php?r=materiais%2Findex" ><i class="nav-icon far fa-circle"></i> <p>Materiais  </p></a></li>
+<li class="nav-item"><a class="nav-link " href="/mvp/backend/web/index.php?r=supervisao%2Findex" ><i class="nav-icon far fa-circle"></i> <p>Supervisão  </p></a></li>
+</ul>
+</li>
+<li class="nav-item"><a class="nav-link " href="/mvp/backend/web/index.php?r=agua%2Findex" ><i class="nav-icon fas fa-th"></i> <p>Água  </p></a></li>
+<li class="nav-header">COMPONENTE 3</li>
+<li class="nav-item"><a class="nav-link " href="/mvp/backend/web/index.php?r=reforcoinstitucional%2Findex" ><i class="nav-icon fas fa-circle"></i> <p>Reforço Institucional  </p></a></li>
+<li class="nav-header">SUPLEMENTOS</li>
+<li class="nav-item"><a class="nav-link " href="/mvp/backend/web/index.php?r=doccomunicacao%2Findex" ><i class="nav-icon fas fa-circle"></i> <p>Comunicação  </p></a></li>
+<li class="nav-item"><a class="nav-link " href="/mvp/backend/web/index.php?r=eventos%2Findex" ><i class="nav-icon fas fa-circle"></i> <p>Eventos  </p></a></li>
+</ul>
+</li>
+<li class="nav-item"><hr></li>
+<li class="nav-header">EVIDÊNCIAS</li>
+<li class="nav-item has-treeview"><a class="nav-link " href="#" ><i class="nav-icon fas fa-circle"></i> <p>Relatórios <i class="right fas fa-angle-left"></i> </p></a>
+<ul class='nav nav-treeview'>
+<li class="nav-item"><a class="nav-link " href="/mvp/backend/web/index.php?r=site%2Ffolhatrimestral" ><i class="nav-icon far fa-circle"></i> <p>Folha Trimestral  </p></a></li>
+<li class="nav-item"><a class="nav-link " href="/mvp/backend/web/index.php?r=site%2Fquadrologico" ><i class="nav-icon far fa-circle"></i> <p>Quadro Lógico  </p></a></li>
+<li class="nav-item"><a class="nav-link " href="/mvp/backend/web/index.php?r=site%2Fquadrologico" ><i class="nav-icon far fa-circle"></i> <p>Relatórios Intercalar  </p></a></li>
+<li class="nav-item"><a class="nav-link " href="/mvp/backend/web/index.php?r=site%2Fquadrologico" ><i class="nav-icon far fa-circle"></i> <p>Relatórios DELUE  </p></a></li>
+</ul>
+</li>
+<li class="nav-item"><a class="nav-link " href="/mvp/backend/web/index.php?r=biblioteca%2Findex" ><i class="nav-icon fas fa-circle"></i> <p>Biblioteca  </p></a></li>
+<li class="nav-item"><a class="nav-link " href="/mvp/backend/web/index.php?r=galeria%2Findex" ><i class="nav-icon fas fa-circle"></i> <p>Galeria  </p></a></li>
+<li class="nav-item"><a class="nav-link " href="/mvp/backend/web/index.php?r=contactos%2Findex" ><i class="nav-icon fas fa-circle"></i> <p>Contactos  </p></a></li>
+<li class="nav-item"><hr></li>
+<li class="nav-item has-treeview"><a class="nav-link " href="#" ><i class="nav-icon fas fa-circle"></i> <p>Administrar Usuários <i class="right fas fa-angle-left"></i> </p></a>
+<ul class='nav nav-treeview'>
+<li class="nav-item"><a class="nav-link " href="/mvp/backend/web/index.php?r=user%2Findex" ><i class="nav-icon far fa-circle"></i> <p>Administrar  </p></a></li>
+<li class="nav-item"><a class="nav-link " href="/mvp/backend/web/index.php?r=reforcoinstitucional%2Frelatorioreforco7" ><i class="nav-icon far fa-circle"></i> <p>Eventos de usuários  </p></a></li>
+<li class="nav-item"><a class="nav-link " href="/mvp/backend/web/index.php?r=rbac%2Froute" ><i class="nav-icon far fa-circle"></i> <p>Rotas  </p></a></li>
+<li class="nav-item"><a class="nav-link " href="/mvp/backend/web/index.php?r=rbac%2Fpermission" ><i class="nav-icon far fa-circle"></i> <p>Permissão Rotas  </p></a></li>
+<li class="nav-item"><a class="nav-link " href="/mvp/backend/web/index.php?r=rbac%2Frole" ><i class="nav-icon far fa-circle"></i> <p>Perfil  </p></a></li>
+<li class="nav-item"><a class="nav-link " href="/mvp/backend/web/index.php?r=rbac%2Fassignment" ><i class="nav-icon far fa-circle"></i> <p>Atribuir Perfil a Usuário  </p></a></li>
+</ul>
+</li></ul>        </nav>
+        <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+</aside>
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper" style="background-color: #ffffff">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0">
+                                            </h1>
+                </div><!-- /.col -->
+                <div class="col-sm-6">
+                    <nav aria-label="breadcrumb"><ol id="w4" class="breadcrumb float-sm-right"><li class="breadcrumb-item"><a href="/mvp/backend/web/index.php">Home</a></li>
+<li class="breadcrumb-item active" aria-current="page"></li>
+</ol></nav>                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
+    <!-- Main content -->
+    <div class="content">
+        <link rel="stylesheet" 
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+<style>
+    /* Altere a cor de fundo do tipo 'info' do painel para a cor desejada */
+    .card-header  {
+        background-color: #919733; /* Substitua pelo código de cor desejado */
+        color: #ffffff; /* Cor do texto para legibilidade */
+    }
+    .btn.btn-primary.botao {
+        background-color: #919733; /* Cor de fundo do botão primário Bootstrap */
+        color: #fff; /* Cor do texto para legibilidade */
+        /* Outros estilos conforme necessário */
+    }
+
+</style>
+<div class="demostracoesculinarias-index">
+
+    <h1></h1>
+
+    
+    
+
+
+
+
+<div id="w0-pjax" data-pjax-container="" data-pjax-push-state data-pjax-timeout="1000"><div class="kv-loader-overlay"><div class="kv-loader"></div></div><div id="w0" class="grid-view is-bs4 kv-grid-bs4 kv-grid-panel hide-resize" data-krajee-grid="kvGridInit_a32ad5d2" data-krajee-ps="ps_w0_container"><div class="card border-"><div class="card-header ">    <div class="float-right"><div class="summary">Showing <b>1-15</b> of <b>15</b> Dem_Culinarias.</div></div>
+    <h5 class="m-0">Demostrações Culinárias</h5>
+    <div class="clearfix"></div></div>
+<div class="kv-panel-before">    <div class="btn-toolbar kv-grid-toolbar toolbar-container float-right"><div class="btn-group mr-2 me-2"><a class="btn btn-primary botao" href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Fcreate" title="Adicionar Demostrações Culinárias"><i class="fas fa-plus"></i></a> <a class="btn btn-outline-secondary" href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Findex" title="Reiniciar a Tabela" data-pjax="0"><i class="fas fa-redo"></i></a></div>
+<div class="btn-group"><button id="w1-button" class="btn btn-outline-secondary dropdown-toggle" title="Export" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class='fas fa-external-link-alt'></i> </button>
+
+<div id="w2" class="dropdown-menu dropdown-menu-right"><li role="presentation" class="dropdown-header">Export Page Data</li>
+<a class="export-csv dropdown-item" href="#" data-mime="application/csv" data-hash="f40cf76ebbd65719690faacd2c724db9af52765aa2474aafa0d1212711ac1cb9gridviewgrid-exportapplication/csvutf-811{&quot;colDelimiter&quot;:&quot;,&quot;,&quot;rowDelimiter&quot;:&quot;\r\n&quot;}" data-hash-export-config="1" data-css-styles='[]'><i class="text-primary fas fa-file-code"></i> CSV</a>
+<a class="export-xls dropdown-item" href="#" data-mime="application/vnd.ms-excel" data-hash="43c49a7468fcfe1b4281f34e63210177fa444efe723310c81bcf250b1dd35b67gridviewgrid-exportapplication/vnd.ms-excelutf-811{&quot;worksheet&quot;:&quot;ExportWorksheet&quot;,&quot;cssFile&quot;:&quot;&quot;}" data-hash-export-config="1" data-css-styles='{".kv-group-even":{"background-color":"#f0f1ff"},".kv-group-odd":{"background-color":"#f9fcff"},".kv-grouped-row":{"background-color":"#fff0f5","font-size":"1.3em","padding":"10px"},".kv-table-caption":{"border":"1px solid #ddd","border-bottom":"none","font-size":"1.5em","padding":"8px"},".kv-table-footer":{"border-top":"4px double #ddd","font-weight":"bold"},".kv-page-summary td":{"background-color":"#ffeeba","border-top":"4px double #ddd","font-weight":"bold"},".kv-align-center":{"text-align":"center"},".kv-align-left":{"text-align":"left"},".kv-align-right":{"text-align":"right"},".kv-align-top":{"vertical-align":"top"},".kv-align-bottom":{"vertical-align":"bottom"},".kv-align-middle":{"vertical-align":"middle"},".kv-editable-link":{"color":"#428bca","text-decoration":"none","background":"none","border":"none","border-bottom":"1px dashed","margin":"0","padding":"2px 1px"}}'><i class="text-success far fa-file-excel"></i> Excel</a></div></div>
+<div class="btn-group mr-2 me-2"><a id="w0-togdata-page" class="btn btn-outline-secondary" href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Findex&amp;_tog1149016d=all" title="Show all data" data-pjax="true"><i class='fas fa-expand'></i> All</a></div></div>
+    <div class="btn-group"><form class="form-inline" action="/mvp/backend/web/index.php?r=demostracoesculinarias%2Fvalidar-selecionados" method="post">
+<input type="hidden" name="_csrf-backend" value="dTnUh358gncVdASAnjpdeF8gIFqrrzWERspoLAWNHgwzS6e0JEz6B1sjT_rbDzgiBWxPOerHfdIxjgp9YNgtOA=="><button type="submit" class="btn btn-primary botao">Validar Selecionados</button></div>
+    <div class="clearfix"></div></div>
+<div id="w0-container" class="table-responsive kv-grid-container" data-resizable-columns-id="kv-10-w0"><table class="kv-grid-table table table-hover table-bordered table-striped table-sm kv-table-wrap"><colgroup><col>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col class="skip-export">
+<col></colgroup>
+<thead class="kv-table-header w0" style="top:50px">
+<tr><th data-resizable-column-id="kv-col-0"><input type="checkbox" class="select-on-check-all" name="selection_all" value="1"></th><th class="kartik-sheet-style kv-align-center kv-align-middle kv-merged-header" style="width:36px;" data-resizable-column-id="kv-col-1" rowspan="2" data-col-seq="1">&nbsp;</th><th class="kv-align-center kv-align-middle kv-grid-hide" data-resizable-column-id="kv-col-2" data-col-seq="2"><a href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Findex&amp;sort=Id" data-sort="Id">ID</a></th><th class="kv-align-center kv-align-middle" data-resizable-column-id="kv-col-3" data-col-seq="3"><a href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Findex&amp;sort=provinciaID" data-sort="provinciaID">Provincia ID</a></th><th class="kv-align-center kv-align-middle" data-resizable-column-id="kv-col-4" data-col-seq="4"><a href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Findex&amp;sort=municipioID" data-sort="municipioID">Municipio ID</a></th><th class="kv-align-center kv-align-middle kv-grid-hide" data-resizable-column-id="kv-col-5" data-col-seq="5"><a href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Findex&amp;sort=comunaID" data-sort="comunaID">Comuna ID</a></th><th class="kv-align-center kv-align-middle" data-resizable-column-id="kv-col-6" data-col-seq="6"><a href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Findex&amp;sort=localidadeID" data-sort="localidadeID">Localidade ID</a></th><th class="kv-align-center kv-align-middle kv-grid-hide" data-resizable-column-id="kv-col-7" data-col-seq="7"><a href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Findex&amp;sort=nDemostracaoCulinaria" data-sort="nDemostracaoCulinaria">N Demostracao Culinaria</a></th><th class="kv-align-center kv-align-middle kv-grid-hide" data-resizable-column-id="kv-col-8" data-col-seq="8"><a href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Findex&amp;sort=nDemostracaoCulinariaTrimestre" data-sort="nDemostracaoCulinariaTrimestre">N Demostracao Culinaria Trimestre</a></th><th class="kv-align-center kv-align-middle kv-grid-hide" data-resizable-column-id="kv-col-9" data-col-seq="9"><a href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Findex&amp;sort=beneficiariosDemoCuliHomem" data-sort="beneficiariosDemoCuliHomem">Beneficiarios Demo Culi Homem</a></th><th class="kv-align-center kv-align-middle kv-grid-hide" data-resizable-column-id="kv-col-10" data-col-seq="10"><a href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Findex&amp;sort=beneficiariosDemoCuliMulher" data-sort="beneficiariosDemoCuliMulher">Beneficiarios Demo Culi Mulher</a></th><th class="kv-align-center kv-align-middle" data-resizable-column-id="kv-col-11" data-col-seq="11"><a href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Findex&amp;sort=anexoEvidenciaDemonsCulinaria" data-sort="anexoEvidenciaDemonsCulinaria">Anexo Evidencia Demons Culinaria</a></th><th class="kv-align-center kv-align-middle" data-resizable-column-id="kv-col-12" data-col-seq="12"><a href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Findex&amp;sort=primeiroReporte" data-sort="primeiroReporte">Primeiro Reporte</a></th><th class="kv-align-center kv-align-middle kv-grid-hide" data-resizable-column-id="kv-col-13" data-col-seq="13"><a href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Findex&amp;sort=actualizacao" data-sort="actualizacao">Actualizacao</a></th><th class="kv-align-center kv-align-middle kv-grid-hide" data-resizable-column-id="kv-col-14" data-col-seq="14"><a href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Findex&amp;sort=respondente" data-sort="respondente">Respondente</a></th><th class="kv-align-center kv-align-middle kv-grid-hide" data-resizable-column-id="kv-col-15" data-col-seq="15"><a href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Findex&amp;sort=entidade" data-sort="entidade">Entidade</a></th><th class="kv-align-center kv-align-middle kv-grid-hide" data-resizable-column-id="kv-col-16" data-col-seq="16"><a href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Findex&amp;sort=latitude" data-sort="latitude">Latitude</a></th><th class="kv-align-center kv-align-middle kv-grid-hide" data-resizable-column-id="kv-col-17" data-col-seq="17"><a href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Findex&amp;sort=longitude" data-sort="longitude">Longitude</a></th><th class="kv-align-center kv-align-middle kv-grid-hide" data-resizable-column-id="kv-col-18" data-col-seq="18">Desafios Implementacao Ong:ntext</th><th class="kv-align-center kv-align-middle kv-grid-hide" data-resizable-column-id="kv-col-19" data-col-seq="19">Licoes Implementacao Ong:ntext</th><th class="kv-align-center kv-align-middle kv-grid-hide" data-resizable-column-id="kv-col-20" data-col-seq="20"><a href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Findex&amp;sort=dataVisitaFresan" data-sort="dataVisitaFresan">Data Visita Fresan</a></th><th class="kv-align-center kv-align-middle kv-grid-hide" data-resizable-column-id="kv-col-21" data-col-seq="21"><a href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Findex&amp;sort=tecnicoResponsavelFresan" data-sort="tecnicoResponsavelFresan">Tecnico Responsavel Fresan</a></th><th class="kv-align-center kv-align-middle kv-grid-hide" data-resizable-column-id="kv-col-22" data-col-seq="22"><a href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Findex&amp;sort=constatacoesFeitasFresan" data-sort="constatacoesFeitasFresan">Constatacoes Feitas Fresan</a></th><th class="kv-align-center kv-align-middle kv-grid-hide" data-resizable-column-id="kv-col-23" data-col-seq="23">Recomendacoes Principais Fresan:ntext</th><th class="kv-align-center kv-align-middle kv-grid-hide" data-resizable-column-id="kv-col-24" data-col-seq="24"><a href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Findex&amp;sort=medidasMitigacaoONG" data-sort="medidasMitigacaoONG">Medidas Mitigacao Ong</a></th><th class="kv-align-center kv-align-middle kv-grid-hide" data-resizable-column-id="kv-col-25" data-col-seq="25"><a href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Findex&amp;sort=medidasMitigacaoEstado" data-sort="medidasMitigacaoEstado">Medidas Mitigacao Estado</a></th><th class="kv-align-center kv-align-middle kv-grid-hide" data-resizable-column-id="kv-col-26" data-col-seq="26"><a href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Findex&amp;sort=nomeGrupoID" data-sort="nomeGrupoID">Nome Grupo ID</a></th><th class="kv-align-center kv-align-middle kv-grid-hide" data-resizable-column-id="kv-col-27" data-col-seq="27"><a href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Findex&amp;sort=userID" data-sort="userID">User ID</a></th><th class="kv-align-center kv-align-middle kv-grid-hide" data-resizable-column-id="kv-col-28" data-col-seq="28"><a href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Findex&amp;sort=estadoValidacao" data-sort="estadoValidacao">Estado Validacao</a></th><th class="kv-align-center kv-align-middle kv-grid-hide" data-resizable-column-id="kv-col-29" data-col-seq="29"><a href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Findex&amp;sort=criadoPor" data-sort="criadoPor">Criado Por</a></th><th class="kv-align-center kv-align-middle kv-grid-hide" data-resizable-column-id="kv-col-30" data-col-seq="30"><a href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Findex&amp;sort=actualizadoPor" data-sort="actualizadoPor">Actualizado Por</a></th><th class="kv-align-center kv-align-middle kv-grid-hide" data-resizable-column-id="kv-col-31" data-col-seq="31"><a href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Findex&amp;sort=createdAt" data-sort="createdAt">Created At</a></th><th class="kv-align-center kv-align-middle kv-grid-hide" data-resizable-column-id="kv-col-32" data-col-seq="32"><a href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Findex&amp;sort=UpdatedAt" data-sort="UpdatedAt">Updated At</a></th><th class="kv-align-center kv-align-middle" data-resizable-column-id="kv-col-33" data-col-seq="33"><a href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Findex&amp;sort=estadoValidacao" data-sort="estadoValidacao">Estado Validacao</a></th><th class="kv-align-center kv-align-middle skip-export kv-merged-header" style="width:100px;" data-resizable-column-id="kv-col-34" rowspan="2" data-col-seq="34">Actions</th><th data-resizable-column-id="kv-col-35" data-col-seq="35">Ações</th></tr><tr id="w0-filters" class="filters skip-export"><td>&nbsp;</td><td class="kv-grid-hide" data-col-seq="2"><input type="text" class="form-control" name="DemostracoesculinariasSearch[Id]"></td><td data-col-seq="3"><input type="text" class="form-control" name="DemostracoesculinariasSearch[provinciaID]"></td><td data-col-seq="4"><input type="text" class="form-control" name="DemostracoesculinariasSearch[municipioID]"></td><td class="kv-grid-hide" data-col-seq="5"><input type="text" class="form-control" name="DemostracoesculinariasSearch[comunaID]"></td><td data-col-seq="6"><input type="text" class="form-control" name="DemostracoesculinariasSearch[localidadeID]"></td><td class="kv-grid-hide" data-col-seq="7"><input type="text" class="form-control" name="DemostracoesculinariasSearch[nDemostracaoCulinaria]"></td><td class="kv-grid-hide" data-col-seq="8"><input type="text" class="form-control" name="DemostracoesculinariasSearch[nDemostracaoCulinariaTrimestre]"></td><td class="kv-grid-hide" data-col-seq="9"><input type="text" class="form-control" name="DemostracoesculinariasSearch[beneficiariosDemoCuliHomem]"></td><td class="kv-grid-hide" data-col-seq="10"><input type="text" class="form-control" name="DemostracoesculinariasSearch[beneficiariosDemoCuliMulher]"></td><td data-col-seq="11"><input type="text" class="form-control" name="DemostracoesculinariasSearch[anexoEvidenciaDemonsCulinaria]"></td><td data-col-seq="12"><input type="text" class="form-control" name="DemostracoesculinariasSearch[primeiroReporte]"></td><td class="kv-grid-hide" data-col-seq="13"><input type="text" class="form-control" name="DemostracoesculinariasSearch[actualizacao]"></td><td class="kv-grid-hide" data-col-seq="14"><input type="text" class="form-control" name="DemostracoesculinariasSearch[respondente]"></td><td class="kv-grid-hide" data-col-seq="15"><input type="text" class="form-control" name="DemostracoesculinariasSearch[entidade]"></td><td class="kv-grid-hide" data-col-seq="16"><input type="text" class="form-control" name="DemostracoesculinariasSearch[latitude]"></td><td class="kv-grid-hide" data-col-seq="17"><input type="text" class="form-control" name="DemostracoesculinariasSearch[longitude]"></td><td class="kv-grid-hide" data-col-seq="18">&nbsp;</td><td class="kv-grid-hide" data-col-seq="19">&nbsp;</td><td class="kv-grid-hide" data-col-seq="20"><input type="text" class="form-control" name="DemostracoesculinariasSearch[dataVisitaFresan]"></td><td class="kv-grid-hide" data-col-seq="21"><input type="text" class="form-control" name="DemostracoesculinariasSearch[tecnicoResponsavelFresan]"></td><td class="kv-grid-hide" data-col-seq="22"><input type="text" class="form-control" name="DemostracoesculinariasSearch[constatacoesFeitasFresan]"></td><td class="kv-grid-hide" data-col-seq="23">&nbsp;</td><td class="kv-grid-hide" data-col-seq="24"><input type="text" class="form-control" name="DemostracoesculinariasSearch[medidasMitigacaoONG]"></td><td class="kv-grid-hide" data-col-seq="25"><input type="text" class="form-control" name="DemostracoesculinariasSearch[medidasMitigacaoEstado]"></td><td class="kv-grid-hide" data-col-seq="26"><input type="text" class="form-control" name="DemostracoesculinariasSearch[nomeGrupoID]"></td><td class="kv-grid-hide" data-col-seq="27"><input type="text" class="form-control" name="DemostracoesculinariasSearch[userID]"></td><td class="kv-grid-hide" data-col-seq="28"><input type="text" class="form-control" name="DemostracoesculinariasSearch[estadoValidacao]"></td><td class="kv-grid-hide" data-col-seq="29"><input type="text" class="form-control" name="DemostracoesculinariasSearch[criadoPor]"></td><td class="kv-grid-hide" data-col-seq="30"><input type="text" class="form-control" name="DemostracoesculinariasSearch[actualizadoPor]"></td><td class="kv-grid-hide" data-col-seq="31"><input type="text" class="form-control" name="DemostracoesculinariasSearch[createdAt]"></td><td class="kv-grid-hide" data-col-seq="32"><input type="text" class="form-control" name="DemostracoesculinariasSearch[UpdatedAt]"></td><td data-col-seq="33"><div class="kv-plugin-loading loading-status">&nbsp;</div><select id="status" class="form-control" name="DemostracoesculinariasSearch[estadoValidacao]" data-s2-options="s2options_6cc131ae" data-krajee-select2="select2_d02acf77" style="width: 1px; height: 1px; visibility: hidden;">
+<option value="">Select...</option>
+</select></td><td data-col-seq="35">&nbsp;</td></tr>
+</thead>
+<tbody>
+<tr class="w0" data-key="5"><td><input type="checkbox" name="selection[]" value="5"></td><td class="kartik-sheet-style kv-align-center kv-align-middle w0" style="width:36px;" data-col-seq="1">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="2">5</td><td class="kv-align-center kv-align-middle w0" data-col-seq="3">Namibe</td><td class="kv-align-center kv-align-middle w0" data-col-seq="4">Bibala</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="5">Bibala</td><td class="kv-align-center kv-align-middle w0" data-col-seq="6">Muntipa</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="7">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="8">2023-10-13</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="9">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="10">1</td><td class="kv-align-center kv-align-middle w0" data-col-seq="11">Nenhum anexo disponível</td><td class="kv-align-center kv-align-middle w0" data-col-seq="12">2024-06-13</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="13">2023-10-07</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="14">rosario</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="15">CUAMM/C2</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="16">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="17">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="18"><span class="not-set">(not set)</span></td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="19"><span class="not-set">(not set)</span></td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="20">2024-06-05</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="21">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="22"></td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="23"><span class="not-set">(not set)</span></td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="24"></td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="25"></td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="26"><span class="not-set">(not set)</span></td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="27">10</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="28">Validado</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="29">rosario</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="30">rosario</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="31">2023-10-25</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="32">2023-10-25</td><td class="kv-align-center kv-align-middle w0" data-col-seq="33">Validado</td><td class="skip-export kv-align-center kv-align-middle w0" style="width:100px;" data-col-seq="34"><a href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Fview&amp;Id=5" title="View" aria-label="View" data-pjax="0"><span class="fas fa-eye" aria-hidden="true"></span></a> <a href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Fupdate&amp;Id=5" title="Update" aria-label="Update" data-pjax="0"><span class="fas fa-pencil-alt" aria-hidden="true"></span></a> <a href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Fdelete&amp;Id=5" title="Delete" aria-label="Delete" data-pjax="0" data-method="post" data-confirm="Are you sure to delete this Dem_Culinarias?"><span class="fas fa-trash-alt" aria-hidden="true"></span></a></td><td class="w0" data-col-seq="35"><a class="btn btn-success fas fa-check-square " href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Fvalidar&amp;id=5" onclick="showSuccessAlert();"></a> <a class="btn btn-primary fas fa-thumbs-up" href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Faprovar&amp;id=5" onclick="showSuccessAlert();"></a> <a class="btn btn-primary fa fa-globe" href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Fpublicar&amp;id=5" onclick="showSuccessAlert();"></a> </td></tr>
+<tr class="w0" data-key="6"><td><input type="checkbox" name="selection[]" value="6"></td><td class="kartik-sheet-style kv-align-center kv-align-middle w0" style="width:36px;" data-col-seq="1">2</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="2">6</td><td class="kv-align-center kv-align-middle w0" data-col-seq="3">Namibe</td><td class="kv-align-center kv-align-middle w0" data-col-seq="4">Bibala</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="5">Bibala</td><td class="kv-align-center kv-align-middle w0" data-col-seq="6">Muntipa</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="7">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="8">2023-09-29</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="9">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="10">1</td><td class="kv-align-center kv-align-middle w0" data-col-seq="11">Nenhum anexo disponível</td><td class="kv-align-center kv-align-middle w0" data-col-seq="12">2023-10-25</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="13">2023-10-25</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="14">rosario</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="15">CUAMM/C2</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="16">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="17">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="18"><span class="not-set">(not set)</span></td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="19"><span class="not-set">(not set)</span></td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="20">2023-09-28</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="21">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="22"></td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="23"><span class="not-set">(not set)</span></td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="24"></td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="25"></td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="26"><span class="not-set">(not set)</span></td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="27">10</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="28">Pendente</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="29">rosario</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="30">rosario</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="31">2023-10-25</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="32">2023-10-25</td><td class="kv-align-center kv-align-middle w0" data-col-seq="33">Pendente</td><td class="skip-export kv-align-center kv-align-middle w0" style="width:100px;" data-col-seq="34"><a href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Fview&amp;Id=6" title="View" aria-label="View" data-pjax="0"><span class="fas fa-eye" aria-hidden="true"></span></a> <a href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Fupdate&amp;Id=6" title="Update" aria-label="Update" data-pjax="0"><span class="fas fa-pencil-alt" aria-hidden="true"></span></a> <a href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Fdelete&amp;Id=6" title="Delete" aria-label="Delete" data-pjax="0" data-method="post" data-confirm="Are you sure to delete this Dem_Culinarias?"><span class="fas fa-trash-alt" aria-hidden="true"></span></a></td><td class="w0" data-col-seq="35"><a class="btn btn-success fas fa-check-square " href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Fvalidar&amp;id=6" onclick="showSuccessAlert();"></a> <a class="btn btn-primary fas fa-thumbs-up" href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Faprovar&amp;id=6" onclick="showSuccessAlert();"></a> <a class="btn btn-primary fa fa-globe" href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Fpublicar&amp;id=6" onclick="showSuccessAlert();"></a> </td></tr>
+<tr class="w0" data-key="7"><td><input type="checkbox" name="selection[]" value="7"></td><td class="kartik-sheet-style kv-align-center kv-align-middle w0" style="width:36px;" data-col-seq="1">3</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="2">7</td><td class="kv-align-center kv-align-middle w0" data-col-seq="3">Namibe</td><td class="kv-align-center kv-align-middle w0" data-col-seq="4">Bibala</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="5">Bibala</td><td class="kv-align-center kv-align-middle w0" data-col-seq="6">Muntipa</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="7"><span class="not-set">(not set)</span></td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="8">2023-10-13</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="9">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="10">1</td><td class="kv-align-center kv-align-middle w0" data-col-seq="11">Nenhum anexo disponível</td><td class="kv-align-center kv-align-middle w0" data-col-seq="12">2023-10-25</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="13">2023-10-25</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="14">rosario</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="15">CUAMM/C2</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="16">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="17">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="18"><span class="not-set">(not set)</span></td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="19"><span class="not-set">(not set)</span></td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="20">2023-10-25</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="21">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="22">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="23"><span class="not-set">(not set)</span></td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="24">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="25">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="26"><span class="not-set">(not set)</span></td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="27">10</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="28">Pendente</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="29">rosario</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="30">rosario</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="31">2023-10-25</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="32">2023-10-25</td><td class="kv-align-center kv-align-middle w0" data-col-seq="33">Pendente</td><td class="skip-export kv-align-center kv-align-middle w0" style="width:100px;" data-col-seq="34"><a href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Fview&amp;Id=7" title="View" aria-label="View" data-pjax="0"><span class="fas fa-eye" aria-hidden="true"></span></a> <a href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Fupdate&amp;Id=7" title="Update" aria-label="Update" data-pjax="0"><span class="fas fa-pencil-alt" aria-hidden="true"></span></a> <a href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Fdelete&amp;Id=7" title="Delete" aria-label="Delete" data-pjax="0" data-method="post" data-confirm="Are you sure to delete this Dem_Culinarias?"><span class="fas fa-trash-alt" aria-hidden="true"></span></a></td><td class="w0" data-col-seq="35"><a class="btn btn-success fas fa-check-square " href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Fvalidar&amp;id=7" onclick="showSuccessAlert();"></a> <a class="btn btn-primary fas fa-thumbs-up" href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Faprovar&amp;id=7" onclick="showSuccessAlert();"></a> <a class="btn btn-primary fa fa-globe" href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Fpublicar&amp;id=7" onclick="showSuccessAlert();"></a> </td></tr>
+<tr class="w0" data-key="8"><td><input type="checkbox" name="selection[]" value="8"></td><td class="kartik-sheet-style kv-align-center kv-align-middle w0" style="width:36px;" data-col-seq="1">4</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="2">8</td><td class="kv-align-center kv-align-middle w0" data-col-seq="3">Namibe</td><td class="kv-align-center kv-align-middle w0" data-col-seq="4">Bibala</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="5">Bibala</td><td class="kv-align-center kv-align-middle w0" data-col-seq="6">Muntipa</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="7">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="8">2023-10-25</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="9">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="10">1</td><td class="kv-align-center kv-align-middle w0" data-col-seq="11">Nenhum anexo disponível</td><td class="kv-align-center kv-align-middle w0" data-col-seq="12">2023-10-25</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="13">2023-11-01</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="14">rosario</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="15">CUAMM/C2</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="16">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="17">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="18"><span class="not-set">(not set)</span></td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="19"><span class="not-set">(not set)</span></td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="20">2023-11-01</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="21">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="22">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="23"><span class="not-set">(not set)</span></td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="24">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="25">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="26"><span class="not-set">(not set)</span></td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="27">10</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="28">Pendente</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="29">rosario</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="30">rosario</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="31">2023-10-25</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="32">2023-10-25</td><td class="kv-align-center kv-align-middle w0" data-col-seq="33">Pendente</td><td class="skip-export kv-align-center kv-align-middle w0" style="width:100px;" data-col-seq="34"><a href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Fview&amp;Id=8" title="View" aria-label="View" data-pjax="0"><span class="fas fa-eye" aria-hidden="true"></span></a> <a href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Fupdate&amp;Id=8" title="Update" aria-label="Update" data-pjax="0"><span class="fas fa-pencil-alt" aria-hidden="true"></span></a> <a href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Fdelete&amp;Id=8" title="Delete" aria-label="Delete" data-pjax="0" data-method="post" data-confirm="Are you sure to delete this Dem_Culinarias?"><span class="fas fa-trash-alt" aria-hidden="true"></span></a></td><td class="w0" data-col-seq="35"><a class="btn btn-success fas fa-check-square " href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Fvalidar&amp;id=8" onclick="showSuccessAlert();"></a> <a class="btn btn-primary fas fa-thumbs-up" href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Faprovar&amp;id=8" onclick="showSuccessAlert();"></a> <a class="btn btn-primary fa fa-globe" href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Fpublicar&amp;id=8" onclick="showSuccessAlert();"></a> </td></tr>
+<tr class="w0" data-key="10"><td><input type="checkbox" name="selection[]" value="10"></td><td class="kartik-sheet-style kv-align-center kv-align-middle w0" style="width:36px;" data-col-seq="1">5</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="2">10</td><td class="kv-align-center kv-align-middle w0" data-col-seq="3">Namibe</td><td class="kv-align-center kv-align-middle w0" data-col-seq="4">Bibala</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="5">Bibala</td><td class="kv-align-center kv-align-middle w0" data-col-seq="6">Muntipa</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="7">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="8">2023-09-29</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="9">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="10">1</td><td class="kv-align-center kv-align-middle w0" data-col-seq="11">Nenhum anexo disponível</td><td class="kv-align-center kv-align-middle w0" data-col-seq="12">2023-10-25</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="13">2023-10-25</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="14">rosario</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="15">CUAMM/C2</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="16">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="17">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="18"><span class="not-set">(not set)</span></td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="19"><span class="not-set">(not set)</span></td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="20">2023-10-25</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="21">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="22">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="23"><span class="not-set">(not set)</span></td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="24">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="25">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="26"><span class="not-set">(not set)</span></td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="27">10</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="28">Pendente</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="29">rosario</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="30">rosario</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="31">2023-10-25</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="32">2023-10-25</td><td class="kv-align-center kv-align-middle w0" data-col-seq="33">Pendente</td><td class="skip-export kv-align-center kv-align-middle w0" style="width:100px;" data-col-seq="34"><a href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Fview&amp;Id=10" title="View" aria-label="View" data-pjax="0"><span class="fas fa-eye" aria-hidden="true"></span></a> <a href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Fupdate&amp;Id=10" title="Update" aria-label="Update" data-pjax="0"><span class="fas fa-pencil-alt" aria-hidden="true"></span></a> <a href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Fdelete&amp;Id=10" title="Delete" aria-label="Delete" data-pjax="0" data-method="post" data-confirm="Are you sure to delete this Dem_Culinarias?"><span class="fas fa-trash-alt" aria-hidden="true"></span></a></td><td class="w0" data-col-seq="35"><a class="btn btn-success fas fa-check-square " href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Fvalidar&amp;id=10" onclick="showSuccessAlert();"></a> <a class="btn btn-primary fas fa-thumbs-up" href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Faprovar&amp;id=10" onclick="showSuccessAlert();"></a> <a class="btn btn-primary fa fa-globe" href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Fpublicar&amp;id=10" onclick="showSuccessAlert();"></a> </td></tr>
+<tr class="w0" data-key="11"><td><input type="checkbox" name="selection[]" value="11"></td><td class="kartik-sheet-style kv-align-center kv-align-middle w0" style="width:36px;" data-col-seq="1">6</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="2">11</td><td class="kv-align-center kv-align-middle w0" data-col-seq="3">Namibe</td><td class="kv-align-center kv-align-middle w0" data-col-seq="4">Bibala</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="5">Bibala</td><td class="kv-align-center kv-align-middle w0" data-col-seq="6">Muntipa</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="7">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="8">2023-09-29</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="9">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="10">1</td><td class="kv-align-center kv-align-middle w0" data-col-seq="11">Nenhum anexo disponível</td><td class="kv-align-center kv-align-middle w0" data-col-seq="12">2023-11-08</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="13">2023-10-25</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="14">rosario</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="15">CUAMM/C2</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="16">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="17">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="18"><span class="not-set">(not set)</span></td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="19"><span class="not-set">(not set)</span></td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="20">2023-10-25</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="21">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="22">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="23"><span class="not-set">(not set)</span></td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="24">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="25">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="26"><span class="not-set">(not set)</span></td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="27">10</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="28">Pendente</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="29">rosario</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="30">rosario</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="31">2023-10-25</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="32">2023-10-25</td><td class="kv-align-center kv-align-middle w0" data-col-seq="33">Pendente</td><td class="skip-export kv-align-center kv-align-middle w0" style="width:100px;" data-col-seq="34"><a href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Fview&amp;Id=11" title="View" aria-label="View" data-pjax="0"><span class="fas fa-eye" aria-hidden="true"></span></a> <a href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Fupdate&amp;Id=11" title="Update" aria-label="Update" data-pjax="0"><span class="fas fa-pencil-alt" aria-hidden="true"></span></a> <a href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Fdelete&amp;Id=11" title="Delete" aria-label="Delete" data-pjax="0" data-method="post" data-confirm="Are you sure to delete this Dem_Culinarias?"><span class="fas fa-trash-alt" aria-hidden="true"></span></a></td><td class="w0" data-col-seq="35"><a class="btn btn-success fas fa-check-square " href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Fvalidar&amp;id=11" onclick="showSuccessAlert();"></a> <a class="btn btn-primary fas fa-thumbs-up" href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Faprovar&amp;id=11" onclick="showSuccessAlert();"></a> <a class="btn btn-primary fa fa-globe" href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Fpublicar&amp;id=11" onclick="showSuccessAlert();"></a> </td></tr>
+<tr class="w0" data-key="12"><td><input type="checkbox" name="selection[]" value="12"></td><td class="kartik-sheet-style kv-align-center kv-align-middle w0" style="width:36px;" data-col-seq="1">7</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="2">12</td><td class="kv-align-center kv-align-middle w0" data-col-seq="3">Namibe</td><td class="kv-align-center kv-align-middle w0" data-col-seq="4">Bibala</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="5">Bibala</td><td class="kv-align-center kv-align-middle w0" data-col-seq="6">Muntipa</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="7">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="8">2023-09-29</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="9">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="10">1</td><td class="kv-align-center kv-align-middle w0" data-col-seq="11">Nenhum anexo disponível</td><td class="kv-align-center kv-align-middle w0" data-col-seq="12">2023-11-01</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="13">2023-11-01</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="14">rosario</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="15">CUAMM/C2</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="16">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="17">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="18"><span class="not-set">(not set)</span></td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="19"><span class="not-set">(not set)</span></td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="20">2023-11-01</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="21">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="22">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="23"><span class="not-set">(not set)</span></td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="24">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="25"></td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="26"><span class="not-set">(not set)</span></td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="27">10</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="28">Pendente</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="29">rosario</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="30">rosario</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="31">2023-10-25</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="32">2023-10-25</td><td class="kv-align-center kv-align-middle w0" data-col-seq="33">Pendente</td><td class="skip-export kv-align-center kv-align-middle w0" style="width:100px;" data-col-seq="34"><a href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Fview&amp;Id=12" title="View" aria-label="View" data-pjax="0"><span class="fas fa-eye" aria-hidden="true"></span></a> <a href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Fupdate&amp;Id=12" title="Update" aria-label="Update" data-pjax="0"><span class="fas fa-pencil-alt" aria-hidden="true"></span></a> <a href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Fdelete&amp;Id=12" title="Delete" aria-label="Delete" data-pjax="0" data-method="post" data-confirm="Are you sure to delete this Dem_Culinarias?"><span class="fas fa-trash-alt" aria-hidden="true"></span></a></td><td class="w0" data-col-seq="35"><a class="btn btn-success fas fa-check-square " href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Fvalidar&amp;id=12" onclick="showSuccessAlert();"></a> <a class="btn btn-primary fas fa-thumbs-up" href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Faprovar&amp;id=12" onclick="showSuccessAlert();"></a> <a class="btn btn-primary fa fa-globe" href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Fpublicar&amp;id=12" onclick="showSuccessAlert();"></a> </td></tr>
+<tr class="w0" data-key="13"><td><input type="checkbox" name="selection[]" value="13"></td><td class="kartik-sheet-style kv-align-center kv-align-middle w0" style="width:36px;" data-col-seq="1">8</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="2">13</td><td class="kv-align-center kv-align-middle w0" data-col-seq="3">Namibe</td><td class="kv-align-center kv-align-middle w0" data-col-seq="4">Bibala</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="5">Bibala</td><td class="kv-align-center kv-align-middle w0" data-col-seq="6">Muntipa</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="7">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="8">2023-10-25</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="9">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="10">1</td><td class="kv-align-center kv-align-middle w0" data-col-seq="11">Nenhum anexo disponível</td><td class="kv-align-center kv-align-middle w0" data-col-seq="12">2023-11-01</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="13">2023-11-01</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="14">rosario</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="15">CUAMM/C2</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="16">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="17">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="18"><span class="not-set">(not set)</span></td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="19"><span class="not-set">(not set)</span></td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="20">2023-11-01</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="21">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="22">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="23"><span class="not-set">(not set)</span></td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="24">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="25">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="26"><span class="not-set">(not set)</span></td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="27">10</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="28">Pendente</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="29">rosario</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="30">rosario</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="31">2023-10-25</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="32">2023-10-25</td><td class="kv-align-center kv-align-middle w0" data-col-seq="33">Pendente</td><td class="skip-export kv-align-center kv-align-middle w0" style="width:100px;" data-col-seq="34"><a href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Fview&amp;Id=13" title="View" aria-label="View" data-pjax="0"><span class="fas fa-eye" aria-hidden="true"></span></a> <a href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Fupdate&amp;Id=13" title="Update" aria-label="Update" data-pjax="0"><span class="fas fa-pencil-alt" aria-hidden="true"></span></a> <a href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Fdelete&amp;Id=13" title="Delete" aria-label="Delete" data-pjax="0" data-method="post" data-confirm="Are you sure to delete this Dem_Culinarias?"><span class="fas fa-trash-alt" aria-hidden="true"></span></a></td><td class="w0" data-col-seq="35"><a class="btn btn-success fas fa-check-square " href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Fvalidar&amp;id=13" onclick="showSuccessAlert();"></a> <a class="btn btn-primary fas fa-thumbs-up" href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Faprovar&amp;id=13" onclick="showSuccessAlert();"></a> <a class="btn btn-primary fa fa-globe" href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Fpublicar&amp;id=13" onclick="showSuccessAlert();"></a> </td></tr>
+<tr class="w0" data-key="14"><td><input type="checkbox" name="selection[]" value="14"></td><td class="kartik-sheet-style kv-align-center kv-align-middle w0" style="width:36px;" data-col-seq="1">9</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="2">14</td><td class="kv-align-center kv-align-middle w0" data-col-seq="3">Huila</td><td class="kv-align-center kv-align-middle w0" data-col-seq="4">Chibia</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="5">Chibia</td><td class="kv-align-center kv-align-middle w0" data-col-seq="6">Hacavamba</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="7">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="8">2023-10-25</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="9">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="10">1</td><td class="kv-align-center kv-align-middle w0" data-col-seq="11">Nenhum anexo disponível</td><td class="kv-align-center kv-align-middle w0" data-col-seq="12">2023-11-11</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="13">2023-11-01</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="14">rosario</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="15">CUAMM/C2</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="16">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="17">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="18"><span class="not-set">(not set)</span></td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="19"><span class="not-set">(not set)</span></td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="20">2023-11-01</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="21">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="22">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="23"><span class="not-set">(not set)</span></td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="24">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="25">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="26"><span class="not-set">(not set)</span></td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="27">10</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="28">Pendente</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="29">rosario</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="30">rosario</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="31">2023-10-25</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="32">2023-10-25</td><td class="kv-align-center kv-align-middle w0" data-col-seq="33">Pendente</td><td class="skip-export kv-align-center kv-align-middle w0" style="width:100px;" data-col-seq="34"><a href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Fview&amp;Id=14" title="View" aria-label="View" data-pjax="0"><span class="fas fa-eye" aria-hidden="true"></span></a> <a href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Fupdate&amp;Id=14" title="Update" aria-label="Update" data-pjax="0"><span class="fas fa-pencil-alt" aria-hidden="true"></span></a> <a href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Fdelete&amp;Id=14" title="Delete" aria-label="Delete" data-pjax="0" data-method="post" data-confirm="Are you sure to delete this Dem_Culinarias?"><span class="fas fa-trash-alt" aria-hidden="true"></span></a></td><td class="w0" data-col-seq="35"><a class="btn btn-success fas fa-check-square " href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Fvalidar&amp;id=14" onclick="showSuccessAlert();"></a> <a class="btn btn-primary fas fa-thumbs-up" href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Faprovar&amp;id=14" onclick="showSuccessAlert();"></a> <a class="btn btn-primary fa fa-globe" href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Fpublicar&amp;id=14" onclick="showSuccessAlert();"></a> </td></tr>
+<tr class="w0" data-key="15"><td><input type="checkbox" name="selection[]" value="15"></td><td class="kartik-sheet-style kv-align-center kv-align-middle w0" style="width:36px;" data-col-seq="1">10</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="2">15</td><td class="kv-align-center kv-align-middle w0" data-col-seq="3">Namibe</td><td class="kv-align-center kv-align-middle w0" data-col-seq="4">Bibala</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="5">Bibala</td><td class="kv-align-center kv-align-middle w0" data-col-seq="6">Muntipa</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="7">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="8">2023-10-12</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="9">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="10">1</td><td class="kv-align-center kv-align-middle w0" data-col-seq="11"><a href="/mvp/backend/web/uploads/anexoEvidenciaDemonsCulinaria/Onk0Zu9EIC_oaubrIrenMxXw7r-FFoID.png" rel="noopener" target="_blank">Abrir</a></td><td class="kv-align-center kv-align-middle w0" data-col-seq="12">2023-11-08</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="13">2023-11-01</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="14">rosario</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="15">CUAMM/C2</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="16">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="17">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="18"><span class="not-set">(not set)</span></td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="19"><span class="not-set">(not set)</span></td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="20">2023-11-11</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="21">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="22">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="23"><span class="not-set">(not set)</span></td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="24">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="25">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="26"><span class="not-set">(not set)</span></td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="27">10</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="28">Pendente</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="29">rosario</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="30">rosario</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="31">2023-10-25</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="32">2023-10-25</td><td class="kv-align-center kv-align-middle w0" data-col-seq="33">Pendente</td><td class="skip-export kv-align-center kv-align-middle w0" style="width:100px;" data-col-seq="34"><a href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Fview&amp;Id=15" title="View" aria-label="View" data-pjax="0"><span class="fas fa-eye" aria-hidden="true"></span></a> <a href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Fupdate&amp;Id=15" title="Update" aria-label="Update" data-pjax="0"><span class="fas fa-pencil-alt" aria-hidden="true"></span></a> <a href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Fdelete&amp;Id=15" title="Delete" aria-label="Delete" data-pjax="0" data-method="post" data-confirm="Are you sure to delete this Dem_Culinarias?"><span class="fas fa-trash-alt" aria-hidden="true"></span></a></td><td class="w0" data-col-seq="35"><a class="btn btn-success fas fa-check-square " href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Fvalidar&amp;id=15" onclick="showSuccessAlert();"></a> <a class="btn btn-primary fas fa-thumbs-up" href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Faprovar&amp;id=15" onclick="showSuccessAlert();"></a> <a class="btn btn-primary fa fa-globe" href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Fpublicar&amp;id=15" onclick="showSuccessAlert();"></a> </td></tr>
+<tr class="w0" data-key="16"><td><input type="checkbox" name="selection[]" value="16"></td><td class="kartik-sheet-style kv-align-center kv-align-middle w0" style="width:36px;" data-col-seq="1">11</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="2">16</td><td class="kv-align-center kv-align-middle w0" data-col-seq="3">Namibe</td><td class="kv-align-center kv-align-middle w0" data-col-seq="4">Bibala</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="5">Bibala</td><td class="kv-align-center kv-align-middle w0" data-col-seq="6">Muntipa</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="7">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="8">2023-11-01</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="9">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="10">1</td><td class="kv-align-center kv-align-middle w0" data-col-seq="11">Nenhum anexo disponível</td><td class="kv-align-center kv-align-middle w0" data-col-seq="12">2023-11-01</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="13">2024-06-07</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="14">rosario</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="15">CUAMM/C2</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="16">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="17">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="18"><span class="not-set">(not set)</span></td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="19"><span class="not-set">(not set)</span></td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="20">2023-11-11</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="21">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="22">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="23"><span class="not-set">(not set)</span></td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="24">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="25">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="26"><span class="not-set">(not set)</span></td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="27">10</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="28">Pendente</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="29">rosario</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="30">rosario</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="31">2023-10-25</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="32">2023-10-25</td><td class="kv-align-center kv-align-middle w0" data-col-seq="33">Pendente</td><td class="skip-export kv-align-center kv-align-middle w0" style="width:100px;" data-col-seq="34"><a href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Fview&amp;Id=16" title="View" aria-label="View" data-pjax="0"><span class="fas fa-eye" aria-hidden="true"></span></a> <a href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Fupdate&amp;Id=16" title="Update" aria-label="Update" data-pjax="0"><span class="fas fa-pencil-alt" aria-hidden="true"></span></a> <a href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Fdelete&amp;Id=16" title="Delete" aria-label="Delete" data-pjax="0" data-method="post" data-confirm="Are you sure to delete this Dem_Culinarias?"><span class="fas fa-trash-alt" aria-hidden="true"></span></a></td><td class="w0" data-col-seq="35"><a class="btn btn-success fas fa-check-square " href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Fvalidar&amp;id=16" onclick="showSuccessAlert();"></a> <a class="btn btn-primary fas fa-thumbs-up" href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Faprovar&amp;id=16" onclick="showSuccessAlert();"></a> <a class="btn btn-primary fa fa-globe" href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Fpublicar&amp;id=16" onclick="showSuccessAlert();"></a> </td></tr>
+<tr class="w0" data-key="17"><td><input type="checkbox" name="selection[]" value="17"></td><td class="kartik-sheet-style kv-align-center kv-align-middle w0" style="width:36px;" data-col-seq="1">12</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="2">17</td><td class="kv-align-center kv-align-middle w0" data-col-seq="3">Namibe</td><td class="kv-align-center kv-align-middle w0" data-col-seq="4">Bibala</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="5">Bibala</td><td class="kv-align-center kv-align-middle w0" data-col-seq="6">Muntipa</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="7">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="8">2023-11-01</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="9">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="10">1</td><td class="kv-align-center kv-align-middle w0" data-col-seq="11"><a href="/mvp/backend/web/uploads/anexoEvidenciaDemonsCulinaria/YmGgKNpQi_lF5k5gLuBQNKVCO2cIUXa1.png" rel="noopener" target="_blank">Abrir</a></td><td class="kv-align-center kv-align-middle w0" data-col-seq="12">2023-11-01</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="13">2023-11-01</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="14">rosario</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="15">CUAMM/C2</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="16">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="17">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="18"><span class="not-set">(not set)</span></td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="19"><span class="not-set">(not set)</span></td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="20">2023-11-01</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="21">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="22">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="23"><span class="not-set">(not set)</span></td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="24">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="25">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="26"><span class="not-set">(not set)</span></td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="27">10</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="28">Pendente</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="29">rosario</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="30">rosario</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="31">2023-10-25</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="32">2023-10-25</td><td class="kv-align-center kv-align-middle w0" data-col-seq="33">Pendente</td><td class="skip-export kv-align-center kv-align-middle w0" style="width:100px;" data-col-seq="34"><a href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Fview&amp;Id=17" title="View" aria-label="View" data-pjax="0"><span class="fas fa-eye" aria-hidden="true"></span></a> <a href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Fupdate&amp;Id=17" title="Update" aria-label="Update" data-pjax="0"><span class="fas fa-pencil-alt" aria-hidden="true"></span></a> <a href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Fdelete&amp;Id=17" title="Delete" aria-label="Delete" data-pjax="0" data-method="post" data-confirm="Are you sure to delete this Dem_Culinarias?"><span class="fas fa-trash-alt" aria-hidden="true"></span></a></td><td class="w0" data-col-seq="35"><a class="btn btn-success fas fa-check-square " href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Fvalidar&amp;id=17" onclick="showSuccessAlert();"></a> <a class="btn btn-primary fas fa-thumbs-up" href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Faprovar&amp;id=17" onclick="showSuccessAlert();"></a> <a class="btn btn-primary fa fa-globe" href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Fpublicar&amp;id=17" onclick="showSuccessAlert();"></a> </td></tr>
+<tr class="w0" data-key="18"><td><input type="checkbox" name="selection[]" value="18"></td><td class="kartik-sheet-style kv-align-center kv-align-middle w0" style="width:36px;" data-col-seq="1">13</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="2">18</td><td class="kv-align-center kv-align-middle w0" data-col-seq="3">Namibe</td><td class="kv-align-center kv-align-middle w0" data-col-seq="4">Bibala</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="5">Bibala</td><td class="kv-align-center kv-align-middle w0" data-col-seq="6">Muntipa</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="7">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="8">2023-10-25</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="9">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="10">1</td><td class="kv-align-center kv-align-middle w0" data-col-seq="11"><a href="/mvp/backend/web/uploads/anexoEvidenciaDemonsCulinaria/Imu_vM0JJOMpLKaq_piXR6JR8VoGQbVY.xlsx" rel="noopener" target="_blank">Abrir</a></td><td class="kv-align-center kv-align-middle w0" data-col-seq="12">2023-10-25</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="13">2023-10-25</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="14">rosario</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="15">CUAMM/C2</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="16">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="17">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="18"><span class="not-set">(not set)</span></td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="19"><span class="not-set">(not set)</span></td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="20">2024-06-07</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="21">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="22">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="23"><span class="not-set">(not set)</span></td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="24">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="25">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="26"><span class="not-set">(not set)</span></td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="27">10</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="28">Pendente</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="29">rosario</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="30">rosario</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="31">2023-10-25</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="32">2023-10-25</td><td class="kv-align-center kv-align-middle w0" data-col-seq="33">Pendente</td><td class="skip-export kv-align-center kv-align-middle w0" style="width:100px;" data-col-seq="34"><a href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Fview&amp;Id=18" title="View" aria-label="View" data-pjax="0"><span class="fas fa-eye" aria-hidden="true"></span></a> <a href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Fupdate&amp;Id=18" title="Update" aria-label="Update" data-pjax="0"><span class="fas fa-pencil-alt" aria-hidden="true"></span></a> <a href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Fdelete&amp;Id=18" title="Delete" aria-label="Delete" data-pjax="0" data-method="post" data-confirm="Are you sure to delete this Dem_Culinarias?"><span class="fas fa-trash-alt" aria-hidden="true"></span></a></td><td class="w0" data-col-seq="35"><a class="btn btn-success fas fa-check-square " href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Fvalidar&amp;id=18" onclick="showSuccessAlert();"></a> <a class="btn btn-primary fas fa-thumbs-up" href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Faprovar&amp;id=18" onclick="showSuccessAlert();"></a> <a class="btn btn-primary fa fa-globe" href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Fpublicar&amp;id=18" onclick="showSuccessAlert();"></a> </td></tr>
+<tr class="w0" data-key="19"><td><input type="checkbox" name="selection[]" value="19"></td><td class="kartik-sheet-style kv-align-center kv-align-middle w0" style="width:36px;" data-col-seq="1">14</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="2">19</td><td class="kv-align-center kv-align-middle w0" data-col-seq="3">Namibe</td><td class="kv-align-center kv-align-middle w0" data-col-seq="4">Bibala</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="5">Bibala</td><td class="kv-align-center kv-align-middle w0" data-col-seq="6">Muntipa</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="7">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="8">2023-10-25</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="9">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="10">1</td><td class="kv-align-center kv-align-middle w0" data-col-seq="11"><a href="/mvp/backend/web/uploads/anexoEvidenciaDemonsCulinaria/cUNlkw9CnQCqEYxITX4KNKPuqPwq9uoE.png" rel="noopener" target="_blank">Abrir</a></td><td class="kv-align-center kv-align-middle w0" data-col-seq="12">2023-10-25</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="13">2023-10-25</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="14">rosario</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="15">CUAMM/C2</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="16">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="17">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="18"><span class="not-set">(not set)</span></td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="19"><span class="not-set">(not set)</span></td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="20">2024-06-07</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="21">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="22">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="23"><span class="not-set">(not set)</span></td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="24">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="25">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="26"><span class="not-set">(not set)</span></td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="27">10</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="28">Pendente</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="29">rosario</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="30">rosario</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="31">2023-10-25</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="32">2023-10-25</td><td class="kv-align-center kv-align-middle w0" data-col-seq="33">Pendente</td><td class="skip-export kv-align-center kv-align-middle w0" style="width:100px;" data-col-seq="34"><a href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Fview&amp;Id=19" title="View" aria-label="View" data-pjax="0"><span class="fas fa-eye" aria-hidden="true"></span></a> <a href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Fupdate&amp;Id=19" title="Update" aria-label="Update" data-pjax="0"><span class="fas fa-pencil-alt" aria-hidden="true"></span></a> <a href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Fdelete&amp;Id=19" title="Delete" aria-label="Delete" data-pjax="0" data-method="post" data-confirm="Are you sure to delete this Dem_Culinarias?"><span class="fas fa-trash-alt" aria-hidden="true"></span></a></td><td class="w0" data-col-seq="35"><a class="btn btn-success fas fa-check-square " href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Fvalidar&amp;id=19" onclick="showSuccessAlert();"></a> <a class="btn btn-primary fas fa-thumbs-up" href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Faprovar&amp;id=19" onclick="showSuccessAlert();"></a> <a class="btn btn-primary fa fa-globe" href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Fpublicar&amp;id=19" onclick="showSuccessAlert();"></a> </td></tr>
+<tr class="w0" data-key="20"><td><input type="checkbox" name="selection[]" value="20"></td><td class="kartik-sheet-style kv-align-center kv-align-middle w0" style="width:36px;" data-col-seq="1">15</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="2">20</td><td class="kv-align-center kv-align-middle w0" data-col-seq="3">Huila</td><td class="kv-align-center kv-align-middle w0" data-col-seq="4">Chibia</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="5">Chibia</td><td class="kv-align-center kv-align-middle w0" data-col-seq="6">Hacavamba</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="7">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="8"><span class="not-set">(not set)</span></td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="9">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="10">1</td><td class="kv-align-center kv-align-middle w0" data-col-seq="11"><a href="/mvp/backend/web/uploads/anexoEvidenciaDemonsCulinaria/2W9n1w7P71oLZ-AdlslU64JwYT6SPVsS.xlsx" rel="noopener" target="_blank">Abrir</a></td><td class="kv-align-center kv-align-middle w0" data-col-seq="12">2023-11-01</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="13">2023-10-25</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="14">rosario</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="15">CUAMM/C2</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="16">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="17">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="18"><span class="not-set">(not set)</span></td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="19"><span class="not-set">(not set)</span></td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="20">2023-10-25</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="21">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="22">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="23"><span class="not-set">(not set)</span></td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="24">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="25">1</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="26"><span class="not-set">(not set)</span></td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="27">10</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="28">Pendente</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="29">rosario</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="30">rosario</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="31">2023-10-25</td><td class="kv-grid-hide kv-align-center kv-align-middle w0" data-col-seq="32">2023-10-25</td><td class="kv-align-center kv-align-middle w0" data-col-seq="33">Pendente</td><td class="skip-export kv-align-center kv-align-middle w0" style="width:100px;" data-col-seq="34"><a href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Fview&amp;Id=20" title="View" aria-label="View" data-pjax="0"><span class="fas fa-eye" aria-hidden="true"></span></a> <a href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Fupdate&amp;Id=20" title="Update" aria-label="Update" data-pjax="0"><span class="fas fa-pencil-alt" aria-hidden="true"></span></a> <a href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Fdelete&amp;Id=20" title="Delete" aria-label="Delete" data-pjax="0" data-method="post" data-confirm="Are you sure to delete this Dem_Culinarias?"><span class="fas fa-trash-alt" aria-hidden="true"></span></a></td><td class="w0" data-col-seq="35"><a class="btn btn-success fas fa-check-square " href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Fvalidar&amp;id=20" onclick="showSuccessAlert();"></a> <a class="btn btn-primary fas fa-thumbs-up" href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Faprovar&amp;id=20" onclick="showSuccessAlert();"></a> <a class="btn btn-primary fa fa-globe" href="/mvp/backend/web/index.php?r=demostracoesculinarias%2Fpublicar&amp;id=20" onclick="showSuccessAlert();"></a> </td></tr>
+</tbody></table></div>
+<div class="kv-panel-after"></div>
+<div class="card-footer">    <div class="kv-panel-pager">
+        
+    </div>
+    1
+    <div class="clearfix"></div></div></div></div></div>
+
+
+
+</div>
+<!-- /.container-fluid -->
+    </div>
+    <!-- /.content -->
+</div>    <!-- /.content-wrapper -->
+
+    <!-- Control Sidebar -->
+    <!-- Control Sidebar -->
+<aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+</aside>
+<!-- /.control-sidebar -->    <!-- /.control-sidebar -->
+
+    <!-- Main Footer -->
+    <footer class="main-footer">
+    <strong>Copyright &copy; 2023 <a href="https://adminlte.io">fresan-angola.co.ao</a>.</strong>
+    All rights reserved.
+    
+</footer></div>
+
+<div id="yii-debug-toolbar" data-url="/mvp/backend/web/index.php?r=debug%2Fdefault%2Ftoolbar&amp;tag=6538d8b08bda7" data-skip-urls="[]" style="display:none" class="yii-debug-toolbar-bottom"></div><style>#yii-debug-toolbar-logo{position:fixed;right:31px;bottom:4px}@media print{.yii-debug-toolbar{display:none !important}}.yii-debug-toolbar{font:11px Verdana, Arial, sans-serif;text-align:left;width:96px;transition:width .3s ease;z-index:1000000}.yii-debug-toolbar.yii-debug-toolbar_active:not(.yii-debug-toolbar_animating) .yii-debug-toolbar__bar{overflow:visible;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.yii-debug-toolbar.yii-debug-toolbar_iframe_active:not(.yii-debug-toolbar_animating) .yii-debug-toolbar__resize-handle{display:block;height:4px;cursor:ns-resize;margin-bottom:0;z-index:1000001;position:absolute;left:0;right:0}.yii-debug-toolbar:not(.yii-debug-toolbar_active) .yii-debug-toolbar__bar,.yii-debug-toolbar.yii-debug-toolbar_animating .yii-debug-toolbar__bar{height:40px}.yii-debug-toolbar_active{width:100%}.yii-debug-toolbar_active .yii-debug-toolbar__toggle-icon{-webkit-transform:rotate(0);transform:rotate(0)}.yii-debug-toolbar_position_top{margin:0 0 20px 0;width:100%}.yii-debug-toolbar_position_bottom{position:fixed;right:0;bottom:0;margin:0}.yii-debug-toolbar__bar{position:relative;padding:0;font:11px Verdana, Arial, sans-serif;text-align:left;overflow:hidden;box-sizing:content-box;display:flex;flex-wrap:wrap;background:#fff;background:-moz-linear-gradient(top, #fff 0%, #f7f7f7 100%);background:-webkit-linear-gradient(top, #fff 0%, #f7f7f7 100%);background:linear-gradient(to bottom, #fff 0%, #f7f7f7 100%);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f7f7f7', GradientType=0);border:1px solid rgba(0,0,0,0.11);direction:ltr}.yii-debug-toolbar__bar::after{content:'';display:table;clear:both}.yii-debug-toolbar__view{height:0;overflow:hidden;background:white}.yii-debug-toolbar__view iframe{margin:0;padding:10px 0 0;height:100%;width:100%;border:0}.yii-debug-toolbar_iframe_active .yii-debug-toolbar__view{height:100%}.yii-debug-toolbar_iframe_active .yii-debug-toolbar__toggle-icon{-webkit-transform:rotate(90deg);transform:rotate(90deg)}.yii-debug-toolbar_iframe_active .yii-debug-toolbar__external{display:block}.yii-debug-toolbar_iframe_animating .yii-debug-toolbar__view{transition:height .3s ease}.yii-debug-toolbar__block{margin:0;border-right:1px solid rgba(0,0,0,0.11);border-bottom:1px solid rgba(0,0,0,0.11);padding:4px 8px;line-height:32px;white-space:nowrap}@media (max-width: 767.98px){.yii-debug-toolbar__block{flex-grow:1;text-align:center}}.yii-debug-toolbar__block a{display:inline-block;text-decoration:none;color:black}.yii-debug-toolbar__block img{vertical-align:middle;width:30px;height:30px}.yii-debug-toolbar__block_active,.yii-debug-toolbar__ajax:hover{background:#f7f7f7;background:-moz-linear-gradient(top, #f7f7f7 0%, #e0e0e0 100%);background:-webkit-linear-gradient(top, #f7f7f7 0%, #e0e0e0 100%);background:linear-gradient(to bottom, #f7f7f7 0%, #e0e0e0 100%);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#f7f7f7', endColorstr='#e0e0e0', GradientType=0)}.yii-debug-toolbar__label{display:inline-block;padding:2px 4px;font-size:12px;font-weight:normal;line-height:14px;white-space:nowrap;vertical-align:middle;max-width:100px;overflow-x:hidden;text-overflow:ellipsis;color:#ffffff;text-shadow:0 -1px 0 rgba(0,0,0,0.25);background-color:#737373;-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px}.yii-debug-toolbar__label:empty{display:none}a.yii-debug-toolbar__label:hover,a.yii-debug-toolbar__label:focus{color:#ffffff;text-decoration:none;cursor:pointer}.yii-debug-toolbar__label_important,.yii-debug-toolbar__label_error{background-color:#b94a48}.yii-debug-toolbar__label_important[href]{background-color:#953b39}.yii-debug-toolbar__label_warning,.yii-debug-toolbar__badge_warning{background-color:#f89406}.yii-debug-toolbar__label_warning[href]{background-color:#c67605}.yii-debug-toolbar__label_success{background-color:#217822}.yii-debug-toolbar__label_success[href]{background-color:#356635}.yii-debug-toolbar__label_info{background-color:#0b72b8}.yii-debug-toolbar__label_info[href]{background-color:#2d6987}.yii-debug-toolbar__label_inverse,.yii-debug-toolbar__badge_inverse{background-color:#333333}.yii-debug-toolbar__label_inverse[href],.yii-debug-toolbar__badge_inverse[href]{background-color:#1a1a1a}.yii-debug-toolbar__title{background:#f7f7f7;background:-moz-linear-gradient(top, #f7f7f7 0%, #e0e0e0 100%);background:-webkit-linear-gradient(top, #f7f7f7 0%, #e0e0e0 100%);background:linear-gradient(to bottom, #f7f7f7 0%, #e0e0e0 100%);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#f7f7f7', endColorstr='#e0e0e0', GradientType=0)}.yii-debug-toolbar__block_last{width:80px;height:40px;float:left}.yii-debug-toolbar__toggle,.yii-debug-toolbar__external{cursor:pointer;position:absolute;width:30px;height:30px;font-size:25px;font-weight:100;line-height:28px;color:#ffffff;text-align:center;opacity:0.5;filter:alpha(opacity=50);transition:opacity .3s ease}.yii-debug-toolbar__toggle:hover,.yii-debug-toolbar__toggle:focus,.yii-debug-toolbar__external:hover,.yii-debug-toolbar__external:focus{color:#ffffff;text-decoration:none;opacity:0.9;filter:alpha(opacity=90)}.yii-debug-toolbar__toggle-icon,.yii-debug-toolbar__external-icon{display:inline-block;background-position:50% 50%;background-repeat:no-repeat}.yii-debug-toolbar__toggle{right:10px;bottom:4px}.yii-debug-toolbar__toggle-icon{padding:7px 0;width:10px;height:16px;background-image:url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNSIgaGVpZ2h0PSIxNSIgdmlld0JveD0iMCAwIDUwIDUwIj48cGF0aCBmaWxsPSIjNDQ0IiBkPSJNMTUuNTYzIDQwLjgzNmEuOTk3Ljk5NyAwIDAgMCAxLjQxNCAwbDE1LTE1YTEgMSAwIDAgMCAwLTEuNDE0bC0xNS0xNWExIDEgMCAwIDAtMS40MTQgMS40MTRMMjkuODU2IDI1LjEzIDE1LjU2MyAzOS40MmExIDEgMCAwIDAgMCAxLjQxNHoiLz48L3N2Zz4=");transition:-webkit-transform .3s ease-out;transition:transform .3s ease-out;-webkit-transform:rotate(180deg);transform:rotate(180deg)}.yii-debug-toolbar__external{display:none;right:50px;bottom:4px}.yii-debug-toolbar__external-icon{padding:8px 0;width:14px;height:14px;background-image:url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNSIgaGVpZ2h0PSIxNSIgdmlld0JveD0iMCAwIDUwIDUwIj48cGF0aCBmaWxsPSIjNDQ0IiBkPSJNMzkuNjQyIDkuNzIyYTEuMDEgMS4wMSAwIDAgMC0uMzgyLS4wNzdIMjguMTAzYTEgMSAwIDAgMCAwIDJoOC43NDNMMjEuNyAyNi43OWExIDEgMCAwIDAgMS40MTQgMS40MTVMMzguMjYgMTMuMDZ2OC43NDNhMSAxIDAgMCAwIDIgMFYxMC42NDZhMS4wMDUgMS4wMDUgMCAwIDAtLjYxOC0uOTI0eiIvPjxwYXRoIGQ9Ik0zOS4yNiAyNy45ODVhMSAxIDAgMCAwLTEgMXYxMC42NmgtMjh2LTI4aDEwLjY4M2ExIDEgMCAwIDAgMC0ySDkuMjZhMSAxIDAgMCAwLTEgMXYzMGExIDEgMCAwIDAgMSAxaDMwYTEgMSAwIDAgMCAxLTF2LTExLjY2YTEgMSAwIDAgMC0xLTF6Ii8+PC9zdmc+")}.yii-debug-toolbar__switch-icon{margin-left:10px;padding:5px 10px;width:18px;height:18px;background-image:url("data:image/svg+xml;base64,PHN2ZyB4bWxuczpzdmc9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDUwIDUwIiB2ZXJzaW9uPSIxLjEiPjxwYXRoIGQ9Im00MS4xIDIzYy0wLjYgMC0xIDAuNC0xIDF2MTAuN2wtMjUuNi0wLjFjMCAwIDAtMiAwLTIuOCAwLTAuOC0wLjctMS0xLTAuNmwtMy41IDMuNWMtMC42IDAuNi0wLjYgMS4zIDAgMmwzLjQgMy40YzAuNCAwLjQgMS4xIDAuMiAxLTAuNmwwLTIuOWMwIDAgMjAuOCAwLjEgMjYuNiAwIDAuNiAwIDEtMC40IDEtMXYtMTEuN2MwLTAuNi0wLjQtMS0xLTF6TTkgMjYuOSA5IDI2LjkgOSAyNi45IDkgMjYuOSIvPjxwYXRoIGQ9Im05IDI2LjljMC42IDAgMS0wLjQgMS0xdi0xMC43bDI1LjYgMC4xYzAgMCAwIDIgMCAyLjggMCAwLjggMC43IDEgMSAwLjZsMy41LTMuNWMwLjYtMC42IDAuNi0xLjMgMC0ybC0zLjQtMy40Yy0wLjQtMC40LTEuMS0wLjItMSAwLjZsMCAyLjljMCAwLTIwLjgtMC4xLTI2LjYgMC0wLjYgMC0xIDAuNC0xIDF2MTEuN2MwIDAuNiAwLjQgMSAxIDF6Ii8+PC9zdmc+")}.yii-debug-toolbar__ajax{position:relative}.yii-debug-toolbar__ajax:hover .yii-debug-toolbar__ajax_info,.yii-debug-toolbar__ajax:focus .yii-debug-toolbar__ajax_info{visibility:visible}.yii-debug-toolbar__ajax a{color:#337ab7}.yii-debug-toolbar__ajax table{width:100%;table-layout:auto;border-spacing:0;border-collapse:collapse}.yii-debug-toolbar__ajax table td{padding:4px;font-size:12px;line-height:normal;vertical-align:top;border-top:1px solid #ddd}.yii-debug-toolbar__ajax table th{padding:4px;font-size:11px;line-height:normal;vertical-align:bottom;border-bottom:2px solid #ddd}.yii-debug-toolbar__ajax_info{visibility:hidden;transition:visibility .2s linear;background-color:white;box-shadow:inset 0 -10px 10px -10px #e1e1e1;position:absolute;bottom:40px;left:-1px;padding:10px;max-width:480px;max-height:480px;word-wrap:break-word;overflow:hidden;overflow-y:auto;box-sizing:border-box;border:1px solid rgba(0,0,0,0.11);z-index:1000001}.yii-debug-toolbar__ajax_request_status{color:white;padding:2px 5px}.yii-debug-toolbar__ajax_request_url{max-width:170px;overflow:hidden;text-overflow:ellipsis}
+</style><script>(function () {
+    'use strict';
+
+    var findToolbar = function () {
+            return document.querySelector('#yii-debug-toolbar');
+        },
+        ajax = function (url, settings) {
+            var xhr = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
+            settings = settings || {};
+            xhr.open(settings.method || 'GET', url, true);
+            xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+            xhr.setRequestHeader('Accept', 'text/html');
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200 && settings.success) {
+                        settings.success(xhr);
+                    } else if (xhr.status !== 200 && settings.error) {
+                        settings.error(xhr);
+                    }
+                }
+            };
+            xhr.send(settings.data || '');
+        },
+        url,
+        div,
+        toolbarEl = findToolbar(),
+        toolbarAnimatingClass = 'yii-debug-toolbar_animating',
+        barSelector = '.yii-debug-toolbar__bar',
+        viewSelector = '.yii-debug-toolbar__view',
+        blockSelector = '.yii-debug-toolbar__block',
+        toggleSelector = '.yii-debug-toolbar__toggle',
+        externalSelector = '.yii-debug-toolbar__external',
+
+        CACHE_KEY = 'yii-debug-toolbar',
+        ACTIVE_STATE = 'active',
+
+        animationTime = 300,
+
+        activeClass = 'yii-debug-toolbar_active',
+        iframeActiveClass = 'yii-debug-toolbar_iframe_active',
+        iframeAnimatingClass = 'yii-debug-toolbar_iframe_animating',
+        titleClass = 'yii-debug-toolbar__title',
+        blockClass = 'yii-debug-toolbar__block',
+        ignoreClickClass = 'yii-debug-toolbar__ignore_click',
+        blockActiveClass = 'yii-debug-toolbar__block_active',
+        requestStack = [];
+
+    if (toolbarEl) {
+        url = toolbarEl.getAttribute('data-url');
+
+        ajax(url, {
+            success: function (xhr) {
+                div = document.createElement('div');
+                div.innerHTML = xhr.responseText;
+
+                toolbarEl.parentNode && toolbarEl.parentNode.replaceChild(div, toolbarEl);
+
+                showToolbar(findToolbar());
+
+                var event;
+                if (typeof(Event) === 'function') {
+                    event = new Event('yii.debug.toolbar_attached', {'bubbles': true});
+                } else {
+                    event = document.createEvent('Event');
+                    event.initEvent('yii.debug.toolbar_attached', true, true);
+                }
+
+                div.dispatchEvent(event);
+            },
+            error: function (xhr) {
+                toolbarEl.innerText = xhr.responseText;
+            }
+        });
+    }
+
+    function showToolbar(toolbarEl) {
+        var barEl = toolbarEl.querySelector(barSelector),
+            viewEl = toolbarEl.querySelector(viewSelector),
+            toggleEl = toolbarEl.querySelector(toggleSelector),
+            externalEl = toolbarEl.querySelector(externalSelector),
+            blockEls = barEl.querySelectorAll(blockSelector),
+            blockLinksEls = document.querySelectorAll(blockSelector + ':not(.' + titleClass + ') a'),
+            iframeEl = viewEl.querySelector('iframe'),
+            iframeHeight = function () {
+                return (window.innerHeight * (toolbarEl.dataset.height / 100) - barEl.clientHeight) + 'px';
+            },
+            isIframeActive = function () {
+                return toolbarEl.classList.contains(iframeActiveClass);
+            },
+            resizeIframe = function(mouse) {
+                var availableHeight = window.innerHeight - barEl.clientHeight;
+                viewEl.style.height = Math.min(availableHeight, availableHeight - mouse.y) + "px";
+            },
+            showIframe = function (href) {
+                toolbarEl.classList.add(iframeAnimatingClass);
+                toolbarEl.classList.add(iframeActiveClass);
+
+                iframeEl.src = externalEl.href = href;
+                iframeEl.removeAttribute('tabindex');
+
+                viewEl.style.height = iframeHeight();
+                setTimeout(function () {
+                    toolbarEl.classList.remove(iframeAnimatingClass);
+                }, animationTime);
+            },
+            hideIframe = function () {
+                toolbarEl.classList.add(iframeAnimatingClass);
+                toolbarEl.classList.remove(iframeActiveClass);
+                iframeEl.setAttribute("tabindex", "-1");
+                removeActiveBlocksCls();
+
+                externalEl.href = '#';
+                viewEl.style.height = '';
+                setTimeout(function () {
+                    toolbarEl.classList.remove(iframeAnimatingClass);
+                }, animationTime);
+            },
+            removeActiveBlocksCls = function () {
+                [].forEach.call(blockEls, function (el) {
+                    el.classList.remove(blockActiveClass);
+                });
+            },
+            toggleToolbarClass = function (className) {
+                toolbarEl.classList.add(toolbarAnimatingClass);
+                if (toolbarEl.classList.contains(className)) {
+                    toolbarEl.classList.remove(className);
+                    [].forEach.call(blockLinksEls, function (el) {
+                        el.setAttribute('tabindex', "-1");
+                    });
+                } else {
+                    [].forEach.call(blockLinksEls, function (el) {
+                        el.removeAttribute('tabindex');
+                    });
+                    toolbarEl.classList.add(className);
+                }
+                setTimeout(function () {
+                    toolbarEl.classList.remove(toolbarAnimatingClass);
+                }, animationTime);
+            },
+            toggleStorageState = function (key, value) {
+                if (window.localStorage) {
+                    var item = localStorage.getItem(key);
+
+                    if (item) {
+                        localStorage.removeItem(key);
+                    } else {
+                        localStorage.setItem(key, value);
+                    }
+                }
+            },
+            restoreStorageState = function (key) {
+                if (window.localStorage) {
+                    return localStorage.getItem(key);
+                }
+            },
+            togglePosition = function () {
+                if (isIframeActive()) {
+                    hideIframe();
+                } else {
+                    toggleToolbarClass(activeClass);
+                    toggleStorageState(CACHE_KEY, ACTIVE_STATE);
+                }
+            };
+
+        if (restoreStorageState(CACHE_KEY) === ACTIVE_STATE) {
+            var transition = toolbarEl.style.transition;
+            toolbarEl.style.transition = 'none';
+            toolbarEl.classList.add(activeClass);
+            setTimeout(function () {
+                toolbarEl.style.transition = transition;
+            }, animationTime);
+        } else {
+            [].forEach.call(blockLinksEls, function (el) {
+                el.setAttribute('tabindex', "-1");
+            });
+        }
+
+        toolbarEl.style.display = 'block';
+
+        window.onresize = function () {
+            if (toolbarEl.classList.contains(iframeActiveClass)) {
+                viewEl.style.height = iframeHeight();
+            }
+        };
+
+        toolbarEl.addEventListener("mousedown", function(e) {
+            if (isIframeActive() && (e.y - toolbarEl.offsetTop < 4 /* 4px click zone */)) {
+                document.addEventListener("mousemove", resizeIframe, false);
+            }
+        }, false);
+
+        document.addEventListener("mouseup", function(){
+            if (isIframeActive()) {
+                document.removeEventListener("mousemove", resizeIframe, false);
+            }
+        }, false);
+
+        barEl.onclick = function (e) {
+            var target = e.target,
+                block = findAncestor(target, blockClass);
+
+            if (block
+                && !block.classList.contains(titleClass)
+                && !block.classList.contains(ignoreClickClass)
+                && e.which !== 2 && !e.ctrlKey // not mouse wheel and not ctrl+click
+            ) {
+                while (target !== this) {
+                    if (target.href) {
+                        removeActiveBlocksCls();
+                        block.classList.add(blockActiveClass);
+                        showIframe(target.href);
+                    }
+                    target = target.parentNode;
+                }
+
+                e.preventDefault();
+            }
+        };
+
+        toggleEl.onclick = togglePosition;
+    }
+
+    function findAncestor(el, cls) {
+        while ((el = el.parentElement) && !el.classList.contains(cls)) ;
+        return el;
+    }
+
+    function renderAjaxRequests() {
+        var requestCounter = document.getElementsByClassName('yii-debug-toolbar__ajax_counter');
+        if (!requestCounter.length) {
+            return;
+        }
+        var ajaxToolbarPanel = document.querySelector('.yii-debug-toolbar__ajax');
+        var tbodies = document.getElementsByClassName('yii-debug-toolbar__ajax_requests');
+        var state = 'ok';
+        if (tbodies.length) {
+            var tbody = tbodies[0];
+            var rows = document.createDocumentFragment();
+            if (requestStack.length) {
+                var firstItem = requestStack.length > 20 ? requestStack.length - 20 : 0;
+                for (var i = firstItem; i < requestStack.length; i++) {
+                    var request = requestStack[i];
+                    var row = document.createElement('tr');
+                    rows.appendChild(row);
+
+                    var methodCell = document.createElement('td');
+                    methodCell.innerHTML = request.method;
+                    row.appendChild(methodCell);
+
+                    var statusCodeCell = document.createElement('td');
+                    var statusCode = document.createElement('span');
+                    if (request.statusCode < 300) {
+                        statusCode.setAttribute('class', 'yii-debug-toolbar__ajax_request_status yii-debug-toolbar__label_success');
+                    } else if (request.statusCode < 400) {
+                        statusCode.setAttribute('class', 'yii-debug-toolbar__ajax_request_status yii-debug-toolbar__label_warning');
+                    } else {
+                        statusCode.setAttribute('class', 'yii-debug-toolbar__ajax_request_status yii-debug-toolbar__label_error');
+                    }
+                    statusCode.textContent = request.statusCode || '-';
+                    statusCodeCell.appendChild(statusCode);
+                    row.appendChild(statusCodeCell);
+
+                    var pathCell = document.createElement('td');
+                    pathCell.className = 'yii-debug-toolbar__ajax_request_url';
+                    pathCell.innerHTML = request.url;
+                    pathCell.setAttribute('title', request.url);
+                    row.appendChild(pathCell);
+
+                    var durationCell = document.createElement('td');
+                    durationCell.className = 'yii-debug-toolbar__ajax_request_duration';
+                    if (request.duration) {
+                        durationCell.innerText = request.duration + " ms";
+                    } else {
+                        durationCell.innerText = '-';
+                    }
+                    row.appendChild(durationCell);
+                    row.appendChild(document.createTextNode(' '));
+
+                    var profilerCell = document.createElement('td');
+                    if (request.profilerUrl) {
+                        var profilerLink = document.createElement('a');
+                        profilerLink.setAttribute('href', request.profilerUrl);
+                        profilerLink.innerText = request.profile;
+                        profilerCell.appendChild(profilerLink);
+                    } else {
+                        profilerCell.innerText = 'n/a';
+                    }
+                    row.appendChild(profilerCell);
+
+                    if (request.error) {
+                        if (state !== "loading" && i > requestStack.length - 4) {
+                            state = 'error';
+                        }
+                    } else if (request.loading) {
+                        state = 'loading'
+                    }
+                    row.className = 'yii-debug-toolbar__ajax_request';
+                }
+                while (tbody.firstChild) {
+                    tbody.removeChild(tbody.firstChild);
+                }
+                tbody.appendChild(rows);
+            }
+            ajaxToolbarPanel.style.display = 'block';
+        }
+        requestCounter[0].innerText = requestStack.length;
+        var className = 'yii-debug-toolbar__label yii-debug-toolbar__ajax_counter';
+        if (state === 'ok') {
+            className += ' yii-debug-toolbar__label_success';
+        } else if (state === 'error') {
+            className += ' yii-debug-toolbar__label_error';
+        }
+        requestCounter[0].className = className;
+    }
+
+    /**
+     * Should AJAX request to be logged in debug panel
+     *
+     * @param requestUrl
+     * @returns {boolean}
+     */
+    function shouldTrackRequest(requestUrl) {
+        if (!toolbarEl) {
+            return false;
+        }
+        var a = document.createElement('a');
+        a.href = requestUrl;
+        var skipAjaxRequestUrls = JSON.parse(toolbarEl.getAttribute('data-skip-urls'));
+        if (Array.isArray(skipAjaxRequestUrls) && skipAjaxRequestUrls.length && skipAjaxRequestUrls.includes(requestUrl)) {
+            return false;
+        }
+        return a.host === location.host;
+    }
+
+    var proxied = XMLHttpRequest.prototype.open;
+
+    XMLHttpRequest.prototype.open = function (method, url, async, user, pass) {
+        var self = this;
+
+        if (shouldTrackRequest(url)) {
+            var stackElement = {
+                loading: true,
+                error: false,
+                url: url,
+                method: method,
+                start: new Date()
+            };
+            requestStack.push(stackElement);
+            this.addEventListener('readystatechange', function () {
+                if (self.readyState === 4) {
+                    stackElement.duration = self.getResponseHeader('X-Debug-Duration') || new Date() - stackElement.start;
+                    stackElement.loading = false;
+                    stackElement.statusCode = self.status;
+                    stackElement.error = self.status < 200 || self.status >= 400;
+                    stackElement.profile = self.getResponseHeader('X-Debug-Tag');
+                    stackElement.profilerUrl = self.getResponseHeader('X-Debug-Link');
+                    renderAjaxRequests();
+                }
+            }, false);
+            renderAjaxRequests();
+        }
+        proxied.apply(this, Array.prototype.slice.call(arguments));
+    };
+
+    // catch fetch AJAX requests
+    if (window.fetch) {
+        var originalFetch = window.fetch;
+
+        window.fetch = function (input, init) {
+            var method;
+            var url;
+            if (typeof input === 'string') {
+                method = (init && init.method) || 'GET';
+                url = input;
+            } else if (window.URL && input instanceof URL) { // fix https://github.com/yiisoft/yii2-debug/issues/296
+                method = (init && init.method) || 'GET';
+                url = input.href;
+            } else if (window.Request && input instanceof Request) {
+                method = input.method;
+                url = input.url;
+            }
+            var promise = originalFetch(input, init);
+
+            if (shouldTrackRequest(url)) {
+                var stackElement = {
+                    loading: true,
+                    error: false,
+                    url: url,
+                    method: method,
+                    start: new Date()
+                };
+                requestStack.push(stackElement);
+                promise.then(function (response) {
+                    stackElement.duration = response.headers.get('X-Debug-Duration') || new Date() - stackElement.start;
+                    stackElement.loading = false;
+                    stackElement.statusCode = response.status;
+                    stackElement.error = response.status < 200 || response.status >= 400;
+                    stackElement.profile = response.headers.get('X-Debug-Tag');
+                    stackElement.profilerUrl = response.headers.get('X-Debug-Link');
+                    renderAjaxRequests();
+
+                    return response;
+                }).catch(function (error) {
+                    stackElement.loading = false;
+                    stackElement.error = true;
+                    renderAjaxRequests();
+
+                    throw error;
+                });
+                renderAjaxRequests();
+            }
+
+            return promise;
+        };
+    }
+
+})();
+</script><script src="/mvp/backend/web/assets/c53dd684/jquery.js"></script>
+<script src="/mvp/backend/web/assets/e78d6ec4/js/bootstrap.bundle.js"></script>
+<script src="/mvp/backend/web/assets/24d559a3/yii.js"></script>
+<script src="/mvp/backend/web/assets/7fa81ab4/js/dropdown.js"></script>
+<script src="/mvp/backend/web/assets/24d559a3/yii.gridView.js"></script>
+<script src="/mvp/backend/web/assets/e17b7049/js/bootstrap-dialog.js"></script>
+<script src="/mvp/backend/web/assets/e17b7049/js/dialog-yii.js"></script>
+<script src="/mvp/backend/web/assets/6b9bf655/js/kv-grid-export.js"></script>
+<script src="/mvp/backend/web/assets/6b9bf655/js/store.js"></script>
+<script src="/mvp/backend/web/assets/6b9bf655/js/jquery.resizableColumns.js"></script>
+<script src="/mvp/backend/web/assets/6b9bf655/js/kv-grid-toggle.js"></script>
+<script src="/mvp/backend/web/assets/133dfdaf/js/select2.full.js"></script>
+<script src="/mvp/backend/web/assets/e5c88a07/js/select2-krajee.js"></script>
+<script src="/mvp/backend/web/assets/e79ebe56/js/kv-widgets.js"></script>
+<script src="/mvp/backend/web/assets/653b4775/jquery.pjax.js"></script>
+<script src="/mvp/backend/web/assets/9c6e6e9b/js/adminlte.min.js"></script>
+<script src="/mvp/backend/web/assets/9b6c51cc/control_sidebar.js"></script>
+<script>jQuery(function ($) {
+jQuery('#w0').yiiGridView('setSelectionColumn', {"name":"selection[]","class":null,"multiple":true,"checkAll":"selection_all"});
+jQuery('#w1-button').dropdown();
+krajeeYiiConfirm('krajeeDialog');
+var kvGridExp_92f72f2a={"gridId":"w0","action":"/mvp/backend/web/index.php?r=gridview%2Fexport%2Fdownload","module":"gridview","encoding":"utf-8","bom":1,"target":"_blank","messages":{"allowPopups":"Disable any popup blockers in your browser to ensure proper download.","confirmDownload":"Ok to proceed?","downloadProgress":"Generating the export file. Please wait...","downloadComplete":"Request submitted! You may safely close this dialog after saving your downloaded file."},"exportConversions":[{"from":"<span class=\"glyphicon glyphicon-ok-sign text-success\" style=\"font-weight:bold\"></span>","to":"Active"},{"from":"<span class=\"glyphicon glyphicon-remove-sign text-danger\" style=\"font-weight:bold\"></span>","to":"Inactive"}],"skipExportElements":[".sr-only",".hide"],"showConfirmAlert":true};
+var kvGridExp_12735912={"filename":"grid-export","showHeader":true,"showPageSummary":true,"showFooter":true};
+var kvGridExp_eb07b798={"dialogLib":"krajeeDialog","gridOpts":kvGridExp_92f72f2a,"genOpts":kvGridExp_12735912,"alertMsg":"The CSV export file will be generated for download.","config":{"colDelimiter":",","rowDelimiter":"\r\n"}};
+var kvGridExp_194f6aa6={"dialogLib":"krajeeDialog","gridOpts":kvGridExp_92f72f2a,"genOpts":kvGridExp_12735912,"alertMsg":"The EXCEL export file will be generated for download.","config":{"worksheet":"ExportWorksheet","cssFile":""}};
+kvTogOpts_16ce8953={"id":"w0-togdata-page","pjax":1,"mode":"page","msg":"There are 15 records. Are you sure you want to display them all?","lib":krajeeDialog};
+var kvGridInit_a32ad5d2=function(){
+jQuery('#w0 .export-csv').gridexport(kvGridExp_eb07b798);jQuery('#w0 .export-xls').gridexport(kvGridExp_194f6aa6);jQuery('#w0-container').resizableColumns('destroy').resizableColumns({"resizeFromBody":false});kvToggleData(kvTogOpts_16ce8953);
+};
+kvGridInit_a32ad5d2();
+jQuery("#w0-pjax").on('pjax:timeout', function(e){e.preventDefault()}).on('pjax:send', function(){$("#w0-pjax").addClass('kv-grid-loading')}).off('pjax:complete.1e147289').on('pjax:complete.1e147289', function(){setTimeout(kvGridInit_a32ad5d2, 2500);$("#w0-pjax").removeClass('kv-grid-loading');
+kvToggleData(kvTogOpts_16ce8953);});
+jQuery('#w0').yiiGridView({"filterUrl":"\/mvp\/backend\/web\/index.php?r=demostracoesculinarias%2Findex","filterSelector":"#w0-filters input, #w0-filters select","filterOnFocusOut":true});
+jQuery&&jQuery.pjax&&(jQuery.pjax.defaults.maxCacheLength=0);
+if (jQuery('#status').data('select2')) { jQuery('#status').select2('destroy'); }
+jQuery.when(jQuery('#status').select2(select2_d02acf77)).done(initS2Loading('status','s2options_6cc131ae'));
+
+jQuery(document).pjax("#w0-pjax a", {"push":true,"replace":false,"timeout":1000,"scrollTo":false,"container":"#w0-pjax"});
+jQuery(document).off("submit", "#w0-pjax form[data-pjax]").on("submit", "#w0-pjax form[data-pjax]", function (event) {jQuery.pjax.submit(event, {"push":true,"replace":false,"timeout":1000,"scrollTo":false,"container":"#w0-pjax"});});
+});</script></body>
+</html>

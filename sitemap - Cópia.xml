@@ -1,0 +1,60 @@
+{{ printf "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>" | safeHTML }}
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+    {{- range .Data.Pages -}}{{ if and .Permalink (ne .Params.sitemap_exclude true) }}
+    <url>
+        <loc>https://sgi-fresancamoes.com/</loc>
+        <lastmod>2024-02-28</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+        <description>SGI FRESAN | Camões, I.P.</description>
+    </url>
+    
+     <url>
+        <loc>https://sgi-fresancamoes.com/missao</loc>
+        <lastmod>2024-02-28</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+        <description>Missão do FRESAN</description>
+    </url>
+    
+     <url>
+        <loc>https://sgi-fresancamoes.com/resultado</loc>
+        <lastmod>2024-02-28</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+        <description>Resultados do FRESAN</description>
+    </url>
+
+     <url>
+        <loc>https://sgi-fresancamoes.com/galeria</loc>
+        <lastmod>2024-02-28</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+        <description>Galeria do FRESAN</description>
+    </url>
+    
+         <url>
+        <loc>https://sgi-fresancamoes.com/contacto</loc>
+        <lastmod>2024-02-28</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+        <description>Contactos do FRESAN</description>
+    </url>  
+    
+     <url>
+        <loc>https://sgi-fresancamoes.com/politica/</loc>
+        <lastmod>2024-02-28</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+        <description>Política de Privacidade do FRESAN | Camões, I.P.</description>
+    </url>
+    
+          
+    <loc>{{ .Permalink }}</loc>{{ if not .Lastmod.IsZero }}
+    <lastmod>{{ safeHTML (.Lastmod.Format "2006-01-02T15:04:05-07:00") }}</lastmod>{{ end }}{{ with .Sitemap.ChangeFreq }}
+    <changefreq>{{ . }}</changefreq>{{ end }}{{ if ge .Sitemap.Priority 0.0 }}
+    <priority>{{ .Sitemap.Priority }}</priority>{{ end }}{{ if .IsTranslated }}{{ range .Translations }}
+    <xhtml:link rel="alternate" hreflang="{{ .Language.Lang }}" href="{{ .Permalink }}"/>{{ end }}
+    <xhtml:link rel="alternate" hreflang="{{ .Language.Lang }}" href="{{ .Permalink }}"/>{{ end }}
+</url>{{ end }}{{ end }}
+</urlset>

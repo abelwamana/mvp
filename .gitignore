@@ -1,0 +1,13 @@
+# Ignorar arquivos grandes
+vendor.zip
+vendor (2).zip
+vendor (3).zip
+admin.zip
+admin/images/galeria/banner.png
+admin/images/galeria/teste.mp3
+ images/galeria/banner.png
+ images/galeria/teste.mp3 
+
+# Ignorar arquivos gerados
+*.log
+*.tmp

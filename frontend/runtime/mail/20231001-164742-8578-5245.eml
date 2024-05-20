@@ -1,0 +1,50 @@
+From: My Application robot <support@example.com>
+To: teste@mail.com
+Subject: Account registration at My Application
+MIME-Version: 1.0
+Date: Sun, 01 Oct 2023 16:47:42 +0200
+Message-ID: <470cd0052b7b70243eea383f3330ae18@example.com>
+Content-Type: multipart/alternative; boundary=xsx9_rU9
+
+--xsx9_rU9
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+Hello teste,
+
+Follow the link below to verify your email:
+
+http://f=
+rontend.test/index.php?r=3Dsite%2Fverify-email&token=3DOR7q-qM06qa-_EzPweeX=
+pXabPyQPreOK_1696171662
+--xsx9_rU9
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org=
+/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns=3D"http://www.w3.org/1999/=
+xhtml">
+<head>
+    <meta http-equiv=3D"Content-Type" content=3D"text/ht=
+ml; charset=3DUTF-8" />
+    <title></title>
+    </head>
+<body>
+    =
+    <div class=3D"verify-email">
+    <p>Hello teste,</p>
+
+    <p>Foll=
+ow the link below to verify your email:</p>
+
+    <p><a href=3D"http://f=
+rontend.test/index.php?r=3Dsite%2Fverify-email&amp;token=3DOR7q-qM06qa-_EzP=
+weeXpXabPyQPreOK_1696171662">http://frontend.test/index.php?r=3Dsite%2Fveri=
+fy-email&amp;token=3DOR7q-qM06qa-_EzPweeXpXabPyQPreOK_1696171662</a></p>
+=
+</div>
+    </body>
+</html>
+
+--xsx9_rU9--

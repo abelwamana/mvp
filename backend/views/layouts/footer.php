@@ -1,0 +1,6 @@
+<footer class="main-footer" style="padding: 10px">
+                        <p style="font-size: 10px; text-align: justify; line-height: 13px;">
+                            <br><br>Este Website foi produzido com o apoio financeiro da União Europeia. O seu conteúdo é da exclusiva responsabilidade dos seus autores e não reflecte necessariamente a posição da União Europeia ou envolve a expressão de qualquer opinião da parte do Camões, I.P., da Cooperação Portuguesa ou do Ministério dos Negócios Estrangeiros. Nem o Camões, I.P. ou qualquer indivíduo agindo em nome do mesmo são responsáveis pela sua utilização. 
+                            &copy; 2024 SGI FRESAN |<a title="Site Oficial do Instituto de Camões" href="https://www.instituto-camoes.pt/" target="_blank" style="text-decoration: underline; color: darkblue;">Camões, I.P.</a><br><br><?= \yii\helpers\Html::a('Política de Privacidade', ['../politica'], ['title' => 'Política de Privacidade', 'style' => 'text-decoration: underline; color: darkblue;']) ?>
+</footer>
+<!--height: 15px !important;-->

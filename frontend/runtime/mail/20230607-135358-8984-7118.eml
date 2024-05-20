@@ -1,0 +1,51 @@
+From: My Application robot <support@example.com>
+To: carmenpaulo.fresan@gmail.com
+Subject: Account registration at My Application
+MIME-Version: 1.0
+Date: Wed, 07 Jun 2023 13:53:58 +0000
+Message-ID: <fa96094aa19b838f4678c0f495dacbe4@example.com>
+Content-Type: multipart/alternative; boundary=IyKt4Pet
+
+--IyKt4Pet
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+Hello fresan,
+
+Follow the link below to verify your email:
+
+http://=
+localhost:8888/advanced/frontend/web/index.php?r=3Dsite%2Fverify-email&toke=
+n=3DNWaYPniCMhxNIvks4cnAHbEecGLvL_eq_1686146038
+--IyKt4Pet
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org=
+/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns=3D"http://www.w3.org/1999/=
+xhtml">
+<head>
+    <meta http-equiv=3D"Content-Type" content=3D"text/ht=
+ml; charset=3DUTF-8" />
+    <title></title>
+    </head>
+<body>
+    =
+    <div class=3D"verify-email">
+    <p>Hello fresan,</p>
+
+    <p>Fol=
+low the link below to verify your email:</p>
+
+    <p><a href=3D"http://=
+localhost:8888/advanced/frontend/web/index.php?r=3Dsite%2Fverify-email&amp;=
+token=3DNWaYPniCMhxNIvks4cnAHbEecGLvL_eq_1686146038">http://localhost:8888/=
+advanced/frontend/web/index.php?r=3Dsite%2Fverify-email&amp;token=3DNWaYPni=
+CMhxNIvks4cnAHbEecGLvL_eq_1686146038</a></p>
+</div>
+    </body>
+</htm=
+l>
+
+--IyKt4Pet--

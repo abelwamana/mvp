@@ -1,0 +1,50 @@
+From: My Application robot <support@example.com>
+To: teste234@gmail.com
+Subject: Account registration at My Application
+MIME-Version: 1.0
+Date: Mon, 23 Oct 2023 03:06:37 +0200
+Message-ID: <1e20984b3dab3cd5f1cb808d4f89063e@example.com>
+Content-Type: multipart/alternative; boundary=rkIvJJFe
+
+--rkIvJJFe
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+Hello rosario1234,
+
+Follow the link below to verify your email:
+
+ht=
+tp://localhost/mvp/backend/web/index.php?r=3Dsite%2Fverify-email&token=3DMX=
+kQytvlCJMSgSXKsfgOBP-mm2pLZe-i_1698023197
+--rkIvJJFe
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org=
+/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns=3D"http://www.w3.org/1999/=
+xhtml">
+<head>
+    <meta http-equiv=3D"Content-Type" content=3D"text/ht=
+ml; charset=3DUTF-8" />
+    <title></title>
+    </head>
+<body>
+    =
+    <div class=3D"verify-email">
+    <p>Hello rosario1234,</p>
+
+    <=
+p>Follow the link below to verify your email:</p>
+
+    <p><a href=3D"ht=
+tp://localhost/mvp/backend/web/index.php?r=3Dsite%2Fverify-email&amp;token=
+=3DMXkQytvlCJMSgSXKsfgOBP-mm2pLZe-i_1698023197">http://localhost/mvp/backen=
+d/web/index.php?r=3Dsite%2Fverify-email&amp;token=3DMXkQytvlCJMSgSXKsfgOBP-=
+mm2pLZe-i_1698023197</a></p>
+</div>
+    </body>
+</html>
+
+--rkIvJJFe--
