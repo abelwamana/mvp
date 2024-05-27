@@ -2,11 +2,14 @@
 
 namespace backend\controllers;
 
+use Yii;
 use backend\models\User;
 use backend\models\UserSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use backend\models\PasswordResetRequestForm;
+use backend\models\ResetPasswordForm;
 
 /**
  * UserController implements the CRUD actions for User model.
@@ -174,15 +177,20 @@ class UserController extends Controller {
      * @throws BadRequestHttpException
      */
     public function actionResetPassword($token) {
+        if (!ResetPasswordForm::isTokenValid($token)) {
+            Yii::$app->session->setFlash('error', 'O token de redefinição de senha é inválido ou já foi usado.');
+            return $this->goHome();
+        }
+
         try {
             $model = new ResetPasswordForm($token);
         } catch (InvalidArgumentException $e) {
-            throw new BadRequestHttpException($e->getMessage());
+            Yii::$app->session->setFlash('error', 'O token de redefinição de senha é inválido ou já foi usado.');
+            return $this->goHome();
         }
 
         if ($model->load(Yii::$app->request->post()) && $model->validate() && $model->resetPassword()) {
-            Yii::$app->session->setFlash('success', 'New password saved.');
-
+            Yii::$app->session->setFlash('success', 'Nova senha salva.');
             return $this->goHome();
         }
 
@@ -238,14 +246,13 @@ class UserController extends Controller {
         $model->status = 10;
         $model->save();
 
-
         return $this->redirect(['index']);
     }
+
     public function actionInativar($id) {
         $model = $this->findModel($id);
         $model->status = 9;
         $model->save();
-
 
         return $this->redirect(['index']);
     }

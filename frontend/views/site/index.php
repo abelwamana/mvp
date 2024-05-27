@@ -108,7 +108,7 @@ $description = 'SGI FRESAN do projecto Fresan Camões I.P.';
                 <br><br>O SGI compreende ainda o desenvolvimento (e manutenção) de diversas ferramentas e instrumentos, processo este colaborativo que tece laços entre os diversos actores e parceiros envolvidos na implementação. A Plataforma Digital Colaborativa, composta por uma Interface Pública (a que aqui se apresenta) e uma Interface Privada (para os actores membros directamente envolvidos), apoiam em conjunto a recolha, armazenamento, processamento e comunicação dos dados resultantes da implementação do Programa ao longo do tempo, sendo a sua gestão assegurada em permanência pela equipa do Camões, I.P., em articulação com os parceiros envolvidos na implementação do Programa.</p>
 
             <p style="text-align: justify;"><b><br>OBJECTIVOS</b></p>
-             <img style="width: 5%;" src="images/logo24.png">
+            
         </div>
         <div class="row col-12">
             <div class="col-lg-3 col-md-6">

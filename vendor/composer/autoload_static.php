@@ -226,6 +226,7 @@ class ComposerStaticInit1c72aa65de81c24dd8daf967d64614df
         ),
         'D' => 
         array (
+            'DrewM\\MailChimp\\' => 16,
             'Doctrine\\Instantiator\\' => 22,
             'Doctrine\\Common\\Lexer\\' => 22,
             'DeepCopy\\' => 9,
@@ -743,6 +744,10 @@ class ComposerStaticInit1c72aa65de81c24dd8daf967d64614df
         'Egulias\\EmailValidator\\' => 
         array (
             0 => __DIR__ . '/..' . '/egulias/email-validator/src',
+        ),
+        'DrewM\\MailChimp\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/drewm/mailchimp-api/src',
         ),
         'Doctrine\\Instantiator\\' => 
         array (

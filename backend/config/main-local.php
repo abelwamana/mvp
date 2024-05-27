@@ -68,6 +68,11 @@ $config = [
                 'resultadosnutricao'=>'site/resultadosnutricao',
                 'resultadosreforcoinstitucional' => 'site/resultadosreforcoinstitucional',
                 'resultadosagua' => 'site/resultadosagua',
+                // Rota para solicitar redefinição de senha
+//                'request-password-reset' => 'user/request-password-reset',
+                // Rota para redefinir a senha
+//                'reset-password/<token>' => 'user/reset-password',
+ 
             ],
         ],
         'urlManagerFrontend' => [

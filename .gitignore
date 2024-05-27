@@ -7,7 +7,7 @@ admin/images/galeria/banner.png
 admin/images/galeria/teste.mp3
  images/galeria/banner.png
  images/galeria/teste.mp3 
-
+subscribe.php
 # Ignorar arquivos gerados
 *.log
 *.tmp

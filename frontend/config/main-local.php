@@ -23,6 +23,11 @@ $config = [
                 'contacto' => 'site/contacto',
                 // Regra de rota para a página "Política de Provacidade"
                 'politica' => 'site/politica',
+                // Rota para solicitar redefinição de senha
+                'request-password-reset' => 'user/request-password-reset',
+                // Rota para redefinir a senha
+                'reset-password/<token>' => 'user/reset-password',
+ 
                 // Regra de rota para a página "Login"
                 'login' => 'site/login',
                 'logout' => 'site/logout',
@@ -64,6 +69,11 @@ $config = [
                 'permisoes' => 'rbac/permission',
                 'roles' => 'rbac/role',
                 'perfisusuarios' => 'rbac/assignment',
+                // Rota para solicitar redefinição de senha
+                'request-password-reset' => 'user/request-password-reset',
+                // Rota para redefinir a senha
+                'reset-password/<token>' => 'user/reset-password',
+ 
 //                'materiais' => 'materiais/index',
 //                'materiais' => 'materiais/index',
 //                'materiais' => 'materiais/index',

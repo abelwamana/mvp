@@ -3,7 +3,7 @@
         'name' => 'yiisoft/yii2-app-advanced',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '6dfbf5c46839c393a95a2231c69e49d6c31a26d1',
+        'reference' => '951ed12b18d642d288b54407bdc61128a3061b83',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -265,6 +265,17 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../doctrine/lexer',
             'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'drewm/mailchimp-api' => array(
+            'pretty_version' => 'dev-master',
+            'version' => 'dev-master',
+            'reference' => '62da03fa38a0d3d855486f059c1f917976d02372',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../drewm/mailchimp-api',
+            'aliases' => array(
+                0 => '9999999-dev',
+            ),
             'dev_requirement' => false,
         ),
         'egulias/email-validator' => array(
@@ -1774,7 +1785,7 @@
         'yiisoft/yii2-app-advanced' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '6dfbf5c46839c393a95a2231c69e49d6c31a26d1',
+            'reference' => '951ed12b18d642d288b54407bdc61128a3061b83',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

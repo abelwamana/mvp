@@ -53,7 +53,8 @@
         "2amigos/yii2-exportable-widget": "^2.0",
         "kartik-v/yii2-export": "*",
         "kartik-v/yii2-export": "dev-master",
-        "mailchimp/marketing": "dev-master"
+        "mailchimp/marketing": "dev-master",
+        "drewm/mailchimp-api": "dev-master"
 
 
     },
