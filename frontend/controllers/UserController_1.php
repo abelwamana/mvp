@@ -178,14 +178,14 @@ class UserController extends Controller {
      */
     public function actionResetPassword($token) {
         if (!ResetPasswordForm::isTokenValid($token)) {
-            Yii::$app->session->setFlash('error', 'O token de redefinição de senha é inválido ou já foi usado.');
+            Yii::$app->session->setFlash('error', 'O link de redefinição de senha é inválido ou já foi usado.');
             return $this->goHome();
         }
 
         try {
             $model = new ResetPasswordForm($token);
         } catch (InvalidArgumentException $e) {
-            Yii::$app->session->setFlash('error', 'O token de redefinição de senha é inválido ou já foi usado.');
+            Yii::$app->session->setFlash('error', 'O link de redefinição de senha é inválido ou já foi usado.');
             return $this->goHome();
         }
 

@@ -224,7 +224,7 @@ $metaInfraestrutura = Meta::find()->where(['nomeMeta' => 'pequenas infra-estrutu
 
 
 <section class="container" style="background-color: white">
-    <h3 class="section-sub-title" style="text-align: center !important;"><b>INDICADORES DO QUADRO LÓGICO | AGRICULTURA</b></h3>
+    <h3 class="section-sub-title" style="text-align: center !important;"><b>INDICADORES DO QUADRO LÓGICO | AGRICULTURA E PECUÁRIA</b></h3>
     <br>
 </section>
 

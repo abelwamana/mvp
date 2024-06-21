@@ -48,6 +48,10 @@
     .table td {
         min-height: 20px; /* ou qualquer outra altura desejada */
     }
+    kv-col-2 {
+        
+        width: 30% !important;
+    }
 </style>
 <?php
 
@@ -126,35 +130,13 @@ use backend\models\Contacto;
                     'vAlign' => 'middle',
                     'hAlign' => 'center',
                     'header' => '<span style="color: black;">Nome</span>', // Persona
-                    'contentOptions' => ['style' => 'white-space: nowrap;'], // Evita quebra de linha
+                    'contentOptions' => ['style' => 'min-width:300px; '], // Evita quebra de linha white-space: nowrap
                     'filterInputOptions' => [
                         'class' => 'form-control',
                         'placeholder' => '🔍 Pesquisar'
                     ]
                 ],
-                [
-                    'attribute' => 'funcao',
-                    'vAlign' => 'middle',
-                    'hAlign' => 'center',
-                    'header' => '<span style="color: black;">Função</span>',
-                    'contentOptions' => ['style' => 'white-space: nowrap;'], // Evita quebra de linha
-                    'filterInputOptions' => [
-                        'class' => 'form-control',
-                        'placeholder' => '🔍 Pesquisar'
-                    ]
-                ],
-                [
-                    'attribute' => 'instituicao',
-                    'vAlign' => 'middle',
-                    'hAlign' => 'center',
-                    'headerOptions' => ['style' => 'color: black;'], // Cor do texto do título da coluna
-                    'header' => '<span style="color: black;">Instituição</span>',
-                    'contentOptions' => ['style' => 'white-space: nowrap;'], // Evita quebra de linha
-                    'filterInputOptions' => [
-                        'class' => 'form-control',
-                        'placeholder' => '🔍 Pesquisar'
-                    ]
-                ],
+                
                 [
                     'attribute' => 'contacto',
                     'vAlign' => 'middle',
@@ -176,10 +158,23 @@ use backend\models\Contacto;
                     ]
                 ],
                 [
-                    'attribute' => 'pais',
+                    'attribute' => 'funcao',
                     'vAlign' => 'middle',
                     'hAlign' => 'center',
-                    'header' => '<span style="color: black;">País</span>',
+                    'header' => '<span style="color: black;">Função</span>',
+//                    'contentOptions' => ['style' => 'white-space: nowrap;'], // Evita quebra de linha
+                    'filterInputOptions' => [
+                        'class' => 'form-control',
+                        'placeholder' => '🔍 Pesquisar'
+                    ]
+                ],
+                [
+                    'attribute' => 'instituicao',
+                    'vAlign' => 'middle',
+                    'hAlign' => 'center',
+                    'headerOptions' => ['style' => 'color: black; width: 100px !important;'], // Cor do texto do título da coluna
+                    'header' => '<span style="color: black;">Instituição</span>',
+//                    'contentOptions' => ['style' => 'white-space: nowrap;'], // Evita quebra de linha
                     'filterInputOptions' => [
                         'class' => 'form-control',
                         'placeholder' => '🔍 Pesquisar'
@@ -234,6 +229,17 @@ use backend\models\Contacto;
                     ]
                 ],
                 [
+                    'attribute' => 'pais',
+                    'vAlign' => 'middle',
+                    'hAlign' => 'center',
+                    'header' => '<span style="color: black;">País</span>',
+                    'filterInputOptions' => [
+                        'class' => 'form-control',
+                        'placeholder' => '🔍 Pesquisar'
+                    ]
+                ],
+                
+               [
                     'attribute' => 'pontofocal',
                     'vAlign' => 'middle',
                     'hAlign' => 'center',
@@ -353,7 +359,7 @@ use backend\models\Contacto;
                     'content' =>
                     Html::a('<i class="fas fa-plus"></i>', ['create'], [
                         'class' => 'btn btn-primary botao',
-                        'title' => 'Adicionar Capacitação',
+                        'title' => 'Adicionar Contactos',
                     ]) . ' ' .
                     Html::a('<i class="fas fa-redo"></i>', ['index'], [
                         'class' => 'btn btn-outline-secondary',

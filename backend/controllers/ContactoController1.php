@@ -30,7 +30,7 @@ class ContactoController extends Controller {
                         'allow' => true,
                     ],
                     [
-                        'actions' => ['logout', 'index','update'],
+                        'actions' => ['logout', 'index','view','update','create', 'delete', 'get-municipios', 'get-comunas'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -158,6 +158,6 @@ class ContactoController extends Controller {
             return $model;
         }
 
-        throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
+        throw new NotFoundHttpException(Yii::t('app', 'A página solicitada não existe.'));
     }
 }

@@ -1,3 +1,25 @@
+<style>
+    .custom-nav-item a {
+        white-space: nowrap; /* Impede a quebra de linha */
+        padding-left: 10px; /* Ajuste o padding conforme necessário */
+        padding-right: 10px; /* Ajuste o padding conforme necessário */
+    }
+
+    /* Defina uma classe para telas com largura menor ou igual a 1010px */
+    @media (max-width: 1009px) {
+        .d-custom-block {
+            display: block !important;
+        }
+    }
+
+    /* Certifique-se de que está oculto em telas maiores que 1010px */
+    @media (min-width: 1010px) {
+        .d-custom-block {
+            display: none !important;
+        }
+    }
+
+</style>
 <?php
 
 use yii\helpers\Html;
@@ -69,12 +91,14 @@ if ($user1->can('Perfil Lancamento')) {
 <nav class="main-header navbar navbar-expand navbar-white navbar-light" style="width: 83vw;">
 
     <!-- Left navbar links -->
-    <!--    <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-            </li>
-        </ul>-->
+    <ul class="navbar-nav">
+        <li class="nav-item d-none d-custom-block">
+            <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+        </li>
+    </ul>
+
     <!-- Left navbar links -->
+
     <ul class="navbar-nav">
         <!--        <li class="nav-item">
                     <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
@@ -119,37 +143,36 @@ if ($user1->can('Perfil Lancamento')) {
                 <a href="#" class="dropdown-item dropdown-footer">Ver todas as notificações</a>
             </div>
 
-        <li class="nav-item d-none d-sm-inline-block">
-            <a href="<?= Url::home() ?>" class="nav-link">Interface Privada</a>
+        <li class="nav-item custom-nav-item">
+            <a class="nav-link" href="<?= Yii::$app->urlManagerFrontend->createUrl('/site/index') ?>">Interface Pública</a>
         </li>
-        <li class="nav-item d-none d-sm-inline-block">
-            <a href="<?= Yii::$app->urlManagerFrontend->createUrl('/site/index') ?>" class="nav-link">Interface Pública</a>
+        <li class="nav-item custom-nav-item">
+            <a class="nav-link" href="<?= Url::home() ?>">Interface Privada</a>
         </li>
-
     </ul>    
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto" style="margin-right:1% !important;">
-       <?php if (!Yii::$app->user->isGuest && !empty(Yii::$app->user->identity)): ?>
-    <!-- User Image -->
-    <li class="nav-item">
-        <div class="image">
-            <img style="width: 30px; height: 30px;" src="images/userGeral.png" class="img-circle elevation-2">
-        </div>
-    </li>
+        <?php if (!Yii::$app->user->isGuest && !empty(Yii::$app->user->identity)): ?>
+            <!-- User Image -->
+            <li class="nav-item">
+                <div class="image">
+                    <img style="width: 30px; height: 30px;" src="images/userGeral.png" class="img-circle elevation-2">
+                </div>
+            </li>
 
-    <!-- User Info (Name) and Logout Button -->
-    <li class="nav-item">
-        <div class="info d-flex align-items-center">
-            <b style="color: #888C00 !important; margin-left: 10px; margin-right: -5px; margin-top: -5px;">
-                <?= strtoupper(Yii::$app->user->identity->username) ?> | <?= Yii::$app->user->identity->entidade ?>
-            </b>
-            <div style="margin-top:-2px;">
-                <?= Html::a('<i class="fas fa-sign-out-alt"></i>', ['/site/logout'], ['data-method' => 'post', 'class' => 'nav-link logout-button', 'title' => 'Sair']) ?>
-            </div>
-        </div>
-    </li>
-<?php endif; ?>
+            <!-- User Info (Name) and Logout Button -->
+            <li class="nav-item">
+                <div class="info d-flex align-items-center">
+                    <b style="color: #888C00 !important; margin-left: 10px; margin-right: -5px; margin-top: -5px;">
+                        <?= strtoupper(Yii::$app->user->identity->username) ?> | <?= Yii::$app->user->identity->entidade ?>
+                    </b>
+                    <div style="margin-top:-2px;">
+                        <?= Html::a('<i class="fas fa-sign-out-alt"></i>', ['/site/logout'], ['data-method' => 'post', 'class' => 'nav-link logout-button', 'title' => 'Sair']) ?>
+                    </div>
+                </div>
+            </li>
+        <?php endif; ?>
 
 
     </ul>

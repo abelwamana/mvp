@@ -1,28 +1,3 @@
- <style>
-            .minha-div {
-                width: 20px; /* Largura desejada */
-                height: 10px; /* Altura desejada */
-                border: 1px solid black; /* Adicione uma borda para visualização */
-            }
-            .subscribe-btn{
-                /*margin-top:20px;*/
-                color: whitesmoke;
-                background-color: #999900;
-                border-color: #F5F5F5;
-                border-radius: 15px;
-                font-size: 56%;
-                height: 20%; 
-                text-align: center;
-                 border: none; 
-                 padding: 0px 5px 0px 5px; height: 18px;line-height: 0px;font-size: 10px;
-            }
-            .email{
-/*                color: white;
-                background-color: #999900;*/
-                border-color: #999900;
-                border-radius: 3px 3px 3px 3px;
-            }
-        </style>
 <?php
 /** @var \yii\web\View $this */
 
@@ -43,7 +18,6 @@ $menuItems = [
     ['label' => 'Resultados', 'url' => Url::to(['site/resultado'])],
     ['label' => 'Galeria', 'url' => Url::to(['site/galeria'])],
     ['label' => 'Contactos', 'url' => Url::to(['site/contacto'])],
-    
 ];
 ?>
 <?php $this->beginPage() ?>
@@ -55,30 +29,113 @@ $menuItems = [
         <?php $this->registerCsrfMetaTags() ?>
         <title><?= Html::encode($this->title) ?></title>
         <?php $this->head() ?>
-        <style type="text/css">
+        <!--          Google Analytics 
+                <script async src="https://www.googletagmanager.com/gtag/js?id=304223682"></script>
+                <script>
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag() {
+                        dataLayer.push(arguments);
+                    }
+                    gtag('js', new Date());
+                    gtag('config', '304223682');
+                </script>
+                 End Google Analytics -->
+        <!-- Google tag (gtag.js) -->
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZY6DH1JE4Z"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag('js', new Date());
 
-            /*            #google_translate_element {
-                            display: none;
-                        }
-                        .goog-te-banner-frame {
-                            display: none !important;
-                        }
-                        body {
-                            position: static !important;
-                            top: 0 !important;
-                        }
-                        #google_translate_element {
-                            display: none;
-                        }
-                        body > .skiptranslate > iframe.skiptranslate {
-                            display: none !important;
-                            visibility: hidden !important;
-                        }*/
+            gtag('config', 'G-ZY6DH1JE4Z');
+        </script>
+        <!-- Other head elements -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
+        <style>
             .current-page b {
                 font-weight: bold;
             }
+            .minha-div {
+                width: 20px; /* Largura desejada */
+                height: 10px; /* Altura desejada */
+                border: 1px solid black; /* Adicione uma borda para visualização */
+            }
+            .subscribe-btn{
+                /*margin-top:20px;*/
+                /*color: whitesmoke;*/
+                margin-right: 1%;
+                position: relative;
+                margin-top: 0.6%;
+                background-color: #eae018;
+                border-color: #F5F5F5;
+                border-radius: 15px;
+                height: 20%;
+                float: right;
+                /*text-align: center;*/
+                border: none;
+                padding: 0px 5px 0px 5px;
+                height: 18px;
+                line-height: 0px;
+                font-size: 80%;
+                white-space: nowrap;
+            }
+            .subscribe-form{
+                margin-right: 1%;
+                position: relative;
+                margin-top: 0.6%;
+                background-color: #eae018;
+                border-color: #F5F5F5;
+                border-radius: 15px;
+                height: 20%;
 
+                text-align: center;
+                border: none;
+                padding: 0px 5px 0px 5px;
+                height: 18px;
+                line-height: 0px;
+                font-size: 80%;
+                white-space: nowrap;
+            }
+
+/*            .email{
+                                color: white;
+                                background-color: #999900;
+                border-color: #999900;
+                border-radius: 3px 3px 3px 3px;
+            }*/
+            @media (max-width: 1200px) { /* Define a largura máxima da tela em 600px para dispositivos móveis */
+
+                .subscribe-btn {
+                    font-size: 74%; /* Reduz o tamanho do texto para 50% */
+                    float: left;
+                    text-align: left;
+                }
+                .subscribe-form {
+                    font-size: 74%; /* Reduz o tamanho do texto para 50% */
+
+                }
+
+            }
+             .emailSubscriber {
+                    width: 84%;
+                    margin-left: 1%;
+                    font-size: 16px;
+                    width: 14%;
+                    border-color: #999900 !important;
+                    border-radius: 3px;
+                    height: 30px !important;
+                }
+            @media (max-width: 510px) { /* Define a largura máxima da tela em 600px para dispositivos móveis */
+                .emailSubscriber {
+                    width: 32% !important;
+                    /*border-color: #999900 !important;*/
+                       }
+            }
+            
         </style> 
     </head>
     <body class="d-flex flex-column h-100">
@@ -157,7 +214,7 @@ $menuItems = [
                                     <?= Html::a('<i class="fas fa-solid fa-user fa-xs" style="color: #003399;"></i><img style="width: 7%;" src="images/logo24.png" alt="marcador">', Yii::$app->urlManagerBackend->createUrl(['site/index']), ['style' => 'line-height: 20px; font-size: 18px; text-decoration: none; color: black;']) ?>
                                 <?php endif; ?>
                             </div>
-                            
+
                         </div><!-- 1st row end -->
 
                     </div>
@@ -172,8 +229,10 @@ $menuItems = [
                                       </script>
                                       <div class="gcse-search"></div>
                                   </form>-->
-                        <div class="col-md-12">
-
+                        <!--                       <button class="subscribe-btn" id="subscribe-btn">
+                                                                    <b>SUBSCREVER NEWSLETTER</b>
+                                                                </button>-->
+                        <div class="col-md-12">                            
                             <nav class="menu2">
                                 <ul class="active">
                                     <?php foreach ($menuItems as $item): ?>
@@ -183,67 +242,75 @@ $menuItems = [
                                             </a>
                                         </li>
                                     <?php endforeach; ?> 
-                                        <button class="subscribe-btn" style="margin-left: 34%;position: absolute; margin-top: 0.5%;" id="subscribe-btn"><b>SUBSCREVER NEWSLATTER</b></button>
+                                    <!--<div class="subscribe">-->
+                                    <button class="subscribe-btn" id="subscribe-btn">
+                                        <b>SUBSCREVER NEWSLETTER</b>
+                                    </button>
+                                    <!--</div>-->
+
+
                                 </ul>
-<div>
-                               <!-- Modal -->
-<div id="subscribe-modal" class="modal">
-    <div class="modal-content">
-        <span class="close" type="submit">&times;</span>
-        <form id="newsletter-form" class="newsletter-form text-center" method="post">
-            <label for="email">INSCREVA-SE NA NOSSA NEWSLETTER:</label><br>
-            <input type="email" id="email" name="email" style="font-size: 16px; width: 14%; border-color: #999900; border-radius: 3px; height: 32px;" class="email" placeholder="Escreva seu email" required>
-            <button class="subscribe-btn" type="submit"><b>INSCREVER-SE</b></button>
-        </form>
-        <p id="modal-message" class="modal-message text-center" style="display:none; margin-top: 10px;"></p>
-    </div>
-</div>
+                                <div>
 
-<script>
-    // Script para abrir o modal
-    document.getElementById('subscribe-btn').onclick = function () {
-        document.getElementById('subscribe-modal').style.display = 'block';
-    }
+                                    <!-- Modal -->
+                                    <div id="subscribe-modal" class="modal">
+                                        <div class="modal-content">
+                                            <span class="close" type="submit">&times;</span>
+                                            <form id="newsletter-form" class="newsletter-form text-center" method="post">
+                                                <label for="email">INSCREVA-SE NA NOSSA NEWSLETTER:</label><br>
+                                                <input type="email" id="email" name="email" class="emailSubscriber" placeholder="Escreva seu email" required>
+                                                <button class="subscribe-form" type="submit"><b>SUBSCREVER</b></button>
+                                            </form>
+                                            <p id="modal-message" class="modal-message text-center" style="display:none; margin-top: 10px;"></p>
+                                        </div>
+                                    </div>
 
-    // Script para fechar o modal
-    document.getElementsByClassName('close')[0].onclick = function () {
-        document.getElementById('subscribe-modal').style.display = 'none';
-    }
+                                    <script>
+                                    // Script para abrir o modal
+                                    document.getElementById('subscribe-btn').onclick = function () {
+                                        document.getElementById('subscribe-modal').style.display = 'block';
+                                    }
 
-    // Fechar o modal quando o usuário clicar fora dele
-    window.onclick = function (event) {
-        var modal = document.getElementById('subscribe-modal');
-        if (event.target == modal) {
-            modal.style.display = 'none';
-        }
-    }
+                                    // Script para fechar o modal
+                                    document.getElementsByClassName('close')[0].onclick = function () {
+                                        document.getElementById('subscribe-modal').style.display = 'none';
+                                    }
 
-    // Script para enviar o formulário via AJAX
-    document.getElementById('newsletter-form').addEventListener('submit', function (event) {
-        event.preventDefault(); // Evita o comportamento padrão do formulário
+                                    // Fechar o modal quando o usuário clicar fora dele
+                                    window.onclick = function (event) {
+                                        var modal = document.getElementById('subscribe-modal');
+                                        if (event.target == modal) {
+                                            modal.style.display = 'none';
+                                        }
+                                    }
 
-        var form = event.target;
-        var formData = new FormData(form);
+                                    // Script para enviar o formulário via AJAX
+                                    document.getElementById('newsletter-form').addEventListener('submit', function (event) {
+                                        event.preventDefault(); // Evita o comportamento padrão do formulário
 
-        var xhr = new XMLHttpRequest();
-        xhr.open('POST', 'subscribe.php', true);
+                                        var form = event.target;
+                                        var formData = new FormData(form);
 
-        xhr.onload = function () {
-            var modalMessage = document.getElementById('modal-message');
+                                        var xhr = new XMLHttpRequest();
+                                        xhr.open('POST', 'subscribe.php', true);
 
-            if (xhr.status >= 200 && xhr.status < 300) {
-                modalMessage.innerHTML = xhr.responseText;
-            } else {
-                modalMessage.innerHTML = 'Erro: ' + xhr.responseText;
-            }
+                                        xhr.onload = function () {
+                                            var modalMessage = document.getElementById('modal-message');
 
-            modalMessage.style.display = 'block';
-        };
+                                            if (xhr.status >= 200 && xhr.status < 300) {
+                                                modalMessage.innerHTML = xhr.responseText;
+                                            } else {
+                                                modalMessage.innerHTML = 'Erro: ' + xhr.responseText;
+                                            }
 
-        xhr.send(formData);
-    });
-</script>
-                            </div>
+                                            modalMessage.style.display = 'block';
+                                            form.reset();
+                                        };
+
+                                        xhr.send(formData);
+                                    });
+                                    </script>
+                                </div>
 
                                 <a class="toggle-nav2" href="#">☰</a>
 
@@ -251,7 +318,6 @@ $menuItems = [
                                                                     <input type="text">
                                                                     <button>Pesquisar</button>
                                                                 </form>-->
-
                             </nav>
                         </div><!-- Col end -->
                     </div><!-- 2nd row end -->

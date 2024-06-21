@@ -29,18 +29,19 @@
     }
     .fc-toolbar .fc-left
     {
-        
+
         margin-left: -1.3%;
     }
     .fc-toolbar .fc-right
     {
-        
+
         margin-right: -1.3%;
     }
     .container{
         position: relative;
         width: 100%;
         max-width: 100%;
+        
     }
     .has-error .help-block {
         color: red;
@@ -103,8 +104,9 @@ $provincias = [
         "Nutrição" => "Nutrição",
         "Água" => "Água",
         "Reforço Institucional" => "Reforço Institucional",
-        "Coordenação" => "Coordenação",
-        'M&A/Subvenções' => 'M&A/Subvenções',
+        "Coordenação UIC" => "Coordenação UIC",
+        'Subvenções/M&A' => 'Subvenções/M&A',
+        'Governação' => 'Governação',
         "Outras" => "Outras"
     ];
     $this->title = 'Calendário';
@@ -112,7 +114,8 @@ $provincias = [
     ?>
 
     <div class="col-12 justify-content-between align-items-center" style="margin-top: 30px;">
-        <?php if (Yii::$app->session->hasFlash('success')): ?>
+        <div class="align-items-center" style="margin-left: 8.7px; max-width: 98.4%;">       
+ <?php if (Yii::$app->session->hasFlash('success')): ?>
             <?=
             Alert::widget([
                 'options' => ['class' => 'alert-success'],
@@ -130,6 +133,8 @@ $provincias = [
             ])
             ?>
         <?php endif; ?>
+            
+        </div>
         <div class="nao-mostra imprimi" style="background-image: url('images/branco.png')">
             <div class="col-12 d-flex justify-content-between align-items-center">
                 <div class="col-6"  style="margin-left: -27px;">  
@@ -190,7 +195,7 @@ $provincias = [
                     ?>
                 </div>
                 <div class="col-md-12 mt-2" style="margin-right: 10px;">
-<?= Html::submitButton('Filtrar', ['class' => 'btn btn-primary custom-button float-right', 'id' => 'filter-btn']) ?>
+                    <?= Html::submitButton('Filtrar', ['class' => 'btn btn-primary custom-button float-right', 'id' => 'filter-btn']) ?>
                 </div>
             </div>
         </div>
@@ -202,113 +207,41 @@ $provincias = [
         </div>
     </div>
     <div class="meu-calendario-container text-right" style="width: 97%; margin-left: 1.3%;"> <!-- Defina a largura desejada aqui -->
-    <?=
-    \talma\widgets\FullCalendar::widget([
-        //'googleCalendar' => true, // Habilita o uso do Google Calendar
-        'options' => ['id' => 'meuCalendario'], // Adicione um ID ao seu calendário
-        'loading' => 'Carregando...', // Texto de carregamento
-        'config' => [
-            'lang' => 'pt-br', // Idioma do calendário
-            'header' => [// Configuração do cabeçalho do calendário
-                'left' => 'prev,next today',
-                'center' => 'title',
-                'right' => 'month,basicWeek,basicDay',
-            ],
-            'editable' => false, // Permite editar eventos (arrastar e soltar)
-            'eventLimit' => true,
-            'aspectRatio' => 1.05, // Defina o aspectRatio conforme necessário
-//            'height' => 300,
-            'expandRows' => true,
-            'firstDay' => 1, // Começa a semana na segunda-feira
-            'eventSources' => [
-                // Adiciona a fonte de eventos JSON usando a URL do método actionGetEvents
-                ['url' => Yii::$app->urlManager->createUrl(['site/get-events'])],
-            ],
-            'eventClick' => new \yii\web\JsExpression('function(event, jsEvent, view) {
-            // Abra um modal com os detalhes do evento 
-            $("#eventInfoModal").modal("show");
-            $("#modalTitle").text(event.summary); 
-            $("#modalDescription").text(event.description); // Adiciona a descrição do evento ao corpo do modal
-            $("#modalArea").text(event.area); // Adiciona a data de término formatada
-            $("#modalStart").text(event.start.format("DD/MM/YYYY HH:mm")); // Adiciona a data de início formatada
-            $("#modalEnd").text(event.end.format("DD/MM/YYYY HH:mm")); 
-            $("#modalDuracao").text(event.duracao); // Adiciona a data de término formatada
-            $("#modalProvincia").text(event.provincia); // Adiciona a data de término formatada
-            $("#modalMunicipio").text(event.municipio); // Adiciona a data de término formatada
-            $("#modalComuna").text(event.comuna); // Adiciona a data de término formatada
-            $("#modalLocal").text(event.local); // Adiciona a data de término formatada
-            $("#modalCoordenadas").text(event.coordenadas); // Adiciona a data de término formatada
-            $("#modalEntidade").text(event.entidadeOrganizadora); // Adiciona a data de término formatada
-            $("#modalConvocadoPor").text(event.convocadoPor); // Adiciona a data de término formatada
-            $("#modalParticipantes").text(event.participantes); // Adiciona a data de término formatada
-            // Divida a lista de participantes em grupos de dois
-    var participants = event.participantes.split(",");
-    var participantsHtml = "";
-    for (var i = 0; i < participants.length; i += 2) {
-        participantsHtml += participants[i] + ", " + participants[i + 1] + "<br>";
-    }
-    $("#modalParticipantes").html(participantsHtml); // Adiciona os participantes ao modal
-}'),
-            'dayClick' => new \yii\web\JsExpression('function(date, jsEvent, view) {
-            // Lidar com o evento de clique em um dia vazio
-            // Por exemplo, exibir um modal para adicionar um novo evento
-            $("#addEventModal").modal("show");
-            $("#eventDate").val(date.format()); // Preencha o campo de data no modal
-            }'),
-            'eventRender' => new \yii\web\JsExpression('function(event, element) {
-            element.css("background-color", "transparent");
-            element.css("color", "#000000");
-            //element.css("font-weight", "bold");
-             element.css("border-width", "3px");
-            // Adiciona o título do evento ao elemento do dia
-            element.find(".fc-content").append("<span class=\"fc-title\">" + event.summary + "</span>");
-//              // Adiciona a descrição do evento
-//            element.find(".fc-content").append("<span class=\"fc-description\">" + event.description + "</span>");
-//
-//           // Adiciona o início do evento
-//            element.find(".fc-content").append("<span class=\"fc-start\">" + event.start + "</span>");
-//
-//            // Adiciona o fim do evento
-//            element.find(".fc-content").append("<span class=\"fc-end\">" + event.end + "</span>");
-//
-//            // Adiciona a localização do evento
-//            element.find(".fc-content").append("<span class=\"fc-localizacao\">" + event.localizacao + "</span>");
-//
-//            // Adiciona a entidade organizadora do evento
-//            element.find(".fc-content").append("<span class=\"fc-entidadeOrganizadora\">" + event.entidadeOrganizadora + "</span>");
-//             // Adiciona os participantes do evento
-//            element.find(".fc-content").append("<span class=\"fc-participantes\">" + event.participantes + "</span>");
-//             // Adiciona uma quebra de linha entre os diferentes elementos
-//            element.find(".fc-content").append("<br>");
-            // Atribuir cores aos eventos segundo o titulo
-            if (event.area === "Agricultura e Pecuária") {
-                element.css("border-color", "#999900");
-            } else if (event.area === "Nutrição") {
-                element.css("border-color", "#eae018");
-            }
-            else if (event.area === "Água") {
-                element.css("border-color", "#00c3ff");
-            }
-            else if (event.area === "Coordenação") {
-                element.css("border-color", "#71b13c");
-            }
-            else if (event.area === "Reforço Institucional") {
-                element.css("border-color", "#003399");
-            }
-            else if (event.area === "Outra") {
-                element.css("border-color", "black");
-            }
-            else if (event.area === "Subvenções/M&A") {
-                element.css("border-color", "#663399");
-            }
-
-            // Adiciona uma quebra de linha entre os diferentes elementos
-             element.find(".fc-content").append("<br>");
+        <?=
+        \talma\widgets\FullCalendar::widget([
+            //'googleCalendar' => true, // Habilita o uso do Google Calendar
+            'options' => ['id' => 'meuCalendario'], // Adicione um ID ao seu calendário
+            'loading' => 'Carregando...', // Texto de carregamento
+            'config' => [
+                'lang' => 'pt-br', // Idioma do calendário
+                'header' => [// Configuração do cabeçalho do calendário
+                    'left' => 'prev,next today',
+                    'center' => 'title',
+                    'right' => 'month,basicWeek,basicDay',
+                ],
+                'editable' => false, // Permite editar eventos (arrastar e soltar)
+                'eventLimit' => true,
+                'aspectRatio' => 1.05, // Defina o aspectRatio conforme necessário
+                'expandRows' => true,
+                'firstDay' => 1, // Começa a semana na segunda-feira
+                'eventSources' => [
+                    // Adiciona a fonte de eventos JSON usando a URL do método actionGetEvents
+                    ['url' => Yii::$app->urlManager->createUrl(['site/get-events'])],
+                ],
+                'eventClick' => new \yii\web\JsExpression('function(event, jsEvent, view) {
+            showEventDetails(event);
         }'),
-        ],
-    ]);
-    ?> 
-        </div > 
+                'dayClick' => new \yii\web\JsExpression('function(date, jsEvent, view) {
+            showAddEventModal(date);
+        }'),
+                'eventRender' => new \yii\web\JsExpression('function(event, element) {
+            styleEventElement(event, element);
+        }'),
+            ],
+        ]);
+        ?>
+
+    </div > 
 </div > 
 <!-- Modal para adicionar um novo evento -->
 <div class="modal fade" id="addEventModal" tabindex="-1" role="dialog" aria-labelledby="addEventModalLabel" aria-hidden="true">
@@ -331,8 +264,9 @@ $provincias = [
                     'Nutrição' => 'Nutrição',
                     'Água' => 'Água',
                     'Reforço Institucional' => 'Reforço Institucional',
-                    'Coordenação' => 'Coordenação',
-                    'M&A/Subvenções' => 'Subvenções/M&A',
+                    'Coordenação UIC' => 'Coordenação UIC',
+                    'Subvenções/M&A' => 'Subvenções/M&A',
+                    'Governação' => 'Governação',
                     'Outras' => 'Outras',
                         ], ['prompt' => 'Selecione a área'])
                 ?>
@@ -367,7 +301,7 @@ $provincias = [
                     'Camões, I.P. | WVI/C1' => 'Camões, I.P. | WVI/C1',
                     'Camões, I.P. | WVI/C4' => 'Camões, I.P. | WVI/C4',
                     'FAO' => 'FAO',
-                    'Governo' => 'Governo',
+                    'Governação' => 'Governação',
                     'PNUD' => 'PNUD',
                     'Vall d´Hebron' => 'Vall d´Hebron'],
                         ['prompt' => 'Selecione a Entidade'])
@@ -385,9 +319,9 @@ $provincias = [
                 ?>
 
                 <div class="form-group">
-<?= Html::submitButton('Adicionar Evento', ['class' => 'btn btn-primary']) ?>
+                    <?= Html::submitButton('Adicionar Evento', ['class' => 'btn btn-primary']) ?>
                 </div>
-<?php ActiveForm::end(); ?>
+                <?php ActiveForm::end(); ?>
             </div>
         </div>
     </div>
@@ -406,6 +340,7 @@ $provincias = [
             <div class="modal-body">                    
                 <!-- As informações do evento serão exibidas aqui -->
 
+                <!--<p><strong>Id:</strong> <span id="modalId"></span></p>-->
                 <p><strong>Descrição:</strong> <span id="modalDescription"></span></p>
                 <p><strong>Data de Início:</strong> <span id="modalStart"></span></p>
                 <p><strong>Data de Término:</strong> <span id="modalEnd"></span></p>      
@@ -420,16 +355,89 @@ $provincias = [
                 <p><strong>Convocado Por:</strong> <span id="modalConvocadoPor"></span></p>
                 <p><strong>Participantes:</strong> <span id="modalParticipantes"></span></p>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                <!-- Adicione botões adicionais aqui, se necessário -->
-            </div>
+            <div class="modal-footer">          
+                <button type="button" class="btn btn-primary" id="editEventButton" data-event-id="">Alterar</button>
+                <button type="button" class="btn btn-danger" name="deleteEventButton" id="deleteEventButton">Eliminar</button>
+                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                 </div>
+
         </div>
     </div>
 </div>
 
+<script>
+    function showEventDetails(event) {
+        $("#eventInfoModal").modal("show");
+        $("#modalId").text(event.id);
+        $("#modalTitle").text(event.summary);
+        $("#modalDescription").text(event.description);
+        $("#modalArea").text(event.area);
+        $("#modalStart").text(event.start.format("DD/MM/YYYY HH:mm"));
+        $("#modalEnd").text(event.end.format("DD/MM/YYYY HH:mm"));
+        $("#modalDuracao").text(event.duracao);
+        $("#modalProvincia").text(event.provincia);
+        $("#modalMunicipio").text(event.municipio);
+        $("#modalComuna").text(event.comuna);
+        $("#modalLocal").text(event.local);
+        $("#modalCoordenadas").text(event.coordenadas);
+        $("#modalEntidade").text(event.entidadeOrganizadora);
+        $("#modalConvocadoPor").text(event.convocadoPor);
+        $("#modalParticipantes").text(event.participantes);
+
+        var participants = event.participantes.split(",");
+        var participantsHtml = "";
+        for (var i = 0; i < participants.length; i += 2) {
+            participantsHtml += participants[i] + ", " + (participants[i + 1] || "") + "<br>";
+        }
+        $("#modalParticipantes").html(participantsHtml);
+
+        $("#editEventButton").data("eventId", event.id);
+        $("#deleteEventButton").data("eventId", event.id);
+    }
+
+    function showAddEventModal(date) {
+        $("#addEventModal").modal("show");
+        $("#eventDate").val(date.format());
+    }
+
+    function styleEventElement(event, element) {
+        element.css("background-color", "transparent");
+        element.css("color", "#000000");
+        element.css("border-width", "3px");
+        element.find(".fc-content").append("<span class=\"fc-title\">" + event.summary + "</span>");
+
+        if (event.area === "Agricultura e Pecuária") {
+            element.css("border-color", "#999900");
+        } else if (event.area === "Nutrição") {
+            element.css("border-color", "#eae018");
+        } else if (event.area === "Água") {
+            element.css("border-color", "#00c3ff");
+        } else if (event.area === "Coordenação") {
+            element.css("border-color", "#71b13c");
+        } else if (event.area === "Reforço Institucional") {
+            element.css("border-color", "#003399");
+        } else if (event.area === "Outra") {
+            element.css("border-color", "black");
+        } else if (event.area === "Subvenções/M&A") {
+            element.css("border-color", "#663399");
+        }
+         else if (event.area === "Governação") {
+            element.css("border-color", "#BB0E22");
+        }
+
+        element.find(".fc-content").append("<br>");
+    }
+
+    $(document).on('click', '#editEventButton', function () {
+        var eventId = $(this).data('event-id');
+        window.location.href = 'update-event?id=' + eventId;
+    });
+
+
+</script>
+
+
 <?php
-// JavaScript para atualizar os dropdownlists de municípios e comunas com base na província selecionada
 $script = <<< JS
 $(document).ready(function() {
     // Verifique se existem valores armazenados no armazenamento local e preencha os campos de filtro
@@ -438,7 +446,6 @@ $(document).ready(function() {
     var areasSelecionadas = localStorage.getItem('areasSelecionadas');
     if (provinciasSelecionadas !== null) {
         $('#provincias').val(provinciasSelecionadas.split(',')).trigger('change');
-        alert("provincia selected");
     }
     if (entidadesSelecionadas !== null) {
         $('#entidades').val(entidadesSelecionadas.split(',')).trigger('change');
@@ -454,11 +461,34 @@ $(document).ready(function() {
         localStorage.setItem('entidadesSelecionadas', $('#entidades').val());
         localStorage.setItem('areasSelecionadas', $('#areas').val());
     });
-});
-JS;
 
-$script = <<< JS
-$(document).ready(function() {
+    // Ouça o evento de clique no botão de deletar evento
+    $(document).on('click', '#deleteEventButton', function() {
+        var eventId = $(this).data('eventId');
+        if (confirm("Tem certeza que deseja deletar este evento?")) {
+            $.ajax({
+                url: 'site/delete-event',
+                type: 'GET',
+                data: { id: eventId },
+                success: function(response) {
+                    if (response.success) {
+                        $('#meuCalendario').fullCalendar('removeEvents', eventId);
+                        $("#eventInfoModal").modal("hide");
+                        alert("Evento deletado com sucesso!");
+                    } else {
+                        alert("Erro ao deletar o evento!");
+                    }
+                }
+            });
+        }
+    });
+
+    // Ouça o evento de clique no botão de editar evento
+    $(document).on('click', '#editEventButton', function() {
+        var eventId = $(this).data('eventId');
+        window.location.href = 'event/update?Id=' + eventId;
+    });
+
     // Ouça o evento de clique no botão de filtragem
     $('#filter-btn').click(function(e) {
         e.preventDefault(); // Evite o comportamento padrão de enviar o formulário
@@ -483,8 +513,8 @@ $(document).ready(function() {
         });
     });
 });
-
 JS;
+
 $this->registerJs($script);
 ?>
 
@@ -638,4 +668,6 @@ $this->registerJs("
         return true; // Permitir que o formulário seja enviado
     });
 ");
+
+
 ?>

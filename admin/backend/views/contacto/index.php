@@ -76,7 +76,7 @@ $this->params['breadcrumbs'][] = $this->title;
   'hidden'=> true,
 ],
 [
-  'attribute'=> 'funcaoID',
+  'attribute'=> 'funcao',
   'vAlign'=> 'middle',
   'hAlign'=> 'center',
   'hidden'=> true,
@@ -94,7 +94,7 @@ $this->params['breadcrumbs'][] = $this->title;
   'hidden'=> true,
 ],
 [
-  'attribute'=> 'e-mail',
+  'attribute'=> 'email:email',
   'vAlign'=> 'middle',
   'hAlign'=> 'center',
   'hidden'=> true,
@@ -155,6 +155,12 @@ $this->params['breadcrumbs'][] = $this->title;
 ],
 [
   'attribute'=> 'rotulo',
+  'vAlign'=> 'middle',
+  'hAlign'=> 'center',
+  'hidden'=> true,
+],
+[
+  'attribute'=> 'observacao:ntext',
   'vAlign'=> 'middle',
   'hAlign'=> 'center',
   'hidden'=> true,
@@ -266,7 +272,7 @@ $this->params['breadcrumbs'][] = $this->title;
         //  'json' => [],
         ],
         'panel' => [
-        'heading' => Yii::t('app', 'contacto'),
+        <!--'heading' => Yii::t('app', 'contacto'),-->
         'type' => '',
         'before' => '<div class="btn-group">' .
             //Html::a(Yii::t('app', 'Criar contacto'), ['create'], ['class' => 'btn btn-danger']).

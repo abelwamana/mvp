@@ -2089,7 +2089,7 @@ ul.navbar-nav > li.header-get-a-quote:hover > a:after {
   position: absolute;
   z-index: 0;
   font-size: 14px;
-  right: 16px;
+  right: 1px;
   padding: 3px 8px 1px;
   text-align: center;
   border-radius: 3px;
@@ -5864,7 +5864,7 @@ ul {
   grid-auto-columns: max-content;
   column-gap: var(--col-gap);
   list-style: none;
-  width: min(60rem, 90%);
+  width: min(100rem, 100%);
   margin-inline: auto;
 }
 

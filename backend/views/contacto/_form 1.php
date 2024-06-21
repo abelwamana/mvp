@@ -28,7 +28,7 @@ use backend\controllers\SiteController;
     <?= $form->field($model, 'nome')->textInput(['maxlength' => true]) ?>
     <?= $form->field($model, 'funcao')->textInput(['maxlength' => true]) ?>
     <?= $form->field($model, 'instituicao')->textInput(['maxlength' => true]) ?>
-    <?= $form->field($model, 'contacto')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'contacto')->textInput(['maxlength' => true,'id' => 'contactos-contacto', 'placeholder' => '+244929680377'])->label('Contacto (inclua o indicativo)') ?>
     <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
     <?= $form->field($model, 'pais')->textInput(['maxlength' => true]) ?>
     <!-- Dropdown para Província -->
@@ -50,7 +50,7 @@ use backend\controllers\SiteController;
     <?= $form->field($model, 'estado')->textInput(['maxlength' => true]) ?>
 
     <div class="form-group">
-        <?= Html::submitButton(Yii::t('app', 'Save'), ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton(Yii::t('app', 'save'), ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>
@@ -103,9 +103,8 @@ $(document).ready(function(){
         }
     });
         
-        $('#municipio-select').change(function(){
+$('#municipio-select').change(function(){
     var municipioID = $(this).val();
-        
     if(municipioID){
         $.ajax({
             type: 'GET',
@@ -119,6 +118,7 @@ $(document).ready(function(){
                 $('#comuna-select').empty();
                 // Adiciona a opção padrão
                 $('#comuna-select').append($('<option>', {
+                    
                     value: '',
                     text: 'Selecione a comuna'
                 }));
@@ -144,4 +144,16 @@ $(document).ready(function(){
 
 JS;
 $this->registerJs($script);
+?>
+
+
+<?php
+$this->registerJs("
+    $('#contactos-contacto').inputmask({
+        mask: '+99999999999999',
+        placeholder: '',
+        showMaskOnHover: false,
+        showMaskOnFocus: true
+    });
+");
 ?>

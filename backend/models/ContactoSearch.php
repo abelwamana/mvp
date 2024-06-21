@@ -5,121 +5,72 @@ namespace backend\models;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use backend\models\Contacto;
+use Yii;
 
-class ContactoSearch extends Contacto
-{
-    /**
-     * {@inheritdoc}
-     */
-    public function rules()
-    {
+class ContactoSearch extends Contacto {
+    public $provinciaNome;
+    public $municipioNome;
+    public $comunaNome;
+    public $pais;
+
+    public function rules() {
         return [
+            [['provinciaNome', 'municipioNome', 'comunaNome'], 'safe'],
             [['Id', 'provinciaID', 'municipioID', 'comunaID'], 'integer'],
-            [['nome', 'funcao', 'instituicao', 'contacto', 'email', 'pais', 'localidade', 'pontofocal', 'actividades', 'entidade', 'nivel', 'rotulo', 'privacidade', 'estado'], 'safe'],
+            [['nome', 'funcao', 'instituicao', 'contacto', 'email', 'pais', 'localidade', 'pontofocal', 'actividades', 'entidade', 'nivel', 'rotulo', 'observacao', 'privacidade', 'estado', 'usuario'], 'safe'],
         ];
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function scenarios()
-    {
-        // bypass scenarios() implementation in the parent class
+    public function scenarios() {
         return Model::scenarios();
     }
 
-    /**
-     * Creates data provider instance with search query applied
-     *
-     * @param array $params
-     *
-     * @return ActiveDataProvider
-     */
-    public function search($params)
-    {
-        $query = Contacto::find();
+    public function search($params) {
+        $query = Contacto::find()->joinWith(['provincia', 'municipio', 'comuna']);
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);
 
+        $dataProvider->sort->attributes['provinciaNome'] = [
+            'asc' => ['provincia.nomeProvincia' => SORT_ASC],
+            'desc' => ['provincia.nomeProvincia' => SORT_DESC],
+        ];
+        $dataProvider->sort->attributes['municipioNome'] = [
+            'asc' => ['municipio.nomeMunicipio' => SORT_ASC],
+            'desc' => ['municipio.nomeMunicipio' => SORT_DESC],
+        ];
+        $dataProvider->sort->attributes['comunaNome'] = [
+            'asc' => ['comuna.nomeComuna' => SORT_ASC],
+            'desc' => ['comuna.nomeComuna' => SORT_DESC],
+        ];
+        
         $this->load($params);
 
         if (!$this->validate()) {
             return $dataProvider;
         }
 
-        $query->andFilterWhere([
-            'Id' => $this->Id,
-            'provinciaID' => $this->provinciaID,
-            'municipioID' => $this->municipioID,
-            'comunaID' => $this->comunaID,
-            '' => $this->pontofocal,
-        ]);
-
-        $query->andFilterWhere(['like', 'nome', $this->nome])
-              ->andFilterWhere(['like', 'funcao', $this->funcao])
-              ->andFilterWhere(['like', 'instituicao', $this->instituicao])
-              ->andFilterWhere(['like', 'contacto', $this->contacto])
-              ->andFilterWhere(['like', 'email', $this->email])
-              ->andFilterWhere(['like', 'pais', $this->pais])
-              ->andFilterWhere(['like', 'localidade', $this->localidade])
-              ->andFilterWhere(['like', 'pontofocal', $this->pontofocal])
-              ->andFilterWhere(['like', 'actividades', $this->actividades])
-              ->andFilterWhere(['like', 'entidade', $this->entidade])
-              ->andFilterWhere(['like', 'nivel', $this->nivel])
-              ->andFilterWhere(['like', 'rotulo', $this->rotulo])
-              ->andFilterWhere(['like', 'privacidade', $this->privacidade])
-              ->andFilterWhere(['like', 'estado', $this->estado]);
+        $query->andFilterWhere(['like', 'provincia.nomeProvincia', $this->provinciaNome])
+            ->andFilterWhere(['like', 'municipio.nomeMunicipio', $this->municipioNome])
+            ->andFilterWhere(['like', 'comuna.nomeComuna', $this->comunaNome])
+            ->andFilterWhere(['like', 'nome', $this->nome])
+            ->andFilterWhere(['like', 'funcao', $this->funcao])
+            ->andFilterWhere(['like', 'instituicao', $this->instituicao])
+            ->andFilterWhere(['like', 'contacto', $this->contacto])
+            ->andFilterWhere(['like', 'email', $this->email])
+            ->andFilterWhere(['like', 'pais', $this->pais])
+            ->andFilterWhere(['like', 'localidade', $this->localidade])
+            ->andFilterWhere(['like', 'pontofocal', $this->pontofocal])
+            ->andFilterWhere(['like', 'actividades', $this->actividades])
+            ->andFilterWhere(['like', 'entidade', $this->entidade])
+            ->andFilterWhere(['like', 'nivel', $this->nivel])
+            ->andFilterWhere(['like', 'rotulo', $this->rotulo])
+            ->andFilterWhere(['like', 'observacao', $this->observacao])
+            ->andFilterWhere(['like', 'privacidade', $this->privacidade])
+            ->andFilterWhere(['like', 'estado', $this->estado])
+            ->andFilterWhere(['like', 'usuario', $this->usuario]);
 
         return $dataProvider;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function attributeLabels()
-    {
-        return [
-            'nome' => 'Nome',
-            'funcao' => 'Função',
-            'instituicao' => 'Instituição',
-            'contacto' => 'Contacto',
-            'email' => 'E-mail',
-            'pais' => 'País',
-            'localidade' => 'Localidade',
-            'pontofocal' => 'Ponto Focal',
-            'actividades' => 'Actividades',
-            'entidade' => 'Entidade',
-            'nivel' => 'Nível',
-            'rotulo' => 'Rótulo',
-            'privacidade' => 'Privacidade',
-            'estado' => 'Estado',
-        ];
-    }
-
-    /**
-     * Returns attribute placeholders.
-     *
-     * @return array
-     */
-    public function attributePlaceholders()
-    {
-        return [
-            'nome' => '🔍 Pesquisa por Nome',
-            'funcao' => '🔍 Pesquisa por Função',
-            'instituicao' => '🔍 Pesquisa por Instituição',
-            'contacto' => '🔍 Pesquisa por Contacto',
-            'email' => '🔍 Pesquisa por E-mail',
-            'pais' => '🔍 Pesquisa por País',
-            'localidade' => '🔍 Pesquisa por Localidade',
-            'pontofocal' => '🔍 Pesquisa por Ponto Focal',
-            'actividades' => '🔍 Pesquisa por Actividades',
-            'entidade' => '🔍 Pesquisa por Entidade',
-            'nivel' => '🔍 Pesquisa por Nível',
-            'rotulo' => '🔍 Pesquisa por Rótulo',
-            'privacidade' => '🔍 Pesquisa por Privacidade',
-            'estado' => '🔍 Pesquisa por Estado',
-        ];
     }
 }

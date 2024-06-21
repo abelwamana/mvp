@@ -27,6 +27,7 @@ $config = [
                 'request-password-reset' => 'user/request-password-reset',
                 // Rota para redefinir a senha
                 'reset-password/<token>' => 'user/reset-password',
+                 'reset-password' => 'user/reset-password',
  
                 // Regra de rota para a página "Login"
                 'login' => 'site/login',

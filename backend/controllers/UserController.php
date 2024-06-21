@@ -156,7 +156,7 @@ class UserController extends Controller {
         $model = new PasswordResetRequestForm();
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             if ($model->sendEmail()) {
-                Yii::$app->session->setFlash('success', 'Check your email for further instructions.');
+                Yii::$app->session->setFlash('success', 'Verifique seu e-mail para mais instruções.');
 
                 return $this->goHome();
             }
@@ -178,19 +178,19 @@ class UserController extends Controller {
      */
     public function actionResetPassword($token) {
         if (!ResetPasswordForm::isTokenValid($token)) {
-            Yii::$app->session->setFlash('error', 'O token de redefinição de senha é inválido ou já foi usado.');
+            Yii::$app->session->setFlash('error', 'O link de redefinição de palavra-passe é inválido ou já foi usado.');
             return $this->goHome();
         }
 
         try {
             $model = new ResetPasswordForm($token);
         } catch (InvalidArgumentException $e) {
-            Yii::$app->session->setFlash('error', 'O token de redefinição de senha é inválido ou já foi usado.');
+            Yii::$app->session->setFlash('error', 'O link de redefinição de palavra-passe é inválido ou já foi usado.');
             return $this->goHome();
         }
 
         if ($model->load(Yii::$app->request->post()) && $model->validate() && $model->resetPassword()) {
-            Yii::$app->session->setFlash('success', 'Nova senha salva.');
+            Yii::$app->session->setFlash('success', 'Nova palavra-passe salva.');
             return $this->goHome();
         }
 

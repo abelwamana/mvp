@@ -224,7 +224,7 @@ $metaInfraestrutura = Meta::find()->where(['nomeMeta' => 'pequenas infra-estrutu
 
 
 <section class="container" style="background-color: white">
-                <h3 class="section-sub-title" style="text-align: center !important;"><b>INDICADORES DO QUADRO LÓGICO | REFORÇO INSTITUCIONAL</b></h3>
+                <h3 class="section-sub-title" style="text-align: center !important;"><b>INDICADORES DO QUADRO LÓGICO/REFORÇO INSTITUCIONAL</b></h3>
                 <br>
                 </section>
 
@@ -234,8 +234,8 @@ $metaInfraestrutura = Meta::find()->where(['nomeMeta' => 'pequenas infra-estrutu
             <div class="col-xl-4 col-lg-6 col-md-7 evento"><br>
               <br>
               <div class="text-center">
-                <div style="border-style: solid; border-color: #888C00; border-width: 1.5px;">
-                          <p style="text-align: center; color: #888C00; line-height: 28px"><b>REFORÇO INSTITUCIONAL E GESTÃO DE INFORMAÇÃO MULTISSECTORIAL [COMPONENTE III]</b><br>
+                <div style="border-style: solid; border-color: #999900; border-width: 1.5px;">
+                          <p class="font1" style="text-align: center; color: #999900; line-height: 28px; font-size: initial"><b>REFORÇO INSTITUCIONAL E GESTÃO DE INFORMAÇÃO MULTISSECTORIAL [COMPONENTE III]</b><br>
                           <img style="width: 10%;" src="images/resultado/elemento4.png"><br>Compilar e reorganizar os mecanismos em matéria de segurança alimentar e nutricional e de alterações climáticas</p>
                 </div>
                   <img style="width: 34%;" src="images/resultado/Iconografia principal_Parceiros Governamentais.png">
@@ -244,8 +244,8 @@ $metaInfraestrutura = Meta::find()->where(['nomeMeta' => 'pequenas infra-estrutu
                 </div> 
                 <div class="col-xl-4 col-lg-6 col-md-7 evento"><br>
                   <br>
-                  <img style="width: 20.2%;" src="images/resultado/Iconografia principal_Modulo 2.png"><b style="color: lightsteelblue; font-size: 23px;">&nbsp;em análise</b><p style="color: darkblue;">administrações municipais integram políticas para mitigar as alterações climáticas e a inSAN</p>
-                        <div class="bar" style="margin-top: -10px; line-height: 35px;"><div class="progressbar-text" style="color: darkblue; position: relative; right: 0px; padding: 0px; text-align: right; line-height: 0px;"><b>0 %</b></div><svg viewBox="0 0 100 4" preserveAspectRatio="none" style="width: 100%; height: 100%;"><path d="M 0,2 L 100,2" stroke="#7CB9E8" stroke-width="1" fill-opacity="0"></path><path d="M 0,2 L 0,2" stroke="#7CB9E8" stroke-width="4" fill-opacity="0" style="stroke-dasharray: 100, 100; stroke-dashoffset: 0;"></path></svg></div>
+                  <img style="width: 20.2%;" src="images/resultado/Iconografia principal_Modulo 2.png"><b style="color: lightsteelblue; font-size: 23px;">&nbsp;em análise</b><p style="color: #003399;">administrações municipais com políticas de mitigação às alterações climáticas e inSAN</p>
+                        <div class="bar" style="margin-top: -10px; line-height: 35px;"><div class="progressbar-text" style="color: #003399; position: relative; right: 0px; padding: 0px; text-align: right; line-height: 0px;"><b>0 %</b></div><svg viewBox="0 0 100 4" preserveAspectRatio="none" style="width: 100%; height: 100%;"><path d="M 0,2 L 100,2" stroke="#7CB9E8" stroke-width="1" fill-opacity="0"></path><path d="M 0,2 L 0,2" stroke="#7CB9E8" stroke-width="4" fill-opacity="0" style="stroke-dasharray: 100, 100; stroke-dashoffset: 0;"></path></svg></div>
                           <div class=" row">
                             <div class="col-4" style="border-right-color: #7CB9E8; border-right-style: solid; border-width: 1px; text-align: center; color: lightsteelblue; line-height: 20px; font-size: 15px;"><b>Cunene<br>em análise</b></div>
                             <div class="col-4" style="border-right-color: #7CB9E8; border-right-style: solid; border-width: 1px; text-align: center; color: lightsteelblue; line-height: 20px; font-size: 15px;"><b>Huíla<br>em análise</b></div>
@@ -254,8 +254,8 @@ $metaInfraestrutura = Meta::find()->where(['nomeMeta' => 'pequenas infra-estrutu
                     </div> 
                     <div class="col-xl-4 col-lg-6 col-md-7 evento"><br>
                       <br>
-                      <img style="width: 18.5%;" src="images/resultado/iconografia indicadores-29.png"><b style="color: lightsteelblue; font-size: 23px;">&nbsp;em análise</b><p style="color: darkblue;">acções realizadas pelos governos para o combate às alterações climáticas e a inSAN</p>
-                            <div class="bar" style="margin-top: -10px; line-height: 35px;"><div class="progressbar-text" style="color: darkblue; position: relative; right: 0px; padding: 0px; text-align: right; line-height: 0px;"><b>0 %</b></div><svg viewBox="0 0 100 4" preserveAspectRatio="none" style="width: 100%; height: 100%;"><path d="M 0,2 L 100,2" stroke="#7CB9E8" stroke-width="1" fill-opacity="0"></path><path d="M 0,2 L 0,2" stroke="#7CB9E8" stroke-width="4" fill-opacity="0" style="stroke-dasharray: 100, 100; stroke-dashoffset: 0;"></path></svg></div>
+                      <img style="width: 18.5%;" src="images/resultado/iconografia indicadores-29.png"><b style="color: lightsteelblue; font-size: 23px;">&nbsp;em análise</b><p style="color: #003399;">acções realizadas pelos governos para o combate às alterações climáticas e a inSAN</p>
+                            <div class="bar" style="margin-top: -10px; line-height: 35px;"><div class="progressbar-text" style="color: #003399; position: relative; right: 0px; padding: 0px; text-align: right; line-height: 0px;"><b>0 %</b></div><svg viewBox="0 0 100 4" preserveAspectRatio="none" style="width: 100%; height: 100%;"><path d="M 0,2 L 100,2" stroke="#7CB9E8" stroke-width="1" fill-opacity="0"></path><path d="M 0,2 L 0,2" stroke="#7CB9E8" stroke-width="4" fill-opacity="0" style="stroke-dasharray: 100, 100; stroke-dashoffset: 0;"></path></svg></div>
                               <div class=" row">
                                 <div class="col-4" style="border-right-color: #7CB9E8; border-right-style: solid; border-width: 1px; text-align: center; color: lightsteelblue; line-height: 20px; font-size: 15px;"><b>Cunene<br>em análise</b></div>
                                 <div class="col-4" style="border-right-color: #7CB9E8; border-right-style: solid; border-width: 1px; text-align: center; color: lightsteelblue; line-height: 20px; font-size: 15px;"><b>Huíla<br>em análise</b></div>
@@ -265,59 +265,59 @@ $metaInfraestrutura = Meta::find()->where(['nomeMeta' => 'pequenas infra-estrutu
 
             <div class="col-xl-4 col-lg-6 col-md-7 evento"><br>
               <br>
-              <img style="width: 20.1%;" src="images/resultado/Iconografia principal_Estudos e diagnosticos.png"><b style="color: darkblue; font-size: 23px;">&nbsp;0 de 20</b><p style="color: darkblue;">plataformas e mecanismos estabelecidos em segurança alimentar e nutricional e resiliência</p>
-                <div class="bar" style="margin-top: -10px; line-height: 35px;"><div class="progressbar-text" style="color: darkblue; position: relative; right: 0px; padding: 0px; text-align: right; line-height: 0px;"><b>0 %</b></div><svg viewBox="0 0 100 4" preserveAspectRatio="none" style="width: 100%; height: 100%;"><path d="M 0,2 L 100,2" stroke="#7CB9E8" stroke-width="1" fill-opacity="0"></path><path d="M 0,2 L 0,2" stroke="#7CB9E8" stroke-width="4" fill-opacity="0" style="stroke-dasharray: 100, 100; stroke-dashoffset: 0;"></path></svg></div>
+              <img style="width: 20.1%;" src="images/resultado/Iconografia principal_Estudos e diagnosticos.png"><b style="color: #003399; font-size: 23px;">&nbsp;0 de 20</b><p style="color: #003399;">plataformas e mecanismos de coordenação definidos em matéria de SAN e resiliência</p>
+                <div class="bar" style="margin-top: -10px; line-height: 35px;"><div class="progressbar-text" style="color: #003399; position: relative; right: 0px; padding: 0px; text-align: right; line-height: 0px;"><b>0 %</b></div><svg viewBox="0 0 100 4" preserveAspectRatio="none" style="width: 100%; height: 100%;"><path d="M 0,2 L 100,2" stroke="#7CB9E8" stroke-width="1" fill-opacity="0"></path><path d="M 0,2 L 0,2" stroke="#7CB9E8" stroke-width="4" fill-opacity="0" style="stroke-dasharray: 100, 100; stroke-dashoffset: 0;"></path></svg></div>
                   <div class=" row">
-                    <div class="col-4" style="border-right-color: #7CB9E8; border-right-style: solid; border-width: 1px; text-align: center; color: darkblue; line-height: 20px; font-size: 15px;">Cunene<br><b>0</b></div>
-                    <div class="col-4" style="border-right-color: #7CB9E8; border-right-style: solid; border-width: 1px; text-align: center; color: darkblue; line-height: 20px; font-size: 15px;">Huíla<br><b>0</b></div>
-                    <div class="col-4" style="text-align: center; color: darkblue; line-height: 20px; font-size: 15px;">Namibe<br><b>0</b></div>
+                    <div class="col-4" style="border-right-color: #7CB9E8; border-right-style: solid; border-width: 1px; text-align: center; color: #003399; line-height: 20px; font-size: 15px;">Cunene<br><b>0</b></div>
+                    <div class="col-4" style="border-right-color: #7CB9E8; border-right-style: solid; border-width: 1px; text-align: center; color: #003399; line-height: 20px; font-size: 15px;">Huíla<br><b>0</b></div>
+                    <div class="col-4" style="text-align: center; color: #003399; line-height: 20px; font-size: 15px;">Namibe<br><b>0</b></div>
                   </div>
                 </div> 
                 <div class="col-xl-4 col-lg-6 col-md-7 evento"><br>
                   <br>
-                  <img style="width: 59%;" src="images/resultado/icones soltos_12_conferencias.png"><b style="color: darkblue; font-size: 23px;">&nbsp;0 de 32</b><p style="color: darkblue;">reuniões de coordenação multissectorial para promover a segurança alimentar e nutricional</p>
-                    <div class="bar" style="margin-top: -10px; line-height: 35px;"><div class="progressbar-text" style="color: darkblue; position: relative; right: 0px; padding: 0px; text-align: right; line-height: 0px;"><b>0 %</b></div><svg viewBox="0 0 100 4" preserveAspectRatio="none" style="width: 100%; height: 100%;"><path d="M 0,2 L 100,2" stroke="#7CB9E8" stroke-width="1" fill-opacity="0"></path><path d="M 0,2 L 0,2" stroke="#7CB9E8" stroke-width="4" fill-opacity="0" style="stroke-dasharray: 100, 100; stroke-dashoffset: 0;"></path></svg></div>
+                  <img style="width: 59%;" src="images/resultado/icones soltos_12_conferencias.png"><b style="color: #003399; font-size: 23px;">&nbsp;0 de 32</b><p style="color: #003399;">reuniões de coordenação multissectorial convocadas para promover a SAN</p>
+                    <div class="bar" style="margin-top: -10px; line-height: 35px;"><div class="progressbar-text" style="color: #003399; position: relative; right: 0px; padding: 0px; text-align: right; line-height: 0px;"><b>0 %</b></div><svg viewBox="0 0 100 4" preserveAspectRatio="none" style="width: 100%; height: 100%;"><path d="M 0,2 L 100,2" stroke="#7CB9E8" stroke-width="1" fill-opacity="0"></path><path d="M 0,2 L 0,2" stroke="#7CB9E8" stroke-width="4" fill-opacity="0" style="stroke-dasharray: 100, 100; stroke-dashoffset: 0;"></path></svg></div>
                       <div class=" row">
-                        <div class="col-4" style="border-right-color: #7CB9E8; border-right-style: solid; border-width: 1px; text-align: center; color: darkblue; line-height: 20px; font-size: 15px;">Cunene<br><b>0</b></div>
-                        <div class="col-4" style="border-right-color: #7CB9E8; border-right-style: solid; border-width: 1px; text-align: center; color: darkblue; line-height: 20px; font-size: 15px;">Huíla<br><b>0</b></div>
-                        <div class="col-4" style="text-align: center; color: darkblue; line-height: 20px; font-size: 15px;">Namibe<br><b>0</b></div>
+                        <div class="col-4" style="border-right-color: #7CB9E8; border-right-style: solid; border-width: 1px; text-align: center; color: #003399; line-height: 20px; font-size: 15px;">Cunene<br><b>0</b></div>
+                        <div class="col-4" style="border-right-color: #7CB9E8; border-right-style: solid; border-width: 1px; text-align: center; color: #003399; line-height: 20px; font-size: 15px;">Huíla<br><b>0</b></div>
+                        <div class="col-4" style="text-align: center; color: #003399; line-height: 20px; font-size: 15px;">Namibe<br><b>0</b></div>
                       </div>
                     </div> 
                     <div class="col-xl-4 col-lg-6 col-md-7 evento"><br>
                       <br>
-                      <img style="width: 20.1%;" src="images/resultado/Iconografia alternativa_icones alternativos_formacao.png"><b style="color: darkblue; font-size: 23px;">&nbsp;0 de 30</b><p style="color: darkblue;">acções de capacitação realizadas no âmbito do apoio à inSAN e resiliência</p>
-                        <div class="bar" style="margin-top: -10px; line-height: 35px;"><div class="progressbar-text" style="color: darkblue; position: relative; right: 0px; padding: 0px; text-align: right; line-height: 0px;"><b>0 %</b></div><svg viewBox="0 0 100 4" preserveAspectRatio="none" style="width: 100%; height: 100%;"><path d="M 0,2 L 100,2" stroke="#7CB9E8" stroke-width="1" fill-opacity="0"></path><path d="M 0,2 L 0,2" stroke="#7CB9E8" stroke-width="4" fill-opacity="0" style="stroke-dasharray: 100, 100; stroke-dashoffset: 0;"></path></svg></div>
+                      <img style="width: 20.1%;" src="images/resultado/Iconografia alternativa_icones alternativos_formacao.png"><b style="color: #003399; font-size: 23px;">&nbsp;0 de 30</b><p style="color: #003399;">capacitações para apoiar a segurança alimentar e nutricional e resiliência</p>
+                        <div class="bar" style="margin-top: -10px; line-height: 35px;"><div class="progressbar-text" style="color: #003399; position: relative; right: 0px; padding: 0px; text-align: right; line-height: 0px;"><b>0 %</b></div><svg viewBox="0 0 100 4" preserveAspectRatio="none" style="width: 100%; height: 100%;"><path d="M 0,2 L 100,2" stroke="#7CB9E8" stroke-width="1" fill-opacity="0"></path><path d="M 0,2 L 0,2" stroke="#7CB9E8" stroke-width="4" fill-opacity="0" style="stroke-dasharray: 100, 100; stroke-dashoffset: 0;"></path></svg></div>
                           <div class=" row">
-                            <div class="col-4" style="border-right-color: #7CB9E8; border-right-style: solid; border-width: 1px; text-align: center; color: darkblue; line-height: 20px; font-size: 15px;">Cunene<br><b>0</b></div>
-                            <div class="col-4" style="border-right-color: #7CB9E8; border-right-style: solid; border-width: 1px; text-align: center; color: darkblue; line-height: 20px; font-size: 15px;">Huíla<br><b>0</b></div>
-                            <div class="col-4" style="text-align: center; color: darkblue; line-height: 20px; font-size: 15px;">Namibe<br><b>0</b></div>
+                            <div class="col-4" style="border-right-color: #7CB9E8; border-right-style: solid; border-width: 1px; text-align: center; color: #003399; line-height: 20px; font-size: 15px;">Cunene<br><b>0</b></div>
+                            <div class="col-4" style="border-right-color: #7CB9E8; border-right-style: solid; border-width: 1px; text-align: center; color: #003399; line-height: 20px; font-size: 15px;">Huíla<br><b>0</b></div>
+                            <div class="col-4" style="text-align: center; color: #003399; line-height: 20px; font-size: 15px;">Namibe<br><b>0</b></div>
                           </div>
                         </div>
 
                         <div class="col-xl-4 col-lg-6 col-md-7 evento"><br>
                           <br>
-                          <img style="width: 20%;" src="images/resultado/Iconografia principal_Contratacoes.png"><b style="color: darkblue; font-size: 23px;">&nbsp;699 de 630</b><p style="color: darkblue;">agentes de extensão formados em SAN e resiliência e pecuária (ACS: 417; TG: 282)</p>
-                            <div class="bar" style="margin-top: -10px; line-height: 35px;"><div class="progressbar-text" style="color: darkblue; position: relative; right: 0px; padding: 0px; text-align: right; line-height: 0px;"><b>>100 %</b></div><svg viewBox="0 0 100 4" preserveAspectRatio="none" style="width: 100%; height: 100%;"><path d="M 0,2 L 100,2" stroke="#7CB9E8" stroke-width="1" fill-opacity="0"></path><path d="M 0,2 L 100,2" stroke="#7CB9E8" stroke-width="4" fill-opacity="0" style="stroke-dasharray: 100, 100; stroke-dashoffset: 0;"></path></svg></div>
+                          <img style="width: 20%;" src="images/resultado/Iconografia principal_Contratacoes.png"><b style="color: #003399; font-size: 23px;">&nbsp;776 de 630</b><p style="color: #003399;">agentes de extensão formados em SAN, resiliência e pecuária (TG: 359; ACS: 417)</p>
+                            <div class="bar" style="margin-top: -10px; line-height: 35px;"><div class="progressbar-text" style="color: #003399; position: relative; right: 0px; padding: 0px; text-align: right; line-height: 0px;"><b>>100 %</b></div><svg viewBox="0 0 100 4" preserveAspectRatio="none" style="width: 100%; height: 100%;"><path d="M 0,2 L 100,2" stroke="#7CB9E8" stroke-width="1" fill-opacity="0"></path><path d="M 0,2 L 100,2" stroke="#7CB9E8" stroke-width="4" fill-opacity="0" style="stroke-dasharray: 100, 100; stroke-dashoffset: 0;"></path></svg></div>
                               <div class=" row">
-                                <div class="col-4" style="border-right-color: #7CB9E8; border-right-style: solid; border-width: 1px; text-align: center; color: darkblue; line-height: 20px; font-size: 15px;">Cunene<br><b>304</b></div>
-                                <div class="col-4" style="border-right-color: #7CB9E8; border-right-style: solid; border-width: 1px; text-align: center; color: darkblue; line-height: 20px; font-size: 15px;">Huíla<br><b>252</b></div>
-                                <div class="col-4" style="text-align: center; color: darkblue; line-height: 20px; font-size: 15px;">Namibe<br><b>143</b></div>
+                                <div class="col-4" style="border-right-color: #7CB9E8; border-right-style: solid; border-width: 1px; text-align: center; color: #003399; line-height: 20px; font-size: 15px;">Cunene<br><b>304</b></div>
+                                <div class="col-4" style="border-right-color: #7CB9E8; border-right-style: solid; border-width: 1px; text-align: center; color: #003399; line-height: 20px; font-size: 15px;">Huíla<br><b>329</b></div>
+                                <div class="col-4" style="text-align: center; color: #003399; line-height: 20px; font-size: 15px;">Namibe<br><b>143</b></div>
                               </div>
                             </div> 
                             <div class="col-xl-4 col-lg-6 col-md-7 evento"><br>
                               <br>
-                              <img style="width: 20%;" src="images/resultado/Iconografia principal_Contratacoes.png"><b style="color: darkblue; font-size: 23px;">&nbsp;747 de 760</b><p style="color: darkblue;">funcionários públicos formados em segurança alimentar e nutricional e resiliência (Saúde: 747)</p>
-                                <div class="bar" style="margin-top: -10px; line-height: 35px;"><div class="progressbar-text" style="color: darkblue; position: relative; right: 0px; padding: 0px; text-align: right; line-height: 0px;"><b>98 %</b></div><svg viewBox="0 0 100 4" preserveAspectRatio="none" style="width: 100%; height: 100%;"><path d="M 0,2 L 100,2" stroke="#7CB9E8" stroke-width="1" fill-opacity="0"></path><path d="M 0,2 L 98,2" stroke="#7CB9E8" stroke-width="4" fill-opacity="0" style="stroke-dasharray: 100, 100; stroke-dashoffset: 0;"></path></svg></div>
+                              <img style="width: 20%;" src="images/resultado/Iconografia principal_Contratacoes.png"><b style="color: #003399; font-size: 23px;">&nbsp;747 de 760</b><p style="color: #003399;">funcionários públicos formados em SAN por tipologia (Saúde: 747)</p>
+                                <div class="bar" style="margin-top: -10px; line-height: 35px;"><div class="progressbar-text" style="color: #003399; position: relative; right: 0px; padding: 0px; text-align: right; line-height: 0px;"><b>98 %</b></div><svg viewBox="0 0 100 4" preserveAspectRatio="none" style="width: 100%; height: 100%;"><path d="M 0,2 L 100,2" stroke="#7CB9E8" stroke-width="1" fill-opacity="0"></path><path d="M 0,2 L 98,2" stroke="#7CB9E8" stroke-width="4" fill-opacity="0" style="stroke-dasharray: 100, 100; stroke-dashoffset: 0;"></path></svg></div>
                                   <div class=" row">
-                                    <div class="col-4" style="border-right-color: #7CB9E8; border-right-style: solid; border-width: 1px; text-align: center; color: darkblue; line-height: 20px; font-size: 15px;">Cunene<br><b>301</b></div>
-                                    <div class="col-4" style="border-right-color: #7CB9E8; border-right-style: solid; border-width: 1px; text-align: center; color: darkblue; line-height: 20px; font-size: 15px;">Huíla<br><b>212</b></div>
-                                    <div class="col-4" style="text-align: center; color: darkblue; line-height: 20px; font-size: 15px;">Namibe<br><b>234</b></div>
+                                    <div class="col-4" style="border-right-color: #7CB9E8; border-right-style: solid; border-width: 1px; text-align: center; color: #003399; line-height: 20px; font-size: 15px;">Cunene<br><b>301</b></div>
+                                    <div class="col-4" style="border-right-color: #7CB9E8; border-right-style: solid; border-width: 1px; text-align: center; color: #003399; line-height: 20px; font-size: 15px;">Huíla<br><b>212</b></div>
+                                    <div class="col-4" style="text-align: center; color: #003399; line-height: 20px; font-size: 15px;">Namibe<br><b>234</b></div>
                                   </div>
                             </div> 
                             <div class="col-xl-4 col-lg-6 col-md-7 evento"><br>
                                   <br>
-                                  <img style="width: 16.8%;" src="images/resultado/iconografia indicadores-32.png"><b style="color: lightsteelblue; font-size: 23px;">&nbsp;em análise</b><p style="color: darkblue;">agentes de extensão e funcionários públicos com formação em SAN e resiliência satisfeitos</p>
-                                    <div class="bar" style="margin-top: -10px; line-height: 35px;"><div class="progressbar-text" style="color: darkblue; position: relative; right: 0px; padding: 0px; text-align: right; line-height: 0px;"><b>0 %</b></div><svg viewBox="0 0 100 4" preserveAspectRatio="none" style="width: 100%; height: 100%;"><path d="M 0,2 L 100,2" stroke="#7CB9E8" stroke-width="1" fill-opacity="0"></path><path d="M 0,2 L 0,2" stroke="#7CB9E8" stroke-width="4" fill-opacity="0" style="stroke-dasharray: 100, 100; stroke-dashoffset: 0;"></path></svg></div>
+                                  <img style="width: 16.8%;" src="images/resultado/iconografia indicadores-32.png"><b style="color: lightsteelblue; font-size: 23px;">&nbsp;em análise</b><p style="color: #003399;">agentes de extensão e funcionários públicos satisfeitos com a formação recebida</p>
+                                    <div class="bar" style="margin-top: -10px; line-height: 35px;"><div class="progressbar-text" style="color: #003399; position: relative; right: 0px; padding: 0px; text-align: right; line-height: 0px;"><b>0 %</b></div><svg viewBox="0 0 100 4" preserveAspectRatio="none" style="width: 100%; height: 100%;"><path d="M 0,2 L 100,2" stroke="#7CB9E8" stroke-width="1" fill-opacity="0"></path><path d="M 0,2 L 0,2" stroke="#7CB9E8" stroke-width="4" fill-opacity="0" style="stroke-dasharray: 100, 100; stroke-dashoffset: 0;"></path></svg></div>
                                       <div class=" row">
                                         <div class="col-4" style="border-right-color: #7CB9E8; border-right-style: solid; border-width: 1px; text-align: center; color: lightsteelblue; line-height: 20px; font-size: 15px;"><b>Cunene<br>em análise</b></div>
                                         <div class="col-4" style="border-right-color: #7CB9E8; border-right-style: solid; border-width: 1px; text-align: center; color: lightsteelblue; line-height: 20px; font-size: 15px;"><b>Huíla<br>em análise</b></div>
@@ -327,96 +327,97 @@ $metaInfraestrutura = Meta::find()->where(['nomeMeta' => 'pequenas infra-estrutu
 
                               <div class="col-xl-4 col-lg-6 col-md-7 evento"><br>
                                 <br>
-                                <img style="width: 20%;" src="images/resultado/Iconografia alternativa_icones alternativos_estacao zootecnica.png"><b style="color: darkblue; font-size: 23px;">&nbsp;17 de 19</b><p style="color: darkblue;">institutos equipados com conhecimento para apoiar a resiliência e SAN</p>
-                                  <div class="bar" style="margin-top: -10px; line-height: 35px;"><div class="progressbar-text" style="color: darkblue; position: relative; right: 0px; padding: 0px; text-align: right; line-height: 0px;"><b>89 %</b></div><svg viewBox="0 0 100 4" preserveAspectRatio="none" style="width: 100%; height: 100%;"><path d="M 0,2 L 100,2" stroke="#7CB9E8" stroke-width="1" fill-opacity="0"></path><path d="M 0,2 L 89,2" stroke="#7CB9E8" stroke-width="4" fill-opacity="0" style="stroke-dasharray: 100, 100; stroke-dashoffset: 0;"></path></svg></div>
+                                <img style="width: 20%;" src="images/resultado/Iconografia alternativa_icones alternativos_estacao zootecnica.png"><b style="color: #003399; font-size: 23px;">&nbsp;24 de 19</b><p style="color: #003399;">institutos equipados com conhecimento para apoiar a resiliência e SAN</p>
+                                  <div class="bar" style="margin-top: -10px; line-height: 35px;"><div class="progressbar-text" style="color: #003399; position: relative; right: 0px; padding: 0px; text-align: right; line-height: 0px;"><b>100 %</b></div><svg viewBox="0 0 100 4" preserveAspectRatio="none" style="width: 100%; height: 100%;"><path d="M 0,2 L 100,2" stroke="#7CB9E8" stroke-width="1" fill-opacity="0"></path><path d="M 0,2 L 100,2" stroke="#7CB9E8" stroke-width="4" fill-opacity="0" style="stroke-dasharray: 100, 100; stroke-dashoffset: 0;"></path></svg></div>
                                     <div class=" row">
-                                      <div class="col-4" style="border-right-color: #7CB9E8; border-right-style: solid; border-width: 1px; text-align: center; color: darkblue; line-height: 20px; font-size: 15px;">Cunene<br><b>5</b></div>
-                                      <div class="col-4" style="border-right-color: #7CB9E8; border-right-style: solid; border-width: 1px; text-align: center; color: darkblue; line-height: 20px; font-size: 15px;">Huíla<br><b>5</b></div>
-                                      <div class="col-4" style="text-align: center; color: darkblue; line-height: 20px; font-size: 15px;">Namibe<br><b>7</b></div>
+                                      <div class="col-3" style="border-right-color: #7CB9E8; border-right-style: solid; border-width: 1px; text-align: center; color: #003399; line-height: 20px; font-size: 15px;">Cunene<br><b>7</b></div>
+                                      <div class="col-3" style="border-right-color: #7CB9E8; border-right-style: solid; border-width: 1px; text-align: center; color: #003399; line-height: 20px; font-size: 15px;">Huíla<br><b>7</b></div>
+                                      <div class="col-3" style="border-right-color: #7CB9E8; border-right-style: solid; border-width: 1px; text-align: center; color: #003399; line-height: 20px; font-size: 15px;">Namibe<br><b>9</b></div>
+                                      <div class="col-3" style="text-align: center; color: #003399; line-height: 20px; font-size: 15px;">Nacional<br><b>1 DNSA</b></div>
                                     </div>
                               </div>
           
                               <div class="col-xl-4 col-lg-6 col-md-7 evento"><br>
                                 <br>
-                                <img style="width: 15.4%;" src="images/resultado/iconografia indicadores-13.png"><b style="color: darkblue; font-size: 23px;">&nbsp;17 de 17</b><p style="color: darkblue;">municípios com perfis de vulnerabilidade definidos (critérios ENSAN / AVSAN)</p>
-                                  <div class="bar" style="margin-top: -10px; line-height: 35px;"><div class="progressbar-text" style="color: darkblue; position: relative; right: 0px; padding: 0px; text-align: right; line-height: 0px;"><b>100 %</b></div><svg viewBox="0 0 100 4" preserveAspectRatio="none" style="width: 100%; height: 100%;"><path d="M 0,2 L 100,2" stroke="#7CB9E8" stroke-width="1" fill-opacity="0"></path><path d="M 0,2 L 100,2" stroke="#7CB9E8" stroke-width="4" fill-opacity="0" style="stroke-dasharray: 100, 100; stroke-dashoffset: 0;"></path></svg></div>
+                                <img style="width: 15.4%;" src="images/resultado/iconografia indicadores-13.png"><b style="color: #003399; font-size: 23px;">&nbsp;17 de 17</b><p style="color: #003399;">municípios com perfis de vulnerabilidade definidos (critérios ENSAN / AVSAN)</p>
+                                  <div class="bar" style="margin-top: -10px; line-height: 35px;"><div class="progressbar-text" style="color: #003399; position: relative; right: 0px; padding: 0px; text-align: right; line-height: 0px;"><b>100 %</b></div><svg viewBox="0 0 100 4" preserveAspectRatio="none" style="width: 100%; height: 100%;"><path d="M 0,2 L 100,2" stroke="#7CB9E8" stroke-width="1" fill-opacity="0"></path><path d="M 0,2 L 100,2" stroke="#7CB9E8" stroke-width="4" fill-opacity="0" style="stroke-dasharray: 100, 100; stroke-dashoffset: 0;"></path></svg></div>
                                     <div class=" row">
-                                      <div class="col-4" style="border-right-color: #7CB9E8; border-right-style: solid; border-width: 1px; text-align: center; color: darkblue; line-height: 20px; font-size: 15px;">Cunene<br><b>6</b></div>
-                                      <div class="col-4" style="border-right-color: #7CB9E8; border-right-style: solid; border-width: 1px; text-align: center; color: darkblue; line-height: 20px; font-size: 15px;">Huíla<br><b>6</b></div>
-                                      <div class="col-4" style="text-align: center; color: darkblue; line-height: 20px; font-size: 15px;">Namibe<br><b>5</b></div>
+                                      <div class="col-4" style="border-right-color: #7CB9E8; border-right-style: solid; border-width: 1px; text-align: center; color: #003399; line-height: 20px; font-size: 15px;">Cunene<br><b>6</b></div>
+                                      <div class="col-4" style="border-right-color: #7CB9E8; border-right-style: solid; border-width: 1px; text-align: center; color: #003399; line-height: 20px; font-size: 15px;">Huíla<br><b>6</b></div>
+                                      <div class="col-4" style="text-align: center; color: #003399; line-height: 20px; font-size: 15px;">Namibe<br><b>5</b></div>
                                     </div>
                               </div>
           
                               <div class="col-xl-4 col-lg-6 col-md-7 evento"><br>
                                 <br>
-                                <img style="width: 29.2%;" src="images/resultado/icones soltos_39_escritorio.png"><b style="color: darkblue; font-size: 23px;">&nbsp;23 de 17</b><p style="color: darkblue;">Planos de Desenvolvimento Municipal sensíveis à SAN e resiliência elaborados</p>
-                                  <div class="bar" style="margin-top: -10px; line-height: 35px;"><div class="progressbar-text" style="color: darkblue; position: relative; right: 0px; padding: 0px; text-align: right; line-height: 0px;"><b>>100 %</b></div><svg viewBox="0 0 100 4" preserveAspectRatio="none" style="width: 100%; height: 100%;"><path d="M 0,2 L 100,2" stroke="#7CB9E8" stroke-width="1" fill-opacity="0"></path><path d="M 0,2 L 100,2" stroke="#7CB9E8" stroke-width="4" fill-opacity="0" style="stroke-dasharray: 100, 100; stroke-dashoffset: 0;"></path></svg></div>
+                                <img style="width: 29.2%;" src="images/resultado/icones soltos_39_escritorio.png"><b style="color: #003399; font-size: 23px;">&nbsp;23 de 17</b><p style="color: #003399;">Planos de Desenvolvimento Municipal sensíveis à SAN e resiliência elaborados</p>
+                                  <div class="bar" style="margin-top: -10px; line-height: 35px;"><div class="progressbar-text" style="color: #003399; position: relative; right: 0px; padding: 0px; text-align: right; line-height: 0px;"><b>>100 %</b></div><svg viewBox="0 0 100 4" preserveAspectRatio="none" style="width: 100%; height: 100%;"><path d="M 0,2 L 100,2" stroke="#7CB9E8" stroke-width="1" fill-opacity="0"></path><path d="M 0,2 L 100,2" stroke="#7CB9E8" stroke-width="4" fill-opacity="0" style="stroke-dasharray: 100, 100; stroke-dashoffset: 0;"></path></svg></div>
                                     <div class=" row">
-                                      <div class="col-4" style="border-right-color: #7CB9E8; border-right-style: solid; border-width: 1px; text-align: center; color: darkblue; line-height: 20px; font-size: 15px;">Cunene<br><b>6</b></div>
-                                      <div class="col-4" style="border-right-color: #7CB9E8; border-right-style: solid; border-width: 1px; text-align: center; color: darkblue; line-height: 20px; font-size: 15px;">Huíla<br><b>12</b></div>
-                                      <div class="col-4" style="text-align: center; color: darkblue; line-height: 20px; font-size: 15px;">Namibe<br><b>5</b></div>
+                                      <div class="col-4" style="border-right-color: #7CB9E8; border-right-style: solid; border-width: 1px; text-align: center; color: #003399; line-height: 20px; font-size: 15px;">Cunene<br><b>6</b></div>
+                                      <div class="col-4" style="border-right-color: #7CB9E8; border-right-style: solid; border-width: 1px; text-align: center; color: #003399; line-height: 20px; font-size: 15px;">Huíla<br><b>12</b></div>
+                                      <div class="col-4" style="text-align: center; color: #003399; line-height: 20px; font-size: 15px;">Namibe<br><b>5</b></div>
                                     </div>
                               </div>
 
                               <div class="col-xl-4 col-lg-6 col-md-7 evento"><br>
                                 <br>
-                                <img style="width: 21%;" src="images/resultado/sisan.png"><b style="color: darkblue; font-size: 23px;">&nbsp;0 de 1</b><p style="color: darkblue;">Sistema de Informação e Alerta Rápido para SAN (SISAN) criado pelo projecto e operacional</p>
-                                  <div class="bar" style="margin-top: -10px; line-height: 35px;"><div class="progressbar-text" style="color: darkblue; position: relative; right: 0px; padding: 0px; text-align: right; line-height: 0px;"><b>0 %</b></div><svg viewBox="0 0 100 4" preserveAspectRatio="none" style="width: 100%; height: 100%;"><path d="M 0,2 L 100,2" stroke="#7CB9E8" stroke-width="1" fill-opacity="0"></path><path d="M 0,2 L 0,2" stroke="#7CB9E8" stroke-width="4" fill-opacity="0" style="stroke-dasharray: 100, 100; stroke-dashoffset: 0;"></path></svg></div>
+                                <img style="width: 21%;" src="images/resultado/sisan.png"><b style="color: #003399; font-size: 23px;">&nbsp;0 de 1</b><p style="color: #003399;">Sistema de Informação e Alerta Rápido para SAN criado pelo projecto e operacional</p>
+                                  <div class="bar" style="margin-top: -10px; line-height: 35px;"><div class="progressbar-text" style="color: #003399; position: relative; right: 0px; padding: 0px; text-align: right; line-height: 0px;"><b>0 %</b></div><svg viewBox="0 0 100 4" preserveAspectRatio="none" style="width: 100%; height: 100%;"><path d="M 0,2 L 100,2" stroke="#7CB9E8" stroke-width="1" fill-opacity="0"></path><path d="M 0,2 L 0,2" stroke="#7CB9E8" stroke-width="4" fill-opacity="0" style="stroke-dasharray: 100, 100; stroke-dashoffset: 0;"></path></svg></div>
                                     <div class=" row">
-                                      <div class="col-4" style="border-right-color: #7CB9E8; border-right-style: solid; border-width: 1px; text-align: center; color: darkblue; line-height: 20px; font-size: 15px;">Cunene<br><b>0</b></div>
-                                      <div class="col-4" style="border-right-color: #7CB9E8; border-right-style: solid; border-width: 1px; text-align: center; color: darkblue; line-height: 20px; font-size: 15px;">Huíla<br><b>0</b></div>
-                                      <div class="col-4" style="text-align: center; color: darkblue; line-height: 20px; font-size: 15px;">Namibe<br><b>0</b></div>
+                                      <div class="col-4" style="border-right-color: #7CB9E8; border-right-style: solid; border-width: 1px; text-align: center; color: #003399; line-height: 20px; font-size: 15px;">Cunene<br><b>0</b></div>
+                                      <div class="col-4" style="border-right-color: #7CB9E8; border-right-style: solid; border-width: 1px; text-align: center; color: #003399; line-height: 20px; font-size: 15px;">Huíla<br><b>0</b></div>
+                                      <div class="col-4" style="text-align: center; color: #003399; line-height: 20px; font-size: 15px;">Namibe<br><b>0</b></div>
                                     </div>
                               </div>
             
                               <div class="col-xl-4 col-lg-6 col-md-7 evento"><br>
                                 <br>
-                                <img style="width: 20%;" src="images/resultado/iconografia indicadores-08.png"><b style="color: darkblue; font-size: 23px;">&nbsp;0 de 24</b><p style="color: darkblue;">produtos de divulgação sobre a situação da SAN nas três províncias FRESAN</p>
-                                  <div class="bar" style="margin-top: -10px; line-height: 35px;"><div class="progressbar-text" style="color: darkblue; position: relative; right: 0px; padding: 0px; text-align: right; line-height: 0px;"><b>0 %</b></div><svg viewBox="0 0 100 4" preserveAspectRatio="none" style="width: 100%; height: 100%;"><path d="M 0,2 L 100,2" stroke="#7CB9E8" stroke-width="1" fill-opacity="0"></path><path d="M 0,2 L 0,2" stroke="#7CB9E8" stroke-width="4" fill-opacity="0" style="stroke-dasharray: 100, 100; stroke-dashoffset: 0;"></path></svg></div>
+                                <img style="width: 20%;" src="images/resultado/iconografia indicadores-08.png"><b style="color: #003399; font-size: 23px;">&nbsp;0 de 24</b><p style="color: #003399;">produtos de divulgação sobre a situação da SAN nas três províncias FRESAN</p>
+                                  <div class="bar" style="margin-top: -10px; line-height: 35px;"><div class="progressbar-text" style="color: #003399; position: relative; right: 0px; padding: 0px; text-align: right; line-height: 0px;"><b>0 %</b></div><svg viewBox="0 0 100 4" preserveAspectRatio="none" style="width: 100%; height: 100%;"><path d="M 0,2 L 100,2" stroke="#7CB9E8" stroke-width="1" fill-opacity="0"></path><path d="M 0,2 L 0,2" stroke="#7CB9E8" stroke-width="4" fill-opacity="0" style="stroke-dasharray: 100, 100; stroke-dashoffset: 0;"></path></svg></div>
                                     <div class=" row">
-                                      <div class="col-4" style="border-right-color: #7CB9E8; border-right-style: solid; border-width: 1px; text-align: center; color: darkblue; line-height: 20px; font-size: 15px;">Cunene<br><b>0</b></div>
-                                      <div class="col-4" style="border-right-color: #7CB9E8; border-right-style: solid; border-width: 1px; text-align: center; color: darkblue; line-height: 20px; font-size: 15px;">Huíla<br><b>0</b></div>
-                                      <div class="col-4" style="text-align: center; color: darkblue; line-height: 20px; font-size: 15px;">Namibe<br><b>0</b></div>
+                                      <div class="col-4" style="border-right-color: #7CB9E8; border-right-style: solid; border-width: 1px; text-align: center; color: #003399; line-height: 20px; font-size: 15px;">Cunene<br><b>0</b></div>
+                                      <div class="col-4" style="border-right-color: #7CB9E8; border-right-style: solid; border-width: 1px; text-align: center; color: #003399; line-height: 20px; font-size: 15px;">Huíla<br><b>0</b></div>
+                                      <div class="col-4" style="text-align: center; color: #003399; line-height: 20px; font-size: 15px;">Namibe<br><b>0</b></div>
                                     </div>
                               </div>
             
                               <div class="col-xl-4 col-lg-6 col-md-7 evento"><br>
                                 <br>
-                                <img style="width: 14.4%;" src="images/resultado/alteracoes_climaticas.png"><b style="color: darkblue; font-size: 23px;">&nbsp;0 de 1</b><p style="color: darkblue;">repositório digital sobre alterações climáticas em funcionamento no MINAMB</p>
-                                  <div class="bar" style="margin-top: -10px; line-height: 35px;"><div class="progressbar-text" style="color: darkblue; position: relative; right: 0px; padding: 0px; text-align: right; line-height: 0px;"><b>0 %</b></div><svg viewBox="0 0 100 4" preserveAspectRatio="none" style="width: 100%; height: 100%;"><path d="M 0,2 L 100,2" stroke="#7CB9E8" stroke-width="1" fill-opacity="0"></path><path d="M 0,2 L 0,2" stroke="#7CB9E8" stroke-width="4" fill-opacity="0" style="stroke-dasharray: 100, 100; stroke-dashoffset: 0;"></path></svg></div>
+                                <img style="width: 14.4%;" src="images/resultado/alteracoes_climaticas.png"><b style="color: #003399; font-size: 23px;">&nbsp;0 de 1</b><p style="color: #003399;">repositório digital sobre alterações climáticas em funcionamento no MINAMB</p>
+                                  <div class="bar" style="margin-top: -10px; line-height: 35px;"><div class="progressbar-text" style="color: #003399; position: relative; right: 0px; padding: 0px; text-align: right; line-height: 0px;"><b>0 %</b></div><svg viewBox="0 0 100 4" preserveAspectRatio="none" style="width: 100%; height: 100%;"><path d="M 0,2 L 100,2" stroke="#7CB9E8" stroke-width="1" fill-opacity="0"></path><path d="M 0,2 L 0,2" stroke="#7CB9E8" stroke-width="4" fill-opacity="0" style="stroke-dasharray: 100, 100; stroke-dashoffset: 0;"></path></svg></div>
                                     <div class=" row">
-                                      <div class="col-4" style="border-right-color: #7CB9E8; border-right-style: solid; border-width: 1px; text-align: center; color: darkblue; line-height: 20px; font-size: 15px;">Cunene<br><b>0</b></div>
-                                      <div class="col-4" style="border-right-color: #7CB9E8; border-right-style: solid; border-width: 1px; text-align: center; color: darkblue; line-height: 20px; font-size: 15px;">Huíla<br><b>0</b></div>
-                                      <div class="col-4" style="text-align: center; color: darkblue; line-height: 20px; font-size: 15px;">Namibe<br><b>0</b></div>
+                                      <div class="col-4" style="border-right-color: #7CB9E8; border-right-style: solid; border-width: 1px; text-align: center; color: #003399; line-height: 20px; font-size: 15px;">Cunene<br><b>0</b></div>
+                                      <div class="col-4" style="border-right-color: #7CB9E8; border-right-style: solid; border-width: 1px; text-align: center; color: #003399; line-height: 20px; font-size: 15px;">Huíla<br><b>0</b></div>
+                                      <div class="col-4" style="text-align: center; color: #003399; line-height: 20px; font-size: 15px;">Namibe<br><b>0</b></div>
                                     </div>
                               </div>
 
                               <div class="col-xl-4 col-lg-6 col-md-7 evento"><br>
                                 <br>
-                                <img style="width: 20%;" src="images/resultado/Iconografia alternativa_icones alternativos_formacao.png"><b style="color: darkblue; font-size: 23px;">&nbsp;8 de 30</b><p style="color: darkblue;">acções de capacitação em resiliência e alterações climáticas realizadas</p>
-                                  <div class="bar" style="margin-top: -10px; line-height: 35px;"><div class="progressbar-text" style="color: darkblue; position: relative; right: 0px; padding: 0px; text-align: right; line-height: 0px;"><b>27 %</b></div><svg viewBox="0 0 100 4" preserveAspectRatio="none" style="width: 100%; height: 100%;"><path d="M 0,2 L 100,2" stroke="#7CB9E8" stroke-width="1" fill-opacity="0"></path><path d="M 0,2 L 27,2" stroke="#7CB9E8" stroke-width="4" fill-opacity="0" style="stroke-dasharray: 100, 100; stroke-dashoffset: 0;"></path></svg></div>
+                                <img style="width: 20%;" src="images/resultado/Iconografia alternativa_icones alternativos_formacao.png"><b style="color: #003399; font-size: 23px;">&nbsp;8 de 30</b><p style="color: #003399;">acções de capacitação em resiliência e alterações climáticas realizadas</p>
+                                  <div class="bar" style="margin-top: -10px; line-height: 35px;"><div class="progressbar-text" style="color: #003399; position: relative; right: 0px; padding: 0px; text-align: right; line-height: 0px;"><b>27 %</b></div><svg viewBox="0 0 100 4" preserveAspectRatio="none" style="width: 100%; height: 100%;"><path d="M 0,2 L 100,2" stroke="#7CB9E8" stroke-width="1" fill-opacity="0"></path><path d="M 0,2 L 27,2" stroke="#7CB9E8" stroke-width="4" fill-opacity="0" style="stroke-dasharray: 100, 100; stroke-dashoffset: 0;"></path></svg></div>
                                     <div class=" row">
-                                      <div class="col-4" style="border-right-color: #7CB9E8; border-right-style: solid; border-width: 1px; text-align: center; color: darkblue; line-height: 20px; font-size: 15px;">Cunene<br><b>1</b></div>
-                                      <div class="col-4" style="border-right-color: #7CB9E8; border-right-style: solid; border-width: 1px; text-align: center; color: darkblue; line-height: 20px; font-size: 15px;">Huíla<br><b>1</b></div>
-                                      <div class="col-4" style="text-align: center; color: darkblue; line-height: 20px; font-size: 15px;">Namibe<br><b>6</b></div>
+                                      <div class="col-4" style="border-right-color: #7CB9E8; border-right-style: solid; border-width: 1px; text-align: center; color: #003399; line-height: 20px; font-size: 15px;">Cunene<br><b>1</b></div>
+                                      <div class="col-4" style="border-right-color: #7CB9E8; border-right-style: solid; border-width: 1px; text-align: center; color: #003399; line-height: 20px; font-size: 15px;">Huíla<br><b>1</b></div>
+                                      <div class="col-4" style="text-align: center; color: #003399; line-height: 20px; font-size: 15px;">Namibe<br><b>6</b></div>
                                     </div>
                               </div>
               
                               <div class="col-xl-4 col-lg-6 col-md-7 evento"><br>
                                 <br>
-                                <img style="width: 20%;" src="images/resultado/Iconografia principal_Contratacoes.png"><b style="color: darkblue; font-size: 23px;">&nbsp;113 de 200</b><p style="color: darkblue;">agentes públicos formados em resiliência e alterações climáticas (H: 90; M: 23)</p>
-                                  <div class="bar" style="margin-top: -10px; line-height: 35px;"><div class="progressbar-text" style="color: darkblue; position: relative; right: 0px; padding: 0px; text-align: right; line-height: 0px;"><b>57 %</b></div><svg viewBox="0 0 100 4" preserveAspectRatio="none" style="width: 100%; height: 100%;"><path d="M 0,2 L 100,2" stroke="#7CB9E8" stroke-width="1" fill-opacity="0"></path><path d="M 0,2 L 57,2" stroke="#7CB9E8" stroke-width="4" fill-opacity="0" style="stroke-dasharray: 100, 100; stroke-dashoffset: 0;"></path></svg></div>
+                                <img style="width: 20%;" src="images/resultado/Iconografia principal_Contratacoes.png"><b style="color: #003399; font-size: 23px;">&nbsp;113 de 200</b><p style="color: #003399;">agentes públicos formados em resiliência e alterações climáticas (H: 90; M: 23)</p>
+                                  <div class="bar" style="margin-top: -10px; line-height: 35px;"><div class="progressbar-text" style="color: #003399; position: relative; right: 0px; padding: 0px; text-align: right; line-height: 0px;"><b>57 %</b></div><svg viewBox="0 0 100 4" preserveAspectRatio="none" style="width: 100%; height: 100%;"><path d="M 0,2 L 100,2" stroke="#7CB9E8" stroke-width="1" fill-opacity="0"></path><path d="M 0,2 L 57,2" stroke="#7CB9E8" stroke-width="4" fill-opacity="0" style="stroke-dasharray: 100, 100; stroke-dashoffset: 0;"></path></svg></div>
                                     <div class=" row">
-                                      <div class="col-4" style="border-right-color: #7CB9E8; border-right-style: solid; border-width: 1px; text-align: center; color: darkblue; line-height: 20px; font-size: 15px;">Cunene<br><b>23</b></div>
-                                      <div class="col-4" style="border-right-color: #7CB9E8; border-right-style: solid; border-width: 1px; text-align: center; color: darkblue; line-height: 20px; font-size: 15px;">Huíla<br><b>22</b></div>
-                                      <div class="col-4" style="text-align: center; color: darkblue; line-height: 20px; font-size: 15px;">Namibe<br><b>68</b></div>
+                                      <div class="col-4" style="border-right-color: #7CB9E8; border-right-style: solid; border-width: 1px; text-align: center; color: #003399; line-height: 20px; font-size: 15px;">Cunene<br><b>23</b></div>
+                                      <div class="col-4" style="border-right-color: #7CB9E8; border-right-style: solid; border-width: 1px; text-align: center; color: #003399; line-height: 20px; font-size: 15px;">Huíla<br><b>22</b></div>
+                                      <div class="col-4" style="text-align: center; color: #003399; line-height: 20px; font-size: 15px;">Namibe<br><b>68</b></div>
                                     </div>
                               </div>
               
                               <div class="col-xl-4 col-lg-6 col-md-7 evento"><br>
                                 <br>
-                                <img style="width: 16.8%;" src="images/resultado/iconografia indicadores-32.png"><b style="color: lightsteelblue; font-size: 23px;">&nbsp;em análise</b><p style="color: darkblue;">agentes públicos formados, que encontram-se satisfeitos com a formação recebida</p>
-                                  <div class="bar" style="margin-top: -10px; line-height: 35px;"><div class="progressbar-text" style="color: darkblue; position: relative; right: 0px; padding: 0px; text-align: right; line-height: 0px;"><b>0 %</b></div><svg viewBox="0 0 100 4" preserveAspectRatio="none" style="width: 100%; height: 100%;"><path d="M 0,2 L 100,2" stroke="#7CB9E8" stroke-width="1" fill-opacity="0"></path><path d="M 0,2 L 0,2" stroke="#7CB9E8" stroke-width="4" fill-opacity="0" style="stroke-dasharray: 100, 100; stroke-dashoffset: 0;"></path></svg></div>
+                                <img style="width: 16.8%;" src="images/resultado/iconografia indicadores-32.png"><b style="color: lightsteelblue; font-size: 23px;">&nbsp;em análise</b><p style="color: #003399;">agentes públicos satisfeitos com a formação em resiliência e alterações climáticas</p>
+                                  <div class="bar" style="margin-top: -10px; line-height: 35px;"><div class="progressbar-text" style="color: #003399; position: relative; right: 0px; padding: 0px; text-align: right; line-height: 0px;"><b>0 %</b></div><svg viewBox="0 0 100 4" preserveAspectRatio="none" style="width: 100%; height: 100%;"><path d="M 0,2 L 100,2" stroke="#7CB9E8" stroke-width="1" fill-opacity="0"></path><path d="M 0,2 L 0,2" stroke="#7CB9E8" stroke-width="4" fill-opacity="0" style="stroke-dasharray: 100, 100; stroke-dashoffset: 0;"></path></svg></div>
                                     <div class=" row">
                                       <div class="col-4" style="border-right-color: #7CB9E8; border-right-style: solid; border-width: 1px; text-align: center; color: lightsteelblue; line-height: 20px; font-size: 15px;"><b>Cunene<br>em análise</b></div>
                                       <div class="col-4" style="border-right-color: #7CB9E8; border-right-style: solid; border-width: 1px; text-align: center; color: lightsteelblue; line-height: 20px; font-size: 15px;"><b>Huíla<br>em análise</b></div>
@@ -426,41 +427,41 @@ $metaInfraestrutura = Meta::find()->where(['nomeMeta' => 'pequenas infra-estrutu
 
                               <div class="col-xl-4 col-lg-6 col-md-7 evento"><br>
                                 <br>
-                                <img style="width: 20%;" src="images/resultado/Iconografia principal_Modulo 3.png"><b style="color: darkblue; font-size: 23px;">&nbsp;3 de 3</b><p style="color: darkblue;">gabinetes do MINAMB equipados para apoiar a resiliência e as alterações climáticas</p>
-                                  <div class="bar" style="margin-top: -10px; line-height: 35px;"><div class="progressbar-text" style="color: darkblue; position: relative; right: 0px; padding: 0px; text-align: right; line-height: 0px;"><b>0 %</b></div><svg viewBox="0 0 100 4" preserveAspectRatio="none" style="width: 100%; height: 100%;"><path d="M 0,2 L 100,2" stroke="#7CB9E8" stroke-width="1" fill-opacity="0"></path><path d="M 0,2 L 0,2" stroke="#7CB9E8" stroke-width="4" fill-opacity="0" style="stroke-dasharray: 100, 100; stroke-dashoffset: 0;"></path></svg></div>
+                                <img style="width: 20%;" src="images/resultado/Iconografia principal_Modulo 3.png"><b style="color: #003399; font-size: 23px;">&nbsp;3 de 3</b><p style="color: #003399;">gabinetes do MINAMB equipados para apoiar a resiliência e as alterações climáticas</p>
+                                  <div class="bar" style="margin-top: -10px; line-height: 35px;"><div class="progressbar-text" style="color: #003399; position: relative; right: 0px; padding: 0px; text-align: right; line-height: 0px;"><b>100 %</b></div><svg viewBox="0 0 100 4" preserveAspectRatio="none" style="width: 100%; height: 100%;"><path d="M 0,2 L 100,2" stroke="#7CB9E8" stroke-width="1" fill-opacity="0"></path><path d="M 0,2 L 100,2" stroke="#7CB9E8" stroke-width="4" fill-opacity="0" style="stroke-dasharray: 100, 100; stroke-dashoffset: 0;"></path></svg></div>
                                     <div class=" row">
-                                      <div class="col-4" style="border-right-color: #7CB9E8; border-right-style: solid; border-width: 1px; text-align: center; color: darkblue; line-height: 20px; font-size: 15px;">Cunene<br><b>1</b></div>
-                                      <div class="col-4" style="border-right-color: #7CB9E8; border-right-style: solid; border-width: 1px; text-align: center; color: darkblue; line-height: 20px; font-size: 15px;">Huíla<br><b>1</b></div>
-                                      <div class="col-4" style="text-align: center; color: darkblue; line-height: 20px; font-size: 15px;">Namibe<br><b>1</b></div>
+                                      <div class="col-4" style="border-right-color: #7CB9E8; border-right-style: solid; border-width: 1px; text-align: center; color: #003399; line-height: 20px; font-size: 15px;">Cunene<br><b>1</b></div>
+                                      <div class="col-4" style="border-right-color: #7CB9E8; border-right-style: solid; border-width: 1px; text-align: center; color: #003399; line-height: 20px; font-size: 15px;">Huíla<br><b>1</b></div>
+                                      <div class="col-4" style="text-align: center; color: #003399; line-height: 20px; font-size: 15px;">Namibe<br><b>1</b></div>
                                     </div>
                               </div>
                 
                               <div class="col-xl-4 col-lg-6 col-md-7 evento"><br>
                                 <br>
-                                <img style="width: 29%;" src="images/resultado/icones soltos_24_agricultura_seca.png"><b style="color: darkblue; font-size: 23px;">&nbsp;35 de 51</b><p style="color: darkblue;">eventos e campanhas de sensibilização realizadas para as alterações climáticas</p>
-                                  <div class="bar" style="margin-top: -10px; line-height: 35px;"><div class="progressbar-text" style="color: darkblue; position: relative; right: 0px; padding: 0px; text-align: right; line-height: 0px;"><b>69 %</b></div><svg viewBox="0 0 100 4" preserveAspectRatio="none" style="width: 100%; height: 100%;"><path d="M 0,2 L 100,2" stroke="#7CB9E8" stroke-width="1" fill-opacity="0"></path><path d="M 0,2 L 69,2" stroke="#7CB9E8" stroke-width="4" fill-opacity="0" style="stroke-dasharray: 100, 100; stroke-dashoffset: 0;"></path></svg></div>
+                                <img style="width: 29%;" src="images/resultado/icones soltos_24_agricultura_seca.png"><b style="color: #003399; font-size: 23px;">&nbsp;35 de 51</b><p style="color: #003399;">eventos e campanhas de sensibilização realizadas para as alterações climáticas</p>
+                                  <div class="bar" style="margin-top: -10px; line-height: 35px;"><div class="progressbar-text" style="color: #003399; position: relative; right: 0px; padding: 0px; text-align: right; line-height: 0px;"><b>69 %</b></div><svg viewBox="0 0 100 4" preserveAspectRatio="none" style="width: 100%; height: 100%;"><path d="M 0,2 L 100,2" stroke="#7CB9E8" stroke-width="1" fill-opacity="0"></path><path d="M 0,2 L 69,2" stroke="#7CB9E8" stroke-width="4" fill-opacity="0" style="stroke-dasharray: 100, 100; stroke-dashoffset: 0;"></path></svg></div>
                                     <div class=" row">
-                                      <div class="col-4" style="border-right-color: #7CB9E8; border-right-style: solid; border-width: 1px; text-align: center; color: darkblue; line-height: 20px; font-size: 15px;">Cunene<br><b>0</b></div>
-                                      <div class="col-4" style="border-right-color: #7CB9E8; border-right-style: solid; border-width: 1px; text-align: center; color: darkblue; line-height: 20px; font-size: 15px;">Huíla<br><b>35</b></div>
-                                      <div class="col-4" style="text-align: center; color: darkblue; line-height: 20px; font-size: 15px;">Namibe<br><b>0</b></div>
+                                      <div class="col-4" style="border-right-color: #7CB9E8; border-right-style: solid; border-width: 1px; text-align: center; color: #003399; line-height: 20px; font-size: 15px;">Cunene<br><b>0</b></div>
+                                      <div class="col-4" style="border-right-color: #7CB9E8; border-right-style: solid; border-width: 1px; text-align: center; color: #003399; line-height: 20px; font-size: 15px;">Huíla<br><b>35</b></div>
+                                      <div class="col-4" style="text-align: center; color: #003399; line-height: 20px; font-size: 15px;">Namibe<br><b>0</b></div>
                                     </div>
                               </div>
                 
                               <div class="col-xl-4 col-lg-6 col-md-7 evento"><br>
                                 <br>
-                                <img style="width: 20%;" src="images/resultado/Iconografia principal_Contratacoes.png"><b style="color: darkblue; font-size: 23px;">&nbsp;115 de 115</b><p style="color: darkblue;">agentes formados em emergência pré-hospitalar (H: 83; M: 32)</p>
-                                  <div class="bar" style="margin-top: -10px; line-height: 35px;"><div class="progressbar-text" style="color: darkblue; position: relative; right: 0px; padding: 0px; text-align: right; line-height: 0px;"><b>100 %</b></div><svg viewBox="0 0 100 4" preserveAspectRatio="none" style="width: 100%; height: 100%;"><path d="M 0,2 L 100,2" stroke="#7CB9E8" stroke-width="1" fill-opacity="0"></path><path d="M 0,2 L 100,2" stroke="#7CB9E8" stroke-width="4" fill-opacity="0" style="stroke-dasharray: 100, 100; stroke-dashoffset: 0;"></path></svg></div>
+                                <img style="width: 20%;" src="images/resultado/Iconografia principal_Contratacoes.png"><b style="color: #003399; font-size: 23px;">&nbsp;115 de 115</b><p style="color: #003399;">funcionários públicos e do SPCB formados em emergência pré-hospitalar (H: 83; M: 32)</p>
+                                  <div class="bar" style="margin-top: -10px; line-height: 35px;"><div class="progressbar-text" style="color: #003399; position: relative; right: 0px; padding: 0px; text-align: right; line-height: 0px;"><b>100 %</b></div><svg viewBox="0 0 100 4" preserveAspectRatio="none" style="width: 100%; height: 100%;"><path d="M 0,2 L 100,2" stroke="#7CB9E8" stroke-width="1" fill-opacity="0"></path><path d="M 0,2 L 100,2" stroke="#7CB9E8" stroke-width="4" fill-opacity="0" style="stroke-dasharray: 100, 100; stroke-dashoffset: 0;"></path></svg></div>
                                     <div class=" row">
-                                      <div class="col-4" style="border-right-color: #7CB9E8; border-right-style: solid; border-width: 1px; text-align: center; color: darkblue; line-height: 20px; font-size: 15px;">Cunene<br><b>33</b></div>
-                                      <div class="col-4" style="border-right-color: #7CB9E8; border-right-style: solid; border-width: 1px; text-align: center; color: darkblue; line-height: 20px; font-size: 15px;">Huíla<br><b>41</b></div>
-                                      <div class="col-4" style="text-align: center; color: darkblue; line-height: 20px; font-size: 15px;">Namibe<br><b>41</b></div>
+                                      <div class="col-4" style="border-right-color: #7CB9E8; border-right-style: solid; border-width: 1px; text-align: center; color: #003399; line-height: 20px; font-size: 15px;">Cunene<br><b>33</b></div>
+                                      <div class="col-4" style="border-right-color: #7CB9E8; border-right-style: solid; border-width: 1px; text-align: center; color: #003399; line-height: 20px; font-size: 15px;">Huíla<br><b>41</b></div>
+                                      <div class="col-4" style="text-align: center; color: #003399; line-height: 20px; font-size: 15px;">Namibe<br><b>41</b></div>
                                     </div>
                               </div>
 
                               <div class="col-xl-4 col-lg-6 col-md-7 evento"><br>
                                 <br>
-                                <img style="width: 16.8%;" src="images/resultado/iconografia indicadores-32.png"><b style="color: lightsteelblue; font-size: 23px;">&nbsp;em análise</b><p style="color: darkblue;">agentes da proteção civil e funcionários públicos satisfeitos com a formação recebida</p>
-                                  <div class="bar" style="margin-top: -10px; line-height: 35px;"><div class="progressbar-text" style="color: darkblue; position: relative; right: 0px; padding: 0px; text-align: right; line-height: 0px;"><b>0 %</b></div><svg viewBox="0 0 100 4" preserveAspectRatio="none" style="width: 100%; height: 100%;"><path d="M 0,2 L 100,2" stroke="#7CB9E8" stroke-width="1" fill-opacity="0"></path><path d="M 0,2 L 0,2" stroke="#7CB9E8" stroke-width="4" fill-opacity="0" style="stroke-dasharray: 100, 100; stroke-dashoffset: 0;"></path></svg></div>
+                                <img style="width: 16.8%;" src="images/resultado/iconografia indicadores-32.png"><b style="color: lightsteelblue; font-size: 23px;">&nbsp;em análise</b><p style="color: #003399;">funcionários públicos e do SPCB satisfeitos com a formação recebida</p>
+                                  <div class="bar" style="margin-top: -10px; line-height: 35px;"><div class="progressbar-text" style="color: #003399; position: relative; right: 0px; padding: 0px; text-align: right; line-height: 0px;"><b>0 %</b></div><svg viewBox="0 0 100 4" preserveAspectRatio="none" style="width: 100%; height: 100%;"><path d="M 0,2 L 100,2" stroke="#7CB9E8" stroke-width="1" fill-opacity="0"></path><path d="M 0,2 L 0,2" stroke="#7CB9E8" stroke-width="4" fill-opacity="0" style="stroke-dasharray: 100, 100; stroke-dashoffset: 0;"></path></svg></div>
                                     <div class=" row">
                                       <div class="col-4" style="border-right-color: #7CB9E8; border-right-style: solid; border-width: 1px; text-align: center; color: lightsteelblue; line-height: 20px; font-size: 15px;"><b>Cunene<br>em análise</b></div>
                                       <div class="col-4" style="border-right-color: #7CB9E8; border-right-style: solid; border-width: 1px; text-align: center; color: lightsteelblue; line-height: 20px; font-size: 15px;"><b>Huíla<br>em análise</b></div>
@@ -472,16 +473,14 @@ $metaInfraestrutura = Meta::find()->where(['nomeMeta' => 'pequenas infra-estrutu
                                     <p style="text-align: right; line-height: 20px; font-size: 13px;"><br><br><br><br><br><br><br><br><b></b></p>
                                     </div>
                               </div>
-                              
                               <div class="col-xl-4 col-lg-6 col-md-7 evento">
                                     <div class=" row">
-                                    <p style="text-align: right; line-height: 20px; font-size: 13px;"><br><br><br><br><br><br><br><br><b>Dados referentes ao período: 2018 a Dezembro de 2023<br>Publicação de dados: Fevereiro de 2024<br>Última actualização: Fevereiro de 2024</b><br><b style="font-size: 11px; color: gray">[Fonte: SGI FRESAN | Camões, I.P.]</b></p>
+                                    <p style="text-align: right; line-height: 20px; font-size: 11px"><br><br><br><br><br><br><br><br><br><b>Dados referentes ao período: 2018 a Março de 2024<br>Publicação de dados: Maio de 2024<br>Última actualização: Maio de 2024</b><br><b style="font-size: 11px; color: gray">[Fonte: SGI FRESAN | Camões, I.P.]</b></p>
                                     </div>
                               </div>
-        
-        </div>
+            </div>
     <!-- Reforço Institucional --> 
-    </section> 
+</section>
     <h3 class="section-sub-title" style="text-align: center !important;"><br><b>INFORMAÇÕES SUPLEMENTARES</b></h3>
 
     <p style="text-align: center; color: #DED000; text-shadow: 0px 0px 0px rgba(4, 4, 0, 0.5); "><b>[Em breve poderá encontrar aqui mais detalhes]</b></p>

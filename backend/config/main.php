@@ -9,7 +9,7 @@ $params = array_merge(
 
 return [
     'id' => 'app-backend',
-    'language' => 'pt_br', //definimos a lingua da nossa App
+    'language' => 'pt_pt', //definimos a lingua da nossa App
     'sourceLanguage' => 'en', //definimos a fonte 
     'name' => 'SGI FRESAN Camões, I.P.',
     'basePath' => dirname(__DIR__),

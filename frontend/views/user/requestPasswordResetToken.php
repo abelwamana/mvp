@@ -7,25 +7,28 @@
 use yii\bootstrap5\Html;
 use yii\bootstrap5\ActiveForm;
 
-$this->title = 'Request password reset';
+$this->title = 'Recuperar/Redefinir Palavra-Passe';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="site-request-password-reset">
-    <h1><?= Html::encode($this->title) ?></h1>
+<br><br><br>
+<div class="container">
+    <h3  class=" text-center"><?= Html::encode($this->title) ?></h3>
 
-    <p>Por favor preencha seu e-mail. Um link para redefinir a senha será enviado para você.</p>
+    <p class=" text-center">Será enviado para o email associado à sua conta o link para redefinir a palavra-passe.</p>
 
-    <div class="row">
+    <div class="row justify-content-center">
         <div class="col-lg-5">
             <?php $form = ActiveForm::begin(['id' => 'request-password-reset-form']); ?>
 
-                <?= $form->field($model, 'email')->textInput(['autofocus' => true]) ?>
+                <?= $form->field($model, 'email')->label('')->textInput(['placeholder' => 'Escreva aqui o seu email'],['autofocus' => true]) ?>
 
                 <div class="form-group">
-                    <?= Html::submitButton('Send', ['class' => 'btn btn-primary']) ?>
+                    <?= Html::submitButton('Enviar', ['class' => 'btn btn-primary']) ?>
                 </div>
-
+            <br><br><br>
             <?php ActiveForm::end(); ?>
         </div>
     </div>
 </div>
+<br>
+<br>

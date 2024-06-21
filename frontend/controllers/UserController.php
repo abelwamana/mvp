@@ -1,6 +1,6 @@
 <?php
 
-namespace backend\controllers;
+namespace frontend\controllers;
 
 use Yii;
 use backend\models\User;
@@ -156,12 +156,12 @@ class UserController extends Controller {
         $model = new PasswordResetRequestForm();
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             if ($model->sendEmail()) {
-                Yii::$app->session->setFlash('success', 'Check your email for further instructions.');
+                Yii::$app->session->setFlash('success', 'Verifique o seu e-mail para mais instruções.');
 
                 return $this->goHome();
             }
 
-            Yii::$app->session->setFlash('error', 'Sorry, we are unable to reset password for the provided email address.');
+            Yii::$app->session->setFlash('error', 'Desculpe, não foi possível redefinir a palavra-passe do endereço de e-mail fornecido.');
         }
 
         return $this->render('requestPasswordResetToken', [
@@ -178,19 +178,19 @@ class UserController extends Controller {
      */
     public function actionResetPassword($token) {
         if (!ResetPasswordForm::isTokenValid($token)) {
-            Yii::$app->session->setFlash('error', 'O token de redefinição de senha é inválido ou já foi usado.');
+            Yii::$app->session->setFlash('error', 'O link de redefinição de palavra-passe é inválido ou já foi usado.');
             return $this->goHome();
         }
 
         try {
             $model = new ResetPasswordForm($token);
         } catch (InvalidArgumentException $e) {
-            Yii::$app->session->setFlash('error', 'O token de redefinição de senha é inválido ou já foi usado.');
+            Yii::$app->session->setFlash('error', 'O link de redefinição de palavra-passe é inválido ou já foi usado.');
             return $this->goHome();
         }
 
         if ($model->load(Yii::$app->request->post()) && $model->validate() && $model->resetPassword()) {
-            Yii::$app->session->setFlash('success', 'Nova senha salva.');
+            Yii::$app->session->setFlash('success', 'Palavra-passe redefinida.');
             return $this->goHome();
         }
 

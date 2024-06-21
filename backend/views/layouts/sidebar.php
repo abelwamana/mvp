@@ -36,26 +36,46 @@
     <div class="sidebar">
         <!-- Sidebar user panel (optional) -->
         <p class="nav-link" style="color: #888C00 !important; margin-top: 10px; font-size: 15px"> Plataforma Digital Colaborativa</p>
-       <!-- Sidebar Menu -->
+        <!-- Sidebar Menu -->
         <nav class="mt-2 teste">
             <?php
             // Verifique as permissões do usuário
             $isAdmin = Yii::$app->user->isGuest ? false : Yii::$app->user->can("Permissão de Administrador");
             $resultadosAtivo = (Yii::$app->controller->id === 'site' && ((Yii::$app->controller->action->id === 'index') || (Yii::$app->controller->action->id === 'resultadosagricultura') || (Yii::$app->controller->action->id === 'resultadosnutricao') || (Yii::$app->controller->action->id === 'resultadosagua') || (Yii::$app->controller->action->id === 'resultadosreforcoinstitucional')));
             $coberturaAtivo = (Yii::$app->controller->id === 'site' && ((Yii::$app->controller->action->id === 'fresan') || (Yii::$app->controller->action->id === 'fresancunene') || (Yii::$app->controller->action->id === 'fresanhuila') || (Yii::$app->controller->action->id === 'fresannamibe')));
-            $calendarioAtivo = (Yii::$app->controller->id === 'site' && Yii::$app->controller->action->id === 'calendario2');
-
+            $calendarioAtivo = (Yii::$app->controller->id === 'site' && Yii::$app->controller->action->id === 'calendario');
             // Inicie uma lista de itens de menu
-
-
-
             $menuItems[] = ['label' => 'Resultados', 'url' => ['/site/index']];
             if ($resultadosAtivo) {
 
-                $menuItems[] = ['label' => 'Agricultura', 'url' => ['/site/resultadosagricultura'], 'iconStyle' => 'far', 'options' => ['class' => 'submenu-item']];
-                $menuItems[] = ['label' => 'Nutrição', 'url' => ['/site/resultadosnutricao'], 'iconStyle' => 'far', 'options' => ['class' => 'submenu-item']];
-                $menuItems[] = ['label' => 'Água', 'url' => ['/site/resultadosagua'], 'iconStyle' => 'far', 'options' => ['class' => 'submenu-item']];
-                $menuItems[] = ['label' => 'Reforço Institucional', 'url' => ['site/resultadosreforcoinstitucional'], 'iconStyle' => 'far', 'options' => ['class' => 'submenu-item']];
+                $menuItems[] = [
+                    'label' => '<span class="event-color" style="background-color: #999900; display: inline-block; width: 10px; height: 10px; margin-right: 5px;"></span> Agricultura e Pecuária',
+                    'url' => ['/site/resultadosagricultura'],
+                    'icon' => 'none',
+                    'encode' => false,
+                    'options' => ['class' => 'submenu-item'],
+                ];
+                $menuItems[] = [
+                    'label' => '<span class="event-color" style="background-color: #cccc33; display: inline-block; width: 10px; height: 10px; margin-right: 5px;"></span> Nutrição',
+                    'url' => ['/site/resultadosnutricao'],
+                    'icon' => 'none',
+                    'encode' => false,
+                    'options' => ['class' => 'submenu-item'],
+                ];
+                $menuItems[] = [
+                    'label' => '<span class="event-color" style="background-color: #00c3ff; display: inline-block; width: 10px; height: 10px; margin-right: 5px;"></span> Água',
+                    'url' => ['/site/resultadosagua'],
+                    'icon' => 'none',
+                    'encode' => false,
+                    'options' => ['class' => 'submenu-item'],
+                ];
+                $menuItems[] = [
+                    'label' => '<span class="event-color" style="background-color: #003399; display: inline-block; width: 10px; height: 10px; margin-right: 5px;"></span> Reforço Institucional',
+                    'url' => ['/site/resultadosreforcoinstitucional'],
+                    'icon' => 'none',
+                    'encode' => false,
+                    'options' => ['class' => 'submenu-item'],
+                ];
             }
 
             // ['label' => 'Resultados Secundários', 'url' => ['/Monitoria/index2']],
@@ -70,53 +90,59 @@
             $menuItems[] = ['label' => 'Beneficiários', 'url' => ['/site/beneficiario']];
             $menuItems[] = ['label' => 'Galeria', 'url' => ['site/galeria']];
             $menuItems[] = ['template' => '<hr>'];
-            $menuItems[] = ['label' => 'Calendário', 'url' => ['/site/calendario2']];
+            $menuItems[] = ['label' => 'Calendário', 'url' => ['/site/calendario']];
             // Adicione itens relacionados ao calendário se o calendário estiver ativo
             if ($calendarioAtivo) {
                 $menuItems[] = [
                     'label' => '<span class="event-color" style="background-color: #999900;"></span> Agricultura e Pecuária', 'icon' => 'none',
-                    'url' => ['site/calendario2', 'area' => 'Agricultura e Pecuária'],
+                    'url' => ['site/calendario', 'area' => 'Agricultura e Pecuária'],
                     'encode' => false,
                     'options' => ['class' => 'pb-(-5)', 'class' => 'submenu-item'], // Adiciona classe de bootstrap para espaço inferior (pb = padding-bottom)
                 ];
                 $menuItems[] = [
                     'label' => '<span class="event-color" style="background-color: #cccc33;"></span> Nutrição', 'icon' => 'none',
-                    'url' => ['site/calendario2', 'area' => 'Nutrição'],
+                    'url' => ['site/calendario', 'area' => 'Nutrição'],
                     'encode' => false,
                     'options' => ['class' => 'pb-(-5)', 'class' => 'submenu-item'], // Adiciona classe de bootstrap para espaço inferior (pb = padding-bottom)
                 ];
                 $menuItems[] = [
                     'label' => '<span class="event-color" style="background-color: #00c3ff;"></span> Água', 'icon' => 'none',
-                    'url' => ['site/calendario2', 'area' => 'Água'],
+                    'url' => ['site/calendario', 'area' => 'Água'],
                     'encode' => false,
                     'options' => ['class' => 'pb-(-5)', 'class' => 'submenu-item'], // Adiciona classe de bootstrap para espaço inferior (pb = padding-bottom)
                 ];
                 $menuItems[] = [
                     'label' => '<span class="event-color" style="background-color: #003399;"></span> Reforço Institucional', 'icon' => 'none',
-                    'url' => ['site/calendario2', 'area' => 'Reforço Institucional'],
+                    'url' => ['site/calendario', 'area' => 'Reforço Institucional'],
                     'encode' => false,
                     'options' => ['class' => 'pb-(-5)', 'class' => 'submenu-item'], // Adiciona classe de bootstrap para espaço inferior (pb = padding-bottom)
                 ];
                 $menuItems[] = [
                     'label' => '<span class="event-color" style="background-color: #71b13c;"></span> Coordenação', 'icon' => 'none',
-                    'url' => ['site/calendario2', 'area' => 'Coordenação'],
+                    'url' => ['site/calendario', 'area' => 'Coordenação'],
                     'encode' => false,
                     'options' => ['class' => 'pb-(-5)', 'class' => 'submenu-item'], // Adiciona classe de bootstrap para espaço inferior (pb = padding-bottom)
                 ];
                 $menuItems[] = [
                     'label' => '<span class="event-color" style="background-color: #663399;"></span> Subvenções/M&A', 'icon' => 'none',
-                    'url' => ['site/calendario2', 'area' => 'M&A'],
+                    'url' => ['site/calendario', 'area' => 'M&A'],
                     'encode' => false,
                     'options' => ['class' => 'pb-(-5)', 'class' => 'submenu-item'], // Adiciona classe de bootstrap para espaço inferior (pb = padding-bottom)
                 ];
                 $menuItems[] = [
+                    'label' => '<span class="event-color" style="background-color: #BB0E22;"></span> Governação', 'icon' => 'none',
+                    'url' => ['site/calendario', 'area' => 'Governação'],
+                    'encode' => false,
+                    'options' => ['class' => 'pb-20', 'class' => 'submenu-item'], // Adiciona classe de bootstrap para espaço inferior (pb = padding-bottom)
+                ];
+                $menuItems[] = [
                     'label' => '<span class="event-color" style="background-color: black;"></span> Outras', 'icon' => 'none',
-                    'url' => ['site/calendario2', 'area' => 'Outra'],
+                    'url' => ['site/calendario', 'area' => 'Outra'],
                     'encode' => false,
                     'options' => ['class' => 'pb-20', 'class' => 'submenu-item'], // Adiciona classe de bootstrap para espaço inferior (pb = padding-bottom)
                 ];
             }
-            $menuItems[] = ['label' => 'Lista de Eventos', 'url' => ['event/index']];
+            $menuItems[] = ['label' => 'Lista de Eventos', 'url' => ['event/listaeventos']];
             $menuItems[] = ['label' => 'Contactos', 'url' => ['/contacto']];
             $menuItems[] = ['template' => '<hr>'];
 
@@ -152,37 +178,36 @@
 
             if ($isAdmin) {
                 $menuItems [] = [
-                            'label' => 'Reportar Dados',
+                    'label' => 'Reportar Dados',
+                    'items' => [
+                        ['label' => 'Login', 'url' => ['/site/login'], 'visible' => Yii::$app->user->isGuest],
+                        ['label' => 'COMPONENTE I', 'header' => true],
+                        ['label' => 'Agricultura e Pecuária', 'url' => ['/grupo/index']],
+                        ['label' => 'COMPONENTE II', 'header' => true],
+                        [
+                            'label' => 'Nutrição',
                             'items' => [
-                                ['label' => 'Login', 'url' => ['/site/login'], 'visible' => Yii::$app->user->isGuest],
-                                ['label' => 'COMPONENTE I', 'header' => true],
-                                ['label' => 'Agricultura e Pecuária', 'url' => ['/grupo/index']],
-                                ['label' => 'COMPONENTE II', 'header' => true],
-                                [
-                                    'label' => 'Nutrição',
-                                    'items' => [
-                                        ['label' => 'Demostrações Culinárias', 'url' => ['/demostracoesculinarias/index']],
-                                        ['label' => 'Rastreio', 'url' => ['/rastreio/index']],
-                                        ['label' => 'Capacitações Técnicos de Saúde', 'url' => ['/profissionaissaude/index']],
-                                        ['label' => 'Pacote Pedagógico FRESAN', 'url' => ['/pacotepedagfresan/index']],
-                                        ['label' => 'Suplementação', 'url' => ['/suplementacao/index']],
-                                        ['label' => 'Merenda Escolar', 'url' => ['/merendaescolar/index']],
-                                        ['label' => 'Capacitação', 'url' => ['/capacitacao/index']],
-                                        ['label' => 'Materiais', 'url' => ['/materiais/index']],
-                                        ['label' => 'Supervisão', 'url' => ['/supervisao/index']],
-                                    ],
-                                ],
-                                ['label' => 'Água', 'url' => ['/agua/index']],
-                                ['label' => 'COMPONENTE III', 'header' => true],
-                                ['label' => 'Reforço Institucional', 'url' => ['/reforcoinstitucional/index']],
-                                ['label' => 'SUPLEMENTOS', 'header' => true],
-                                ['label' => 'Comunicação', 'url' => ['/doccomunicacao/index']],
-                                ['label' => 'Eventos', 'url' => ['/eventos/index']],
+                                ['label' => 'Demostrações Culinárias', 'url' => ['/demostracoesculinarias/index']],
+                                ['label' => 'Rastreio', 'url' => ['/rastreio/index']],
+                                ['label' => 'Capacitações Técnicos de Saúde', 'url' => ['/profissionaissaude/index']],
+                                ['label' => 'Pacote Pedagógico FRESAN', 'url' => ['/pacotepedagfresan/index']],
+                                ['label' => 'Suplementação', 'url' => ['/suplementacao/index']],
+                                ['label' => 'Merenda Escolar', 'url' => ['/merendaescolar/index']],
+                                ['label' => 'Capacitação', 'url' => ['/capacitacao/index']],
+                                ['label' => 'Materiais', 'url' => ['/materiais/index']],
+                                ['label' => 'Supervisão', 'url' => ['/supervisao/index']],
                             ],
+                        ],
+                        ['label' => 'Água', 'url' => ['/agua/index']],
+                        ['label' => 'COMPONENTE III', 'header' => true],
+                        ['label' => 'Reforço Institucional', 'url' => ['/reforcoinstitucional/index']],
+                        ['label' => 'SUPLEMENTOS', 'header' => true],
+                        ['label' => 'Comunicação', 'url' => ['/doccomunicacao/index']],
+                        ['label' => 'Eventos', 'url' => ['/eventos/index']],
+                    ],
                 ];
-            }
-            else {
-                
+            } else {
+
                 $menuItems[] = ['label' => 'Reportar Dados', 'url' => ['site/emconstrucao']];
             }
             $menuItems[] = ['template' => '<hr>'];

@@ -2,7 +2,10 @@
 /** @var yii\web\View $this */
 $this->title = 'SGI FRESAN | Camões, I.P.';
 $description = 'SGI FRESAN do projecto Fresan Camões I.P.';
+use yii\bootstrap4\Alert;
 ?>
+
+
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZY6DH1JE4Z"></script>
 <script>
@@ -40,7 +43,27 @@ $description = 'SGI FRESAN do projecto Fresan Camões I.P.';
 
 </div>-->
 
+
+
 <div class="container">
+    <?php if (Yii::$app->session->hasFlash('success')): ?>
+            <?=
+            Alert::widget([
+                'options' => ['class' => 'alert-success'],
+                'body' => Yii::$app->session->getFlash('success'),
+            ])
+            ?>
+
+        <?php endif; ?>
+
+        <?php if (Yii::$app->session->hasFlash('error')): ?>
+            <?=
+            Alert::widget([
+                'options' => ['class' => 'alert-danger'],
+                'body' => Yii::$app->session->getFlash('error'),
+            ])
+            ?>
+        <?php endif; ?>
     <div class="banner-carousel banner-carousel-1 mb-0">
         <div class="banner-carousel-item" style="background-image:url(images/slider-main/pic1.jpg)">
             <div class="slider-content text-left">

@@ -14,13 +14,13 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'nome')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'funcaoID')->textInput() ?>
+    <?= $form->field($model, 'funcao')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'instituicao')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'contacto')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'e-mail')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'pais')->textInput(['maxlength' => true]) ?>
 
@@ -32,7 +32,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'localidade')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'pontofocal')->textInput() ?>
+    <?= $form->field($model, 'pontofocal')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'actividades')->textInput(['maxlength' => true]) ?>
 
@@ -41,6 +41,8 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'nivel')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'rotulo')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'observacao')->textarea(['rows' => 6]) ?>
 
     <?= $form->field($model, 'privacidade')->textInput(['maxlength' => true]) ?>
 

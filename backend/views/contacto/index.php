@@ -48,7 +48,30 @@
     .table td {
         min-height: 20px; /* ou qualquer outra altura desejada */
     }
+    kv-col-2 {
+
+        width: 30% !important;
+    }
+    .custom-search-wrapper {
+        position: relative;
+        display: inline-block;
+    }
+
+    .custom-search-input {
+        padding-left: 30px; /* Espaço para o ícone */
+    }
+
+    .custom-search-wrapper .fa-search {
+        position: absolute;
+        left: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: rgba(0, 0, 0, 0.5); /* Cor do ícone */
+    }
+
 </style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
 <?php
 
 use kartik\grid\GridView;
@@ -116,111 +139,101 @@ use backend\models\Contacto;
                     'vAlign' => 'middle',
                     'hAlign' => 'center',
                     'header' => '<span style="color: black;">ID</span>',
-                    'filterInputOptions' => [
-                        'class' => 'form-control',
-                        'placeholder' => '🔍 Pesquisar'
-                    ]
+                    'filter' => '<div class="custom-search-wrapper">
+                    <i class="fa fa-search"></i>
+                    <input type="text" name="ContactoSearch[Id]" class="form-control custom-search-input" placeholder="Pesquisar">
+                 </div>',
                 ],
                 [
                     'attribute' => 'nome',
                     'vAlign' => 'middle',
                     'hAlign' => 'center',
                     'header' => '<span style="color: black;">Nome</span>', // Persona
-                    'contentOptions' => ['style' => 'white-space: nowrap;'], // Evita quebra de linha
-                    'filterInputOptions' => [
-                        'class' => 'form-control',
-                        'placeholder' => '🔍 Pesquisar'
-                    ]
-                ],
-                [
-                    'attribute' => 'funcao',
-                    'vAlign' => 'middle',
-                    'hAlign' => 'center',
-                    'header' => '<span style="color: black;">Função</span>',
-                    'contentOptions' => ['style' => 'white-space: nowrap;'], // Evita quebra de linha
-                    'filterInputOptions' => [
-                        'class' => 'form-control',
-                        'placeholder' => '🔍 Pesquisar'
-                    ]
-                ],
-                [
-                    'attribute' => 'instituicao',
-                    'vAlign' => 'middle',
-                    'hAlign' => 'center',
-                    'headerOptions' => ['style' => 'color: black;'], // Cor do texto do título da coluna
-                    'header' => '<span style="color: black;">Instituição</span>',
-                    'contentOptions' => ['style' => 'white-space: nowrap;'], // Evita quebra de linha
-                    'filterInputOptions' => [
-                        'class' => 'form-control',
-                        'placeholder' => '🔍 Pesquisar'
-                    ]
+                    'contentOptions' => ['style' => 'min-width:300px; '],
+                    'filter' => '<div class="custom-search-wrapper">
+                    <i class="fa fa-search"></i>
+                    <input type="text" name="ContactoSearch[nome]" class="form-control custom-search-input" placeholder="Pesquisar">
+                 </div>',
                 ],
                 [
                     'attribute' => 'contacto',
                     'vAlign' => 'middle',
                     'hAlign' => 'center',
                     'header' => '<span style="color: black;">Contacto</span>',
-                    'filterInputOptions' => [
-                        'class' => 'form-control',
-                        'placeholder' => '🔍 Pesquisar'
-                    ]
+                    'filter' => '<div class="custom-search-wrapper">
+                    <i class="fa fa-search"></i>
+                    <input type="text" name="ContactoSearch[contacto]" class="form-control custom-search-input" placeholder="Pesquisar">
+                 </div>',
                 ],
                 [
                     'attribute' => 'email',
                     'vAlign' => 'middle',
                     'hAlign' => 'center',
                     'header' => '<span style="color: black;">E-mail</span>',
-                    'filterInputOptions' => [
-                        'class' => 'form-control',
-                        'placeholder' => '🔍 Pesquisar'
-                    ]
+                    'filter' => '<div class="custom-search-wrapper">
+                    <i class="fa fa-search"></i>
+                    <input type="text" name="ContactoSearch[email]" class="form-control custom-search-input" placeholder="Pesquisar">
+                 </div>',
                 ],
                 [
-                    'attribute' => 'pais',
+                    'attribute' => 'funcao',
                     'vAlign' => 'middle',
                     'hAlign' => 'center',
-                    'header' => '<span style="color: black;">País</span>',
-                    'filterInputOptions' => [
-                        'class' => 'form-control',
-                        'placeholder' => '🔍 Pesquisar'
-                    ]
+                    'header' => '<span style="color: black;">Função</span>',
+//                    'contentOptions' => ['style' => 'white-space: nowrap;'], // Evita quebra de linha
+                    'filter' => '<div class="custom-search-wrapper">
+                    <i class="fa fa-search"></i>
+                    <input type="text" name="ContactoSearch[funcao]" class="form-control custom-search-input" placeholder="Pesquisar">
+                 </div>',
                 ],
                 [
-                    'attribute' => 'provinciaID',
+                    'attribute' => 'instituicao',
                     'vAlign' => 'middle',
                     'hAlign' => 'center',
-                    'value' => 'provincia.nomeProvincia', // Access the related nomeProvincia attribute
+                    'headerOptions' => ['style' => 'color: black; width: 100px !important;'], // Cor do texto do título da coluna
+                    'header' => '<span style="color: black;">Instituição</span>',
+//                    'contentOptions' => ['style' => 'white-space: nowrap;'], // Evita quebra de linha
+                    'filter' => '<div class="custom-search-wrapper">
+                    <i class="fa fa-search"></i>
+                    <input type="text" name="ContactoSearch[instituicao]" class="form-control custom-search-input" placeholder="Pesquisar">
+                 </div>',
+                ],
+                // Inside the GridView widget
+                [
+                    'attribute' => 'provinciaNome',
+                    'vAlign' => 'middle',
+                    'hAlign' => 'center',
+                    'value' => 'provincia.nomeProvincia',
                     'header' => '<span style="color: black;">Província</span>',
-                    'filterInputOptions' => [
-                        'class' => 'form-control',
-                        'placeholder' => '🔍 Pesquisar'
-                    ]
+                    'filter' => '<div class="custom-search-wrapper">
+                    <i class="fa fa-search"></i>
+                    <input type="text" name="ContactoSearch[provinciaNome]" class="form-control custom-search-input" placeholder="Pesquisar">
+                    </div>',
                 ],
                 [
-                    'attribute' => 'municipioID',
+                    'attribute' => 'municipioNome',
                     'vAlign' => 'middle',
                     'hAlign' => 'center',
-                    'value' => function ($model) {
-                        return $model->municipio->nomeMunicipio;
-                    },
+                    'value' => 'municipio.nomeMunicipio',
                     'header' => '<span style="color: black;">Município</span>',
-                            'filterInputOptions' => [
-                        'class' => 'form-control',
-                        'placeholder' => '🔍 Pesquisar'
-                    ]
+                    'filter' => '<div class="custom-search-wrapper">
+                    <i class="fa fa-search"></i>
+                    <input type="text" name="ContactoSearch[municipioNome]" class="form-control custom-search-input" placeholder="Pesquisar">
+                    </div>',
                 ],
                 [
-                    'attribute' => 'comunaID',
+                    'attribute' => 'comunaNome',
                     'vAlign' => 'middle',
                     'hAlign' => 'center',
+//                    'value' => 'comuna.nomeComuna',
                     'value' => function ($model) {
-                        return $model->comuna->nomeComuna;
+                        return $model->comuna ? $model->comuna->nomeComuna : '';
                     },
                     'header' => '<span style="color: black;">Comuna</span>',
-                            'filterInputOptions' => [
-                        'class' => 'form-control',
-                        'placeholder' => '🔍 Pesquisar'
-                    ]
+                    'filter' => '<div class="custom-search-wrapper">
+                  <i class="fa fa-search"></i>
+                    <input type="text" name="ContactoSearch[comunaNome]" class="form-control custom-search-input" placeholder="Pesquisar">
+                 </div>',
                 ],
                 [
                     'attribute' => 'localidade',
@@ -228,10 +241,21 @@ use backend\models\Contacto;
                     'hAlign' => 'center',
                     'header' => '<span style="color: black;">Localidade</span>',
                     'contentOptions' => ['style' => 'white-space: nowrap;'], // Evita quebra de linha
-                    'filterInputOptions' => [
-                        'class' => 'form-control',
-                        'placeholder' => '🔍 Pesquisar'
-                    ]
+                    'filter' => '<div class="custom-search-wrapper">
+                    <i class="fa fa-search"></i>
+                    <input type="text" name="ContactoSearch[localidade]" class="form-control custom-search-input" placeholder="Pesquisar">
+                     </div>',
+                ],
+                [
+                    'attribute' => 'pais',
+                    'vAlign' => 'middle',
+                    'hAlign' => 'center',
+                    'header' => '<span style="color: black;">Pais</span>',
+                    'contentOptions' => ['style' => 'min-width:100px; '],
+                    'filter' => '<div class="custom-search-wrapper">
+                    <i class="fa fa-search"></i>
+                    <input type="text" name="ContactoSearch[pais]" class="form-control custom-search-input" placeholder="Pesquisar">
+                    </div>',
                 ],
                 [
                     'attribute' => 'pontofocal',
@@ -239,10 +263,10 @@ use backend\models\Contacto;
                     'hAlign' => 'center',
                     'header' => '<span style="color: black;">Ponto Focal</span>',
                     'contentOptions' => ['style' => 'white-space: nowrap;'], // Evita quebra de linha
-                    'filterInputOptions' => [
-                        'class' => 'form-control',
-                        'placeholder' => '🔍 Pesquisar'
-                    ]
+                    'filter' => '<div class="custom-search-wrapper">
+                    <i class="fa fa-search"></i>
+                    <input type="text" name="ContactoSearch[pontofocal]" class="form-control custom-search-input" placeholder="Pesquisar">
+                     </div>',
                 ],
                 [
                     'attribute' => 'actividades',
@@ -250,10 +274,10 @@ use backend\models\Contacto;
                     'hAlign' => 'center',
                     'header' => '<span style="color: black;">Actividades</span>',
                     'contentOptions' => ['style' => 'white-space: nowrap;'], // Evita quebra de linha
-                    'filterInputOptions' => [
-                        'class' => 'form-control',
-                        'placeholder' => '🔍 Pesquisar'
-                    ]
+                    'filter' => '<div class="custom-search-wrapper">
+                    <i class="fa fa-search"></i>
+                    <input type="text" name="ContactoSearch[actividades]" class="form-control custom-search-input" placeholder="Pesquisar">
+                     </div>',
                 ],
                 [
                     'attribute' => 'entidade',
@@ -261,10 +285,10 @@ use backend\models\Contacto;
                     'hAlign' => 'center',
                     'header' => '<span style="color: black;">Entidade</span>',
                     'contentOptions' => ['style' => 'white-space: nowrap;'], // Evita quebra de linha
-                    'filterInputOptions' => [
-                        'class' => 'form-control',
-                        'placeholder' => '🔍 Pesquisar'
-                    ]
+                    'filter' => '<div class="custom-search-wrapper">
+                    <i class="fa fa-search"></i>
+                    <input type="text" name="ContactoSearch[entidade]" class="form-control custom-search-input" placeholder="Pesquisar">
+                 </div>',
                 ],
                 [
                     'attribute' => 'nivel',
@@ -272,40 +296,50 @@ use backend\models\Contacto;
                     'hAlign' => 'center',
                     'header' => '<span style="color: black;">Nível</span>',
                     'contentOptions' => ['style' => 'white-space: nowrap;'], // Evita quebra de linha
-                    'filterInputOptions' => [
-                        'class' => 'form-control',
-                        'placeholder' => '🔍 Pesquisar'
-                    ]
+                    'filter' => '<div class="custom-search-wrapper">
+                    <i class="fa fa-search"></i>
+                    <input type="text" name="ContactoSearch[nivel]" class="form-control custom-search-input" placeholder="Pesquisar">
+                     </div>',
                 ],
                 [
                     'attribute' => 'rotulo',
                     'vAlign' => 'middle',
                     'hAlign' => 'center',
                     'header' => '<span style="color: black;">Rótulo</span>',
-                    'filterInputOptions' => [
-                        'class' => 'form-control',
-                        'placeholder' => '🔍 Pesquisar'
-                    ]
+                    'filter' => '<div class="custom-search-wrapper">
+                    <i class="fa fa-search"></i>
+                        <input type="text" name="ContactoSearch[rotulo]" class="form-control custom-search-input" placeholder="Pesquisar">
+                 </div>',
                 ],
                 [
                     'attribute' => 'privacidade',
                     'vAlign' => 'middle',
                     'hAlign' => 'center',
                     'header' => '<span style="color: black;">Privacidade</span>',
-                    'filterInputOptions' => [
-                        'class' => 'form-control',
-                        'placeholder' => '🔍 Pesquisar'
-                    ]
+                    'filter' => '<div class="custom-search-wrapper">
+                    <i class="fa fa-search"></i>
+                    <input type="text" name="ContactoSearch[privacidade]" class="form-control custom-search-input" placeholder="Pesquisar">
+                  </div>',
                 ],
                 [
                     'attribute' => 'estado',
                     'vAlign' => 'middle',
                     'hAlign' => 'center',
                     'header' => '<span style="color: black;">Estado</span>',
-                    'filterInputOptions' => [
-                        'class' => 'form-control',
-                        'placeholder' => '🔍 Pesquisar'
-                    ]
+                    'filter' => '<div class="custom-search-wrapper">
+                    <i class="fa fa-search"></i>
+                    <input type="text" name="ContactoSearch[estado]" class="form-control custom-search-input" placeholder="Pesquisar">
+                     </div>',
+                ],
+                [
+                    'attribute' => 'usuario',
+                    'vAlign' => 'middle',
+                    'hAlign' => 'center',
+                    'header' => '<span style="color: black;">Usuário</span>',
+                    'filter' => '<div class="custom-search-wrapper">
+                    <i class="fa fa-search"></i>
+                    <input type="text" name="ContactoSearch[usuario]" class="form-control custom-search-input" placeholder="Pesquisar">
+                     </div>',
                 ],
 //            [
 //                'attribute' => 'estadoValidacao',
@@ -353,7 +387,7 @@ use backend\models\Contacto;
                     'content' =>
                     Html::a('<i class="fas fa-plus"></i>', ['create'], [
                         'class' => 'btn btn-primary botao',
-                        'title' => 'Adicionar Capacitação',
+                        'title' => 'Adicionar Contactos',
                     ]) . ' ' .
                     Html::a('<i class="fas fa-redo"></i>', ['index'], [
                         'class' => 'btn btn-outline-secondary',

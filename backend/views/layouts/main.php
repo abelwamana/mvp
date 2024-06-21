@@ -3,6 +3,10 @@
 /* @var $content string */
 
 use yii\helpers\Html;
+use backend\assets\AppAsset;
+
+//AppAsset::register($this);
+$this->beginPage();
 
 \hail812\adminlte3\assets\FontAwesomeAsset::register($this);
 \hail812\adminlte3\assets\AdminLteAsset::register($this);
@@ -25,18 +29,32 @@ $this->registerJsFile($publishedRes[1] . '/control_sidebar.js', ['depends' => '\
         <?php $this->registerCsrfMetaTags() ?>
         <title><?= Html::encode($this->title) ?></title>
         <?php $this->head() ?>
+        <!-- Google Analytics -->
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZY6DH1JE4Z"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag('js', new Date());
+
+            gtag('config', 'G-ZY6DH1JE4Z');
+        </script>
+        <!-- End Google Analytics -->
+
     </head>
     <body class="hold-transition sidebar-mini">
         <?php $this->beginBody() ?>
 
         <div class="wrapper">
-            
+
             <!-- Navbar -->
             <?= $this->render('navbar', ['assetDir' => $assetDir]) ?>
             <!-- /.navbar -->
-                        <!-- Main Sidebar Container -->
+            <!-- Main Sidebar Container -->
             <?= $this->render('sidebar', ['assetDir' => $assetDir]) ?>
-           
+
 
             <!-- Content Wrapper. Contains page content -->
             <?= $this->render('content', ['content' => $content, 'assetDir' => $assetDir]) ?>

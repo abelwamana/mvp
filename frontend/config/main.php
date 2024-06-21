@@ -8,6 +8,9 @@ $params = array_merge(
 
 return [
     'id' => 'app-frontend',
+    'language' => 'pt_pt', //definimos a lingua da nossa App
+    'sourceLanguage' => 'en', //definimos a fonte 
+    'name' => 'SGI FRESAN Camões, I.P.',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'controllerNamespace' => 'frontend\controllers',

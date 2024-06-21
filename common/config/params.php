@@ -7,5 +7,5 @@ return [
     'senderEmail' => 'geral@sgi-fresancamoes.com',
     'senderName' => 'Visitante',
     'user.passwordResetTokenExpire' => 3600,
-//    'user.passwordMinLength' => 8,
+    'user.passwordMinLength' => 8,
 ];

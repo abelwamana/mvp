@@ -85,10 +85,6 @@ class SiteController extends Controller {
      * @return mixed
      */
     public function actionLogin() {
-//        //if (!Yii::$app->user->isGuest) {
-//            //return $this->goHome();
-//            return $this->redirect(Yii::$app->urlManagerBackend->createUrl(['site/index']));
-//        }
         // Este login so é chamado apos o logout no backend e apos verificar desde a publica que não está logado
         Yii::$app->user->logout();
         Yii::$app->session->destroy(); // Isso encerrará a sessão      
