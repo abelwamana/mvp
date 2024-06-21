@@ -1,6 +1,6 @@
 <?php
 
-namespace backend\models;
+namespace frontend\models;
 
 use yii\base\InvalidArgumentException;
 use yii\base\Model;
@@ -63,13 +63,5 @@ class ResetPasswordForm extends Model
         $user->generateAuthKey();
 
         return $user->save(false);
-    }
-    
-    public static function isTokenValid($token)
-    {
-        if (empty($token) || !is_string($token)) {
-            return false;
-        }
-        return User::findByPasswordResetToken($token) !== null;
     }
 }
