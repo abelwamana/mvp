@@ -3,14 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/mvp/backend/views/site/calendario.php</file>
-            <file>file:/C:/xampp/htdocs/mvp/backend/controllers/SiteController.php</file>
-            <file>file:/C:/xampp/htdocs/mvp/backend/controllers/ContactoController.php</file>
-            <file>file:/C:/xampp/htdocs/mvp/backend/views/contacto/_form.php</file>
-            <file>file:/C:/xampp/htdocs/mvp/subscribe.php</file>
-            <file>file:/C:/xampp/htdocs/mvp/backend/controllers/EventController.php</file>
-            <file>file:/C:/xampp/htdocs/mvp/backend/views/event/_form.php</file>
-            <file>file:/C:/xampp/htdocs/mvp/backend/views/contacto/update.php</file>
+            <file>file:/C:/xampp/htdocs/mvp/backend/views/biblioteca/create.php</file>
+            <file>file:/C:/xampp/htdocs/mvp/backend/views/biblioteca/view.php</file>
+            <file>file:/C:/xampp/htdocs/mvp/backend/controllers/BibliotecaController.php</file>
+            <file>file:/C:/xampp/htdocs/mvp/backend/models/Biblioteca1.php</file>
+            <file>file:/C:/xampp/htdocs/mvp/backend/views/biblioteca/_form.php</file>
+            <file>file:/C:/xampp/htdocs/mvp/backend/models/Biblioteca.php</file>
+            <file>file:/C:/xampp/htdocs/mvp/backend/views/biblioteca/index.php</file>
+            <file>file:/C:/xampp/htdocs/mvp/backend/models/Grupo.php</file>
         </group>
     </open-files>
 </project-private>

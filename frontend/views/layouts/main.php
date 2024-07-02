@@ -130,10 +130,17 @@ $menuItems = [
                     height: 30px !important;
                 }
             @media (max-width: 510px) { /* Define a largura máxima da tela em 600px para dispositivos móveis */
-                .emailSubscriber {
-                    width: 32% !important;
+                 .container{
+                    /*width: 30% !important;*/
                     /*border-color: #999900 !important;*/
-                       }
+/*                  overflow-x: hidden;   
+                  overflow-y: auto;*/
+                 }
+                .emailSubscriber {
+                    width: 43% !important;
+                    height: 25px !important;
+                    /*border-color: #999900 !important;*/
+                       }                       
             }
             
         </style> 

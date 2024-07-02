@@ -71,13 +71,20 @@ $config = [
                 // Rota para solicitar redefinição de senha
                 'request-password-reset' => 'user/request-password-reset',
                 // Rota para redefinir a senha
-//                'reset-password/<token>' => 'user/reset-password',
+//              'reset-password/<token>' => 'user/reset-password',
                 'update'=> 'user/update',
                 'adicionarContacto' => 'contacto/create',
                 'verContacto' => 'contacto/view', 
                 'actualizarContacto' => 'contacto/update',
                 'update-event' => 'site/update-event',
                 'listaeventosCalendario' => 'event/listaeventos',
+                'verAgua' => 'agua/view', 
+                'actualizarAgua' => 'agua/update', 
+                'adicionarDocumento' => 'biblioteca/create',
+                'bibliotecaLista' => 'biblioteca/index', 
+                'editarDocumento' => 'biblioteca/update', 
+                'verDocumento' => 'biblioteca/view', 
+                
             ],
         ],
         'urlManagerFrontend' => [

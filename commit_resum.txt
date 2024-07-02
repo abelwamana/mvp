@@ -1,0 +1,4 @@
+f2cbf6904 - abelwamana, 2024-06-21 17:16:17 +0100 :  Ampliada Caxa de insersão de email do botão subscrever para telas menores
+084242435 - abelwamana, 2024-06-21 06:21:47 +0100 : Mudanças do Reltório Maio 2024 SGI V1.4
+b8f0a1606 - abelwamana, 2024-05-27 06:40:50 +0100 : Botão newsletter no forntend e redefinição da password
+951ed12b1 - abelwamana, 2024-05-20 15:52:22 +0100 : Sem mudancas na branch, comecando

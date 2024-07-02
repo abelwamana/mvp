@@ -227,6 +227,7 @@
                 $menuItems[] = [
                     'label' => 'Administração',
                     'items' => [
+                        ['label' => 'Biblioteca', 'url' => ['/biblioteca/index'], 'iconStyle' => 'far'],
                         [
                             'label' => 'Configurações',
                             'items' => [

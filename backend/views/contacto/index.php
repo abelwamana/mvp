@@ -1,8 +1,8 @@
 <style>
     .container{
         position: relative;
-        width: 95%;
-        max-width: 95%;
+        width: 100%;
+        max-width: 100%;
         /*margin-right: 5%;*/
         overflow-x: hidden;  /*esconde o scroll horizontal*/
         /*overflow-y: auto;  permite o scroll vertical quando necessário*/
@@ -134,16 +134,16 @@ use backend\models\Contacto;
 //                'header' => '',
 //                'headerOptions' => ['class' => 'kartik-sheet-style'],
 //            ],
-                [
-                    'attribute' => 'Id',
-                    'vAlign' => 'middle',
-                    'hAlign' => 'center',
-                    'header' => '<span style="color: black;">ID</span>',
-                    'filter' => '<div class="custom-search-wrapper">
-                    <i class="fa fa-search"></i>
-                    <input type="text" name="ContactoSearch[Id]" class="form-control custom-search-input" placeholder="Pesquisar">
-                 </div>',
-                ],
+//                [
+//                    'attribute' => 'Id',
+//                    'vAlign' => 'middle',
+//                    'hAlign' => 'center',
+//                    'header' => '<span style="color: black;">ID</span>',
+//                    'filter' => '<div class="custom-search-wrapper">
+//                    <i class="fa fa-search"></i>
+//                    <input type="text" name="ContactoSearch[Id]" class="form-control custom-search-input" placeholder="Pesquisar">
+//                 </div>',
+//                ],
                 [
                     'attribute' => 'nome',
                     'vAlign' => 'middle',
