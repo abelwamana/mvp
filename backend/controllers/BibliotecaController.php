@@ -48,6 +48,17 @@ class BibliotecaController extends Controller
             'dataProvider' => $dataProvider,
         ]);
     }
+    
+    public function actionBiblioteca()
+    {
+        $searchModel = new BibliotecaSearch();
+        $dataProvider = $searchModel->search($this->request->queryParams);
+
+        return $this->render('bibliotecaPage', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
 
     /**
      * Displays a single Biblioteca model.
@@ -58,6 +69,13 @@ class BibliotecaController extends Controller
     public function actionView($id)
     {
         return $this->render('view', [
+            'model' => $this->findModel($id),
+        ]);
+    }
+    
+     public function actionViewpage($id)
+    {
+        return $this->render('viewPage', [
             'model' => $this->findModel($id),
         ]);
     }

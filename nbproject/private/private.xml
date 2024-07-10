@@ -5,12 +5,16 @@
         <group>
             <file>file:/C:/xampp/htdocs/mvp/backend/views/biblioteca/create.php</file>
             <file>file:/C:/xampp/htdocs/mvp/backend/views/biblioteca/view.php</file>
+            <file>file:/C:/xampp/htdocs/mvp/frontend/views/layouts/main.php</file>
+            <file>file:/C:/xampp/htdocs/mvp/backend/views/site/index.php</file>
             <file>file:/C:/xampp/htdocs/mvp/backend/controllers/BibliotecaController.php</file>
-            <file>file:/C:/xampp/htdocs/mvp/backend/models/Biblioteca1.php</file>
             <file>file:/C:/xampp/htdocs/mvp/backend/views/biblioteca/_form.php</file>
+            <file>file:/C:/xampp/htdocs/mvp/backend/views/site/beneficiario.php</file>
             <file>file:/C:/xampp/htdocs/mvp/backend/models/Biblioteca.php</file>
             <file>file:/C:/xampp/htdocs/mvp/backend/views/biblioteca/index.php</file>
             <file>file:/C:/xampp/htdocs/mvp/backend/models/Grupo.php</file>
+            <file>file:/C:/xampp/htdocs/mvp/backend/views/biblioteca/viewPage.php</file>
+            <file>file:/C:/xampp/htdocs/mvp/backend/views/biblioteca/bibliotecaPage.php</file>
         </group>
     </open-files>
 </project-private>

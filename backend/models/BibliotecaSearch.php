@@ -5,6 +5,8 @@ namespace backend\models;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use backend\models\Biblioteca;
+use yii\helpers\ArrayHelper;
+
 
 /**
  * BibliotecaSearch represents the model behind the search form of `backend\models\Biblioteca`.
@@ -87,4 +89,51 @@ class BibliotecaSearch extends Biblioteca
 
         return $dataProvider;
     }
+    
+    public function getTipoOptions()
+{
+    $tipos = Biblioteca::find()
+        ->select('tipo')
+        ->distinct()
+        ->orderBy('tipo')
+        ->asArray()
+        ->all();
+    
+    return ArrayHelper::map($tipos, 'tipo', 'tipo');
 }
+
+public function getOrganizacaoOptions()
+{
+    $organizacoes = Biblioteca::find()
+        ->select('organizacao')
+        ->distinct()
+        ->orderBy('organizacao')
+        ->asArray()
+        ->all();
+    
+    return ArrayHelper::map($organizacoes, 'organizacao', 'organizacao');
+}
+
+public function getAnoOptions()
+{
+    $anos = Biblioteca::find()
+        ->select('anoConcluido')
+        ->distinct()
+        ->orderBy('anoConcluido')
+        ->asArray()
+        ->all();
+    
+    return ArrayHelper::map($anos, 'anoConcluido', 'anoConcluido');
+}
+
+public function getEstadoOptions()
+{
+    $estados = Biblioteca::find()
+        ->select('estado')
+        ->distinct()
+        ->orderBy('estado')
+        ->asArray()
+        ->all();
+    
+    return ArrayHelper::map($estados, 'estado', 'estado');
+}}

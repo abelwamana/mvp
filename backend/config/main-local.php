@@ -84,6 +84,9 @@ $config = [
                 'bibliotecaLista' => 'biblioteca/index', 
                 'editarDocumento' => 'biblioteca/update', 
                 'verDocumento' => 'biblioteca/view', 
+                'bibliotecaPage' => 'biblioteca/biblioteca', 
+                'viewpage' => 'biblioteca/viewpage', 
+                
                 
             ],
         ],

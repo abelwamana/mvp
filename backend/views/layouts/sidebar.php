@@ -214,10 +214,9 @@
 
 // Agrupe os itens "Resumo Monitoria", "Resumo Recomendações" e "Resumo Boas Práticas" sob o item "Resumo"
 //$menuItems[] =  ['label' => 'Resultados Secundários', 'url' => ['/monitoria/index2']];
+            $menuItems[] = ['label' => 'Biblioteca', 'url' => ['biblioteca/biblioteca']];
             $menuItems[] = ['label' => 'Recomendações', 'url' => ['site/emconstrucao']];
             $menuItems[] = ['label' => 'Boas Práticas', 'url' => ['site/emconstrucao']];
-// Os outros itens finais do menu
-            $menuItems[] = ['label' => 'Biblioteca', 'url' => ['site/emconstrucao']];
 // $menuItems[] = ['label' => 'Galeria', 'url' => ['site/galeria']];
             $menuItems[] = ['template' => '<hr>'];
 

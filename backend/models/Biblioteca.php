@@ -102,15 +102,7 @@ class Biblioteca extends \yii\db\ActiveRecord
              
         ];
     }
-//    public function upload()
-//    {
-//        if ($this->validate()) {
-//            $this->file->saveAs('biblioteca/' . $this->file->baseName . '.' . $this->file->extension);
-//            return true;
-//        } else {
-//            return false;
-//        }
-//    }
+
     public function upload()
     {
         if ($this->validate()) {
