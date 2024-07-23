@@ -5,8 +5,6 @@ namespace backend\controllers;
 use backend\models\Provincia;
 use backend\models\Reforcoinstitucional;
 use common\models\LoginForm;
-use Google_Client;
-use Google_Service_Calendar;
 use PhpOffice\PhpWord\TemplateProcessor;
 use scotthuangzl\googlechart\GoogleChart;
 use Yii;
@@ -22,6 +20,8 @@ use backend\models\Comuna;
 use backend\models\Contacto;
 use backend\models\User;
 use backend\models\Event;
+use yii\web\UploadedFile;
+use backend\models\Notificacoes;
 
 /**
  * Site controller
@@ -43,7 +43,7 @@ class SiteController extends Controller {
                         'allow' => true,
                     ],
                     [
-                        'actions' => ['logout', 'index', 'folhatrimestral', 'exportfolhatrimestral', 'calendario', 'fresan', 'beneficiario', 'galeria', 'get-events', 'filtragem', 'duracao', 'get-provincias', 'experiencia', 'get-municipios', 'get-comunas', 'events-area', 'add-events', 'emconstrucao', 'fresancunene', 'fresanhuila', 'fresannamibe', 'resultadosagricultura', 'resultadosnutricao', 'resultadosagua', 'resultadosreforcoinstitucional', 'edit-event', 'delete-event', 'update-event'],
+                        'actions' => ['logout', 'index', 'folhatrimestral', 'exportfolhatrimestral', 'calendario', 'fresan', 'beneficiario', 'galeria', 'get-events', 'filtragem', 'duracao', 'get-provincias', 'experiencia', 'get-municipios', 'get-comunas', 'events-area', 'add-events', 'emconstrucao', 'fresancunene', 'fresanhuila', 'fresannamibe', 'resultadosagricultura', 'resultadosnutricao', 'resultadosagua', 'resultadosreforcoinstitucional', 'edit-event', 'delete-event', 'update-event', 'update'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -392,10 +392,11 @@ class SiteController extends Controller {
         $provincias = Provincia::find()->all();
         $provinciasList = [];
         $limit = 4; // Defina o número de elementos que deseja manter
-// Use array_slice para pegar apenas os primeiros N elementos
+        // Use array_slice para pegar apenas os primeiros N elementos
         foreach (array_slice($provincias, 0, $limit) as $provincia) {
             $provinciasList[$provincia->Id] = $provincia->nomeProvincia;
         }
+
         $eventModel = new \backend\models\Event();
 
         // Verifique se o formulário de adição de eventos foi enviado
@@ -404,21 +405,35 @@ class SiteController extends Controller {
             if ($eventData !== null) {
                 $calendarEvento = new \backend\models\Event();
                 $calendarEvento->load(Yii::$app->request->post()); // Carregar dados diretamente do POST
+                $calendarEvento->agenda = UploadedFile::getInstance($calendarEvento, 'agenda');
+                $calendarEvento->actaRelatorio = UploadedFile::getInstance($calendarEvento, 'actaRelatorio');
+                $calendarEvento->listaParticipantes = UploadedFile::getInstance($calendarEvento, 'listaParticipantes');
+//                $calendarEvento->outrosAnexos = UploadedFile::getInstances($calendarEvento, 'outrosAnexos'); // Pegue todos os arquivos
                 // Serializar os participantes antes de salvar
                 $participantes = $calendarEvento->participantes;
                 $titulo = $calendarEvento->summary;
-                // Transformar array de participantes em uma string formatada
-                $participantesString = implode(',', $calendarEvento->participantes);
-                $calendarEvento->participantes = $participantesString;
-                // Suponha que $calendarEvento->start tenha o formato 'Y-m-d H:i:s'
                 $dateTimeString = $calendarEvento->start;
                 $dataevento = date('d-m-Y', strtotime($dateTimeString)); // Obtém a data no formato 'dia-mês-ano'
                 $anfitriaoNome = $calendarEvento->convocadoPor;
-                // Enviar notificações por email ao anfitrião
-                $anfitriaoEmail = User::find()->select('email')
-                        ->where(['nomeCompleto' => $anfitriaoNome])
-                        ->scalar();
-                if ($calendarEvento->save()) {
+
+                if (is_array($calendarEvento->participantes)) {
+                    // Transformar array de participantes em uma string formatada
+                    $participantesString = implode(',', $calendarEvento->participantes);
+                    $calendarEvento->participantes = $participantesString;
+                }
+//                if (is_array($calendarEvento->outrosAnexos)) {
+//                    // Transformar array de participantes em uma string formatada
+//                    $calendarEvento->outrosAnexos = implode(',', $calendarEvento->outrosAnexos);
+//                }
+                $calendarEvento->description = empty($calendarEvento->description) ? "Por confirmar em breve" : $calendarEvento->description;
+                $calendarEvento->coordenadas = empty($calendarEvento->coordenadas) ? "Por confirmar em breve" : $calendarEvento->coordenadas;
+                $calendarEvento->local = empty($calendarEvento->local) ? "Por confirmar em breve" : $calendarEvento->local;
+//            var_dump($calendarEvento->outrosAnexos);
+                if ($calendarEvento->save() && $calendarEvento->uploadFiles()) {
+                    // Enviar notificações por email ao anfitrião
+                    $anfitriaoEmail = User::find()->select('email')
+                            ->where(['nomeCompleto' => $anfitriaoNome])
+                            ->scalar();
                     if ($anfitriaoEmail !== null) {
                         Yii::$app->mailer->compose()
                                 ->setTo(trim($anfitriaoEmail))
@@ -427,35 +442,49 @@ class SiteController extends Controller {
                                 ->setHtmlBody("Olá $anfitriaoNome,<br><br> Adicionou um novo evento ao <b>Calendário</b> para o dia <b>$dataevento,</b> com o nome <b>[$titulo].</b><br><br>  Para mais detalhes, clique <a href=\"https://sgi-fresancamoes.com/admin/calendario\">aqui.</a><br><br> Continuação de bom trabalho,<br><br> FRESAN/Camões, I.P.")
                                 ->send();
                     }
-                    // Enviar notificações por email para os participantes
-                    foreach ($participantes as $email) {
-                        // Consulta para encontrar o nome do contacto com o email atual
-                        $nomeContacto = Contacto::find()
-                                ->select('nome')
-                                ->where(['email' => $email])
-                                ->scalar(); // Retorna o nome do primeiro contacto encontrado ou null se não houver
 
-                        if ($nomeContacto !== null) {
-                            Yii::$app->mailer->compose()
-                                    ->setTo(trim($email))
-                                    ->setFrom([Yii::$app->params['adminEmail'] => Yii::$app->name])
-                                    ->setSubject('Novo Evento Adicionado')
-                                    ->setHtmlBody("Olá $nomeContacto,<br><br> Contamos com a sua participação para o evento <b>[$titulo]</b> marcado para o dia <b>$dataevento,</b>. <br><br> Aceda ao <b>Calendário</b> para <a href=\"https://sgi-fresancamoes.com/admin/calendario\">mais detalhes.</a><br><br> Continuação de bom trabalho,<br><br> FRESAN/Camões, I.P.")
-                                    ->send();
+                    // Enviar notificações por email para os participantes
+                    if ($calendarEvento->participantes != "Por confirmar em breve") {
+                        $participantesArray = explode(',', $calendarEvento->participantes);
+                        foreach ($participantesArray as $email) {
+                            $nomeContacto = Contacto::find()
+                                    ->select('nome')
+                                    ->where(['email' => $email])
+                                    ->scalar();
+
+                            if ($nomeContacto !== null) {
+                                Yii::$app->mailer->compose()
+                                        ->setTo(trim($email))
+                                        ->setFrom([Yii::$app->params['adminEmail'] => Yii::$app->name])
+                                        ->setSubject('Novo Evento Adicionado')
+                                        ->setHtmlBody("Olá $nomeContacto,<br><br> Contamos com a sua participação para o evento <b>[$titulo]</b> marcado para o dia <b>$dataevento,</b>. <br><br> Aceda ao <b>Calendário</b> para <a href=\"https://sgi-fresancamoes.com/admin/calendario\">mais detalhes.</a><br><br> Continuação de bom trabalho,<br><br> FRESAN/Camões, I.P.")
+                                        ->send();
+                            }
                         }
                     }
+                    // Adicionar notificação
+                    // Após salvar o novo evento
+                    $usuarios = User::find()->all(); // Ou uma query para selecionar os usuários que devem receber a notificação
+                    foreach ($usuarios as $usuario) {
+                        $notificacao = new Notificacoes();
+                        $notificacao->mensagem = "Novo evento com título [$titulo]";
+                        $notificacao->estado = 0; // não lida
+                        $notificacao->id_event = $calendarEvento->Id;
+                        $notificacao->id_usuario = $usuario->id;
+                        $notificacao->save();
+                    }
+
                     Yii::$app->session->setFlash('success', 'Evento criado e notificações enviadas!');
                 } else {
-                    Yii::$app->session->setFlash('error', 'Ocorreu um erro ao salvar o evento.');
-//                    var_dump($calendarEvento->errors);
+                    Yii::$app->session->setFlash('error', 'Ocorreu um erro ao salvar o evento: ' . json_encode($calendarEvento->errors));
                 }
             }
         }
-
-        return $this->render('calendario', [
-                    'eventModel' => $eventModel,
-                    'provinciasList' => $provinciasList,
-        ]);
+        return $this->redirect(['site/calendario']);
+//        return $this->render('calendario', [
+//                    'eventModel' => $eventModel,
+//                    'provinciasList' => $provinciasList,
+//        ]);
     }
 
     public function actionGetEvents() {
@@ -553,6 +582,9 @@ class SiteController extends Controller {
                     'entidadeOrganizadora' => $event->entidadeOrganizadora,
                     'convocadoPor' => $event->convocadoPor,
                     'participantes' => $event->participantes,
+                    'agenda' => $event->agenda,
+                    'actaRelatorio' => $event->actaRelatorio,
+                    'listaParticipantes' => $event->listaParticipantes,
                 ];
             }
         }
@@ -560,86 +592,83 @@ class SiteController extends Controller {
     }
 
     public function actionDeleteEvent() {
-    $id = Yii::$app->request->get('id');
-    $model = Event::findOne($id);
+        $id = Yii::$app->request->get('id');
+        $model = Event::findOne($id);
 
-    if ($model === null) {
-        Yii::$app->session->setFlash('error', 'Evento não encontrado.');
-        return $this->redirect(['site/calendario']);
-    }
-
-    $isAdmin = Yii::$app->user->isGuest ? false : Yii::$app->user->can("Permissão de Administrador");
-    $nomeLogado = Yii::$app->user->identity->nomeCompleto;
-    $emailLogado = Yii::$app->user->identity->email;
-    $anfitriaoNome = $model->convocadoPor;
-    $anfitriaoEmail = User::find()->select('email')
-        ->where(['nomeCompleto' => $anfitriaoNome])
-        ->scalar();
-    $dateTimeString = $model->start;
-    $dataevento = date('d-m-Y', strtotime($dateTimeString));
-    $titulo = $model->summary; // Adicionado $titulo
-
-    if ($isAdmin || ($nomeLogado == $model->convocadoPor)) {
-        $participantesArray = explode(',', $model->participantes);
-
-        if ($model->delete()) {
-            // Enviar notificação por email ao anfitrião original do evento
-            if (($anfitriaoEmail !== null) && ($emailLogado == $anfitriaoEmail)) {
-                Yii::$app->mailer->compose()
-                    ->setTo(trim($anfitriaoEmail))
-                    ->setFrom([Yii::$app->params['adminEmail'] => Yii::$app->name])
-                    ->setSubject('Evento Cancelado')
-                    ->setHtmlBody("Olá $anfitriaoNome,<br><br> Eliminou o evento do <b>Calendário</b> do dia <b>$dataevento,</b> com o nome <b>[$titulo].</b><br><br> Para mais detalhes, clique <a href=\"https://sgi-fresancamoes.com/admin/calendario\">aqui.</a><br><br> Continuação de bom trabalho,<br><br> SGI FRESAN/Camões, I.P.")
-                    ->send();
-               
-            } else if ($emailLogado !== null) {
-                // Email ao Administrador que atualizou o evento
-                Yii::$app->mailer->compose()
-                    ->setTo(trim($emailLogado))
-                    ->setFrom([Yii::$app->params['adminEmail'] => Yii::$app->name])
-                    ->setSubject('Evento Cancelado')
-                    ->setHtmlBody("Olá $nomeLogado,<br><br> Eliminou o evento do <b>Calendário</b> para o dia <b>$dataevento,</b> com o nome <b>[$titulo].</b><br><br> Para mais detalhes, clique <a href=\"https://sgi-fresancamoes.com/admin/calendario\">aqui.</a><br><br> Continuação de bom trabalho,<br><br> SGI FRESAN/Camões, I.P.")
-                    ->send();
-
-                // Email ao anfitrião que não atualizou o evento
-                Yii::$app->mailer->compose()
-                    ->setTo(trim($anfitriaoEmail))
-                    ->setFrom([Yii::$app->params['adminEmail'] => Yii::$app->name])
-                    ->setSubject('Evento Cancelado')
-                    ->setHtmlBody("Olá $anfitriaoNome,<br><br>Foi eliminado pela administração o evento <b>[$titulo]</b> adicionado por si ao <b>Calendário</b>, para o dia <b>$dataevento</b>.<br><br> Para mais detalhes, clique <a href=\"https://sgi-fresancamoes.com/admin/calendario\">aqui.</a><br><br> Continuação de bom trabalho,<br><br> SGI FRESAN/Camões, I.P.")
-                    ->send();
-            }
-
-            // Enviar notificações por email para os participantes
-            foreach ($participantesArray as $email) {
-                // Consulta para encontrar o nome do contacto com o email atual
-                $nomeContacto = Contacto::find()
-                    ->select('nome')
-                    ->where(['email' => $email])
-                    ->scalar(); // Retorna o nome do primeiro contacto encontrado ou null se não houver
-
-                if ($nomeContacto !== null) {
-                    Yii::$app->mailer->compose()
-                        ->setTo(trim($email))
-                        ->setFrom([Yii::$app->params['adminEmail'] => Yii::$app->name])
-                        ->setSubject('Evento Cancelado')
-                        ->setHtmlBody("Olá $nomeContacto,<br><br> Foi eliminado o evento <b>[$titulo]</b> convocado por $anfitriaoNome para o dia <b>$dataevento</b>.<br><br> Aceda ao <b>Calendário</b> para <a href=\"https://sgi-fresancamoes.com/admin/calendario\">mais detalhes</a>.<br><br> Continuação de bom trabalho,<br><br> SGI FRESAN/Camões, I.P.")
-                        ->send();
-                }
-            }
-
-            Yii::$app->session->setFlash('success', 'Evento eliminado e notificações enviadas.');
-            return $this->redirect(['site/calendario']);
-        } else {
-            Yii::$app->session->setFlash('error', 'Não foi possível eliminar este evento');
+        if ($model === null) {
+            Yii::$app->session->setFlash('error', 'Evento não encontrado.');
             return $this->redirect(['site/calendario']);
         }
-    } else {
-        Yii::$app->session->setFlash('error', 'Somente o Administrador ou anfitrião pode eliminar o evento');
-        return $this->redirect(['site/calendario']);
-    }
-}
+        $isAdmin = Yii::$app->user->isGuest ? false : Yii::$app->user->can("Permissão de Administrador");
+        $nomeLogado = Yii::$app->user->identity->nomeCompleto;
+        $emailLogado = Yii::$app->user->identity->email;
+        $anfitriaoNome = $model->convocadoPor;
+        $anfitriaoEmail = User::find()->select('email')
+                ->where(['nomeCompleto' => $anfitriaoNome])
+                ->scalar();
+        $dateTimeString = $model->start;
+        $dataevento = date('d-m-Y', strtotime($dateTimeString));
+        $titulo = $model->summary; // Adicionado $titulo
 
+        if ($isAdmin || ($nomeLogado == $model->convocadoPor)) {
+            $participantesArray = explode(',', $model->participantes);
+
+            if ($model->delete()) {
+                // Enviar notificação por email ao anfitrião original do evento
+                if (($anfitriaoEmail !== null) && ($emailLogado == $anfitriaoEmail)) {
+                    Yii::$app->mailer->compose()
+                            ->setTo(trim($anfitriaoEmail))
+                            ->setFrom([Yii::$app->params['adminEmail'] => Yii::$app->name])
+                            ->setSubject('Evento Cancelado')
+                            ->setHtmlBody("Olá $anfitriaoNome,<br><br> Eliminou o evento do <b>Calendário</b> do dia <b>$dataevento,</b> com o nome <b>[$titulo].</b><br><br> Para mais detalhes, clique <a href=\"https://sgi-fresancamoes.com/admin/calendario\">aqui.</a><br><br> Continuação de bom trabalho,<br><br> SGI FRESAN/Camões, I.P.")
+                            ->send();
+                } else if ($emailLogado !== null) {
+                    // Email ao Administrador que atualizou o evento
+                    Yii::$app->mailer->compose()
+                            ->setTo(trim($emailLogado))
+                            ->setFrom([Yii::$app->params['adminEmail'] => Yii::$app->name])
+                            ->setSubject('Evento Cancelado')
+                            ->setHtmlBody("Olá $nomeLogado,<br><br> Eliminou o evento do <b>Calendário</b> para o dia <b>$dataevento,</b> com o nome <b>[$titulo].</b><br><br> Para mais detalhes, clique <a href=\"https://sgi-fresancamoes.com/admin/calendario\">aqui.</a><br><br> Continuação de bom trabalho,<br><br> SGI FRESAN/Camões, I.P.")
+                            ->send();
+
+                    // Email ao anfitrião que não atualizou o evento
+                    Yii::$app->mailer->compose()
+                            ->setTo(trim($anfitriaoEmail))
+                            ->setFrom([Yii::$app->params['adminEmail'] => Yii::$app->name])
+                            ->setSubject('Evento Cancelado')
+                            ->setHtmlBody("Olá $anfitriaoNome,<br><br>Foi eliminado pela administração o evento <b>[$titulo]</b> adicionado por si ao <b>Calendário</b>, para o dia <b>$dataevento</b>.<br><br> Para mais detalhes, clique <a href=\"https://sgi-fresancamoes.com/admin/calendario\">aqui.</a><br><br> Continuação de bom trabalho,<br><br> SGI FRESAN/Camões, I.P.")
+                            ->send();
+                }
+
+                // Enviar notificações por email para os participantes
+                foreach ($participantesArray as $email) {
+                    // Consulta para encontrar o nome do contacto com o email atual
+                    $nomeContacto = Contacto::find()
+                            ->select('nome')
+                            ->where(['email' => $email])
+                            ->scalar(); // Retorna o nome do primeiro contacto encontrado ou null se não houver
+
+                    if ($nomeContacto !== null) {
+                        Yii::$app->mailer->compose()
+                                ->setTo(trim($email))
+                                ->setFrom([Yii::$app->params['adminEmail'] => Yii::$app->name])
+                                ->setSubject('Evento Cancelado')
+                                ->setHtmlBody("Olá $nomeContacto,<br><br> Foi eliminado o evento <b>[$titulo]</b> convocado por $anfitriaoNome para o dia <b>$dataevento</b>.<br><br> Aceda ao <b>Calendário</b> para <a href=\"https://sgi-fresancamoes.com/admin/calendario\">mais detalhes</a>.<br><br> Continuação de bom trabalho,<br><br> SGI FRESAN/Camões, I.P.")
+                                ->send();
+                    }
+                }
+
+                Yii::$app->session->setFlash('success', 'Evento eliminado e notificações enviadas.');
+                return $this->redirect(['site/calendario']);
+            } else {
+                Yii::$app->session->setFlash('error', 'Não foi possível eliminar este evento');
+                return $this->redirect(['site/calendario']);
+            }
+        } else {
+            Yii::$app->session->setFlash('error', 'Somente o Administrador ou anfitrião pode eliminar o evento');
+            return $this->redirect(['site/calendario']);
+        }
+    }
 
     public function actionViewEvent($id) {
         $event = Event::findOne($id);
@@ -666,6 +695,58 @@ class SiteController extends Controller {
         return $this->render('edit-event', [
                     'model' => $event, 'provinciasList' => $provinciasList,
         ]);
+    }
+
+    public function actionUpdate($Id) {
+        $provincias = Provincia::find()->all();
+        $provinciasList = [];
+        $limit = 4;
+        // Use array_slice para pegar apenas os primeiros N elementos
+        foreach (array_slice($provincias, 0, $limit) as $provincia) {
+            $provinciasList[$provincia->Id] = $provincia->nomeProvincia;
+        }
+        $isAdmin = Yii::$app->user->isGuest ? false : Yii::$app->user->can("Permissão de Administrador");
+        $nomeLogado = Yii::$app->user->identity->nomeCompleto;
+        $emailLogado = Yii::$app->user->identity->email;
+        $model = $this->findModel($Id);
+        // Coletando arquivos carregados
+//    if (Yii::$app->request->isPost) {
+        $model->agenda = UploadedFile::getInstance($model, 'agenda');
+        $model->actaRelatorio = UploadedFile::getInstance($model, 'actaRelatorio');
+        $model->listaParticipantes = UploadedFile::getInstance($model, 'listaParticipantes');
+        // Debugging the uploaded files
+//        var_dump("Agenda mostra",$model->agenda);
+        Yii::debug($model->actaRelatorio);
+        Yii::debug($model->listaParticipantes);
+//    }
+//    if ($this->request->isPost && $model->load($this->request->post())) {
+        // Transformando array de participantes em string
+        if (is_array($model->participantes)) {
+            $participantesString = implode(',', $model->participantes);
+            $model->participantes = $participantesString;
+        }
+
+        // Salvando modelo e arquivos
+        if ($model->save() && $model->uploadFiles()) {
+            // Enviar notificações por email
+            // Seu código de notificação por email aqui
+//            var_dump($model->actaRelatorio);
+            Yii::$app->session->setFlash('success', 'Evento actualizado e notificações enviadas!');
+//            return $this->redirect(['site/calendario']);
+        }
+//    }
+        return $this->render('update', [
+                    'model' => $model,
+                    'provinciasList' => $provinciasList,
+        ]);
+    }
+
+    protected function findModel($Id) {
+        if (($model = Event::findOne(['Id' => $Id])) !== null) {
+            return $model;
+        }
+
+        throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
     }
 
     public function actionUpdateEvent($id) {

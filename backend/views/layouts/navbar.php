@@ -1,36 +1,43 @@
 <style>
     .custom-nav-item a {
-        white-space: nowrap; /* Impede a quebra de linha */
-        padding-left: 10px; /* Ajuste o padding conforme necessário */
-        padding-right: 10px; /* Ajuste o padding conforme necessário */
+        white-space: nowrap;
+        padding-left: 10px;
+        padding-right: 10px;
     }
 
-    /* Defina uma classe para telas com largura menor ou igual a 1010px */
+    .navbar-nav .dropdown-menu {
+        width: auto; /* Ajusta a largura do dropdown ao conteúdo */
+        max-width: 400px; /* Define uma largura máxima para evitar que o dropdown fique muito largo */
+    }
+
+    .dropdown-item {
+        white-space: nowrap; /* Evita que o texto quebre para a linha seguinte */
+        overflow: hidden;
+        text-overflow: ellipsis; /* Adiciona reticências (...) quando o texto é muito longo */
+    }
+
     @media (max-width: 1009px) {
         .d-custom-block {
             display: block !important;
         }
     }
 
-    /* Certifique-se de que está oculto em telas maiores que 1010px */
     @media (min-width: 1010px) {
         .d-custom-block {
             display: none !important;
         }
     }
-
 </style>
+
 <?php
 
+use backend\models\Notificacoes;
 use yii\helpers\Html;
 use yii\helpers\Url;
-
-// Obtém o usuário logado
 
 $user = Yii::$app->user->identity;
 
 $listaDeTabelas = [
-    // 'agua',
     'Capacitacao',
     'demostracoesculinarias',
     'eventos',
@@ -46,32 +53,16 @@ $listaDeTabelas = [
     'suplementacao',
 ];
 
-// Consulta para contar registros com estado "Pendente" da entidade do usuário logado
-$validadosCount = 0; // Inicialize o contador para "Validado"
-$aprovadosCount = 0; // Inicialize o contador para "Aprovado"
-$publicadosCount = 0; // Inicialize o contador para "Publicado"
-$pendentesCount = 0; // Inicialize o contador para "Publicado"
-// Percorra a lista de tabelas e conte os registros de cada estado
-// foreach ($listaDeTabelas as $tabela) {
-//     $modelClass = 'backend\models\\' . $tabela;
-//     $pendentesCount += Yii::createObject(['class' => $modelClass])->find()
-//             ->where(['entidade' => $user->entidade, 'estadoValidacao' => 'Pendente'])
-//             ->count();
-//     $validadosCount += Yii::createObject(['class' => $modelClass])->find()
-//             ->where(['entidade' => $user->entidade, 'estadoValidacao' => 'Validado'])
-//             ->count();
-//     $aprovadosCount += Yii::createObject(['class' => $modelClass])->find()
-//             ->where(['entidade' => $user->entidade, 'estadoValidacao' => 'Aprovado'])
-//             ->count();
-//     $publicadosCount += Yii::createObject(['class' => $modelClass])->find()
-//             ->where(['entidade' => $user->entidade, 'estadoValidacao' => 'Publicado'])
-//             ->count();
-// }
+$validadosCount = 0;
+$aprovadosCount = 0;
+$publicadosCount = 0;
+$pendentesCount = 0;
 
+$notificacoesEventos = Notificacoes::find()
+        ->where(['id_usuario' => Yii::$app->user->id, 'estado' => 0])
+        ->all();
 
 $user1 = Yii::$app->user;
-
-//calculo do total de notificacoes
 $totalNotificacoes = 0;
 
 if ($user1->can('Permissao Validador de dados')) {
@@ -85,36 +76,29 @@ if ($user1->can('Perfil Aprovação de dados')) {
 if ($user1->can('Perfil Lancamento')) {
     $totalNotificacoes += $aprovadosCount;
 }
-?>
 
+$totalNotificacoes += count($notificacoesEventos);
+?>
 <!-- Navbar -->
 <nav class="main-header navbar navbar-expand navbar-white navbar-light" style="width: 83vw;">
-
-    <!-- Left navbar links -->
     <ul class="navbar-nav">
         <li class="nav-item d-none d-custom-block">
             <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
     </ul>
 
-    <!-- Left navbar links -->
-
     <ul class="navbar-nav">
-        <!--        <li class="nav-item">
-                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-                </li>-->
-
-
-        <!-- Notifications Dropdown Menu -->
         <li class="nav-item dropdown">
             <a class="nav-link" data-toggle="dropdown" href="#">
                 <i class="far fa-bell"></i>
                 <span class="badge badge-warning navbar-badge"> <?= $totalNotificacoes ?> </span>
             </a>
-
-
-            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-left">
-                <span class="dropdown-header"><?= $pendentesCount + $aprovadosCount + $validadosCount ?>  Notificações</span>
+            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-left" style="width: 405px !important;">
+                <?php if ($totalNotificacoes == 1): ?>
+                    <span class="dropdown-header"><?= $totalNotificacoes ?> Notificação</span>
+                <?php else: ?>
+                    <span class="dropdown-header"><?= $totalNotificacoes ?> Notificações</span>
+                <?php endif; ?>
                 <div class="dropdown-divider"></div>
 
                 <?php if ($user1->can('Permissao Validador de dados')): ?>
@@ -137,11 +121,19 @@ if ($user1->can('Perfil Lancamento')) {
                     <div class="dropdown-divider"></div>
                 <?php endif; ?>
 
-
+                <?php foreach ($notificacoesEventos as $notificacao): ?>
+                    <a href="#" class="dropdown-item event-notification"
+                       data-id="<?= Html::encode($notificacao->Id) ?>"
+                       data-descricao="<?= Html::encode($notificacao->mensagem) ?>">
+                        <i class="fas fa-calendar-alt mr-2"></i> <?= Html::encode($notificacao->mensagem) ?>
+                    </a>
+                    <div class="dropdown-divider"></div>
+                <?php endforeach; ?>
 
                 <div class="dropdown-divider"></div>
                 <a href="#" class="dropdown-item dropdown-footer">Ver todas as notificações</a>
             </div>
+        </li>
 
         <li class="nav-item custom-nav-item">
             <a class="nav-link" href="<?= Yii::$app->urlManagerFrontend->createUrl('/site/index') ?>">Interface Pública</a>
@@ -149,19 +141,16 @@ if ($user1->can('Perfil Lancamento')) {
         <li class="nav-item custom-nav-item">
             <a class="nav-link" href="<?= Url::home() ?>">Interface Privada</a>
         </li>
-    </ul>    
+    </ul>
 
-    <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto" style="margin-right:1% !important;">
         <?php if (!Yii::$app->user->isGuest && !empty(Yii::$app->user->identity)): ?>
-            <!-- User Image -->
             <li class="nav-item">
                 <div class="image">
                     <img style="width: 30px; height: 30px;" src="images/userGeral.png" class="img-circle elevation-2">
                 </div>
             </li>
 
-            <!-- User Info (Name) and Logout Button -->
             <li class="nav-item">
                 <div class="info d-flex align-items-center">
                     <b style="color: #888C00 !important; margin-left: 10px; margin-right: -5px; margin-top: -5px;">
@@ -173,9 +162,87 @@ if ($user1->can('Perfil Lancamento')) {
                 </div>
             </li>
         <?php endif; ?>
-
-
     </ul>
 </nav>
-<!-- /.navbar -->
 
+<!-- Modal para exibir informações do evento -->
+<div class="modal fade" id="event-info-modal" tabindex="-1" role="dialog" aria-labelledby="eventInfoModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalTitulo"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p><strong>Descrição:</strong> <span id="modalDescricao"></span></p>
+                <p><strong>Data de Início:</strong> <span id="modaldataInicio"></span></p>
+                <p><strong>Data de Término:</strong> <span id="modaldataFim"></span></p>
+                <p><strong>Área:</strong> <span id="modalAreaN"></span></p>
+                <p><strong>Duração:</strong> <span id="modalDuracaoN"></span></p>
+                <p><strong>Província:</strong> <span id="modalProvinciaN"></span></p>
+                <p><strong>Município:</strong> <span id="modalMunicipioN"></span></p>
+                <p><strong>Comuna:</strong> <span id="modalComunaN"></span></p>
+                <p><strong>Local:</strong> <span id="modalLocalN"></span></p>
+                <p><strong>Coordenadas:</strong> <span id="modalCoordenadasN"></span></p>
+                <p><strong>Entidade:</strong> <span id="modalEntidadeN"></span></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary close-modal" data-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Certifique-se de que o jQuery está sendo carregado -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+<script>
+    $(document).ready(function () {
+        console.log('Documento pronto, vinculando eventos...');
+        $('.event-notification').on('click', function (e) {
+            e.preventDefault();
+            console.log('Clique detectado em uma notificação de evento.');
+            var eventId = $(this).data('id');
+            var eventDescription = $(this).data('descricao');
+            console.log('ID do Evento: ' + eventId);
+            $.ajax({
+                url: '<?= Url::to(['event/get-event-details']) ?>',
+                type: 'GET',
+                data: {id: eventId},
+                success: function (response) {
+                    console.log(response);
+                    $('#modalTitulo').text(response.summary);
+                    $('#modalDescricao').text(response.description);
+                    $('#modaldataInicio').text(response.start);
+                    $('#modaldataFim').text(response.end);
+                    $('#modalAreaN').text(response.area);
+                    $('#modalDuracaoN').text(response.duracao);
+                    $('#modalProvinciaN').text(response.provincia);
+                    $('#modalMunicipioN').text(response.municipio);
+                    $('#modalComunaN').text(response.comuna);
+                    $('#modalLocalN').text(response.local);
+                    $('#modalCoordenadasN').text(response.coordenadas);
+                    $('#modalEntidadeN').text(response.entidadeOrganizadora);
+                    $('#event-info-modal').modal('show');
+                },
+                error: function (xhr, status, error) {
+                    console.log('Erro na requisição AJAX:', error);
+                    alert('Erro ao carregar os detalhes do evento.');
+                }
+            });
+        });
+        $('#event-info-modal').on('hidden.bs.modal', function () {
+           console.log('Botão Fechar do modal clicado, recarregando a página...');
+            location.reload();
+        });
+
+
+        $(document).on('click', '.close-modal', function () {
+            console.log('Botão Fechar do modal clicado, recarregando a página...');
+            location.reload();
+        });
+    });
+</script>

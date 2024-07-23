@@ -6,6 +6,7 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
+    'PHPExcel' => array($vendorDir . '/phpoffice/phpexcel/Classes'),
     'HTMLPurifier' => array($vendorDir . '/ezyang/htmlpurifier/library'),
     'Google_Service_' => array($vendorDir . '/google/apiclient-services/src'),
     'Google_' => array($vendorDir . '/google/apiclient/src'),

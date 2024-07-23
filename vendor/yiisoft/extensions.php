@@ -318,15 +318,6 @@ return array (
       '@kartik/builder' => $vendorDir . '/kartik-v/yii2-builder/src',
     ),
   ),
-  'kartik-v/yii2-helpers' => 
-  array (
-    'name' => 'kartik-v/yii2-helpers',
-    'version' => 'dev-master',
-    'alias' => 
-    array (
-      '@kartik/helpers' => $vendorDir . '/kartik-v/yii2-helpers/src',
-    ),
-  ),
   'kartik-v/yii2-dropdown-x' => 
   array (
     'name' => 'kartik-v/yii2-dropdown-x',
@@ -354,15 +345,6 @@ return array (
       '@kartik/grid' => $vendorDir . '/kartik-v/yii2-grid/src',
     ),
   ),
-  'yiisoft/yii2-elasticsearch' => 
-  array (
-    'name' => 'yiisoft/yii2-elasticsearch',
-    'version' => 'dev-master',
-    'alias' => 
-    array (
-      '@yii/elasticsearch' => $vendorDir . '/yiisoft/yii2-elasticsearch',
-    ),
-  ),
   'hail812/yii2-adminlte3' => 
   array (
     'name' => 'hail812/yii2-adminlte3',
@@ -381,15 +363,6 @@ return array (
       '@yii/bootstrap5' => $vendorDir . '/yiisoft/yii2-bootstrap5/src',
     ),
     'bootstrap' => 'yii\\bootstrap5\\i18n\\TranslationBootstrap',
-  ),
-  'yiisoft/yii2-swiftmailer' => 
-  array (
-    'name' => 'yiisoft/yii2-swiftmailer',
-    'version' => '2.0.7.0',
-    'alias' => 
-    array (
-      '@yii/swiftmailer' => $vendorDir . '/yiisoft/yii2-swiftmailer',
-    ),
   ),
   'lubosdz/yii2-template-engine' => 
   array (
@@ -515,6 +488,33 @@ return array (
     'alias' => 
     array (
       '@kartik/mpdf' => $vendorDir . '/kartik-v/yii2-mpdf',
+    ),
+  ),
+  'kartik-v/yii2-helpers' => 
+  array (
+    'name' => 'kartik-v/yii2-helpers',
+    'version' => 'dev-master',
+    'alias' => 
+    array (
+      '@kartik/helpers' => $vendorDir . '/kartik-v/yii2-helpers/src',
+    ),
+  ),
+  'yiisoft/yii2-elasticsearch' => 
+  array (
+    'name' => 'yiisoft/yii2-elasticsearch',
+    'version' => 'dev-master',
+    'alias' => 
+    array (
+      '@yii/elasticsearch' => $vendorDir . '/yiisoft/yii2-elasticsearch/src',
+    ),
+  ),
+  'yiisoft/yii2-swiftmailer' => 
+  array (
+    'name' => 'yiisoft/yii2-swiftmailer',
+    'version' => 'dev-master',
+    'alias' => 
+    array (
+      '@yii/swiftmailer' => $vendorDir . '/yiisoft/yii2-swiftmailer/src',
     ),
   ),
 );

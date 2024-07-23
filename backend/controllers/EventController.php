@@ -13,6 +13,8 @@ use backend\models\Comuna;
 use backend\models\User;
 use backend\models\Contacto;
 use Yii;
+use yii\web\UploadedFile;
+use backend\models\Notificacoes;
 
 /**
  * EventController implements the CRUD actions for Event model.
@@ -122,13 +124,14 @@ class EventController extends Controller {
         $isAdmin = Yii::$app->user->isGuest ? false : Yii::$app->user->can("Permissão de Administrador");
         $nomeLogado = Yii::$app->user->identity->nomeCompleto;
         $emailLogado = Yii::$app->user->identity->email;
+        $model = new \backend\models\Event();
         $model = $this->findModel($Id);
         $participantes = $model->participantes;
         $titulo = $model->summary;
         // Transformar array de participantes em uma string formatada
         // Verificar se $model->participantes é um array antes de chamar implode
         if (is_array($model->participantes)) {
-           $participantesString = implode(',', $model->participantes);
+            $participantesString = implode(',', $model->participantes);
             $model->participantes = $participantesString;
         }
 //        $participantesString = implode(',', $model->participantes);
@@ -142,15 +145,22 @@ class EventController extends Controller {
                 $provinciasList[$provincia->Id] = $provincia->nomeProvincia;
             }
             if ($this->request->isPost && $model->load($this->request->post())) {
+                $model->agenda = UploadedFile::getInstance($model, 'agenda');
+                $model->actaRelatorio = UploadedFile::getInstance($model, 'actaRelatorio');
+                $model->listaParticipantes = UploadedFile::getInstance($model, 'listaParticipantes');
+
                 if (is_array($model->participantes)) {
-                $participantesString = implode(',', $model->participantes);
-                $model->participantes = $participantesString;
-            }
+                    $participantesString = implode(',', $model->participantes);
+                    $model->participantes = $participantesString;
+                }
+                $model->description = empty($model->description) ? "Por confirmar em breve" : $model->description;
+                $model->coordenadas = empty($model->coordenadas) ? "Por confirmar em breve" : $model->coordenadas;
+                $model->local = empty($model->local) ? "Por confirmar em breve" : $model->local;
                 $anfitriaoEmail = User::find()->select('email')
                         ->where(['nomeCompleto' => $anfitriaoNome])
                         ->scalar();
-                if ($model->save()) {
-                     $participantesArray = explode(',', $model->participantes);
+                if ($model->save() && $model->uploadFiles()) {
+                    $participantesArray = explode(',', $model->participantes);
                     //  Enviar notificação por email ao anfitrião original do evento
                     if (($anfitriaoEmail !== null) && ($emailLogado == $anfitriaoEmail)) {
                         Yii::$app->mailer->compose()
@@ -177,6 +187,8 @@ class EventController extends Controller {
                                 ->send();
                     }
                     // Enviar notificações por email para os participantes
+//                    var_dump($participantesArray[0]);
+                   if ($model->participantes != "Por confirmar em breve") {
                     foreach ($participantesArray as $email) {
                         // Consulta para encontrar o nome do contacto com o email atual
                         $nomeContacto = Contacto::find()
@@ -193,6 +205,19 @@ class EventController extends Controller {
                                     ->send();
                         }
                     }
+                   }
+                    // Adicionar notificação
+                    // Após salvar o novo evento
+                    $usuarios = User::find()->all(); // Ou uma query para selecionar os usuários que devem receber a notificação
+                    foreach ($usuarios as $usuario) {
+                        $notificacao = new Notificacoes();
+                        $notificacao->mensagem = "Evento [$titulo] actualizado";
+                        $notificacao->estado = 0; // não lida
+                        $notificacao->id_event = $model->Id;
+                        $notificacao->id_usuario = $usuario->id;
+                        $notificacao->save();
+                    }
+
 
                     Yii::$app->session->setFlash('success', 'Evento actualizado e notificações enviadas!');
                     return $this->redirect(['site/calendario']);
@@ -221,6 +246,84 @@ class EventController extends Controller {
      * @return \yii\web\Response
      * @throws NotFoundHttpException if the model cannot be found
      */
+    public function actionGetEventDetails($id) {
+        $notificacao = Notificacoes::findOne($id);
+        if ($notificacao !== null) {
+            // Atualizar o estado da notificação
+            $notificacao->estado = 1;
+            $notificacao->save();
+            $event = Event::findOne($notificacao->id_event);
+            if ($event !== null) {
+                return $this->asJson([
+//                       'id' => $event->Id,
+                            'summary' => $event->summary,
+                            'description' => $event->description,
+                            'area' => $event->area,
+                            'start' => $event->start,
+                            'end' => $event->end,
+                            'duracao' => $event->duracao,
+                            'provincia' => $event->provincia->nomeProvincia,
+                            'municipio' => $event->municipio->nomeMunicipio,
+                            'comuna' => $event->comuna->nomeComuna,
+                            'local' => $event->local,
+                            'coordenadas' => $event->coordenadas,
+                            'entidadeOrganizadora' => $event->entidadeOrganizadora,
+                            'convocadoPor' => $event->convocadoPor,
+                            'participantes' => $event->participantes,
+                            'agenda' => $event->agenda,
+                            'actaRelatorio' => $event->actaRelatorio,
+                            'listaParticipantes' => $event->listaParticipantes,
+                ]);
+            }
+        }
+        throw new \yii\web\NotFoundHttpException('Evento não encontrado.');
+    }
+
+    // No seu controlador
+   public function actionGetNotifications()
+{
+    $notificacoesEventos = Notificacoes::find()
+        ->where(['id_usuario' => Yii::$app->user->id, 'estado' => 0])
+        ->all();
+
+    $notifications = [];
+    foreach ($notificacoesEventos as $notificacao) {
+        $notifications[] = [
+            'id' => $notificacao->Id,
+            'mensagem' => $notificacao->mensagem,
+        ];
+    }
+
+    $totalNotificacoes = count($notifications);
+
+    if (Yii::$app->user->can('Permissao Validador de dados')) {
+        $totalNotificacoes += $pendentesCount; // Ajuste conforme necessário
+    }
+
+    if (Yii::$app->user->can('Perfil Aprovação de dados')) {
+        $totalNotificacoes += $validadosCount; // Ajuste conforme necessário
+    }
+
+    if (Yii::$app->user->can('Perfil Lancamento')) {
+        $totalNotificacoes += $aprovadosCount; // Ajuste conforme necessário
+    }
+
+    return $this->asJson([
+        'totalNotificacoes' => $totalNotificacoes,
+        'notifications' => $notifications,
+    ]);
+}
+
+    
+    public function actionGetNotification() {
+        $userId = Yii::$app->user->id;
+        $count = Notificacoes::find()
+                ->where(['id_usuario' => $userId, 'estado' => 0])
+                ->count();
+
+        return $this->asJson(['totalNotificacoes' => $count]);
+    }
+
     public function actionDelete($Id) {
         $this->findModel($Id)->delete();
 
@@ -262,7 +365,6 @@ class EventController extends Controller {
         }
 
         return json_encode($municipios_list);
-    
     }
 
     public function actionGetComunas($id) {

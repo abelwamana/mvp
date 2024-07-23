@@ -76,7 +76,7 @@ $config = [
                 'adicionarContacto' => 'contacto/create',
                 'verContacto' => 'contacto/view', 
                 'actualizarContacto' => 'contacto/update',
-                'update-event' => 'site/update-event',
+//                'update-event' => 'site/update-event',
                 'listaeventosCalendario' => 'event/listaeventos',
                 'verAgua' => 'agua/view', 
                 'actualizarAgua' => 'agua/update', 
@@ -86,6 +86,7 @@ $config = [
                 'verDocumento' => 'biblioteca/view', 
                 'bibliotecaPage' => 'biblioteca/biblioteca', 
                 'viewpage' => 'biblioteca/viewpage', 
+                'actualizarEvento' => 'event/update', 
                 
                 
             ],

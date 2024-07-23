@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'yiisoft/yii2-app-advanced',
-        'pretty_version' => 'dev-main',
-        'version' => 'dev-main',
-        'reference' => '951ed12b18d642d288b54407bdc61128a3061b83',
+        'pretty_version' => '1.0.0+no-version-set',
+        'version' => '1.0.0.0',
+        'reference' => null,
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -71,9 +71,9 @@
             'dev_requirement' => true,
         ),
         'bower-asset/bootstrap' => array(
-            'pretty_version' => 'v5.3.3',
-            'version' => '5.3.3.0',
-            'reference' => '6e1f75f420f68e1d52733b8e407fc7c3766c9dba',
+            'pretty_version' => 'v5.3.0-alpha1',
+            'version' => '5.3.0.0-alpha1',
+            'reference' => 'cf9454caa00872899215603e5e036d9a824b1b11',
             'type' => 'bower-asset',
             'install_path' => __DIR__ . '/../bower-asset/bootstrap',
             'aliases' => array(),
@@ -100,16 +100,16 @@
         'bower-asset/inputmask' => array(
             'pretty_version' => '5.x-dev',
             'version' => '5.9999999.9999999.9999999-dev',
-            'reference' => '9d73d6649002b30f1551bd4577761ed7516bc99e',
+            'reference' => '5069a1acaf2682401b92ea500a35dfc5314b83dc',
             'type' => 'bower-asset',
             'install_path' => __DIR__ . '/../bower-asset/inputmask',
             'aliases' => array(),
             'dev_requirement' => false,
         ),
         'bower-asset/jquery' => array(
-            'pretty_version' => '3.7.1',
-            'version' => '3.7.1.0',
-            'reference' => 'fde1f76e2799dd877c176abde0ec836553246991',
+            'pretty_version' => '3.6.4',
+            'version' => '3.6.4.0',
+            'reference' => '91ef2d8836342875f2519b5815197ea0f23613cf',
             'type' => 'bower-asset',
             'install_path' => __DIR__ . '/../bower-asset/jquery',
             'aliases' => array(),
@@ -249,19 +249,28 @@
             'aliases' => array(),
             'dev_requirement' => true,
         ),
+        'doctrine/deprecations' => array(
+            'pretty_version' => '1.1.x-dev',
+            'version' => '1.1.9999999.9999999-dev',
+            'reference' => 'dfbaa3c2d2e9a9df1118213f3b8b0c597bb99fab',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../doctrine/deprecations',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'doctrine/instantiator' => array(
             'pretty_version' => '2.0.x-dev',
             'version' => '2.0.9999999.9999999-dev',
-            'reference' => '6c0ee619435c5d4f3bc515ab1514cf4cf1006c6e',
+            'reference' => '0dfb69d79d0964b8a80bfa92c07f50e3e8d73542',
             'type' => 'library',
             'install_path' => __DIR__ . '/../doctrine/instantiator',
             'aliases' => array(),
             'dev_requirement' => true,
         ),
         'doctrine/lexer' => array(
-            'pretty_version' => '3.1.x-dev',
-            'version' => '3.1.9999999.9999999-dev',
-            'reference' => 'cd03cc3c085aa94b046bd2d342b08d6b0e5d834f',
+            'pretty_version' => '2.1.x-dev',
+            'version' => '2.1.9999999.9999999-dev',
+            'reference' => '861c870e8b75f7c8f69c146c7f89cc1c0f1b49b6',
             'type' => 'library',
             'install_path' => __DIR__ . '/../doctrine/lexer',
             'aliases' => array(),
@@ -279,9 +288,9 @@
             'dev_requirement' => false,
         ),
         'egulias/email-validator' => array(
-            'pretty_version' => '4.x-dev',
-            'version' => '4.9999999.9999999.9999999-dev',
-            'reference' => '877577656387a3ffabae60dd4c425059179834cb',
+            'pretty_version' => '3.x-dev',
+            'version' => '3.9999999.9999999.9999999-dev',
+            'reference' => 'e5997fa97e8790cdae03a9cbd5e78e45e3c7bda7',
             'type' => 'library',
             'install_path' => __DIR__ . '/../egulias/email-validator',
             'aliases' => array(),
@@ -326,7 +335,7 @@
         'fakerphp/faker' => array(
             'pretty_version' => '1.23.x-dev',
             'version' => '1.23.9999999.9999999-dev',
-            'reference' => 'bfb4fe148adbf78eff521199619b93a52ae3554b',
+            'reference' => '4dae775c9fbd5d734f5307b73e29d34adf289e50',
             'type' => 'library',
             'install_path' => __DIR__ . '/../fakerphp/faker',
             'aliases' => array(),
@@ -589,7 +598,7 @@
         'kartik-v/yii2-helpers' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => '1954c59dbd147af7aa791e172775036eb7ffa505',
+            'reference' => 'ddce6838646c2401db0078f5ba2c98840d1f898e',
             'type' => 'yii2-extension',
             'install_path' => __DIR__ . '/../kartik-v/yii2-helpers',
             'aliases' => array(
@@ -925,7 +934,7 @@
         'myclabs/deep-copy' => array(
             'pretty_version' => '1.x-dev',
             'version' => '1.9999999.9999999.9999999-dev',
-            'reference' => '2f5294676c802a62b0549f6bc8983f14294ce369',
+            'reference' => '3a6b9a42cd8f8771bd4295d13e1423fa7f3d942c',
             'type' => 'library',
             'install_path' => __DIR__ . '/../myclabs/deep-copy',
             'aliases' => array(),
@@ -1044,10 +1053,19 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
+        'phpoffice/phpexcel' => array(
+            'pretty_version' => '1.8.1',
+            'version' => '1.8.1.0',
+            'reference' => '372c7cbb695a6f6f1e62649381aeaa37e7e70b32',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../phpoffice/phpexcel',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'phpoffice/phpspreadsheet' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => '34272571f5c82ba390d3ddd482153bf1df2441b7',
+            'reference' => 'fcf03b95bf8ae12c05680141f3e0c3833f6e985c',
             'type' => 'library',
             'install_path' => __DIR__ . '/../phpoffice/phpspreadsheet',
             'aliases' => array(
@@ -1058,7 +1076,7 @@
         'phpoffice/phpword' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => '8b891bb6842dd383f679b47898fad0b7c181f325',
+            'reference' => '2daa50c6f34c9cb6c532f72350e4bd8d466d6c71',
             'type' => 'library',
             'install_path' => __DIR__ . '/../phpoffice/phpword',
             'aliases' => array(
@@ -1069,7 +1087,7 @@
         'phpseclib/phpseclib' => array(
             'pretty_version' => '2.0.x-dev',
             'version' => '2.0.9999999.9999999-dev',
-            'reference' => '08bd1beb121a23435e82f576eaae296be36b2863',
+            'reference' => 'd64fbe1ef1fd12c812f6542abb0af433f24e1b4d',
             'type' => 'library',
             'install_path' => __DIR__ . '/../phpseclib/phpseclib',
             'aliases' => array(),
@@ -1087,7 +1105,7 @@
         'phpunit/php-code-coverage' => array(
             'pretty_version' => '9.2.x-dev',
             'version' => '9.2.9999999.9999999-dev',
-            'reference' => '3352293d9e91513d5508c415835014881b420218',
+            'reference' => '328a747f499cca790acff5634a4e55b957f40634',
             'type' => 'library',
             'install_path' => __DIR__ . '/../phpunit/php-code-coverage',
             'aliases' => array(),
@@ -1185,14 +1203,12 @@
             'dev_requirement' => false,
         ),
         'psr/http-factory' => array(
-            'pretty_version' => 'dev-master',
-            'version' => 'dev-master',
+            'pretty_version' => '1.1.0',
+            'version' => '1.1.0.0',
             'reference' => '2b4765fddfe3b508ac62f829e852b1501d3f6e8a',
             'type' => 'library',
             'install_path' => __DIR__ . '/../psr/http-factory',
-            'aliases' => array(
-                0 => '1.0.x-dev',
-            ),
+            'aliases' => array(),
             'dev_requirement' => false,
         ),
         'psr/http-factory-implementation' => array(
@@ -1457,9 +1473,9 @@
             'dev_requirement' => false,
         ),
         'swiftmailer/swiftmailer' => array(
-            'pretty_version' => '5.x-dev',
-            'version' => '5.9999999.9999999.9999999-dev',
-            'reference' => '181b89f18a90f8925ef805f950d47a7190e9b950',
+            'pretty_version' => 'v6.3.0',
+            'version' => '6.3.0.0',
+            'reference' => '8a5d5072dca8f48460fce2f4131fcc495eec654c',
             'type' => 'library',
             'install_path' => __DIR__ . '/../swiftmailer/swiftmailer',
             'aliases' => array(),
@@ -1468,7 +1484,7 @@
         'symfony/browser-kit' => array(
             'pretty_version' => '6.4.x-dev',
             'version' => '6.4.9999999.9999999-dev',
-            'reference' => 'c276856598f70e96f75403fc04841cec1dc56e74',
+            'reference' => '62ab90b92066ef6cce5e79365625b4b1432464c8',
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/browser-kit',
             'aliases' => array(),
@@ -1477,7 +1493,7 @@
         'symfony/console' => array(
             'pretty_version' => '6.4.x-dev',
             'version' => '6.4.9999999.9999999-dev',
-            'reference' => 'a170e64ae10d00ba89e2acbb590dc2e54da8ad8f',
+            'reference' => '6edb5363ec0c78ad4d48c5128ebf4d083d89d3a9',
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/console',
             'aliases' => array(),
@@ -1486,7 +1502,7 @@
         'symfony/css-selector' => array(
             'pretty_version' => '6.4.x-dev',
             'version' => '6.4.9999999.9999999-dev',
-            'reference' => '1c5d5c2103c3762aff27a27e1e2409e30a79083b',
+            'reference' => '4b61b02fe15db48e3687ce1c45ea385d1780fe08',
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/css-selector',
             'aliases' => array(),
@@ -1495,7 +1511,7 @@
         'symfony/deprecation-contracts' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '2c438b99bb2753c1628c1e6f523991edea5b03a4',
+            'reference' => '0e0d29ce1f20deffb4ab1b016a7257c4f1e789a1',
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/deprecation-contracts',
             'aliases' => array(
@@ -1506,7 +1522,7 @@
         'symfony/dom-crawler' => array(
             'pretty_version' => '6.4.x-dev',
             'version' => '6.4.9999999.9999999-dev',
-            'reference' => '2088c5da700b1e7a8689fffc10dda6c1f643deea',
+            'reference' => '105b56a0305d219349edeb60a800082eca864e4b',
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/dom-crawler',
             'aliases' => array(),
@@ -1515,7 +1531,7 @@
         'symfony/event-dispatcher' => array(
             'pretty_version' => '6.4.x-dev',
             'version' => '6.4.9999999.9999999-dev',
-            'reference' => 'd84384f3f67de3cb650db64d685d70395dacfc3f',
+            'reference' => '8d7507f02b06e06815e56bb39aa0128e3806208b',
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/event-dispatcher',
             'aliases' => array(),
@@ -1524,7 +1540,7 @@
         'symfony/event-dispatcher-contracts' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '4d4ea14a8d31bc995e29bdbd566ac07c9fd004f5',
+            'reference' => '8f93aec25d41b72493c6ddff14e916177c9efc50',
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/event-dispatcher-contracts',
             'aliases' => array(
@@ -1541,25 +1557,25 @@
         'symfony/finder' => array(
             'pretty_version' => '6.4.x-dev',
             'version' => '6.4.9999999.9999999-dev',
-            'reference' => '511c48990be17358c23bf45c5d71ab85d40fb764',
+            'reference' => '3ef977a43883215d560a2cecb82ec8e62131471c',
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/finder',
             'aliases' => array(),
             'dev_requirement' => true,
         ),
         'symfony/mailer' => array(
-            'pretty_version' => '7.1.x-dev',
-            'version' => '7.1.9999999.9999999-dev',
-            'reference' => 'fc4f94c617c477c255b782485b484095d8e29646',
+            'pretty_version' => '7.2.x-dev',
+            'version' => '7.2.9999999.9999999-dev',
+            'reference' => '9e2ccc9b23c01f4abf8bb0b063ab3058861c374c',
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/mailer',
             'aliases' => array(),
             'dev_requirement' => false,
         ),
         'symfony/mime' => array(
-            'pretty_version' => '7.1.x-dev',
-            'version' => '7.1.9999999.9999999-dev',
-            'reference' => 'c537f46aff57bf0f91f559d4e9ba7c4dfd3d77aa',
+            'pretty_version' => '7.2.x-dev',
+            'version' => '7.2.9999999.9999999-dev',
+            'reference' => 'b4e40038781ffa226357cfc75d082daf2aa3b8e3',
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/mime',
             'aliases' => array(),
@@ -1568,16 +1584,25 @@
         'symfony/polyfill-ctype' => array(
             'pretty_version' => '1.x-dev',
             'version' => '1.9999999.9999999.9999999-dev',
-            'reference' => 'c9e59dec962d38cf2e0e4c61c4a1a1312f4dd7fe',
+            'reference' => '0424dff1c58f028c451efff2045f5d92410bd540',
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/polyfill-ctype',
             'aliases' => array(),
             'dev_requirement' => true,
         ),
+        'symfony/polyfill-iconv' => array(
+            'pretty_version' => '1.x-dev',
+            'version' => '1.9999999.9999999.9999999-dev',
+            'reference' => 'c027e6a3c6aee334663ec21f5852e89738abc805',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../symfony/polyfill-iconv',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'symfony/polyfill-intl-grapheme' => array(
             'pretty_version' => '1.x-dev',
             'version' => '1.9999999.9999999.9999999-dev',
-            'reference' => '0a1df740cbb01859ce1bac85b0ad58ffe02f69b6',
+            'reference' => '64647a7c30b2283f5d49b874d84a18fc22054b7a',
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/polyfill-intl-grapheme',
             'aliases' => array(),
@@ -1586,7 +1611,7 @@
         'symfony/polyfill-intl-idn' => array(
             'pretty_version' => '1.x-dev',
             'version' => '1.9999999.9999999.9999999-dev',
-            'reference' => '872bf457bc23bdabf298c0246acf98abe3ed1493',
+            'reference' => 'a6e83bdeb3c84391d1dfe16f42e40727ce524a5c',
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/polyfill-intl-idn',
             'aliases' => array(),
@@ -1595,7 +1620,7 @@
         'symfony/polyfill-intl-normalizer' => array(
             'pretty_version' => '1.x-dev',
             'version' => '1.9999999.9999999.9999999-dev',
-            'reference' => '2a090dc3db090fcb35cc7329d18a07f281f15d79',
+            'reference' => 'a95281b0be0d9ab48050ebd988b967875cdb9fdb',
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/polyfill-intl-normalizer',
             'aliases' => array(),
@@ -1604,7 +1629,7 @@
         'symfony/polyfill-mbstring' => array(
             'pretty_version' => '1.x-dev',
             'version' => '1.9999999.9999999.9999999-dev',
-            'reference' => 'e642fbe7a7b73cdb05460555289a9057bfd6ead6',
+            'reference' => '8740a072b86292957feb42703edde77fcfca84fb',
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/polyfill-mbstring',
             'aliases' => array(),
@@ -1613,7 +1638,7 @@
         'symfony/polyfill-php72' => array(
             'pretty_version' => '1.x-dev',
             'version' => '1.9999999.9999999.9999999-dev',
-            'reference' => '06b6fc633edab1c62fe2ad67ee3fe343938f846f',
+            'reference' => 'e5670122fdf3e86a1f6dee9f043893e70c343b34',
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/polyfill-php72',
             'aliases' => array(),
@@ -1622,7 +1647,7 @@
         'symfony/service-contracts' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => 'a17e69656265139c2ab4a62529f495a2a41fd6ce',
+            'reference' => 'bd1d9e59a81d8fa4acdcea3f617c581f7475a80f',
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/service-contracts',
             'aliases' => array(
@@ -1631,9 +1656,9 @@
             'dev_requirement' => false,
         ),
         'symfony/string' => array(
-            'pretty_version' => '7.1.x-dev',
-            'version' => '7.1.9999999.9999999-dev',
-            'reference' => '236b450c00ab6560e6cda684853d2db3c6b41731',
+            'pretty_version' => '7.2.x-dev',
+            'version' => '7.2.9999999.9999999-dev',
+            'reference' => '04f7ef038c1b0a191c124e83928323264c8af401',
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/string',
             'aliases' => array(),
@@ -1642,7 +1667,7 @@
         'symfony/var-dumper' => array(
             'pretty_version' => '6.4.x-dev',
             'version' => '6.4.9999999.9999999-dev',
-            'reference' => '7a9cd977cd1c5fed3694bee52990866432af07d7',
+            'reference' => 'c31566e4ca944271cc8d8ac6887cbf31b8c6a172',
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/var-dumper',
             'aliases' => array(),
@@ -1651,7 +1676,7 @@
         'symfony/yaml' => array(
             'pretty_version' => '6.4.x-dev',
             'version' => '6.4.9999999.9999999-dev',
-            'reference' => '53e8b1ef30a65f78eac60fddc5ee7ebbbdb1dee0',
+            'reference' => '52903de178d542850f6f341ba92995d3d63e60c9',
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/yaml',
             'aliases' => array(),
@@ -1754,7 +1779,7 @@
         'yiisoft/strings' => array(
             'pretty_version' => '2.x-dev',
             'version' => '2.9999999.9999999.9999999-dev',
-            'reference' => 'da1a17892c729d7bc95e70621431f64aa1fb3f29',
+            'reference' => '47a3675d817d98612aeec5083d73a184ecd5239c',
             'type' => 'library',
             'install_path' => __DIR__ . '/../yiisoft/strings',
             'aliases' => array(),
@@ -1774,7 +1799,7 @@
         'yiisoft/yii2' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => '12e57a9bb38c1deebb497519825e7093e5058b63',
+            'reference' => '1568fbba08bfa549ef0d1125c3a98f34a207c6f0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../yiisoft/yii2',
             'aliases' => array(
@@ -1783,9 +1808,9 @@
             'dev_requirement' => false,
         ),
         'yiisoft/yii2-app-advanced' => array(
-            'pretty_version' => 'dev-main',
-            'version' => 'dev-main',
-            'reference' => '951ed12b18d642d288b54407bdc61128a3061b83',
+            'pretty_version' => '1.0.0+no-version-set',
+            'version' => '1.0.0.0',
+            'reference' => null,
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -1843,7 +1868,7 @@
         'yiisoft/yii2-elasticsearch' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => 'd697c961f03dc3c9554cfa6e4836db5db00c0310',
+            'reference' => '498a28dab157b529b0f0b5a0bfd209fc09cf31f7',
             'type' => 'yii2-extension',
             'install_path' => __DIR__ . '/../yiisoft/yii2-elasticsearch',
             'aliases' => array(
@@ -1883,12 +1908,14 @@
             'dev_requirement' => false,
         ),
         'yiisoft/yii2-swiftmailer' => array(
-            'pretty_version' => '2.0.7',
-            'version' => '2.0.7.0',
-            'reference' => '8a03a62cbcb82e7697d3002eb43a8d2637f566ec',
+            'pretty_version' => 'dev-master',
+            'version' => 'dev-master',
+            'reference' => 'c2769ca3084c65045f4231cd3fc85c8cfb6acc66',
             'type' => 'yii2-extension',
             'install_path' => __DIR__ . '/../yiisoft/yii2-swiftmailer',
-            'aliases' => array(),
+            'aliases' => array(
+                0 => '2.1.x-dev',
+            ),
             'dev_requirement' => false,
         ),
         'yiisoft/yii2-symfonymailer' => array(

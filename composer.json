@@ -54,9 +54,11 @@
         "kartik-v/yii2-export": "*",
         "kartik-v/yii2-export": "dev-master",
         "mailchimp/marketing": "dev-master",
-        "drewm/mailchimp-api": "dev-master"
-
-
+        "drewm/mailchimp-api": "dev-master",
+        "phpoffice/phpexcel": "^1.8",
+        "phpoffice/phpspreadsheet": "dev-master",
+        "mpdf/mpdf": "^6.1"
+        
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",

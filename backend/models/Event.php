@@ -22,7 +22,11 @@ use Yii;
  * @property string $entidadeOrganizadora
  * @property string $convocadoPor
  * @property string $participantes
- *
+ * @property UploadedFile $agenda
+ * @property UploadedFile $listaParticipantes
+ * @property UploadedFile $actaRelatorio
+ * @property UploadeFile $outrosAnexos
+ * 
  * @property Comuna $comuna
  * @property Municipio $municipio
  * @property Provincia $provincia
@@ -43,7 +47,7 @@ class Event extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['summary', 'description', 'area', 'start', 'end', 'duracao', 'provinciaID', 'municipioID', 'comunaID', 'local', 'coordenadas', 'entidadeOrganizadora', 'convocadoPor', 'participantes'], 'required'],
+            [['summary', 'area', 'start', 'end', 'duracao', 'provinciaID', 'municipioID', 'comunaID', 'entidadeOrganizadora', 'convocadoPor', 'participantes'], 'required'],
             [['description', 'local'], 'string'],
             //[['participantes'], 'each', 'rule' => ['email']],
             [['start', 'end'], 'safe'],
@@ -53,7 +57,9 @@ class Event extends \yii\db\ActiveRecord
             [['comunaID'], 'exist', 'skipOnError' => true, 'targetClass' => Comuna::class, 'targetAttribute' => ['comunaID' => 'Id']],
             [['municipioID'], 'exist', 'skipOnError' => true, 'targetClass' => Municipio::class, 'targetAttribute' => ['municipioID' => 'Id']],
             [['provinciaID'], 'exist', 'skipOnError' => true, 'targetClass' => Provincia::class, 'targetAttribute' => ['provinciaID' => 'Id']],
-           ];
+            [['agenda', 'listaParticipantes', 'actaRelatorio', 'outrosAnexos'], 'file', 'extensions' => 'pdf, doc, docx, xls, xlsx', 'maxSize' => 1024 * 1024 * 10], // Máximo de 10MB
+//            [['outrosAnexos'], 'file', 'extensions' => 'pdf, doc, docx, xls, xlsx, jpg, jpeg, png, ppt, pptx, mp4, avi', 'maxSize' => 1024 * 1024 * 20], // Máximo de 20MB por arquivo, até 10 arquivos
+            ];
     }
 
     /**
@@ -77,7 +83,69 @@ class Event extends \yii\db\ActiveRecord
             'entidadeOrganizadora' => Yii::t('app', 'Entidade Organizadora'),
             'convocadoPor' => Yii::t('app', 'Convocado Por'),
             'participantes' => Yii::t('app', 'Participantes'),
+            'agenda' => 'Agenda',
+            'actaRelatorio' => 'Acta/Relatório',
+            'listaParticipantes' => 'Lista de Participantes',
+            'outrosAnexos' => 'Outros (imagem, video, documento etc)',
         ];
+    }
+//    public function beforeSave($insert)
+//{
+//    if (parent::beforeSave($insert)) {
+//        if (is_array($this->outrosAnexos)) {
+//            $this->outrosAnexos = implode(',', $this->outrosAnexos);
+//        }
+//        return true;
+//    } else {
+//        return false;
+//    }
+//}
+
+//    public function afterFind()
+//{
+//    parent::afterFind();
+//    if (!empty($this->outrosAnexos)) {
+//        $this->outrosAnexos = explode(',', $this->outrosAnexos);
+//    }
+//}
+     /**
+     * Upload files method
+     */
+    public function uploadFiles()
+    {
+        if ($this->validate()) {
+            if ($this->agenda) {
+                $this->agenda->saveAs('uploads/' . $this->agenda->baseName . '.' . $this->agenda->extension);
+                $this->agenda = 'uploads/' . $this->agenda->baseName . '.' . $this->agenda->extension;
+            }
+            if ($this->actaRelatorio) {
+                $this->actaRelatorio->saveAs('uploads/' . $this->actaRelatorio->baseName . '.' . $this->actaRelatorio->extension);
+                $this->actaRelatorio = 'uploads/' . $this->actaRelatorio->baseName . '.' . $this->actaRelatorio->extension;
+            }
+            if ($this->listaParticipantes) {
+                $this->listaParticipantes->saveAs('uploads/' . $this->listaParticipantes->baseName . '.' . $this->listaParticipantes->extension);
+                $this->listaParticipantes = 'uploads/' . $this->listaParticipantes->baseName . '.' . $this->listaParticipantes->extension;
+            }
+//            if ($this->outrosAnexos) {
+//                $this->outrosAnexos->saveAs('uploads/' . $this->outrosAnexos->baseName . '.' . $this->outrosAnexos->extension);
+//                $this->outrosAnexos = 'uploads/' . $this->outrosAnexos->baseName . '.' . $this->outrosAnexos->extension;
+//            }
+//           if (is_array($this->outrosAnexos)) {
+//                $paths = [];
+//                foreach ($this->outrosAnexos as $file) {
+//                    $path = 'uploads/' . $file->baseName . '.' . $file->extension;
+//                    $file->saveAs($path);
+//                    $paths[] = $path;
+//                }
+//                // Serializar os caminhos como uma string delimitada por vírgulas
+//                $this->outrosAnexos = implode(',', $paths);
+//            
+//                
+//                }
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**
@@ -85,6 +153,7 @@ class Event extends \yii\db\ActiveRecord
      *
      * @return \yii\db\ActiveQuery
      */
+  
     public function getComuna()
     {
         return $this->hasOne(Comuna::class, ['Id' => 'comunaID']);

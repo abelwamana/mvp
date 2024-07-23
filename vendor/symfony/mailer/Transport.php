@@ -22,6 +22,7 @@ use Symfony\Component\Mailer\Bridge\Mailchimp\Transport\MandrillTransportFactory
 use Symfony\Component\Mailer\Bridge\MailerSend\Transport\MailerSendTransportFactory;
 use Symfony\Component\Mailer\Bridge\Mailgun\Transport\MailgunTransportFactory;
 use Symfony\Component\Mailer\Bridge\Mailjet\Transport\MailjetTransportFactory;
+use Symfony\Component\Mailer\Bridge\Mailomat\Transport\MailomatTransportFactory;
 use Symfony\Component\Mailer\Bridge\MailPace\Transport\MailPaceTransportFactory;
 use Symfony\Component\Mailer\Bridge\Postmark\Transport\PostmarkTransportFactory;
 use Symfony\Component\Mailer\Bridge\Resend\Transport\ResendTransportFactory;
@@ -55,6 +56,7 @@ final class Transport
         MailerSendTransportFactory::class,
         MailgunTransportFactory::class,
         MailjetTransportFactory::class,
+        MailomatTransportFactory::class,
         MailPaceTransportFactory::class,
         MandrillTransportFactory::class,
         PostmarkTransportFactory::class,
@@ -63,8 +65,6 @@ final class Transport
         SendgridTransportFactory::class,
         SesTransportFactory::class,
     ];
-
-    private iterable $factories;
 
     public static function fromDsn(#[\SensitiveParameter] string $dsn, ?EventDispatcherInterface $dispatcher = null, ?HttpClientInterface $client = null, ?LoggerInterface $logger = null): TransportInterface
     {
@@ -83,9 +83,9 @@ final class Transport
     /**
      * @param TransportFactoryInterface[] $factories
      */
-    public function __construct(iterable $factories)
-    {
-        $this->factories = $factories;
+    public function __construct(
+        private iterable $factories,
+    ) {
     }
 
     public function fromStrings(#[\SensitiveParameter] array $dsns): Transports
@@ -144,7 +144,7 @@ final class Transport
             }
 
             if (preg_match('{(\w+)\(}A', $dsn, $matches, 0, $offset)) {
-                throw new InvalidArgumentException(sprintf('The "%s" keyword is not valid (valid ones are "%s"), ', $matches[1], implode('", "', array_keys($keywords))));
+                throw new InvalidArgumentException(\sprintf('The "%s" keyword is not valid (valid ones are "%s"), ', $matches[1], implode('", "', array_keys($keywords))));
             }
 
             if ($pos = strcspn($dsn, ' )', $offset)) {

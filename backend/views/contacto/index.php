@@ -203,7 +203,10 @@ use backend\models\Contacto;
                     'attribute' => 'provinciaNome',
                     'vAlign' => 'middle',
                     'hAlign' => 'center',
-                    'value' => 'provincia.nomeProvincia',
+//                    'value' => 'provincia.nomeProvincia',
+                    'value' => function ($model) {
+                        return $model->provincia ? $model->provincia->nomeProvincia : '';
+                    },
                     'header' => '<span style="color: black;">Província</span>',
                     'filter' => '<div class="custom-search-wrapper">
                     <i class="fa fa-search"></i>
@@ -214,7 +217,10 @@ use backend\models\Contacto;
                     'attribute' => 'municipioNome',
                     'vAlign' => 'middle',
                     'hAlign' => 'center',
-                    'value' => 'municipio.nomeMunicipio',
+//                    'value' => 'municipio.nomeMunicipio',
+                    'value' => function ($model) {
+                        return $model->municipio ? $model->municipio->nomeMunicipio : '';
+                    },
                     'header' => '<span style="color: black;">Município</span>',
                     'filter' => '<div class="custom-search-wrapper">
                     <i class="fa fa-search"></i>
@@ -393,18 +399,29 @@ use backend\models\Contacto;
                         'class' => 'btn btn-outline-secondary',
                         'title' => 'Reiniciar a Tabela',
                         'data-pjax' => 0,
+                    ]) . ' ' .
+                    Html::a('<i class="fas fa-file-excel"></i> Exportar para Excel', ['contacto/export-xls'], [
+                        'class' => 'btn btn-success',
+                        'title' => 'Exportar para Excel',
+                        'data-pjax' => 0,
                     ]),
+//                    . ' ' .
+//                    Html::a('<i class="fas fa-file-pdf"></i> Exportar para PDF', ['contacto/export-pdf'], [
+//                        'class' => 'btn btn-danger',
+//                        'title' => 'Exportar para PDF',
+//                        'data-pjax' => 0,
+//                    ]),
                     'options' => ['class' => 'btn-group mr-2 me-2']
                 ],
-                '{export}',
-                '{toggleData}',
+//                '{export}',
+//                '{toggleData}',
             ],
             'exportConfig' => [
                 // 'html' => [],
                 'csv' => [],
                 // 'txt' => [],
-                'xls' => [],
-//     'pdf' => [],
+                'xls' => ['contacto/export-xls'],
+                'pdf' => [],
             //  'json' => [],
             ],
             'panel' => [

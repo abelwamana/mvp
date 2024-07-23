@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @link https://www.yiiframework.com/
  * @copyright Copyright (c) 2008 Yii Software LLC
@@ -1782,9 +1781,15 @@ abstract class BaseActiveRecord extends Model implements ActiveRecordInterface
      */
     private function isValueDifferent($newValue, $oldValue)
     {
-        if (is_array($newValue) && is_array($oldValue) && ArrayHelper::isAssociative($oldValue)) {
-            $newValue = ArrayHelper::recursiveSort($newValue);
-            $oldValue = ArrayHelper::recursiveSort($oldValue);
+        if (is_array($newValue) && is_array($oldValue)) {
+            // Only sort associative arrays
+            $sorter = function(&$array) {
+                if (ArrayHelper::isAssociative($array)) {
+                    ksort($array);
+                }
+            };
+            $newValue = ArrayHelper::recursiveSort($newValue, $sorter);
+            $oldValue = ArrayHelper::recursiveSort($oldValue, $sorter);
         }
 
         return $newValue !== $oldValue;

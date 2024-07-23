@@ -274,19 +274,19 @@ $(document).ready(function() {
                 <div class="modal-body">
                     <!-- Formulário para adicionar um novo evento -->
 <?php $form = ActiveForm::begin(['id' => 'addEventForm']); ?>    
-                    <?= $form->field($eventModel, 'summary')->textInput(['placeholder' => 'Título do Evento']) ?>
+                    <?= $form->field($model, 'summary')->textInput(['placeholder' => 'Título do Evento']) ?>
 
-                    <?= $form->field($eventModel, 'description')->textInput(['placeholder' => 'Escreva o endereço ou o link se for remoto']) ?>
+                    <?= $form->field($model, 'description')->textInput(['placeholder' => 'Escreva o endereço ou o link se for remoto']) ?>
 
-                    <?= $form->field($eventModel, 'start')->textInput(['type' => 'datetime-local', 'placeholder' => 'Data e Hora de Início']) ?>
+                    <?= $form->field($model, 'start')->textInput(['type' => 'datetime-local', 'placeholder' => 'Data e Hora de Início']) ?>
 
-                    <?= $form->field($eventModel, 'end')->textInput(['type' => 'datetime-local', 'placeholder' => 'Data e Hora de Término']) ?>
+                    <?= $form->field($model, 'end')->textInput(['type' => 'datetime-local', 'placeholder' => 'Data e Hora de Término']) ?>
 
-                    <?= $form->field($eventModel, 'localizacao')->textInput(['placeholder' => 'Localização']) ?>
+                    <?= $form->field($model, 'localizacao')->textInput(['placeholder' => 'Localização']) ?>
 
-                    <?= $form->field($eventModel, 'entidadeOrganizadora')->textInput(['placeholder' => 'Entidade Organizadora']) ?>
+                    <?= $form->field($model, 'entidadeOrganizadora')->textInput(['placeholder' => 'Entidade Organizadora']) ?>
 
-                    <?= $form->field($eventModel, 'participantes')->textInput(['placeholder' => 'Participantes']) ?>
+                    <?= $form->field($model, 'participantes')->textInput(['placeholder' => 'Participantes']) ?>
 
                     <div class="form-group">
 <?= Html::submitButton('Adicionar Evento', ['class' => 'btn btn-primary']) ?>

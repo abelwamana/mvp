@@ -1,7 +1,97 @@
+<style>
+    .event-color {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        margin-right: 5px;
+    }
+
+    .custom-button {
+        height: 38px;  /*Defina a altura desejada para o botão */
+        margin-top:-46.5px;
+        right: 110px !important;
+        /*margin-right: 10px;*/
+        background-color: #999900;
+        border-color: #999900;
+        border-radius: 3px 3px 3px 3px;
+    }
+
+    .nao-mostra {
+        display: none;
+    }
+    @media print {
+        .nao-imprimi {
+            display: none !important;
+        }
+        .imprimi {
+            display: block;
+        }
+    }
+    .fc-toolbar .fc-left
+    {
+
+        margin-left: -1.3%;
+    }
+    .fc-toolbar .fc-right
+    {
+
+        margin-right: -1.3%;
+    }
+    .container{
+        position: relative;
+        width: 100%;
+        max-width: 100%;
+
+    }
+    .has-error .help-block {
+        color: red;
+    }
+    .fc-center h2 {
+        text-transform: uppercase;
+    }
+    .file-upload-label {
+        display: block;
+    }
+    /* Reduzir o tamanho do texto "Nenhum ficheiro selecionado" */
+    input#event-agenda {
+        font-size: 12px;
+    }
+    input#event-actarelatorio {
+        font-size: 12px;
+    }
+    input#event-listaparticipantes {
+        font-size: 12px;
+    }
+    .anexos-section {
+        margin-top: 20px;
+        padding: 15px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+    }
+
+    .anexos-section h3 {
+        margin-bottom: 15px;
+
+    }
+    .file-upload-label {
+        font-weight: normal !important;
+        text-decoration: underline;
+        margin-top: -1%;
+    }
+    legend {
+        font-weight: bold;
+        font-size: 18px;
+    }
+
+</style>
+
 <?php
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use kartik\select2\Select2;
+use yii\helpers\ArrayHelper;
+use backend\models\Contacto;
 
 /** @var yii\web\View $this */
 /** @var backend\models\Event $model */
@@ -10,11 +100,12 @@ use yii\widgets\ActiveForm;
 
 <div class="event-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin(['options' => ['onsubmit' => 'return checkParticipantes()']]); ?>
 
     <?= $form->field($model, 'summary')->textInput(['placeholder' => 'Título do Evento']) ?>
     <?= $form->field($model, 'description')->textInput(['placeholder' => 'Breve enquadramento e público alvo']) ?>
-    <?= $form->field($model, 'area')->dropDownList([
+    <?=
+    $form->field($model, 'area')->dropDownList([
         'Agricultura e Pecuária' => 'Agricultura e Pecuária',
         'Nutrição' => 'Nutrição',
         'Água' => 'Água',
@@ -23,7 +114,8 @@ use yii\widgets\ActiveForm;
         'Subvenções/M&A' => 'Subvenções/M&A',
         'Governação' => 'Governação',
         'Outras' => 'Outras',
-    ], ['prompt' => 'Selecione a área']) ?>
+            ], ['prompt' => 'Selecione a área'])
+    ?>
     <?= $form->field($model, 'start')->textInput(['id' => 'event-start', 'type' => 'datetime-local', 'placeholder' => 'Data e Hora de Início']) ?>
     <?= $form->field($model, 'end')->textInput(['id' => 'event-end', 'type' => 'datetime-local', 'placeholder' => 'Data e Hora de Término']) ?>
     <?= $form->field($model, 'duracao')->textInput(['id' => 'duracao-evento', 'readonly' => true]) ?>          
@@ -32,7 +124,8 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'comunaID')->dropDownList([], ['id' => 'comuna-select', 'prompt' => 'Selecione a comuna']) ?>
     <?= $form->field($model, 'local')->textInput(['placeholder' => 'Referência do local, Instituição, Sala etc., ou escreva REMOTO']) ?>
     <?= $form->field($model, 'coordenadas')->textInput(['placeholder' => 'Insere o pin de localização ou link da reunião']) ?>
-    <?= $form->field($model, 'entidadeOrganizadora')->dropDownList([
+    <?=
+    $form->field($model, 'entidadeOrganizadora')->dropDownList([
         'Camões, I.P. | ADESPOV/C4' => 'Camões, I.P. | ADESPOV/C4',
         'Camões, I.P. | ADPP/C1' => 'Camões, I.P. | ADPP/C1',
         'Camões, I.P. | ADRA/C4' => 'Camões, I.P. | ADRA/C4',
@@ -57,24 +150,47 @@ use yii\widgets\ActiveForm;
         'Governação' => 'Governação',
         'PNUD' => 'PNUD',
         'Vall d´Hebron' => 'Vall d´Hebron'],
-    ['prompt' => 'Selecione a Entidade']) ?>
+            ['prompt' => 'Selecione a Entidade'])
+    ?>
     <?= $form->field($model, 'convocadoPor')->textInput() ?>
-    <?= $form->field($model, 'participantes')->widget(\kartik\select2\Select2::classname(), [
-        'data' => \yii\helpers\ArrayHelper::map(\backend\models\Contacto::find()->all(), 'email', 'nome'),
-        'options' => ['placeholder' => 'Selecione os participantes...', 'multiple' => true],
+    <?=
+    $form->field($model, 'participantes')->widget(Select2::classname(), [
+        'data' => ArrayHelper::map(Contacto::find()->all(), 'email', 'nome'),
+        'options' => ['placeholder' => 'Selecione os participantes...', 'multiple' => true, 'id' => 'select-participantes'],
         'pluginOptions' => [
-            'allowClear' => true
+            'allowClear' => true,
         ],
-    ]) ?>
+    ]);
+    ?>
+    <script>
+        function checkParticipantes() {
+            var participantes = $('#select-participantes').val();
+            if (!participantes || participantes.length === 0) {
+                // Define o valor para "Por confirmar em breve" se estiver vazio
+                $('#select-participantes').append(new Option("Por confirmar em breve", "Por confirmar em breve", true, true)).trigger('change');
+            }
+            return true;
+        }
+    </script>
+    <!-- Seção de Anexos -->
+    <fieldset>
+        <legend>Anexos</legend>
 
+<?= $form->field($model, 'agenda', ['labelOptions' => ['class' => 'file-upload-label']])->fileInput() ?>
+        <?= $form->field($model, 'actaRelatorio', ['labelOptions' => ['class' => 'file-upload-label']])->fileInput() ?>
+        <?= $form->field($model, 'listaParticipantes', ['labelOptions' => ['class' => 'file-upload-label']])->fileInput() ?>
+    </fieldset>
 
     <div class="form-group">
-        <?= Html::submitButton(Yii::t('app', 'Guardar'), ['class' => 'btn btn-success']) ?>
+<?= Html::submitButton(Yii::t('app', 'Guardar'), ['class' => 'btn btn-success']) ?>
     </div>
 
-    <?php ActiveForm::end(); ?>
-
+<?php ActiveForm::end(); ?>
 </div>
+
+
+
+
 <?php
 // JavaScript para atualizar os dropdownlists de municípios e comunas com base na província selecionada
 $script = <<< JS

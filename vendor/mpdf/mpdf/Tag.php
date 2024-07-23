@@ -4648,7 +4648,7 @@ class Tag
 				}
 				if ($w) {
 					if (strpos($w, '%') && !$this->mpdf->ignore_table_percents) {
-						$c['wpercent'] = $w + 0;
+						 $c['wpercent'] = (float)str_replace('%', '', $w); // Remove '%' e converte para float
 					} // makes 80% -> 80
 					else if (!strpos($w, '%') && !$this->mpdf->ignore_table_widths) {
 						$c['w'] = $this->mpdf->ConvertSize($w, $this->mpdf->blk[$this->mpdf->blklvl]['inner_width'], $this->mpdf->FontSize, false);

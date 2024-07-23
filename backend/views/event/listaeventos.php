@@ -314,18 +314,17 @@ $areas = [
                 // Iterar sobre os eventos da área
                 foreach ($eventos as $evento) {
                     echo '<div class="event-item">';
-                    echo "<b><u>Título: " . Html::encode($evento->summary) . "</b></u><br>";
-                    echo "Início: " . Html::encode($evento->start) . "<br>";
-                    echo "Fim: " . Html::encode($evento->end) . "<br>";
-                    echo "Duração: " . Html::encode($evento->duracao) . "<br>";
-                    echo "Descrição: " . Html::encode($evento->description) . "<br>";
-                    echo "Provincia: " . Html::encode($evento->provincia->nomeProvincia) . "<br>";
-                    echo "Município: " . Html::encode($evento->municipio->nomeMunicipio) . "<br>";
-                    echo "Comuna: " . Html::encode($evento->comuna->nomeComuna) . "<br>";
-                    echo "Local: " . Html::encode($evento->local) . "<br>";
-                    echo "Entidade Organizadora: " . Html::encode($evento->entidadeOrganizadora) . "<br>";
-                    echo "Convocado Por: " . Html::encode($evento->convocadoPor) . "<br>";
-
+                    echo '<span style="color: #999900; font-weight: bold;">' . Html::encode($evento->summary) . '</span><br>';
+                    echo '<span style="font-weight: bold;">Início:</span> ' . Html::encode($evento->start) . '<br>';
+                    echo '<span style="font-weight: bold;">Fim:</span> ' . Html::encode($evento->end) . '<br>';
+                    echo '<span style="font-weight: bold;">Duração:</span> ' . Html::encode($evento->duracao) . '<br>';
+                    echo '<span style="font-weight: bold;">Descrição:</span> ' . Html::encode($evento->description) . '<br>';
+                    echo '<span style="font-weight: bold;">Provincia:</span> ' . Html::encode($evento->provincia->nomeProvincia) . '<br>';
+                    echo '<span style="font-weight: bold;">Município:</span> ' . Html::encode($evento->municipio->nomeMunicipio) . '<br>';
+                    echo '<span style="font-weight: bold;">Comuna:</span> ' . Html::encode($evento->comuna->nomeComuna) . '<br>';
+                    echo '<span style="font-weight: bold;">Local:</span> ' . Html::encode($evento->local) . '<br>';
+                    echo '<span style="font-weight: bold;">Entidade Organizadora:</span> ' . Html::encode($evento->entidadeOrganizadora) . '<br>';
+                    echo '<span style="font-weight: bold;">Convocado Por:</span> ' . Html::encode($evento->convocadoPor) . '<br>';
                     // Separar emails em um array
                     $emails = explode(',', $evento->participantes);
                     $nomes = [];
@@ -337,11 +336,10 @@ $areas = [
                             $nomes[] = $contato->nome;
                         }
                     }
-
                     // Exibir os nomes dos participantes
-                     echo '<div class="participants-container" style="max-height: 200px; overflow-y: auto;">';
-                     echo "Participantes: " . implode(', ', $nomes) . "<br>";
-                     echo '</div>';
+                    echo '<div class="participants-container" style="max-height: 200px; overflow-y: auto;">';
+                    echo '<span style="font-weight: bold;">Participantes:</span> ' . implode(', ', $nomes) . '<br>';
+                    echo '</div>';
 
                     echo '</div>';
                 }

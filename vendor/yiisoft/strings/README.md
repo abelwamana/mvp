@@ -1,6 +1,6 @@
 <p align="center">
     <a href="https://github.com/yiisoft" target="_blank">
-        <img src="https://yiisoft.github.io/docs/images/yii_logo.svg" height="100px">
+        <img src="https://yiisoft.github.io/docs/images/yii_logo.svg" height="100px" alt="Yii">
     </a>
     <h1 align="center">Yii Strings</h1>
     <br>
@@ -21,7 +21,7 @@ The package provides:
 - `NumericHelper` that has static methods to work with numeric strings;
 - `Inflector` provides methods such as `toPlural()` or `toSlug()` that derive a new string based on the string given;
 - `WildcardPattern` is a shell wildcard pattern to match strings against;
-- `CombinedRegexp` is a wrapper that optimizes multiple regular expressions matching and 
+- `CombinedRegexp` is a wrapper that optimizes multiple regular expressions matching and
   `MemoizedCombinedRegexp` is a decorator that caches results of `CombinedRegexp` to speed up matching.
 
 ## Requirements
@@ -30,6 +30,8 @@ The package provides:
 - `mbstring` PHP extension.
 
 ## Installation
+
+The package could be installed with [Composer](https://getcomposer.org):
 
 ```shell
 composer require yiisoft/strings
@@ -155,7 +157,7 @@ Overall the inflector has the following method groups.
 
 ## WildcardPattern usage
 
-`WildcardPattern` allows a simple POSIX-style string matching. 
+`WildcardPattern` allows a simple POSIX-style string matching.
 
 ```php
 use \Yiisoft\Strings\WildcardPattern;
@@ -241,46 +243,12 @@ if ($regexp->matches('second')) {
 }
 ```
 
-## Testing
+## Documentation
 
-### Unit testing
+- [Internals](docs/internals.md)
 
-The package is tested with [PHPUnit](https://phpunit.de/). To run tests:
-
-```shell
-./vendor/bin/phpunit
-```
-
-### Mutation testing
-
-The package tests are checked with [Infection](https://infection.github.io/) mutation framework with
-[Infection Static Analysis Plugin](https://github.com/Roave/infection-static-analysis-plugin). To run it:
-
-```shell
-./vendor/bin/roave-infection-static-analysis-plugin
-```
-
-### Static analysis
-
-The code is statically analyzed with [Psalm](https://psalm.dev/). To run static analysis:
-
-```shell
-./vendor/bin/psalm
-```
-
-### Code style
-
-Use [Rector](https://github.com/rectorphp/rector) to make codebase follow some specific rules or
-use either newest or any specific version of PHP:
-
-```shell
-./vendor/bin/rector
-```
-
-### Dependencies
-
-Use [ComposerRequireChecker](https://github.com/maglnet/ComposerRequireChecker) to detect transitive
-[Composer](https://getcomposer.org/) dependencies.
+If you need help or have a question, the [Yii Forum](https://forum.yiiframework.com/c/yii-3-0/63) is a good place for that.
+You may also check out other [Yii Community Resources](https://www.yiiframework.com/community).
 
 ## License
 

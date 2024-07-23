@@ -1,3 +1,4 @@
+4f8e2d45d - abelwamana, 2024-07-10 15:54:02 +0100 : main-local, biblioteca(Controller, model e viewPages), sidebar
 1c1e62d3a - abelwamana, 2024-07-02 13:33:51 +0100 : Pagina biblioteca e subpaginas com todas funcionalidades para Administradores
 f2cbf6904 - abelwamana, 2024-06-21 17:16:17 +0100 :  Ampliada Caxa de insersão de email do botão subscrever para telas menores
 084242435 - abelwamana, 2024-06-21 06:21:47 +0100 : Mudanças do Reltório Maio 2024 SGI V1.4

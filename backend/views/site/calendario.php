@@ -41,7 +41,7 @@
         position: relative;
         width: 100%;
         max-width: 100%;
-        
+
     }
     .has-error .help-block {
         color: red;
@@ -49,7 +49,39 @@
     .fc-center h2 {
         text-transform: uppercase;
     }
+    .file-upload-label {
+        display: block;
+    }
+    /* Reduzir o tamanho do texto "Nenhum ficheiro selecionado" */
+    input#event-agenda {
+        font-size: 12px;
+    }
+    input#event-actarelatorio {
+        font-size: 12px;
+    }
+    input#event-listaparticipantes {
+        font-size: 12px;
+    }
+    .anexos-section {
+        margin-top: 20px;
+        padding: 15px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+    }
 
+    .anexos-section h3 {
+        margin-bottom: 15px;
+      
+    }
+    .file-upload-label {
+        font-weight: normal !important;
+        text-decoration: underline;
+        margin-top: -1%;
+    }
+    legend {
+        font-weight: bold;
+          font-size: 18px;
+    }
 
 </style>
 <div class="container">
@@ -66,6 +98,7 @@
     use backend\models\Provincia;
     use yii\web\View;
     use kartik\select2\Select2;
+    use backend\models\Contacto;
 
 $provincias = [
         'Cunene' => 'Cunene',
@@ -115,25 +148,25 @@ $provincias = [
 
     <div class="col-12 justify-content-between align-items-center" style="margin-top: 30px;">
         <div class="align-items-center" style="margin-left: 8.7px; max-width: 98.4%;">       
- <?php if (Yii::$app->session->hasFlash('success')): ?>
-            <?=
-            Alert::widget([
-                'options' => ['class' => 'alert-success'],
-                'body' => Yii::$app->session->getFlash('success'),
-            ])
-            ?>
+            <?php if (Yii::$app->session->hasFlash('success')): ?>
+                <?=
+                Alert::widget([
+                    'options' => ['class' => 'alert-success'],
+                    'body' => Yii::$app->session->getFlash('success'),
+                ])
+                ?>
 
-        <?php endif; ?>
+            <?php endif; ?>
 
-        <?php if (Yii::$app->session->hasFlash('error')): ?>
-            <?=
-            Alert::widget([
-                'options' => ['class' => 'alert-danger'],
-                'body' => Yii::$app->session->getFlash('error'),
-            ])
-            ?>
-        <?php endif; ?>
-            
+            <?php if (Yii::$app->session->hasFlash('error')): ?>
+                <?=
+                Alert::widget([
+                    'options' => ['class' => 'alert-danger'],
+                    'body' => Yii::$app->session->getFlash('error'),
+                ])
+                ?>
+            <?php endif; ?>
+
         </div>
         <div class="nao-mostra imprimi" style="background-image: url('images/branco.png')">
             <div class="col-12 d-flex justify-content-between align-items-center">
@@ -254,8 +287,14 @@ $provincias = [
                 </button>
             </div>
             <div class="modal-body">
-                <!-- Formulário para adicionar um novo evento -->
-                <?php $form = ActiveForm::begin(['id' => 'addEventForm', 'action' => ['add-events'], 'method' => 'post']); ?>    
+                <?php
+                $form = ActiveForm::begin([
+                            'id' => 'addEventForm',
+                            'action' => ['add-events'],
+                            'method' => 'post',
+                            'options' => ['onsubmit' => 'return checkParticipantes()', 'enctype' => 'multipart/form-data']
+                ]);
+                ?>
                 <?= $form->field($eventModel, 'summary')->textInput(['placeholder' => 'Título do Evento']) ?>
                 <?= $form->field($eventModel, 'description')->textInput(['placeholder' => 'Breve enquadramento e público alvo']) ?>
                 <?=
@@ -272,7 +311,7 @@ $provincias = [
                 ?>
                 <?= $form->field($eventModel, 'start')->textInput(['id' => 'event-start', 'type' => 'datetime-local', 'placeholder' => 'Data e Hora de Início']) ?>
                 <?= $form->field($eventModel, 'end')->textInput(['id' => 'event-end', 'type' => 'datetime-local', 'placeholder' => 'Data e Hora de Término']) ?>
-                <?= $form->field($eventModel, 'duracao')->textInput(['id' => 'duracao-evento', 'readonly' => true]) ?>          
+                <?= $form->field($eventModel, 'duracao')->textInput(['id' => 'duracao-evento', 'readonly' => true]) ?>
                 <?= $form->field($eventModel, 'provinciaID')->dropDownList($provinciasList, ['id' => 'provincia-select', 'prompt' => 'Selecione a província']) ?>
                 <?= $form->field($eventModel, 'municipioID')->dropDownList([], ['id' => 'municipio-select', 'prompt' => 'Selecione o município']) ?>
                 <?= $form->field($eventModel, 'comunaID')->dropDownList([], ['id' => 'comuna-select', 'prompt' => 'Selecione a comuna']) ?>
@@ -303,25 +342,44 @@ $provincias = [
                     'FAO' => 'FAO',
                     'Governação' => 'Governação',
                     'PNUD' => 'PNUD',
-                    'Vall d´Hebron' => 'Vall d´Hebron'],
-                        ['prompt' => 'Selecione a Entidade'])
+                    'Vall d´Hebron' => 'Vall d´Hebron'
+                        ], ['prompt' => 'Selecione a Entidade'])
                 ?>
                 <?= $form->field($eventModel, 'convocadoPor')->textInput(['value' => $nomeUsuario, 'readonly' => true]) ?>
                 <?=
-                $form->field($eventModel, 'participantes')->widget(\kartik\select2\Select2::classname(), [
-                    'data' => \yii\helpers\ArrayHelper::map(\backend\models\Contacto::find()->all(), 'email', 'nome'),
-                    'options' => ['placeholder' => 'Selecione os participantes...', 'multiple' => true],
-//                    'value' => unserialize($eventModel->participantes), // Desserializar os participantes para exibir no campo
+                $form->field($eventModel, 'participantes')->widget(Select2::classname(), [
+                    'data' => ArrayHelper::map(Contacto::find()->all(), 'email', 'nome'),
+                    'options' => ['placeholder' => 'Selecione os participantes...', 'multiple' => true, 'id' => 'select-participantes'],
                     'pluginOptions' => [
-                        'allowClear' => true
+                        'allowClear' => true,
                     ],
                 ]);
                 ?>
+                <!-- Seção de Anexos -->
+                <fieldset>
+                    <legend>Anexos</legend>
 
+                    <?= $form->field($eventModel, 'agenda', ['labelOptions' => ['class' => 'file-upload-label']])->fileInput() ?>
+                    <?= $form->field($eventModel, 'actaRelatorio', ['labelOptions' => ['class' => 'file-upload-label']])->fileInput() ?>
+                    <?= $form->field($eventModel, 'listaParticipantes', ['labelOptions' => ['class' => 'file-upload-label']])->fileInput() ?>
+
+                </fieldset>
+                <!-- Botão de Adicionar Evento -->
                 <div class="form-group">
                     <?= Html::submitButton('Adicionar Evento', ['class' => 'btn btn-primary']) ?>
                 </div>
                 <?php ActiveForm::end(); ?>
+
+                <script>
+                    function checkParticipantes() {
+                        var participantes = $('#select-participantes').val();
+                        if (!participantes || participantes.length === 0) {
+                            // Define o valor para "Por confirmar em breve" se estiver vazio
+                            $('#select-participantes').append(new Option("Por confirmar em breve", "Por confirmar em breve", true, true)).trigger('change');
+                        }
+                        return true;
+                    }
+                </script>
             </div>
         </div>
     </div>
@@ -339,7 +397,6 @@ $provincias = [
             </div>
             <div class="modal-body">                    
                 <!-- As informações do evento serão exibidas aqui -->
-
                 <!--<p><strong>Id:</strong> <span id="modalId"></span></p>-->
                 <p><strong>Descrição:</strong> <span id="modalDescription"></span></p>
                 <p><strong>Data de Início:</strong> <span id="modalStart"></span></p>
@@ -354,12 +411,18 @@ $provincias = [
                 <p><strong>Entidade Organizadora:</strong> <span id="modalEntidade"></span></p>
                 <p><strong>Convocado Por:</strong> <span id="modalConvocadoPor"></span></p>
                 <p><strong>Participantes:</strong> <span id="modalParticipantes"></span></p>
+                <p><strong>Agenda:</strong> <a href="#" id="modalAgenda" target="_blank">Abrir</a></p>
+                <p><strong>Acta/Relatório:</strong> <a href="#" id="modalactaRelatorio" target="_blank">Abrir</a></p>
+                <p><strong>Lista de Participantes:</strong> <a href="#" id="modallistaParticipantes" target="_blank">Abrir</a></p>
+                <p><strong>Outros Anexos:</strong> <span id="modalOutrosAnexos"></span></p>
+
+
             </div>
             <div class="modal-footer">          
                 <button type="button" class="btn btn-primary" id="editEventButton" data-event-id="">Alterar</button>
                 <button type="button" class="btn btn-danger" name="deleteEventButton" id="deleteEventButton">Eliminar</button>
-                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                 </div>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+            </div>
 
         </div>
     </div>
@@ -367,6 +430,7 @@ $provincias = [
 
 <script>
     function showEventDetails(event) {
+        const basePath = "uploads/";  // Caminho base onde os arquivos estão armazenados
         $("#eventInfoModal").modal("show");
         $("#modalId").text(event.id);
         $("#modalTitle").text(event.summary);
@@ -387,10 +451,48 @@ $provincias = [
         var participants = event.participantes.split(",");
         var participantsHtml = "";
         for (var i = 0; i < participants.length; i += 2) {
-            participantsHtml += participants[i] + ", " + (participants[i + 1] || "") + "<br>";
+            if (i === participants.length - 1) {
+                participantsHtml += participants[i];
+            } else {
+                participantsHtml += participants[i] + ", " + (participants[i + 1] || "") + "<br>";
+            }
         }
         $("#modalParticipantes").html(participantsHtml);
 
+        if (event.agenda) {
+            $("#modalAgenda").attr("href", basePath + event.agenda);
+        } else {
+            $("#modalAgenda").removeAttr("href");
+        }
+
+        if (event.actaRelatorio) {
+            $("#modalactaRelatorio").attr("href", basePath + event.actaRelatorio);
+        } else {
+            $("#modalactaRelatorio").removeAttr("href");
+        }
+
+        if (event.listaParticipantes) {
+            $("#modallistaParticipantes").attr("href", basePath + event.listaParticipantes);
+        } else {
+            $("#modallistaParticipantes").removeAttr("href");
+        }
+        if (event.outrosAnexos) {
+            $("#modalOutrosAnexos").attr("href", basePath + event.outrosAnexos);
+        } else {
+            $("#modalOutrosAnexos").removeAttr("href");
+        }
+//        if (event.outrosAnexos) {
+//            var outrosAnexos = JSON.parse(event.outrosAnexos);
+//            var anexosHtml = "";
+//            outrosAnexos.forEach(function(anexo, index) {
+//                anexosHtml += '<a href="' + basePath + anexo + '" target="_blank">Anexo ' + (index + 1) + '</a><br>';
+//            });
+//            $("#modalOutrosAnexos").html(anexosHtml);
+//        } else {
+//            $("#modalOutrosAnexos").text("Nenhum anexo adicional");
+//        }
+
+        
         $("#editEventButton").data("eventId", event.id);
         $("#deleteEventButton").data("eventId", event.id);
     }
@@ -420,8 +522,7 @@ $provincias = [
             element.css("border-color", "black");
         } else if (event.area === "Subvenções/M&A") {
             element.css("border-color", "#663399");
-        }
-         else if (event.area === "Governação") {
+        } else if (event.area === "Governação") {
             element.css("border-color", "#BB0E22");
         }
 
@@ -440,6 +541,7 @@ $provincias = [
 <?php
 $script = <<< JS
 $(document).ready(function() {
+        //Filtros
     // Verifique se existem valores armazenados no armazenamento local e preencha os campos de filtro
     var provinciasSelecionadas = localStorage.getItem('provinciasSelecionadas');
     var entidadesSelecionadas = localStorage.getItem('entidadesSelecionadas');
@@ -484,6 +586,14 @@ $(document).ready(function() {
     });
 
     // Ouça o evento de clique no botão de editar evento
+//    $(document).on('click', '#deleteEventButton', function() {
+//        var eventId = $(this).data('eventId');
+//         if (confirm("Tem certeza que deseja deletar este evento?")) {
+//        window.location.href = 'site/delete-event=' + eventId;
+//        }
+//    });
+        
+   // Ouça o evento de clique no botão de editar evento
     $(document).on('click', '#editEventButton', function() {
         var eventId = $(this).data('eventId');
         window.location.href = 'event/update?Id=' + eventId;
@@ -668,6 +778,4 @@ $this->registerJs("
         return true; // Permitir que o formulário seja enviado
     });
 ");
-
-
 ?>

@@ -17,7 +17,9 @@
 .biblioteca-container {
     display: flex;
     flex-wrap: wrap;
-    padding: 0px;
+    /*padding: 0px;*/
+    /*text-align: right;*/
+    /*margin-left: 0%;*/
 }
 
 .biblioteca-item {
@@ -25,17 +27,19 @@
     border: 1px solid #ccc;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    margin: 5px;
-    width: calc(23.33% - 55px); /* Ajuste para três colunas */
+    margin-left: 5px;
+    width: calc(18% - 21.5px);;
     text-align: center;
     overflow: hidden;
-    height: 286.1px;
+    height: 298.7px;
+    /*padding: -10px;*/
 }
 
 .biblioteca-item img {
     width: 80%;
     height: 67%;
     margin: 0px;
+    padding: 0px -5px 0px 0px;
 }
 
 .biblioteca-item h3 {
@@ -53,6 +57,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
     margin-bottom: 0px;
+    margin-top: -3%;
 }
 
 .biblioteca-item a {
@@ -79,6 +84,7 @@
 .search-section,
 .filter-section {
     flex: 1;
+    margin-right: -0.3%;
 }
 
 .filter-section .form-group {
@@ -87,9 +93,9 @@
 }
 
 .search-section input {
-    width: 98.5%;
+    width: 99%;
     margin-right: 10px;
-    margin-left: -1.3%;
+    margin-left: -2.3%;
 }
 
 .filter-section select {
@@ -105,6 +111,7 @@
     display: flex;
     width: 100%;
     align-items: flex-start; /* Alinha o texto na parte superior dos botões */
+    margin-top: 5%;
 }
 
 .btn-group .botao {
@@ -114,6 +121,7 @@
     height: auto; /* Permite que a altura se ajuste ao conteúdo */
     padding: 0px 0px 0px 1px;
     white-space: nowrap; /* Mantém o texto em uma única linha */
+    
 }
 
 .btn-group .botao:first-child {

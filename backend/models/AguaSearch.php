@@ -17,7 +17,7 @@ class AguaSearch extends Agua {
     public function rules() {
         return [
             [['Id', 'provinciaID', 'municipioID', 'comunaID', 'localidadeID', 'capacidadeUnidadeID', 'anosGarantia', 'nomeCampoAssociadoGrupoID', 'benHomem', 'benMulher', 'totalAFAbrangidos', 'totalSuino', 'totalCaprino', 'totalBovino', 'comissaoHomem', 'comissaoMulher', 'nTecniAcompanham', 'benHomemTransSocial', 'benMulherTransSocial', 'totalAFCorrespondenteTransSocial', 'valorDiarioBeneUnidadeID', 'nDiasTrabalho', 'userID'], 'integer'],
-            [['estadoValidacao','primeiroReporte', 'actualizacao', 'respondente', 'entidade', 'latitude', 'longitude', 'infraEstrutura', 'fonteHidraulica', 'fonteHidraulicaAlternativa', 'servicoAssociado', 'novaConstrucao', 'fimAQueSeDestina', 'realizadoTesteQualidadeAgua', 'entidadeResponsavelConstrucao', 'sistemExtracaoAgua', 'especificacoesTecnInfraExtru', 'temPlacaVisibilidade', 'infraAssociadaCampo', 'anexoFichaTecnInfraExtr', 'estadoObra', 'imagemInfra', 'dataConclusaoObra', 'pontoFoiEntregueObra', 'anexoActaEntrega', 'benCorresponTotalPopulacao', 'grupoGestAgua', 'orientacoesMetodologia', 'comissaoRealizaReuniosFreq', 'grupoFazContribuicoes', 'grupoTemPlanoManutencaoPrev', 'grupoTemPlanoManutencaoUrgen', 'grupoFazParteACA', 'grupoEstaAssociadoBMAS', 'existeAcompaMuniEneAgua', 'nTecniParticipamReunioes', 'metodologiaAdoptada', 'criteriosUtilizadoParaSeleBenef', 'anexoTermoPagamento', 'desafiosONG', 'licoesAprendidadasONG', 'dataVisitaFresan', 'tecnicoResponsavelFresan', 'constantacoeFeitasFresan', 'recomendacoes', 'medidasMitigacaoONG', 'medidasMitigacaoEstado'], 'safe'],
+            [['estadoValidacao','primeiroReporte', 'actualizacao', 'respondente', 'entidade', 'latitude', 'longitude', 'infraEstrutura', 'fonteHidraulica', 'fonteHidraulicaAlternativa', 'servicoAssociadoID', 'fimAQueSeDestina', 'realizadoTesteQualidadeAgua', 'entidadeResponsavelConstrucao', 'sistemExtracaoAgua', 'especificacoesTecnInfraExtru', 'temPlacaVisibilidade', 'infraAssociadaCampo', 'anexoFichaTecnInfraExtr', 'estadoObra', 'imagemInfra', 'dataConclusaoObra', 'pontoFoiEntregueObra', 'anexoActaEntrega', 'benCorresponTotalPopulacao', 'grupoGestAgua', 'orientacoesMetodologia', 'comissaoRealizaReuniosFreq', 'grupoFazContribuicoes', 'grupoTemPlanoManutencaoPrev', 'grupoTemPlanoManutencaoUrgen', 'grupoFazParteACA', 'grupoEstaAssociadoBMAS', 'existeAcompaMuniEneAgua', 'nTecniParticipamReunioes', 'metodologiaAdoptada', 'criteriosUtilizadoParaSeleBenef', 'anexoTermoPagamento', 'desafiosONG', 'licoesAprendidadasONG', 'dataVisitaFresan', 'tecnicoResponsavelFresan', 'constantacoeFeitasFresan', 'recomendacoes', 'medidasMitigacaoONG', 'medidasMitigacaoEstado'], 'safe'],
             [['capacidadeInfraestrutura', 'totalHaIrrigados', 'valorDiarioBene', 'totalEntregueTranBen'], 'number'],
         ];
     }
@@ -105,8 +105,8 @@ class AguaSearch extends Agua {
                 ->andFilterWhere(['like', 'infraEstrutura', $this->infraEstrutura])
                 ->andFilterWhere(['like', 'fonteHidraulica', $this->fonteHidraulica])
                 ->andFilterWhere(['like', 'fonteHidraulicaAlternativa', $this->fonteHidraulicaAlternativa])
-                ->andFilterWhere(['like', 'servicoAssociado', $this->servicoAssociado])
-                ->andFilterWhere(['like', 'novaConstrucao', $this->novaConstrucao])
+                ->andFilterWhere(['like', 'servicoAssociadoID', $this->servicoAssociadoID])
+//                ->andFilterWhere(['like', 'novaConstrucao', $this->novaConstrucao])
                 ->andFilterWhere(['like', 'fimAQueSeDestina', $this->fimAQueSeDestina])
                 ->andFilterWhere(['like', 'realizadoTesteQualidadeAgua', $this->realizadoTesteQualidadeAgua])
                 ->andFilterWhere(['like', 'entidadeResponsavelConstrucao', $this->entidadeResponsavelConstrucao])
