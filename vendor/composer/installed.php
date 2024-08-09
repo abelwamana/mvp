@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'yiisoft/yii2-app-advanced',
-        'pretty_version' => '1.0.0+no-version-set',
-        'version' => '1.0.0.0',
-        'reference' => null,
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
+        'reference' => '66b744d47f6a78d5e2a91689f1817f75fef80721',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -71,9 +71,9 @@
             'dev_requirement' => true,
         ),
         'bower-asset/bootstrap' => array(
-            'pretty_version' => 'v5.3.0-alpha1',
-            'version' => '5.3.0.0-alpha1',
-            'reference' => 'cf9454caa00872899215603e5e036d9a824b1b11',
+            'pretty_version' => 'v5.3.3',
+            'version' => '5.3.3.0',
+            'reference' => '6e1f75f420f68e1d52733b8e407fc7c3766c9dba',
             'type' => 'bower-asset',
             'install_path' => __DIR__ . '/../bower-asset/bootstrap',
             'aliases' => array(),
@@ -100,16 +100,16 @@
         'bower-asset/inputmask' => array(
             'pretty_version' => '5.x-dev',
             'version' => '5.9999999.9999999.9999999-dev',
-            'reference' => '5069a1acaf2682401b92ea500a35dfc5314b83dc',
+            'reference' => 'f0b9bb582dbebb82b8823f5cd617f723c988ce0f',
             'type' => 'bower-asset',
             'install_path' => __DIR__ . '/../bower-asset/inputmask',
             'aliases' => array(),
             'dev_requirement' => false,
         ),
         'bower-asset/jquery' => array(
-            'pretty_version' => '3.6.4',
-            'version' => '3.6.4.0',
-            'reference' => '91ef2d8836342875f2519b5815197ea0f23613cf',
+            'pretty_version' => '3.7.1',
+            'version' => '3.7.1.0',
+            'reference' => 'fde1f76e2799dd877c176abde0ec836553246991',
             'type' => 'bower-asset',
             'install_path' => __DIR__ . '/../bower-asset/jquery',
             'aliases' => array(),
@@ -433,7 +433,7 @@
         'kartik-v/bootstrap-fileinput' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => '8de1bed638823c70272b2578847e2b31e42677ba',
+            'reference' => '387635d6149b42932c6c55c34421983bae008e2b',
             'type' => 'library',
             'install_path' => __DIR__ . '/../kartik-v/bootstrap-fileinput',
             'aliases' => array(
@@ -772,7 +772,7 @@
         'kartik-v/yii2-widget-select2' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => '4b8ef7dd9780531fc997fa23a53a38a1f7674bec',
+            'reference' => '958ba374af39fbc88f1fd11209b22efe1055d567',
             'type' => 'yii2-extension',
             'install_path' => __DIR__ . '/../kartik-v/yii2-widget-select2',
             'aliases' => array(
@@ -1065,7 +1065,7 @@
         'phpoffice/phpspreadsheet' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => 'fcf03b95bf8ae12c05680141f3e0c3833f6e985c',
+            'reference' => 'b40636742533721d55a434838830e30d57889aef',
             'type' => 'library',
             'install_path' => __DIR__ . '/../phpoffice/phpspreadsheet',
             'aliases' => array(
@@ -1493,7 +1493,7 @@
         'symfony/console' => array(
             'pretty_version' => '6.4.x-dev',
             'version' => '6.4.9999999.9999999-dev',
-            'reference' => '6edb5363ec0c78ad4d48c5128ebf4d083d89d3a9',
+            'reference' => '68380d6952e113acf7bc122d629b9496d43a1a36',
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/console',
             'aliases' => array(),
@@ -1557,7 +1557,7 @@
         'symfony/finder' => array(
             'pretty_version' => '6.4.x-dev',
             'version' => '6.4.9999999.9999999-dev',
-            'reference' => '3ef977a43883215d560a2cecb82ec8e62131471c',
+            'reference' => 'af29198d87112bebdd397bd7735fbd115997824c',
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/finder',
             'aliases' => array(),
@@ -1566,7 +1566,7 @@
         'symfony/mailer' => array(
             'pretty_version' => '7.2.x-dev',
             'version' => '7.2.9999999.9999999-dev',
-            'reference' => '9e2ccc9b23c01f4abf8bb0b063ab3058861c374c',
+            'reference' => '939577d1abe7fdc6c0b52e639bf7bd1a5e41a040',
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/mailer',
             'aliases' => array(),
@@ -1658,7 +1658,7 @@
         'symfony/string' => array(
             'pretty_version' => '7.2.x-dev',
             'version' => '7.2.9999999.9999999-dev',
-            'reference' => '04f7ef038c1b0a191c124e83928323264c8af401',
+            'reference' => '8a33c3b141ce51320b375bd754a438e0a89b523f',
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/string',
             'aliases' => array(),
@@ -1799,7 +1799,7 @@
         'yiisoft/yii2' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => '1568fbba08bfa549ef0d1125c3a98f34a207c6f0',
+            'reference' => 'ba8fedd6026f60f600632c23b16b70bb9317c927',
             'type' => 'library',
             'install_path' => __DIR__ . '/../yiisoft/yii2',
             'aliases' => array(
@@ -1808,9 +1808,9 @@
             'dev_requirement' => false,
         ),
         'yiisoft/yii2-app-advanced' => array(
-            'pretty_version' => '1.0.0+no-version-set',
-            'version' => '1.0.0.0',
-            'reference' => null,
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'reference' => '66b744d47f6a78d5e2a91689f1817f75fef80721',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

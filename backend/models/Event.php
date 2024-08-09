@@ -3,6 +3,7 @@
 namespace backend\models;
 
 use Yii;
+use yii\db\Query;
 
 /**
  * This is the model class for table "event".
@@ -23,33 +24,34 @@ use Yii;
  * @property string $convocadoPor
  * @property string $participantes
  * @property UploadedFile $agenda
- * @property UploadedFile $listaParticipantes
+ * @property UploadedFile $listaConvidados
+ * @property UploadedFile $pada
  * @property UploadedFile $actaRelatorio
+ * @property UploadedFile $listaParticipantes
  * @property UploadeFile $outrosAnexos
  * 
  * @property Comuna $comuna
  * @property Municipio $municipio
  * @property Provincia $provincia
  */
-class Event extends \yii\db\ActiveRecord
-{
-    /**
-     * {@inheritdoc}
-     */
-    public static function tableName()
-    {
-        return 'event';
-    }
+class Event extends \yii\db\ActiveRecord {
 
     /**
      * {@inheritdoc}
      */
-    public function rules()
-    {
+    public static function tableName() {
+        return 'event';
+    }
+
+//     public $outrosAnexos;
+
+    /**
+     * {@inheritdoc}
+     */
+    public function rules() {
         return [
             [['summary', 'area', 'start', 'end', 'duracao', 'provinciaID', 'municipioID', 'comunaID', 'entidadeOrganizadora', 'convocadoPor', 'participantes'], 'required'],
             [['description', 'local'], 'string'],
-            //[['participantes'], 'each', 'rule' => ['email']],
             [['start', 'end'], 'safe'],
             [['provinciaID', 'municipioID', 'comunaID'], 'integer'],
             [['summary', 'area', 'coordenadas', 'entidadeOrganizadora', 'convocadoPor'], 'string', 'max' => 50],
@@ -57,16 +59,14 @@ class Event extends \yii\db\ActiveRecord
             [['comunaID'], 'exist', 'skipOnError' => true, 'targetClass' => Comuna::class, 'targetAttribute' => ['comunaID' => 'Id']],
             [['municipioID'], 'exist', 'skipOnError' => true, 'targetClass' => Municipio::class, 'targetAttribute' => ['municipioID' => 'Id']],
             [['provinciaID'], 'exist', 'skipOnError' => true, 'targetClass' => Provincia::class, 'targetAttribute' => ['provinciaID' => 'Id']],
-            [['agenda', 'listaParticipantes', 'actaRelatorio', 'outrosAnexos'], 'file', 'extensions' => 'pdf, doc, docx, xls, xlsx', 'maxSize' => 1024 * 1024 * 10], // Máximo de 10MB
-//            [['outrosAnexos'], 'file', 'extensions' => 'pdf, doc, docx, xls, xlsx, jpg, jpeg, png, ppt, pptx, mp4, avi', 'maxSize' => 1024 * 1024 * 20], // Máximo de 20MB por arquivo, até 10 arquivos
-            ];
+//            ['end', 'compare', 'compareAttribute' => 'start', 'operator' => '>=', 'type' => 'datetime', 'message' => 'A data de término deve ser posterior ou igual à data de início.'],
+//            ['start', 'compare', 'compareAttribute' => 'end', 'operator' => '<=', 'type' => 'datetime', 'message' => 'A data de início deve ser inferior ou igual à data de término.'],
+            [['agenda', 'listaConvidados', 'pada', 'listaParticipantes', 'actaRelatorio'], 'file', 'extensions' => 'pdf, doc, docx, xls, xlsx', 'maxSize' => 1024 * 1024 * 10],
+            ['outrosAnexos', 'file', 'extensions' => 'mp4, jpg, png, ppt, pptx, pdf, doc, docx, xls, xlsx', 'maxSize' => 1024 * 1024 * 30, 'maxFiles' => 5], // Permite até 5 arquivos
+        ];
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function attributeLabels()
-    {
+    public function attributeLabels() {
         return [
             'Id' => Yii::t('app', 'ID'),
             'summary' => Yii::t('app', 'Título'),
@@ -83,69 +83,59 @@ class Event extends \yii\db\ActiveRecord
             'entidadeOrganizadora' => Yii::t('app', 'Entidade Organizadora'),
             'convocadoPor' => Yii::t('app', 'Convocado Por'),
             'participantes' => Yii::t('app', 'Participantes'),
-            'agenda' => 'Agenda',
-            'actaRelatorio' => 'Acta/Relatório',
-            'listaParticipantes' => 'Lista de Participantes',
-            'outrosAnexos' => 'Outros (imagem, video, documento etc)',
+            'agenda' => Yii::t('app', 'Agenda'),
+            'listaConvidados' => Yii::t('app', 'Lista de Convidados'),
+            'pada' => Yii::t('app', 'PADA (UIC FRESAN/Camões, I.P.)'),
+            'listaParticipantes' => Yii::t('app', 'Lista de Participantes'),
+            'actaRelatorio' => Yii::t('app', 'Acta/Relatório'),
+            'outrosAnexos' => Yii::t('app', 'Outros Anexos (ppt, video, imagem, documento ou planilha)'),
         ];
     }
-//    public function beforeSave($insert)
-//{
-//    if (parent::beforeSave($insert)) {
-//        if (is_array($this->outrosAnexos)) {
-//            $this->outrosAnexos = implode(',', $this->outrosAnexos);
-//        }
-//        return true;
-//    } else {
-//        return false;
-//    }
-//}
 
-//    public function afterFind()
-//{
-//    parent::afterFind();
-//    if (!empty($this->outrosAnexos)) {
-//        $this->outrosAnexos = explode(',', $this->outrosAnexos);
-//    }
-//}
-     /**
-     * Upload files method
-     */
-    public function uploadFiles()
-    {
-        if ($this->validate()) {
-            if ($this->agenda) {
-                $this->agenda->saveAs('uploads/' . $this->agenda->baseName . '.' . $this->agenda->extension);
-                $this->agenda = 'uploads/' . $this->agenda->baseName . '.' . $this->agenda->extension;
-            }
-            if ($this->actaRelatorio) {
-                $this->actaRelatorio->saveAs('uploads/' . $this->actaRelatorio->baseName . '.' . $this->actaRelatorio->extension);
-                $this->actaRelatorio = 'uploads/' . $this->actaRelatorio->baseName . '.' . $this->actaRelatorio->extension;
-            }
-            if ($this->listaParticipantes) {
-                $this->listaParticipantes->saveAs('uploads/' . $this->listaParticipantes->baseName . '.' . $this->listaParticipantes->extension);
-                $this->listaParticipantes = 'uploads/' . $this->listaParticipantes->baseName . '.' . $this->listaParticipantes->extension;
-            }
-//            if ($this->outrosAnexos) {
-//                $this->outrosAnexos->saveAs('uploads/' . $this->outrosAnexos->baseName . '.' . $this->outrosAnexos->extension);
-//                $this->outrosAnexos = 'uploads/' . $this->outrosAnexos->baseName . '.' . $this->outrosAnexos->extension;
-//            }
-//           if (is_array($this->outrosAnexos)) {
-//                $paths = [];
-//                foreach ($this->outrosAnexos as $file) {
-//                    $path = 'uploads/' . $file->baseName . '.' . $file->extension;
-//                    $file->saveAs($path);
-//                    $paths[] = $path;
-//                }
-//                // Serializar os caminhos como uma string delimitada por vírgulas
-//                $this->outrosAnexos = implode(',', $paths);
-//            
-//                
-//                }
-            return true;
-        } else {
-            return false;
+    public function uploadFiles() {
+        $uploadPath = Yii::getAlias('@webroot/uploads/') . '/';
+
+        if (!(is_string($this->agenda)) && !empty($this->agenda) && $this->agenda!=null) {
+            $this->agenda->saveAs('uploads/' . $this->agenda->baseName . '.' . $this->agenda->extension);
         }
+
+        if (!empty($this->listaConvidados) &&!(is_string($this->listaConvidados)) && $this->listaConvidados!=null) {
+            $this->listaConvidados->saveAs('uploads/' . $this->listaConvidados->baseName . '.' . $this->listaConvidados->extension);
+            
+        }
+
+        if (!(is_string($this->pada))&& !empty($this->pada) && $this->pada!=null) {
+            $this->pada->saveAs('uploads/' . $this->pada->baseName . '.' . $this->pada->extension);
+        }
+        if (!(is_string($this->actaRelatorio))&& !empty($this->actaRelatorio) && $this->actaRelatorio!=null) {
+            $this->actaRelatorio->saveAs('uploads/' . $this->actaRelatorio->baseName . '.' . $this->actaRelatorio->extension);
+        }
+
+        if (!(is_string($this->listaParticipantes)) && !empty($this->listaParticipantes) && $this->listaParticipantes!=null) {
+            $this->listaParticipantes->saveAs('uploads/' . $this->listaParticipantes->baseName . '.' . $this->listaParticipantes->extension);
+        }
+
+     if (!empty($this->outrosAnexos) && $this->outrosAnexos != "A confirmar" &&!(is_string($this->outrosAnexos)) && $this->outrosAnexos!=null) {
+        $anexos = [];
+        foreach ($this->outrosAnexos as $file) {
+       $file->saveAs('uploads/' . $file->baseName . '.' . $file->extension);
+       $anexos[] = $file->baseName . '.' . $file->extension;
+            }
+             // Consulta à base de dados para obter os anexos já armazenados
+        $query = new Query();
+        $existingAnexos = $query->select('outrosAnexos')
+                                ->from('event')
+                                ->where(['Id' => $this->Id])
+                                ->scalar();
+        // Concatenar os anexos existentes com os novos anexos
+        if ($existingAnexos) {
+            $existingAnexosArray = explode(',', $existingAnexos);
+            $anexos = array_merge($existingAnexosArray, $anexos);
+        }
+
+        $this->outrosAnexos = implode(',', $anexos);
+    }         
+       return true;
     }
 
     /**
@@ -153,9 +143,7 @@ class Event extends \yii\db\ActiveRecord
      *
      * @return \yii\db\ActiveQuery
      */
-  
-    public function getComuna()
-    {
+    public function getComuna() {
         return $this->hasOne(Comuna::class, ['Id' => 'comunaID']);
     }
 
@@ -164,8 +152,7 @@ class Event extends \yii\db\ActiveRecord
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getMunicipio()
-    {
+    public function getMunicipio() {
         return $this->hasOne(Municipio::class, ['Id' => 'municipioID']);
     }
 
@@ -174,50 +161,45 @@ class Event extends \yii\db\ActiveRecord
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getProvincia()
-    {
+    public function getProvincia() {
         return $this->hasOne(Provincia::class, ['Id' => 'provinciaID']);
     }
-    
-   public static function getFilteredEvents($entidadesSelecionadas, $provinciasSelecionadas, $areasSelecionadas, $dataInicio = null, $dataFim = null)
-{
+
+    public static function getFilteredEvents($entidadesSelecionadas, $provinciasSelecionadas, $areasSelecionadas, $dataInicio = null, $dataFim = null) {
 //       $dataInicio=15634;
 //      var_dump('entidade selected!' . $entidadesSelecionadas[0]);
-    $query = Event::find();
+        $query = Event::find();
 
-    $filtersApplied = false; // Flag para controlar se algum filtro foi aplicado
+        $filtersApplied = false; // Flag para controlar se algum filtro foi aplicado
+        // Aplica filtro por entidades selecionadas
+        if (!empty($entidadesSelecionadas)) {
+            $query->andWhere(['in', 'entidadeOrganizadora', $entidadesSelecionadas]);
+            $filtersApplied = true;
+        }
 
-    // Aplica filtro por entidades selecionadas
-    if (!empty($entidadesSelecionadas)) {
-        $query->andWhere(['in', 'entidadeOrganizadora', $entidadesSelecionadas]);
-        $filtersApplied = true;
+        // Aplica filtro por províncias selecionadas
+        if (!empty($provinciasSelecionadas)) {
+            $query->joinWith('provincia')->andWhere(['in', 'provincia.nomeProvincia', $provinciasSelecionadas]);
+            $filtersApplied = true;
+        }
+
+        // Aplica filtro por áreas selecionadas
+        if (!empty($areasSelecionadas)) {
+            $query->orWhere(['in', 'area', $areasSelecionadas]);
+            $filtersApplied = true;
+        }
+
+        // Aplica filtro por intervalo de datas
+        if (!($dataInicio == null && $dataFim == null && empty($dataInicio) && empty($dataFim))) {
+            $query->andWhere(['between', 'start', $dataInicio, $dataFim]);
+            $filtersApplied = true;
+        }
+
+        // Se nenhum filtro foi aplicado, retorna todos os eventos
+        if (!$filtersApplied) {
+            return Event::find()->all();
+        }
+
+        return $query->all();
     }
-
-    // Aplica filtro por províncias selecionadas
-    if (!empty($provinciasSelecionadas)) {
-        $query->joinWith('provincia')->andWhere(['in', 'provincia.nomeProvincia', $provinciasSelecionadas]);
-        $filtersApplied = true;
-    }
-
-    // Aplica filtro por áreas selecionadas
-    if (!empty($areasSelecionadas)) {
-        $query->orWhere(['in', 'area', $areasSelecionadas]);
-        $filtersApplied = true;
-    }
-
-    // Aplica filtro por intervalo de datas
-    if (!($dataInicio == null && $dataFim == null && empty($dataInicio) && empty($dataFim))) {
-        $query->andWhere(['between', 'start', $dataInicio, $dataFim]);
-        $filtersApplied = true;
-    }
-
-    // Se nenhum filtro foi aplicado, retorna todos os eventos
-    if (!$filtersApplied) {
-        return Event::find()->all();
-    }
-
-    return $query->all();
-}
-
-
 }

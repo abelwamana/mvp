@@ -1,3 +1,20 @@
+<?php
+use backend\models\Biblioteca;
+use yii\helpers\Html;
+use kartik\select2\Select2;
+use yii\helpers\Url;
+use yii\widgets\ActiveForm;
+
+/** @var yii\web\View $this */
+/** @var backend\models\BibliotecaSearch $searchModel */
+/** @var yii\data\ActiveDataProvider $dataProvider */
+$this->title = Yii::t('app', 'BIBLIOTECA');
+
+// Calcular número de itens exibidos e total de itens
+$totalItems = $dataProvider->getTotalCount();
+$displayedItems = count($dataProvider->models);
+?>
+
 <style>
 .container {
     margin-top: -5px;
@@ -15,11 +32,8 @@
 }
 
 .biblioteca-container {
-    display: flex;
+    display: flex;      
     flex-wrap: wrap;
-    /*padding: 0px;*/
-    /*text-align: right;*/
-    /*margin-left: 0%;*/
 }
 
 .biblioteca-item {
@@ -27,12 +41,12 @@
     border: 1px solid #ccc;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 18px;
     margin-left: 5px;
-    width: calc(18% - 21.5px);;
+    width: calc(18% - 21.5px);
     text-align: center;
     overflow: hidden;
     height: 298.7px;
-    /*padding: -10px;*/
 }
 
 .biblioteca-item img {
@@ -76,7 +90,7 @@
 .search-filter-container {
     display: flex;
     align-items: center;
-    padding: 15px;
+    padding: 10px;
     border-radius: 5px;
     color: #999900;
 }
@@ -84,7 +98,7 @@
 .search-section,
 .filter-section {
     flex: 1;
-    margin-right: -0.3%;
+    margin-right: 0.1%;
 }
 
 .filter-section .form-group {
@@ -95,12 +109,12 @@
 .search-section input {
     width: 99%;
     margin-right: 10px;
-    margin-left: -2.3%;
+    margin-left: -1.4%;
 }
 
 .filter-section select {
     width: 100%;
-    min-width: 140px;
+    min-width: 180px;
 }
 
 .form-group {
@@ -110,7 +124,7 @@
 .btn-group {
     display: flex;
     width: 100%;
-    align-items: flex-start; /* Alinha o texto na parte superior dos botões */
+    align-items: flex-start;
     margin-top: 5%;
 }
 
@@ -118,10 +132,9 @@
     flex: 1;
     margin: 0;
     border-radius: 0;
-    height: auto; /* Permite que a altura se ajuste ao conteúdo */
+    height: auto;
     padding: 0px 0px 0px 1px;
-    white-space: nowrap; /* Mantém o texto em uma única linha */
-    
+    white-space: nowrap;
 }
 
 .btn-group .botao:first-child {
@@ -134,24 +147,18 @@
     border-bottom-right-radius: 3px;
 }
 
+.display-info {
+    margin-top: -10px;
+    margin-right: 10px;
+    white-space: nowrap;
+    text-align: right;
+    font-size: 14px;
+}
 </style>
 
 <link rel="stylesheet" 
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
-<?php
-
-use backend\models\Biblioteca;
-use yii\helpers\Html;
-use kartik\select2\Select2;
-use yii\helpers\Url;
-use yii\widgets\ActiveForm;
-
-/** @var yii\web\View $this */
-/** @var backend\models\BibliotecaSearch $searchModel */
-/** @var yii\data\ActiveDataProvider $dataProvider */
-$this->title = Yii::t('app', 'BIBLIOTECA');
-?>
 <div class="container">
     <h3 class="nao-imprimi" style="text-align: center !important;"><b><?= Html::encode($this->title) ?></b></h3>
 
@@ -177,17 +184,19 @@ $this->title = Yii::t('app', 'BIBLIOTECA');
                 <div class="form-group">
                     <?= Html::dropDownList('BibliotecaSearch[anoConcluido]', null, $searchModel->getAnoOptions(), ['class' => 'form-control', 'prompt' => 'Ano']) ?>
                 </div>
-                <div class="form-group">
-                    <?= Html::dropDownList('BibliotecaSearch[estado]', null, $searchModel->getEstadoOptions(), ['class' => 'form-control', 'prompt' => 'Estado']) ?>
-                </div>
-                <div class="form-group">
+                 <div class="form-group">
                     <button type="submit" style="background-color: #999900;" class="btn btn-secondary btn-block">
                         Filtrar
                     </button>
                 </div>
+                               
             </form>
         </div>
     </div>
+    <div class="form-group display-info" style="text-align: right;">
+                    <span>Total: &nbsp;<b><?= $displayedItems ?></b> documentos</span>
+                </div>
+
 
     <div class="biblioteca-container">
         <?php foreach ($dataProvider->models as $model): ?>

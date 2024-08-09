@@ -125,8 +125,10 @@ class EventController extends Controller {
         $nomeLogado = Yii::$app->user->identity->nomeCompleto;
         $emailLogado = Yii::$app->user->identity->email;
         $model = new \backend\models\Event();
+        $modelOrig = $this->findModel($Id);
         $model = $this->findModel($Id);
         $participantes = $model->participantes;
+        $model->participantes = explode(',', $model->participantes);
         $titulo = $model->summary;
         // Transformar array de participantes em uma string formatada
         // Verificar se $model->participantes é um array antes de chamar implode
@@ -145,93 +147,166 @@ class EventController extends Controller {
                 $provinciasList[$provincia->Id] = $provincia->nomeProvincia;
             }
             if ($this->request->isPost && $model->load($this->request->post())) {
-                $model->agenda = UploadedFile::getInstance($model, 'agenda');
-                $model->actaRelatorio = UploadedFile::getInstance($model, 'actaRelatorio');
-                $model->listaParticipantes = UploadedFile::getInstance($model, 'listaParticipantes');
+                // Verificar se os campos de upload de arquivo estão vazios antes de sobrescrevê-los
+                // Verificar se os campos de upload de arquivo estão vazios antes de sobrescrevê-los
+                $uploadedAgenda = UploadedFile::getInstance($model, 'agenda');
+                if ($uploadedAgenda != null && !empty($uploadedAgenda)) {
+                    $model->agenda = $uploadedAgenda;
+                } elseif ($uploadedAgenda == null || empty($uploadedAgenda)) {
+                    $model->agenda = $modelOrig->agenda;
+                }
+                $uploadedListaConvidados = UploadedFile::getInstance($model, 'listaConvidados');
+                if ($uploadedListaConvidados != null && !empty($uploadedListaConvidados)) {
+                    $model->listaConvidados = $uploadedListaConvidados;
+                } elseif ($uploadedListaConvidados == null || empty($uploadedListaConvidados)) {
+                    $model->listaConvidados = $modelOrig->listaConvidados;
+                }
+
+                $uploadedPada = UploadedFile::getInstance($model, 'pada');
+                if ($uploadedPada != null && !empty($uploadedPada)) {
+                    $model->pada = $uploadedPada;
+                } elseif ($uploadedPada == null || empty($uploadedPada)) {
+                    $model->pada = $modelOrig->pada;
+                }
+
+                $uploadedActaRelatorio = UploadedFile::getInstance($model, 'actaRelatorio');
+                if ($uploadedActaRelatorio != null && !empty($uploadedActaRelatorio)) {
+                    $model->actaRelatorio = $uploadedActaRelatorio;
+                } elseif ($uploadedActaRelatorio == null || empty($uploadedActaRelatorio)) {
+                    $model->actaRelatorio = $modelOrig->actaRelatorio;
+                }
+
+                $uploadedListaParticipantes = UploadedFile::getInstance($model, 'listaParticipantes');
+                if ($uploadedListaParticipantes != null && !empty($uploadedListaParticipantes)) {
+                    $model->listaParticipantes = $uploadedListaParticipantes;
+                } elseif ($uploadedListaParticipantes == null || empty($uploadedListaParticipantes)) {
+                    $model->listaParticipantes = $modelOrig->listaParticipantes;
+                }
+                // Tratamento para o campo de arquivos múltiplos 'outrosAnexos'
+                $uploadedOutrosAnexos = UploadedFile::getInstances($model, 'outrosAnexos');
+                if ($uploadedOutrosAnexos != null && !empty($uploadedOutrosAnexos)) {
+                    $model->outrosAnexos = $uploadedOutrosAnexos;
+                } elseif ($uploadedOutrosAnexos == null && empty($uploadedOutrosAnexos)) {
+                    $model->outrosAnexos = $modelOrig->outrosAnexos;
+                }
 
                 if (is_array($model->participantes)) {
                     $participantesString = implode(',', $model->participantes);
                     $model->participantes = $participantesString;
                 }
-                $model->description = empty($model->description) ? "Por confirmar em breve" : $model->description;
-                $model->coordenadas = empty($model->coordenadas) ? "Por confirmar em breve" : $model->coordenadas;
-                $model->local = empty($model->local) ? "Por confirmar em breve" : $model->local;
+                $model->description = empty($model->description) ? "A confirmar" : $model->description;
+                $model->coordenadas = empty($model->coordenadas) ? "A confirmar" : $model->coordenadas;
+                $model->local = empty($model->local) ? "A confirmar" : $model->local;
+                $model->outrosAnexos = empty($model->outrosAnexos) ? "A confirmar" : $model->outrosAnexos;
                 $anfitriaoEmail = User::find()->select('email')
                         ->where(['nomeCompleto' => $anfitriaoNome])
                         ->scalar();
-                if ($model->save() && $model->uploadFiles()) {
-                    $participantesArray = explode(',', $model->participantes);
-                    //  Enviar notificação por email ao anfitrião original do evento
-                    if (($anfitriaoEmail !== null) && ($emailLogado == $anfitriaoEmail)) {
-                        Yii::$app->mailer->compose()
-                                ->setTo(trim($anfitriaoEmail))
-                                ->setFrom([Yii::$app->params['adminEmail'] => Yii::$app->name])
-                                ->setSubject('Actualização de Evento')
-                                ->setHtmlBody("Olá $anfitriaoNome,<br><br> Actualizou o evento do <b>Calendário</b> para o dia <b>$dataevento,</b> com o nome <b>[$titulo].</b><br><br>  Para mais detalhes, clique <a href=\"https://sgi-fresancamoes.com/admin/calendario\">aqui.</a><br><br> Continuação de bom trabalho,<br><br> SGI FRESAN/Camões, I.P.")
-                                ->send();
+                if ($model->uploadFiles()) {
+                    // Serializar 'outrosAnexos' antes de salvar
+                    if (is_array($model->outrosAnexos)) {
+                        $model->outrosAnexos = implode(',', $model->outrosAnexos);
                     }
-                    // Email ao Administrador que actualizou o evento
-                    else if (($emailLogado !== null)) {
-                        Yii::$app->mailer->compose()
-                                ->setTo(trim($emailLogado))
-                                ->setFrom([Yii::$app->params['adminEmail'] => Yii::$app->name])
-                                ->setSubject('Actualização de Evento')
-                                ->setHtmlBody("Olá $nomeLogado,<br><br> Actualizou o evento do <b>Calendário</b> para o dia <b>$dataevento,</b> com o nome <b>[$titulo].</b><br><br>  Para mais detalhes, clique <a href=\"https://sgi-fresancamoes.com/admin/calendario\">aqui.</a><br><br> Continuação de bom trabalho,<br><br> SGI FRESAN/Camões, I.P.")
-                                ->send();
-                        // Email ao anfitrião que não actualizou o evento
-                        Yii::$app->mailer->compose()
-                                ->setTo(trim($anfitriaoEmail))
-                                ->setFrom([Yii::$app->params['adminEmail'] => Yii::$app->name])
-                                ->setSubject('Evento Actualizado')
-                                ->setHtmlBody("Olá $anfitriaoNome,<br><br>Foi actualizado pela administração o evento <b>[$titulo]</b> adicionado por si ao <b>Calendário</b>, para o dia <b>$dataevento,</b> com .</b><br><br>  Para mais detalhes, clique <a href=\"https://sgi-fresancamoes.com/admin/calendario\">aqui.</a><br><br> Continuação de bom trabalho,<br><br> SGI FRESAN/Camões, I.P.")
-                                ->send();
-                    }
-                    // Enviar notificações por email para os participantes
-//                    var_dump($participantesArray[0]);
-                   if ($model->participantes != "Por confirmar em breve") {
-                    foreach ($participantesArray as $email) {
-                        // Consulta para encontrar o nome do contacto com o email atual
-                        $nomeContacto = Contacto::find()
-                                ->select('nome')
-                                ->where(['email' => $email])
-                                ->scalar(); // Retorna o nome do primeiro contacto encontrado ou null se não houver
-
-                        if ($nomeContacto !== null) {
+                    if ($model->save(false)) {
+                        $signature = "
+                                        <div style=\"color: #003399;font-family: Georgia, serif; font-size: 11px;\">
+                                        SGI FRESAN/Camões, I.P.
+                                        <br>
+                                        Email: geral@sgi-fresancamoes.com
+                                        <br>
+                                        <br>
+                                        FRESAN | Fortalecimento da Resiliência e da Segurança Alimentar e Nutricional
+                                        <br>
+                                        Ação financiada pela União Europeia
+                                        <br>
+                                        Camões – Instituto da Cooperação e da Língua, I.P.
+                                        </div>
+                                        <br>
+                                        <img src=\"https://sgi-fresancamoes.com/admin/images/rodapeEm.jpg\" alt=\"Imagem Rodapé\" style=\"width: 430px; max-width: 100%;\">
+                                         ";
+                        //  Enviar notificação por email ao anfitrião original do evento
+                        if (($anfitriaoEmail !== null) && ($emailLogado == $anfitriaoEmail)) {
                             Yii::$app->mailer->compose()
-                                    ->setTo(trim($email))
+                                    ->setTo(trim($anfitriaoEmail))
                                     ->setFrom([Yii::$app->params['adminEmail'] => Yii::$app->name])
-                                    ->setSubject('Actualização de Evento')
-                                    ->setHtmlBody("Olá $nomeContacto,<br><br> Foi actualizado o evento <b>[$titulo]</b> convocado por $anfitriaoNome para o dia <b>$dataevento,</b>. <br><br> Aceda ao <b>Calendário</b> para <a href=\"https://sgi-fresancamoes.com/admin/calendario\">mais detalhes.</a><br><br> Continuação de bom trabalho,<br><br> SGI FRESAN/Camões, I.P.")
+                                    ->setSubject('Actualização de Evento' . '[' . $titulo . ']')
+                                    ->setHtmlBody("Olá $anfitriaoNome,<br><br> Actualizou o evento do <b>Calendário</b> para o dia <b>$dataevento,</b> com o nome <b>[$titulo].</b><br><br>  Para mais detalhes, clique <a href=\"https://sgi-fresancamoes.com/admin/calendario\">aqui.</a><br><br> Continuação de bom trabalho,<br><br> $signature")
                                     ->send();
                         }
-                    }
-                   }
-                    // Adicionar notificação
-                    // Após salvar o novo evento
-                    $usuarios = User::find()->all(); // Ou uma query para selecionar os usuários que devem receber a notificação
-                    foreach ($usuarios as $usuario) {
-                        $notificacao = new Notificacoes();
-                        $notificacao->mensagem = "Evento [$titulo] actualizado";
-                        $notificacao->estado = 0; // não lida
-                        $notificacao->id_event = $model->Id;
-                        $notificacao->id_usuario = $usuario->id;
-                        $notificacao->save();
-                    }
+                        // Email ao Administrador que actualizou o evento
+                        else if (($emailLogado !== null)) {
+                            $email = trim($email);
+                            // Verificar se o email é válido
+                            if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                                Yii::$app->mailer->compose()
+                                        ->setTo(trim($emailLogado))
+                                        ->setFrom([Yii::$app->params['adminEmail'] => Yii::$app->name])
+                                        ->setSubject('Actualização de Evento' . '[' . $titulo . ']')
+                                        ->setHtmlBody("Olá $nomeLogado,<br><br> Actualizou o evento do <b>Calendário</b> para o dia <b>$dataevento,</b> com o nome <b>[$titulo].</b><br><br>  Para mais detalhes, clique <a href=\"https://sgi-fresancamoes.com/admin/calendario\">aqui.</a><br><br> Continuação de bom trabalho,<br><br> $signature")
+                                        ->send();
+                                // Email ao anfitrião que não actualizou o evento
+                                Yii::$app->mailer->compose()
+                                        ->setTo(trim($anfitriaoEmail))
+                                        ->setFrom([Yii::$app->params['adminEmail'] => Yii::$app->name])
+                                        ->setSubject('Evento Actualizado' . '[' . $titulo . ']')
+                                        ->setHtmlBody("Olá $anfitriaoNome,<br><br>Foi actualizado pela administração o evento <b>[$titulo]</b> adicionado por si ao <b>Calendário</b>, para o dia <b>$dataevento,</b> com .</b><br><br>  Para mais detalhes, clique <a href=\"https://sgi-fresancamoes.com/admin/calendario\">aqui.</a><br><br> Continuação de bom trabalho,<br><br> $signature")
+                                        ->send();
+                            }
+                        }
+                        // Enviar notificações por email para os participantes
+                        $currentDate = new \DateTime();
+                        $eventStartDate = new \DateTime($model->start);
+//                    var_dump($participantesArray[0]);
+                        if ($model->participantes != "Por confirmar em breve" && $model->participantes != "A confirmar" && $eventStartDate >= $currentDate) {
+                            $participantesArray = explode(',', $model->participantes);
+                            foreach ($participantesArray as $email) {
+                                $email = trim($email);
+                                // Verificar se o email é válido
+                                if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                                    // Consulta para encontrar o nome do contacto com o email atual
+                                    $nomeContacto = Contacto::find()
+                                            ->select('nome')
+                                            ->where(['email' => $email])
+                                            ->scalar(); // Retorna o nome do primeiro contacto encontrado ou null se não houver
 
-
-                    Yii::$app->session->setFlash('success', 'Evento actualizado e notificações enviadas!');
-                    return $this->redirect(['site/calendario']);
+                                    if ($nomeContacto !== null) {
+                                        Yii::$app->mailer->compose()
+                                                ->setTo(trim($email))
+                                                ->setFrom([Yii::$app->params['adminEmail'] => Yii::$app->name])
+                                                ->setSubject('Actualização de Evento' . '[' . $titulo . ']')
+                                                ->setHtmlBody("Olá $nomeContacto,<br><br> Foi actualizado o evento <b>[$titulo]</b> convocado por $anfitriaoNome para o dia <b>$dataevento,</b>. <br><br> Aceda ao <b>Calendário</b> para <a href=\"https://sgi-fresancamoes.com/admin/calendario\">mais detalhes.</a><br><br> Continuação de bom trabalho,<br><br> $signature")
+                                                ->send();
+                                    }
+                                }
+                            }
+                        }
+                        // Adicionar notificação
+                        // Após salvar o novo evento
+                        $usuarios = User::find()->all(); // Ou uma query para selecionar os usuários que devem receber a notificação
+                        foreach ($usuarios as $usuario) {
+                            $notificacao = new Notificacoes();
+                            $notificacao->mensagem = "Evento [$titulo] actualizado";
+                            $notificacao->estado = 0; // não lida
+                            $notificacao->id_event = $model->Id;
+                            $notificacao->id_usuario = $usuario->id;
+                            $notificacao->save();
+                        }
+                        Yii::$app->session->setFlash('success', 'Evento actualizado e notificações enviadas!');
+                        return $this->redirect(['site/calendario']);
+                    }
+                } else {
+                    Yii::$app->session->setFlash('error', 'Não foi possível fazeer upload dos arquivos');
+                    return $this->render('update', [
+                                'model' => $model,
+                                'provinciasList' => $provinciasList,
+                    ]);
                 }
-
-                return $this->render('update', [
-                            'model' => $model,
-                            'provinciasList' => $provinciasList,
-                ]);
             }
+            else {
             return $this->render('update', [
                         'model' => $model,
                         'provinciasList' => $provinciasList,
             ]);
+            }
         } else {
             Yii::$app->session->setFlash('error', 'So o Administrador ou anfitrião pode alterar eventos');
 //                var_dump("Experiencia");
@@ -239,13 +314,50 @@ class EventController extends Controller {
         }
     }
 
-    /**
-     * Deletes an existing Event model.
-     * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param int $Id ID
-     * @return \yii\web\Response
-     * @throws NotFoundHttpException if the model cannot be found
-     */
+//    public function actionRemoveAnexo($id, $anexo) {
+//    $model = $this->findModel($id);
+//
+//    $anexosArray = explode(',', $model->outrosAnexos);
+//    if (($key = array_search($anexo, $anexosArray)) !== false) {
+//        unset($anexosArray[$key]);
+//        $model->outrosAnexos = implode(',', $anexosArray);
+//        
+//        if ($model->save(false)) {
+//            return json_encode(['success' => true]);
+//        } else {
+//            return json_encode(['success' => false, 'message' => 'Erro ao salvar o modelo.']);
+//        }
+//    } else {
+//        return json_encode(['success' => false, 'message' => 'Anexo não encontrado.']);
+//    }
+//}
+
+    public function actionRemoveAnexo() {
+    \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+    $id = Yii::$app->request->post('id');
+    $anexo = Yii::$app->request->post('anexo');
+
+    if ($id && $anexo) {
+        $model = $this->findModel($id);
+        $anexosArray = explode(',', $model->outrosAnexos);
+
+        if (($key = array_search($anexo, $anexosArray)) !== false) {
+            unset($anexosArray[$key]);
+            $model->outrosAnexos = implode(',', $anexosArray);
+
+            if ($model->save(false)) {
+                return ['success' => true];
+            } else {
+                return ['success' => false, 'message' => 'Erro ao salvar o modelo.'];
+            }
+        } else {
+            return ['success' => false, 'message' => 'Anexo não encontrado.'];
+        }
+    } else {
+        return ['success' => false, 'message' => 'ID ou Anexo ausente.'];
+    }
+}
+
     public function actionGetEventDetails($id) {
         $notificacao = Notificacoes::findOne($id);
         if ($notificacao !== null) {
@@ -280,41 +392,39 @@ class EventController extends Controller {
     }
 
     // No seu controlador
-   public function actionGetNotifications()
-{
-    $notificacoesEventos = Notificacoes::find()
-        ->where(['id_usuario' => Yii::$app->user->id, 'estado' => 0])
-        ->all();
+    public function actionGetNotifications() {
+        $notificacoesEventos = Notificacoes::find()
+                ->where(['id_usuario' => Yii::$app->user->id, 'estado' => 0])
+                ->all();
 
-    $notifications = [];
-    foreach ($notificacoesEventos as $notificacao) {
-        $notifications[] = [
-            'id' => $notificacao->Id,
-            'mensagem' => $notificacao->mensagem,
-        ];
+        $notifications = [];
+        foreach ($notificacoesEventos as $notificacao) {
+            $notifications[] = [
+                'id' => $notificacao->Id,
+                'mensagem' => $notificacao->mensagem,
+            ];
+        }
+
+        $totalNotificacoes = count($notifications);
+
+        if (Yii::$app->user->can('Permissao Validador de dados')) {
+            $totalNotificacoes += $pendentesCount; // Ajuste conforme necessário
+        }
+
+        if (Yii::$app->user->can('Perfil Aprovação de dados')) {
+            $totalNotificacoes += $validadosCount; // Ajuste conforme necessário
+        }
+
+        if (Yii::$app->user->can('Perfil Lancamento')) {
+            $totalNotificacoes += $aprovadosCount; // Ajuste conforme necessário
+        }
+
+        return $this->asJson([
+                    'totalNotificacoes' => $totalNotificacoes,
+                    'notifications' => $notifications,
+        ]);
     }
 
-    $totalNotificacoes = count($notifications);
-
-    if (Yii::$app->user->can('Permissao Validador de dados')) {
-        $totalNotificacoes += $pendentesCount; // Ajuste conforme necessário
-    }
-
-    if (Yii::$app->user->can('Perfil Aprovação de dados')) {
-        $totalNotificacoes += $validadosCount; // Ajuste conforme necessário
-    }
-
-    if (Yii::$app->user->can('Perfil Lancamento')) {
-        $totalNotificacoes += $aprovadosCount; // Ajuste conforme necessário
-    }
-
-    return $this->asJson([
-        'totalNotificacoes' => $totalNotificacoes,
-        'notifications' => $notifications,
-    ]);
-}
-
-    
     public function actionGetNotification() {
         $userId = Yii::$app->user->id;
         $count = Notificacoes::find()

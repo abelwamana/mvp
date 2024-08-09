@@ -17,9 +17,6 @@ use yii;
 
 require_once __DIR__ . '/../../vendor/autoload.php';
 
-
-
-
 /**
  * ContactoControl+ler implements the CRUD actions for Contacto model.
  */
@@ -115,7 +112,7 @@ public function actionExportXls()
     $spreadsheet = new \PhpOffice\PhpSpreadsheet\Spreadsheet();
     $sheet = $spreadsheet->getActiveSheet();
     
-    $columns = ['Nome', 'Contacto', 'Email', 'Função', 'Instituição', 'Província', 'Município', 'Comuna', 'Localidade', 'País', 'Ponto Focal', 'Atividades', 'Entidade', 'Nível', 'Rótulo', 'Privacidade', 'Estado', 'Usuário'];
+    $columns = ['Nome', 'Contacto', 'Email', 'Função', 'Instituição', 'Província', 'Município', 'Comuna', 'Localidade', 'País', 'Ponto Focal', 'Atividades', 'Entidade', 'Nível', 'Rótulo', 'Estado', 'Usuário'];
 
     // Cabeçalho
     $columnIndex = 'A';
@@ -123,7 +120,6 @@ public function actionExportXls()
         $sheet->setCellValue($columnIndex . '1', $column);
         $columnIndex++;
     }
-
     // Dados
     $rowIndex = 2;
     foreach ($dataProvider->getModels() as $model) {
@@ -144,7 +140,7 @@ public function actionExportXls()
         $sheet->setCellValue($columnIndex++ . $rowIndex, $model->entidade);
         $sheet->setCellValue($columnIndex++ . $rowIndex, $model->nivel);
         $sheet->setCellValue($columnIndex++ . $rowIndex, $model->rotulo);
-        $sheet->setCellValue($columnIndex++ . $rowIndex, $model->privacidade);
+//        $sheet->setCellValue($columnIndex++ . $rowIndex, $model->privacidade);
         $sheet->setCellValue($columnIndex++ . $rowIndex, $model->estado);
         $sheet->setCellValue($columnIndex++ . $rowIndex, $model->usuario);
         $rowIndex++;
@@ -198,7 +194,7 @@ public function actionExportXls()
             $html .= "<td>{$model->entidade}</td>";
             $html .= "<td>{$model->nivel}</td>";
             $html .= "<td>{$model->rotulo}</td>";
-            $html .= "<td>{$model->privacidade}</td>";
+//            $html .= "<td>{$model->privacidade}</td>";
             $html .= "<td>{$model->estado}</td>";
             $html .= "<td>{$model->usuario}</td>";
             $html .= '</tr>';

@@ -217,6 +217,7 @@
             $menuItems[] = ['label' => 'Biblioteca', 'url' => ['biblioteca/biblioteca']];
             $menuItems[] = ['label' => 'Recomendações', 'url' => ['site/emconstrucao']];
             $menuItems[] = ['label' => 'Boas Práticas', 'url' => ['site/emconstrucao']];
+             $menuItems[] = ['label' => 'Sustentabilidade', 'url' => ['site/emconstrucao']];
 // $menuItems[] = ['label' => 'Galeria', 'url' => ['site/galeria']];
             $menuItems[] = ['template' => '<hr>'];
 

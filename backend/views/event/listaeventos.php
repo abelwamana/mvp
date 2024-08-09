@@ -134,7 +134,7 @@ $areas = [
     "Nutrição" => "Nutrição",
     "Água" => "Água",
     "Reforço Institucional" => "Reforço Institucional",
-    "Coordenação" => "Coordenação",
+    "Coordenação UIC" => "Coordenação UIC",
     'M&A/Subvenções' => 'M&A/Subvenções',
     "Outras" => "Outras"
 ];
@@ -264,7 +264,7 @@ $areas = [
                 "Nutrição",
                 "Água",
                 "Reforço Institucional",
-                "Coordenação",
+                "Coordenação UIC",
                 'Subvenções/M&A',
                 "Outras"
             ];
@@ -299,7 +299,7 @@ $areas = [
                 "Agricultura e Pecuária" => "#999900",
                 "Nutrição" => "#cccc33",
                 "Água" => "#00c3ff",
-                "Coordenação" => "#71b13c",
+                "Coordenação UIC" => "#71b13c",
                 "Subvenções/M&A" => "#663399",
                 "Outras" => "black",
                 "Reforço Institucional" => "#003399"

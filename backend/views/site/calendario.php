@@ -62,6 +62,15 @@
     input#event-listaparticipantes {
         font-size: 12px;
     }
+    input#event-listaconvidados {
+        font-size: 12px;
+    }
+    input#event-pada {
+        font-size: 12px;
+    }
+    input#event-outrosanexos {
+        font-size: 12px;
+    }
     .anexos-section {
         margin-top: 20px;
         padding: 15px;
@@ -71,7 +80,7 @@
 
     .anexos-section h3 {
         margin-bottom: 15px;
-      
+
     }
     .file-upload-label {
         font-weight: normal !important;
@@ -80,7 +89,7 @@
     }
     legend {
         font-weight: bold;
-          font-size: 18px;
+        font-size: 18px;
     }
 
 </style>
@@ -348,8 +357,10 @@ $provincias = [
                 <?= $form->field($eventModel, 'convocadoPor')->textInput(['value' => $nomeUsuario, 'readonly' => true]) ?>
                 <?=
                 $form->field($eventModel, 'participantes')->widget(Select2::classname(), [
-                    'data' => ArrayHelper::map(Contacto::find()->all(), 'email', 'nome'),
-                    'options' => ['placeholder' => 'Selecione os participantes...', 'multiple' => true, 'id' => 'select-participantes'],
+                    'data' => ArrayHelper::map(Contacto::find()->all(), 'email', function ($model) {
+                        return $model->nome . ' - ' . $model->instituicao;
+                    }),
+                    'options' => ['placeholder' => 'Selecione os participantes...', 'multiple' => true, 'id' => 'select-participantes'], 'showToggleAll' => true,
                     'pluginOptions' => [
                         'allowClear' => true,
                     ],
@@ -360,8 +371,11 @@ $provincias = [
                     <legend>Anexos</legend>
 
                     <?= $form->field($eventModel, 'agenda', ['labelOptions' => ['class' => 'file-upload-label']])->fileInput() ?>
+                    <?= $form->field($eventModel, 'listaConvidados', ['labelOptions' => ['class' => 'file-upload-label']])->fileInput() ?>
+                    <?= $form->field($eventModel, 'pada', ['labelOptions' => ['class' => 'file-upload-label']])->fileInput() ?>
                     <?= $form->field($eventModel, 'actaRelatorio', ['labelOptions' => ['class' => 'file-upload-label']])->fileInput() ?>
                     <?= $form->field($eventModel, 'listaParticipantes', ['labelOptions' => ['class' => 'file-upload-label']])->fileInput() ?>
+                    <?= $form->field($eventModel, 'outrosAnexos[]', ['labelOptions' => ['class' => 'file-upload-label']])->fileInput(['multiple' => true]) ?>
 
                 </fieldset>
                 <!-- Botão de Adicionar Evento -->
@@ -375,7 +389,7 @@ $provincias = [
                         var participantes = $('#select-participantes').val();
                         if (!participantes || participantes.length === 0) {
                             // Define o valor para "Por confirmar em breve" se estiver vazio
-                            $('#select-participantes').append(new Option("Por confirmar em breve", "Por confirmar em breve", true, true)).trigger('change');
+                            $('#select-participantes').append(new Option("A confirmar", "A confirmar", true, true)).trigger('change');
                         }
                         return true;
                     }
@@ -411,137 +425,126 @@ $provincias = [
                 <p><strong>Entidade Organizadora:</strong> <span id="modalEntidade"></span></p>
                 <p><strong>Convocado Por:</strong> <span id="modalConvocadoPor"></span></p>
                 <p><strong>Participantes:</strong> <span id="modalParticipantes"></span></p>
-                <p><strong>Agenda:</strong> <a href="#" id="modalAgenda" target="_blank">Abrir</a></p>
-                <p><strong>Acta/Relatório:</strong> <a href="#" id="modalactaRelatorio" target="_blank">Abrir</a></p>
-                <p><strong>Lista de Participantes:</strong> <a href="#" id="modallistaParticipantes" target="_blank">Abrir</a></p>
+                <p><strong>Agenda:</strong> <a href="#" id="modalAgenda" target="_blank">A Confirmar</a></p>
+                <p><strong>Lista de Convidados:</strong> <a href="#" id="modallistaConvidados" target="_blank">A Confirmar</a></p>
+                <p><strong>PADA:</strong> <a href="#" id="modalPADA" target="_blank">A Confirmar</a></p>
+                <p><strong>Acta/Relatório:</strong> <a href="#" id="modalactaRelatorio" target="_blank">A Confirmar</a></p>
+                <p><strong>Lista de Participantes:</strong> <a href="#" id="modallistaParticipantes" target="_blank">A Confirmar</a></p>
                 <p><strong>Outros Anexos:</strong> <span id="modalOutrosAnexos"></span></p>
-
-
             </div>
             <div class="modal-footer">          
-                <button type="button" class="btn btn-primary" id="editEventButton" data-event-id="">Alterar</button>
+                <button type="button" class="btn btn-primary" id="editEventButton" data-event-id="">Editar</button>
                 <button type="button" class="btn btn-danger" name="deleteEventButton" id="deleteEventButton">Eliminar</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
             </div>
-
         </div>
     </div>
 </div>
 
 <script>
     function showEventDetails(event) {
-        const basePath = "uploads/";  // Caminho base onde os arquivos estão armazenados
-        $("#eventInfoModal").modal("show");
-        $("#modalId").text(event.id);
-        $("#modalTitle").text(event.summary);
-        $("#modalDescription").text(event.description);
-        $("#modalArea").text(event.area);
-        $("#modalStart").text(event.start.format("DD/MM/YYYY HH:mm"));
-        $("#modalEnd").text(event.end.format("DD/MM/YYYY HH:mm"));
-        $("#modalDuracao").text(event.duracao);
-        $("#modalProvincia").text(event.provincia);
-        $("#modalMunicipio").text(event.municipio);
-        $("#modalComuna").text(event.comuna);
-        $("#modalLocal").text(event.local);
-        $("#modalCoordenadas").text(event.coordenadas);
-        $("#modalEntidade").text(event.entidadeOrganizadora);
-        $("#modalConvocadoPor").text(event.convocadoPor);
-        $("#modalParticipantes").text(event.participantes);
+    const basePath = "uploads/";  // Caminho base onde os arquivos estão armazenados
+    $("#eventInfoModal").modal("show");
+    $("#modalId").text(event.id);
+    $("#modalTitle").text(event.summary);
+    $("#modalDescription").text(event.description);
+    $("#modalArea").text(event.area);
+    $("#modalStart").text(event.start.format("DD/MM/YYYY HH:mm"));
+    $("#modalEnd").text(event.end.format("DD/MM/YYYY HH:mm"));
+    $("#modalDuracao").text(event.duracao);
+    $("#modalProvincia").text(event.provincia);
+    $("#modalMunicipio").text(event.municipio);
+    $("#modalComuna").text(event.comuna);
+    $("#modalLocal").text(event.local);
+    $("#modalCoordenadas").text(event.coordenadas);
+    $("#modalEntidade").text(event.entidadeOrganizadora);
+    $("#modalConvocadoPor").text(event.convocadoPor);
+    $("#modalParticipantes").text(event.participantes);
 
-        var participants = event.participantes.split(",");
-        var participantsHtml = "";
-        for (var i = 0; i < participants.length; i += 2) {
-            if (i === participants.length - 1) {
-                participantsHtml += participants[i];
-            } else {
-                participantsHtml += participants[i] + ", " + (participants[i + 1] || "") + "<br>";
-            }
-        }
-        $("#modalParticipantes").html(participantsHtml);
-
-        if (event.agenda) {
-            $("#modalAgenda").attr("href", basePath + event.agenda);
+    var participants = event.participantes.split(",");
+    var participantsHtml = "";
+    for (var i = 0; i < participants.length; i += 2) {
+        if (i === participants.length - 1) {
+            participantsHtml += participants[i];
         } else {
-            $("#modalAgenda").removeAttr("href");
+            participantsHtml += participants[i] + ", " + (participants[i + 1] || "") + "<br>";
         }
+    }
+    $("#modalParticipantes").html(participantsHtml);
 
-        if (event.actaRelatorio) {
-            $("#modalactaRelatorio").attr("href", basePath + event.actaRelatorio);
+    function setFileLink(elementId, fileName) {
+        if (fileName) {
+            $(elementId).attr("href", basePath + fileName).text(fileName);
         } else {
-            $("#modalactaRelatorio").removeAttr("href");
+            $(elementId).removeAttr("href").text("A Confirmar");
         }
-
-        if (event.listaParticipantes) {
-            $("#modallistaParticipantes").attr("href", basePath + event.listaParticipantes);
-        } else {
-            $("#modallistaParticipantes").removeAttr("href");
-        }
-        if (event.outrosAnexos) {
-            $("#modalOutrosAnexos").attr("href", basePath + event.outrosAnexos);
-        } else {
-            $("#modalOutrosAnexos").removeAttr("href");
-        }
-//        if (event.outrosAnexos) {
-//            var outrosAnexos = JSON.parse(event.outrosAnexos);
-//            var anexosHtml = "";
-//            outrosAnexos.forEach(function(anexo, index) {
-//                anexosHtml += '<a href="' + basePath + anexo + '" target="_blank">Anexo ' + (index + 1) + '</a><br>';
-//            });
-//            $("#modalOutrosAnexos").html(anexosHtml);
-//        } else {
-//            $("#modalOutrosAnexos").text("Nenhum anexo adicional");
-//        }
-
-        
-        $("#editEventButton").data("eventId", event.id);
-        $("#deleteEventButton").data("eventId", event.id);
     }
 
-    function showAddEventModal(date) {
-        $("#addEventModal").modal("show");
-        $("#eventDate").val(date.format());
+    setFileLink("#modalAgenda", event.agenda);
+    setFileLink("#modallistaConvidados", event.listaConvidados);
+    setFileLink("#modalPADA", event.pada);
+    setFileLink("#modalactaRelatorio", event.actaRelatorio);
+    setFileLink("#modallistaParticipantes", event.listaParticipantes);
+
+    if (event.outrosAnexos === "A confirmar") {
+        $("#modalOutrosAnexos").text("A Confirmar");
+    } else if (event.outrosAnexos) {
+        var outrosAnexos = event.outrosAnexos.split(",");
+        var anexosHtml = "";
+        outrosAnexos.forEach(function (anexo, index) {
+            anexosHtml += '<a href="'+ basePath + anexo.trim() + '" target="_blank">' + anexo.trim() + '</a><br>';
+        });
+        $("#modalOutrosAnexos").html(anexosHtml);
+    } else {
+        $("#modalOutrosAnexos").text("A Confirmar");
     }
 
-    function styleEventElement(event, element) {
-        element.css("background-color", "transparent");
-        element.css("color", "#000000");
-        element.css("border-width", "3px");
-        element.find(".fc-content").append("<span class=\"fc-title\">" + event.summary + "</span>");
+    $("#editEventButton").data("eventId", event.id);
+    $("#deleteEventButton").data("eventId", event.id);
+}
 
-        if (event.area === "Agricultura e Pecuária") {
-            element.css("border-color", "#999900");
-        } else if (event.area === "Nutrição") {
-            element.css("border-color", "#eae018");
-        } else if (event.area === "Água") {
-            element.css("border-color", "#00c3ff");
-        } else if (event.area === "Coordenação") {
-            element.css("border-color", "#71b13c");
-        } else if (event.area === "Reforço Institucional") {
-            element.css("border-color", "#003399");
-        } else if (event.area === "Outra") {
-            element.css("border-color", "black");
-        } else if (event.area === "Subvenções/M&A") {
-            element.css("border-color", "#663399");
-        } else if (event.area === "Governação") {
-            element.css("border-color", "#BB0E22");
-        }
+function showAddEventModal(date) {
+    $("#addEventModal").modal("show");
+    $("#eventDate").val(date.format());
+}
 
-        element.find(".fc-content").append("<br>");
+function styleEventElement(event, element) {
+    element.css("background-color", "transparent");
+    element.css("color", "#000000");
+    element.css("border-width", "3px");
+    element.find(".fc-content").append("<span class=\"fc-title\">" + event.summary + "</span>");
+
+    if (event.area === "Agricultura e Pecuária") {
+        element.css("border-color", "#999900");
+    } else if (event.area === "Nutrição") {
+        element.css("border-color", "#eae018");
+    } else if (event.area === "Água") {
+        element.css("border-color", "#00c3ff");
+    } else if (event.area === "Coordenação UIC") {
+        element.css("border-color", "#71b13c");
+    } else if (event.area === "Reforço Institucional") {
+        element.css("border-color", "#003399");
+    } else if (event.area === "Outra") {
+        element.css("border-color", "black");
+    } else if (event.area === "Subvenções/M&A") {
+        element.css("border-color", "#663399");
+    } else if (event.area === "Governação") {
+        element.css("border-color", "#BB0E22");
     }
 
-    $(document).on('click', '#editEventButton', function () {
-        var eventId = $(this).data('event-id');
-        window.location.href = 'update-event?id=' + eventId;
-    });
+    element.find(".fc-content").append("<br>");
+}
 
-
+$(document).on('click', '#editEventButton', function () {
+    var eventId = $(this).data('event-id');
+    window.location.href = 'update-event?id=' + eventId;
+});
 </script>
 
 
 <?php
 $script = <<< JS
 $(document).ready(function() {
-        //Filtros
     // Verifique se existem valores armazenados no armazenamento local e preencha os campos de filtro
     var provinciasSelecionadas = localStorage.getItem('provinciasSelecionadas');
     var entidadesSelecionadas = localStorage.getItem('entidadesSelecionadas');
@@ -558,69 +561,56 @@ $(document).ready(function() {
 
     // Ouça o evento de clique no botão "Filtrar"
     $('#filter-btn').click(function(e) {
-        // Salve os valores dos campos de filtro no armazenamento local antes de enviar o formulário
-        localStorage.setItem('provinciasSelecionadas', $('#provincias').val());
-        localStorage.setItem('entidadesSelecionadas', $('#entidades').val());
-        localStorage.setItem('areasSelecionadas', $('#areas').val());
-    });
-
-    // Ouça o evento de clique no botão de deletar evento
-    $(document).on('click', '#deleteEventButton', function() {
-        var eventId = $(this).data('eventId');
-        if (confirm("Tem certeza que deseja deletar este evento?")) {
-            $.ajax({
-                url: 'site/delete-event',
-                type: 'GET',
-                data: { id: eventId },
-                success: function(response) {
-                    if (response.success) {
-                        $('#meuCalendario').fullCalendar('removeEvents', eventId);
-                        $("#eventInfoModal").modal("hide");
-                        alert("Evento deletado com sucesso!");
-                    } else {
-                        alert("Erro ao deletar o evento!");
-                    }
-                }
-            });
-        }
-    });
-
-    // Ouça o evento de clique no botão de editar evento
-//    $(document).on('click', '#deleteEventButton', function() {
-//        var eventId = $(this).data('eventId');
-//         if (confirm("Tem certeza que deseja deletar este evento?")) {
-//        window.location.href = 'site/delete-event=' + eventId;
-//        }
-//    });
-        
-   // Ouça o evento de clique no botão de editar evento
-    $(document).on('click', '#editEventButton', function() {
-        var eventId = $(this).data('eventId');
-        window.location.href = 'event/update?Id=' + eventId;
-    });
-
-    // Ouça o evento de clique no botão de filtragem
-    $('#filter-btn').click(function(e) {
         e.preventDefault(); // Evite o comportamento padrão de enviar o formulário
         // Obtenha os valores selecionados nos filtros
         var entidadesSelecionadas = $('#entidades').val();
         var provinciasSelecionadas = $('#provincias').val();
-        var areasSelecionadas = $('#areas').val(); // Adicione esta linha para obter as áreas selecionadas
+        var areasSelecionadas = $('#areas').val();
+
+        // Salve os valores dos campos de filtro no armazenamento local antes de enviar o formulário
+        localStorage.setItem('provinciasSelecionadas', provinciasSelecionadas);
+        localStorage.setItem('entidadesSelecionadas', entidadesSelecionadas);
+        localStorage.setItem('areasSelecionadas', areasSelecionadas);
+
         // Faça uma chamada AJAX para a ação 'get-events' com os filtros como parâmetros
         $.ajax({
             url: 'get-events',
             type: 'GET',
-            data: { entidades: entidadesSelecionadas, provincias: provinciasSelecionadas, areas: areasSelecionadas }, // Inclua as áreas selecionadas
+            data: { entidades: entidadesSelecionadas, provincias: provinciasSelecionadas, areas: areasSelecionadas },
             success: function(response) {
                 // Remova a fonte de eventos atual antes de adicionar a nova fonte
                 $('#meuCalendario').fullCalendar('removeEvents');
                 // Adicione a nova fonte de eventos filtrados
                 $('#meuCalendario').fullCalendar('addEventSource', response);
+
+                // Limpe os valores armazenados localmente após aplicar os filtros
+                localStorage.removeItem('provinciasSelecionadas');
+                localStorage.removeItem('entidadesSelecionadas');
+                localStorage.removeItem('areasSelecionadas');
+
+                // Limpe os campos de filtro
+                $('#provincias').val('').trigger('change');
+                $('#entidades').val('').trigger('change');
+                $('#areas').val('').trigger('change');
             },
             error: function(xhr, status, error) {
                 // Lide com erros, se necessário
             }
         });
+    });
+
+    // Ouça o evento de clique no botão de eliminar evento
+    $(document).on('click', '#deleteEventButton', function() {
+        var eventId = $(this).data('eventId');
+        if (confirm("Tem certeza que deseja deletar este evento?")) {
+            window.location.href = 'site/delete-event?id=' + eventId;
+        }
+    });
+        
+    // Ouça o evento de clique no botão de editar evento
+    $(document).on('click', '#editEventButton', function() {
+        var eventId = $(this).data('eventId');
+        window.location.href = 'actualizarEvento?Id=' + eventId;
     });
 });
 JS;
@@ -655,10 +645,6 @@ $(document).ready(function(){
                     $.each(data, function(index, municipio) {
                         $('#municipio-select').append($('<option>').text(municipio.nome).attr('value', municipio.id));
                     });
-//                     $('#municipio-select').append($('<option>', {
-//                        value: '',
-//                        text: 'Outro'
-//                    }));
                     // Limpa o conteúdo do elemento com id comuna-select
                     $('#comuna-select').html('<option value="">Selecione a comuna</option>');
                 },
@@ -760,7 +746,7 @@ $this->registerJs("
         var startDate = $('#event-start').val();
         var endDate = $('#event-end').val();
 
-        if (startDate && endDate && endDate < startDate) {
+        if (startDate && endDate && endDate <= startDate) {
             $('#addEventForm').yiiActiveForm('updateAttribute', 'event-end', ['A data de início deve ser anterior à data de término.']);
         } else {
             $('#addEventForm').yiiActiveForm('updateAttribute', 'event-end', '');

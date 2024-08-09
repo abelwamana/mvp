@@ -5,9 +5,9 @@
         <group>
             <file>file:/C:/xampp/htdocs/mvp/backend/controllers/SiteController.php</file>
             <file>file:/C:/xampp/htdocs/mvp/backend/views/site/calendario.php</file>
-            <file>file:/C:/xampp/htdocs/mvp/backend/models/Notificacoes.php</file>
-            <file>file:/C:/xampp/htdocs/mvp/backend/views/layouts/navbar.php</file>
-            <file>file:/C:/xampp/htdocs/mvp/backend/models/Event.php</file>
+            <file>file:/C:/xampp/htdocs/mvp/backend/views/event/listaeventos.php</file>
+            <file>file:/C:/xampp/htdocs/mvp/backend/views/contacto/_form.php</file>
+            <file>file:/C:/xampp/htdocs/mvp/backend/views/event/update.php</file>
             <file>file:/C:/xampp/htdocs/mvp/backend/controllers/EventController.php</file>
             <file>file:/C:/xampp/htdocs/mvp/backend/views/event/_form.php</file>
         </group>

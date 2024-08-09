@@ -39,15 +39,21 @@ $this->params['breadcrumbs'][] = $this->title;
             'pais',
             [
                 'attribute' => 'provinciaID',
-                'value' => $model->provincia->nomeProvincia,
+                 'value' => function ($model) {
+                        return $model->provincia ? $model->provincia->nomeProvincia : '';
+                    },
             ],
             [
                 'attribute' => 'municipioID',
-                'value' => $model->municipio->nomeMunicipio,
+                'value' => function ($model) {
+                        return $model->municipio ? $model->municipio->nomeMunicipio : '';
+                    },
             ],
             [
                 'attribute' => 'comunaID',
-                'value' => $model->comuna->nomeComuna,
+                 'value' => function ($model) {
+                        return $model->comuna ? $model->comuna->nomeComuna : '';
+                    },
             ],
             'localidade',
             'pontofocal',
@@ -56,7 +62,6 @@ $this->params['breadcrumbs'][] = $this->title;
             'nivel',
             'rotulo',
             'observacao:ntext',
-            'privacidade',
             'estado',
         ],
     ]) ?>

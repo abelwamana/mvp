@@ -87,6 +87,8 @@ $config = [
                 'bibliotecaPage' => 'biblioteca/biblioteca', 
                 'viewpage' => 'biblioteca/viewpage', 
                 'actualizarEvento' => 'event/update', 
+                'event/remove-anexo' => 'event/remove-anexo',
+
                 
                 
             ],

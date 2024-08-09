@@ -23,16 +23,49 @@
     .card-header  {
         background-color: #919733; /* Substitua pelo código de cor desejado */
         color: #ffffff; /* Cor do texto para legibilidade */
+        border-color: white;
+    }
+    .card.border-0  {
+/*        background-color: #919733;  Substitua pelo código de cor desejado 
+        color: #ffffff;  Cor do texto para legibilidade */
+        border-color: white;
+        color: transparent;
+    }
+    .btn.btn-primary{
+        margin-left: 5px;
+        color: #fff;
+        border-color: #919733;
+        background-color: #919733;
+         /*background-color: #919733;*/
+         /*color: #fff;*/ 
+        border-radius: 4px 4px 4px 4px;
     }
     .btn.btn-primary.botao {
-        background-color: #919733; /* Cor de fundo do botão primário Bootstrap */
-        color: #fff; /* Cor do texto para legibilidade */
-        border-radius: 4px 0px 0px 4px;
+        /*background-color: transparent;  Cor de fundo do botão primário Bootstrap*/ 
+        /*color: black;  Cor do texto para legibilidade */
+        /*border-radius: 4px 4px 4px 4px;*/
         position: relative;
     }
-    .btn.btn-outline-secondary{
-        margin-left: -5px;
-        border-radius: 0px 4px 4px 0px;
+    .btn.btn-primary.actualizar{
+        /*background-color: transparent;*/
+        margin-left: 5px;
+        /*color: black;*/
+        /*border-radius: 4px 4px 4px 4px;*/
+    }
+     .btn.btn-primary.excel{
+        /*margin-left: 5px;*/
+        /*color: black;*/
+        /*border-color: #919733;*/
+        /*background-color: transparent;*/
+         /*background-color: #919733;*/
+         /*color: #fff;*/ 
+        border-radius: 4px 4px 4px 4px;
+    }
+    .fas.fa-plus, .fas.fa-file-excel, .fas.fa-redo{
+        /*color: #919733;*/
+    }
+    .grid-view, .is-bs4, .kv-grid-bs4, .kv-grid-panel, .hide-resize {
+        border-color: #0000FF !important; 
     }
     .nao-mostra {
         display: none;
@@ -67,8 +100,12 @@
         top: 50%;
         transform: translateY(-50%);
         color: rgba(0, 0, 0, 0.5); /* Cor do ícone */
-    }
 
+    }
+    .card-header {
+         background-color: transparent; 
+     color: black; 
+    }
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
@@ -317,16 +354,16 @@ use backend\models\Contacto;
                         <input type="text" name="ContactoSearch[rotulo]" class="form-control custom-search-input" placeholder="Pesquisar">
                  </div>',
                 ],
-                [
-                    'attribute' => 'privacidade',
-                    'vAlign' => 'middle',
-                    'hAlign' => 'center',
-                    'header' => '<span style="color: black;">Privacidade</span>',
-                    'filter' => '<div class="custom-search-wrapper">
-                    <i class="fa fa-search"></i>
-                    <input type="text" name="ContactoSearch[privacidade]" class="form-control custom-search-input" placeholder="Pesquisar">
-                  </div>',
-                ],
+//                [
+//                    'attribute' => 'privacidade',
+//                    'vAlign' => 'middle',
+//                    'hAlign' => 'center',
+//                    'header' => '<span style="color: black;">Privacidade</span>',
+//                    'filter' => '<div class="custom-search-wrapper">
+//                    <i class="fa fa-search"></i>
+//                    <input type="text" name="ContactoSearch[privacidade]" class="form-control custom-search-input" placeholder="Pesquisar">
+//                  </div>',
+//                ],
                 [
                     'attribute' => 'estado',
                     'vAlign' => 'middle',
@@ -390,21 +427,8 @@ use backend\models\Contacto;
             // set your toolbar
             'toolbar' => [
                 [
-                    'content' =>
-                    Html::a('<i class="fas fa-plus"></i>', ['create'], [
-                        'class' => 'btn btn-primary botao',
-                        'title' => 'Adicionar Contactos',
-                    ]) . ' ' .
-                    Html::a('<i class="fas fa-redo"></i>', ['index'], [
-                        'class' => 'btn btn-outline-secondary',
-                        'title' => 'Reiniciar a Tabela',
-                        'data-pjax' => 0,
-                    ]) . ' ' .
-                    Html::a('<i class="fas fa-file-excel"></i> Exportar para Excel', ['contacto/export-xls'], [
-                        'class' => 'btn btn-success',
-                        'title' => 'Exportar para Excel',
-                        'data-pjax' => 0,
-                    ]),
+//                    'content' =>
+                   
 //                    . ' ' .
 //                    Html::a('<i class="fas fa-file-pdf"></i> Exportar para PDF', ['contacto/export-pdf'], [
 //                        'class' => 'btn btn-danger',
@@ -425,7 +449,20 @@ use backend\models\Contacto;
             //  'json' => [],
             ],
             'panel' => [
-//                'heading' => Yii::t('app', '[Pesquise no espaço em branco abaixo da categoria]'),
+                'heading' => Yii::t('app',  Html::a('<i class="fas fa-plus"></i> Adicionar Contacto', ['create'], [
+                        'class' => 'btn btn-primary botao',
+                        'title' => 'Adicionar Contactos',
+                    ]) . ' ' .
+                    Html::a('<i class="fas fa-redo"></i> Actualizar', ['index'], [
+                        'class' => 'btn btn-primary actualizar',
+                        'title' => 'Reiniciar a Tabela',
+                        'data-pjax' => 0,
+                    ]) . ' ' .
+                    Html::a('<i class="fas fa-file-excel"></i> Exportar para Excel', ['contacto/export-xls'], [
+                        'class' => 'btn btn-primary excel',
+                        'title' => 'Exportar para Excel',
+                        'data-pjax' => 0,
+                    ]),),
                 'type' => '',
 //        'before' => '<div class="btn-group">' .
 //        //Html::a(Yii::t('app', 'Criar capacitacao'), ['create'], ['class' => 'btn btn-danger']).

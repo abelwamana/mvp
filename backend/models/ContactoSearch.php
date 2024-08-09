@@ -17,7 +17,7 @@ class ContactoSearch extends Contacto {
         return [
             [['provinciaNome', 'municipioNome', 'comunaNome'], 'safe'],
             [['Id', 'provinciaID', 'municipioID', 'comunaID'], 'integer'],
-            [['nome', 'funcao', 'instituicao', 'contacto', 'email', 'pais', 'localidade', 'pontofocal', 'actividades', 'entidade', 'nivel', 'rotulo', 'observacao', 'privacidade', 'estado', 'usuario'], 'safe'],
+            [['nome', 'funcao', 'instituicao', 'contacto', 'email', 'pais', 'localidade', 'pontofocal', 'actividades', 'entidade', 'nivel', 'rotulo', 'observacao', 'estado', 'usuario'], 'safe'],
         ];
     }
 
@@ -67,7 +67,7 @@ class ContactoSearch extends Contacto {
             ->andFilterWhere(['like', 'nivel', $this->nivel])
             ->andFilterWhere(['like', 'rotulo', $this->rotulo])
             ->andFilterWhere(['like', 'observacao', $this->observacao])
-            ->andFilterWhere(['like', 'privacidade', $this->privacidade])
+//            ->andFilterWhere(['like', 'privacidade', $this->privacidade])
             ->andFilterWhere(['like', 'estado', $this->estado])
             ->andFilterWhere(['like', 'usuario', $this->usuario]);
 

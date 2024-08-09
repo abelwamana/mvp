@@ -11,10 +11,10 @@ class Contacto extends \yii\db\ActiveRecord {
 
     public function rules() {
         return [
-            [['nome', 'funcao', 'instituicao', 'contacto', 'email', 'pais', 'provinciaID', 'municipioID','comunaID', 'localidade', 'pontofocal', 'actividades', 'entidade', 'nivel', 'rotulo', 'observacao', 'privacidade', 'estado'], 'required'],
+            [['nome', 'funcao', 'instituicao', 'contacto', 'email', 'pais', 'provinciaID', 'municipioID','comunaID', 'localidade', 'pontofocal', 'actividades', 'entidade', 'nivel', 'rotulo', 'estado'], 'required'],
             [['provinciaID', 'municipioID', 'comunaID'], 'integer'],
             [['observacao'], 'string'],
-            [['nome', 'funcao', 'instituicao', 'email', 'entidade', 'privacidade', 'usuario'], 'string', 'max' => 50],
+            [['nome', 'funcao', 'instituicao', 'email', 'entidade','usuario'], 'string', 'max' => 50],
             [['pais', 'nivel', 'rotulo', 'estado'], 'string', 'max' => 20],
             [['contacto'], 'string', 'max' => 13],
             [['localidade'], 'string', 'max' => 100],
@@ -43,9 +43,8 @@ class Contacto extends \yii\db\ActiveRecord {
             'actividades' => Yii::t('app', 'Actividades'),
             'entidade' => Yii::t('app', 'Entidade'),
             'nivel' => Yii::t('app', 'Nível'),
-            'rotulo' => Yii::t('app', 'Rotulo'),
+            'rotulo' => Yii::t('app', 'Rótulo'),
             'observacao' => Yii::t('app', 'Observacão'),
-            'privacidade' => Yii::t('app', 'Privacidade'),
             'estado' => Yii::t('app', 'Estado'),
             'usuario' => Yii::t('app', 'Usuario'),
         ];
