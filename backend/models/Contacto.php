@@ -34,7 +34,7 @@ class Contacto extends \yii\db\ActiveRecord {
             'instituicao' => Yii::t('app', 'Instituição'),
             'contacto' => Yii::t('app', 'Contacto'),
             'email' => Yii::t('app', 'E-mail'),
-            'pais' => Yii::t('app', 'Pais'),
+            'pais' => Yii::t('app', 'País'),
             'provinciaID' => Yii::t('app', 'Província'),
             'municipioID' => Yii::t('app', 'Município'),
             'comunaID' => Yii::t('app', 'Comuna'),

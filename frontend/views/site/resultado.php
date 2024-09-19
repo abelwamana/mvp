@@ -70,9 +70,11 @@ $description = 'Principais Resultados do FRESAN Camões I.P.';
  <section class="container">
      <div class="container" style="background-color: whitesmoke; width: auto;">
           <div class="row" style="margin-top: -100px;">
-         
 
-          <div class="col-xl-4 col-lg-6 col-md-7 evento"><br><br>
+<p style="font-size: 11px"><b>Dados referentes ao período: 2018 a Março de 2024 (1º Trimestre de 2024)</b></p>
+
+          <div class="col-xl-4 col-lg-6 col-md-7 evento">
+              
               <div class="text-center">
                 <div style="border-style: solid; border-color: #999900; border-width: 1.5px;">
                           <p class="font1" style="text-align: center; color: #999900; line-height: 28px; font-size: initial"><b>RESILIÊNCIA E PRODUÇÃO AGRÍCOLA FAMILIAR SUSTENTÁVEL [COMPONENTE I]</b><br>

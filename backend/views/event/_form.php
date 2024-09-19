@@ -91,8 +91,8 @@
         font-weight: bold;
         font-size: 18px;
     }
-     .remove-anexo {
-         /*width:60px;*/
+    .remove-anexo {
+        /*width:60px;*/
         padding: 0px 2px; /* Ajuste o padding conforme necessário */
     }
 </style>
@@ -112,7 +112,7 @@ use backend\models\Contacto;
 
 <div class="event-form">
 
-    <?php $form = ActiveForm::begin([ 'id' => 'updateEventForm','options' => ['onsubmit' => 'return checkParticipantes()']]); ?>
+    <?php $form = ActiveForm::begin(['id' => 'updateEventForm', 'options' => ['onsubmit' => 'return checkParticipantes()']]); ?>
 
     <?= $form->field($model, 'summary')->textInput(['placeholder' => 'Título do Evento']) ?>
     <?= $form->field($model, 'description')->textInput(['placeholder' => 'Breve enquadramento e público alvo']) ?>
@@ -124,7 +124,7 @@ use backend\models\Contacto;
         'Reforço Institucional' => 'Reforço Institucional',
         'Coordenação UIC' => 'Coordenação UIC',
         'Subvenções/M&A' => 'Subvenções/M&A',
-        'Governação' => 'Governação',
+        'Governo' => 'Governo',
         'Outras' => 'Outras',
             ], ['prompt' => 'Selecione a área'])
     ?>
@@ -159,7 +159,7 @@ use backend\models\Contacto;
         'Camões, I.P. | WVI/C1' => 'Camões, I.P. | WVI/C1',
         'Camões, I.P. | WVI/C4' => 'Camões, I.P. | WVI/C4',
         'FAO' => 'FAO',
-        'Governação' => 'Governação',
+        'Governo' => 'Governo',
         'PNUD' => 'PNUD',
         'Vall d´Hebron' => 'Vall d´Hebron'
             ],
@@ -205,24 +205,35 @@ use backend\models\Contacto;
         <?= $form->field($model, 'actaRelatorio', ['labelOptions' => ['class' => 'file-upload-label']])->fileInput() ?>
         <?= $form->field($model, 'listaParticipantes', ['labelOptions' => ['class' => 'file-upload-label']])->fileInput() ?>
         <?= $form->field($model, 'outrosAnexos[]', ['labelOptions' => ['class' => 'file-upload-label']])->fileInput(['multiple' => true]) ?>
+
         <!-- Mostrar arquivos anexos já carregados -->
         <div class="existing-files">
             <h4>Arquivos já carregados:</h4>
             <?php if ($model->agenda): ?>
-                <p>Agenda:&nbsp;<a href="<?= Yii::getAlias('@web') . '/uploads/' . $model->agenda ?>" target="_blank"> <?= $model->agenda ?></a></p>
+                <p>Agenda:&nbsp;<a href="<?= Yii::getAlias('@web') . '/uploads/' . $model->agenda ?>" target="_blank"><?= $model->agenda ?></a>
+                    <button type="button" class="btn btn-danger btn-sm remove-anexo" data-anexo="<?= $model->agenda ?>" data-campo="agenda">Remover</button></p>
             <?php endif; ?>
+
             <?php if ($model->listaConvidados): ?>
-                <p>Lista de Convidados:&nbsp;<a href="<?= Yii::getAlias('@web') . '/uploads/' . $model->listaConvidados ?>" target="_blank"><?= $model->listaConvidados ?></a></p>
+                <p>Lista de Convidados:&nbsp;<a href="<?= Yii::getAlias('@web') . '/uploads/' . $model->listaConvidados ?>" target="_blank"><?= $model->listaConvidados ?></a>
+                    <button type="button" class="btn btn-danger btn-sm remove-anexo" data-anexo="<?= $model->listaConvidados ?>" data-campo="listaConvidados">Remover</button></p>
             <?php endif; ?>
+
             <?php if ($model->pada): ?>
-                <p>PADA:&nbsp;<a href="<?= Yii::getAlias('@web') . '/uploads/' . $model->pada ?>" target="_blank"><?= $model->pada ?></a></p>
+                <p>PADA:&nbsp;<a href="<?= Yii::getAlias('@web') . '/uploads/' . $model->pada ?>" target="_blank"><?= $model->pada ?></a>
+                    <button type="button" class="btn btn-danger btn-sm remove-anexo" data-anexo="<?= $model->pada ?>" data-campo="pada">Remover</button></p>
             <?php endif; ?>
+
             <?php if ($model->actaRelatorio): ?>
-                <p>Acta Relatório: &nbsp;<a href="<?= Yii::getAlias('@web') . '/uploads/' . $model->actaRelatorio ?>" target="_blank"><?= $model->actaRelatorio ?></a></p>
+                <p>Acta Relatório:&nbsp;<a href="<?= Yii::getAlias('@web') . '/uploads/' . $model->actaRelatorio ?>" target="_blank"><?= $model->actaRelatorio ?></a>
+                    <button type="button" class="btn btn-danger btn-sm remove-anexo" data-anexo="<?= $model->actaRelatorio ?>" data-campo="actaRelatorio">Remover</button></p>
             <?php endif; ?>
+
             <?php if ($model->listaParticipantes): ?>
-                <p>Lista de Participantes: &nbsp;<a href="<?= Yii::getAlias('@web') . '/uploads/' . $model->listaParticipantes ?>" target="_blank"><?= $model->listaParticipantes ?></a></p>
+                <p>Lista de Participantes:&nbsp;<a href="<?= Yii::getAlias('@web') . '/uploads/' . $model->listaParticipantes ?>" target="_blank"><?= $model->listaParticipantes ?></a>
+                    <button type="button" class="btn btn-danger btn-sm remove-anexo" data-anexo="<?= $model->listaParticipantes ?>" data-campo="listaParticipantes">Remover</button></p>
             <?php endif; ?>
+
             <div>
                 <?php if ($model->outrosAnexos != null && !empty($model->outrosAnexos) && $model->outrosAnexos != "A confirmar" && $model->outrosAnexos != "Por confirmar em breve"): ?>
                     Outros Anexos:
@@ -231,19 +242,19 @@ use backend\models\Contacto;
                     foreach ($outrosAnexosArray as $outroAnexo):
                         ?>
                         <p><a href="<?= Yii::getAlias('@web') . '/uploads/' . $outroAnexo ?>" target="_blank"><?= $outroAnexo ?></a>
-                         <button type="button" class="btn btn-danger btn-sm remove-anexo" data-anexo="<?= $outroAnexo ?>">Remover</button>
-                        </p>
+                            <button type="button" class="btn btn-danger btn-sm remove-anexo" data-anexo="<?= $outroAnexo ?>" data-campo="outrosAnexos">Remover</button></p>
                     <?php endforeach; ?>
-<?php endif; ?>
+                <?php endif; ?>
             </div>    
         </div>
     </fieldset>
 
+
     <div class="form-group">
-<?= Html::submitButton(Yii::t('app', 'Guardar'), ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton(Yii::t('app', 'Guardar'), ['class' => 'btn btn-success']) ?>
     </div>
 
-<?php ActiveForm::end(); ?>
+    <?php ActiveForm::end(); ?>
 </div>
 
 
@@ -365,6 +376,7 @@ $this->registerJs("
 $this->registerJs("
     $('.remove-anexo').on('click', function() {
         var anexo = $(this).data('anexo');
+        var campo = $(this).data('campo');
         var id = {$model->Id};
         var button = $(this);
 
@@ -374,6 +386,7 @@ $this->registerJs("
             data: {
                 id: id,
                 anexo: anexo,
+                campo: campo,
                 _csrf: yii.getCsrfToken()
             },
             success: function(data) {

@@ -167,7 +167,7 @@ $menuItems = [
                         <div class="row">
 
                             <div class="col-6">
-                                <?= Html::a('<img class="logo1" style="width: 110%; height: auto;" src="images/comboio.jpg" alt="Logo FRESAN">', ['site/index']) ?>
+                                <?= Html::a('<img class="logo1" style="width: 110%; height: auto; margin-top:10px;" src="images/comboio.jpg" alt="Logo FRESAN">', ['site/index']) ?>
                             </div>
 
                             <div class="col-6 text-right" style="padding: 20px 20px 20px 20px;">

@@ -111,7 +111,7 @@ use backend\models\Contacto;
         'Reforço Institucional' => 'Reforço Institucional',
         'Coordenação UIC' => 'Coordenação UIC',
         'Subvenções/M&A' => 'Subvenções/M&A',
-        'Governação' => 'Governação',
+        'Governo' => 'Governo',
         'Outras' => 'Outras',
     ], ['prompt' => 'Selecione a área']) ?>
     <?= $form->field($model, 'start')->textInput(['id' => 'event-start', 'type' => 'datetime-local', 'placeholder' => 'Data e Hora de Início']) ?>
@@ -144,7 +144,7 @@ use backend\models\Contacto;
         'Camões, I.P. | WVI/C1' => 'Camões, I.P. | WVI/C1',
         'Camões, I.P. | WVI/C4' => 'Camões, I.P. | WVI/C4',
         'FAO' => 'FAO',
-        'Governação' => 'Governação',
+        'Governo' => 'Governo',
         'PNUD' => 'PNUD',
         'Vall d´Hebron' => 'Vall d´Hebron'],
     ['prompt' => 'Selecione a Entidade']) ?>

@@ -18,47 +18,54 @@ foreach ($provincias as $provincia) {
 }
 
 $funcoes = [
-    'Coordenador Adjunto' => 'Coordenador Adjunto',
-    'Assistente Administrativo e Financeiro' => 'Assistente Administrativo e Financeiro',
-    'Assistente Administrativo para os RH' => 'Assistente Administrativo para os RH',
+    'Assistente Administrativo(a) e Financeiro(a)' => 'Assistente Administrativo(a) e Financeiro(a)',
+    'Assistente Administrativo(a) RH' => 'Assistente Administrativo(a) RH',
     'Assistente de Limpeza' => 'Assistente de Limpeza',
-    'Assistente Financeira do Projecto FRESAN' => 'Assistente Financeira do Projecto FRESAN',
-    'Assistente Jurídico do Projecto FRESAN' => 'Assistente Jurídico do Projecto FRESAN',
-    'Assistente Logístico' => 'Assistente Logístico',
+    'Assistente Financeiro(a)' => 'Assistente Financeiro(a)',
+    'Assistente Jurídico(a)' => 'Assistente Jurídico(a)',
+    'Assistente Logístico(a)' => 'Assistente Logístico(a)',
     'Assistente Técnico' => 'Assistente Técnico',
     'Chefe de Divisão de Parcerias Estratégicas' => 'Chefe de Divisão de Parcerias Estratégicas',
-    'Consultor das Subvenções' => 'Consultor das Subvenções',
-    'Consultor Sistemas de Irrigação - AT' => 'Consultor Sistemas de Irrigação - AT',
-    'Coordenadora Adjunta - Namibe' => 'Coordenadora Adjunta - Namibe',
-    'Coordenadora Adjunta para a Coordenação Geral' => 'Coordenadora Adjunta para a Coordenação Geral',
-    'Coordenadora Geral' => 'Coordenadora Geral',
-    'Directora de Serviço de Cooperação Multilateral' => 'Directora de Serviço de Cooperação Multilateral',
-    'Engenheiro Hidraúlico' => 'Engenheiro Hidraúlico',
-    'Especialista Hidrologia' => 'Especialista Hidrologia',
-    'Gestor de Fundos' => 'Gestor de Fundos',
-    'Gestora de Dados' => 'Gestora de Dados',
-    'Gestora de Fundos' => 'Gestora de Fundos',
-    'Gestora de Subvenções do Projecto FRESAN' => 'Gestora de Subvenções do Projecto FRESAN',
-    'Gestora do Projecto FRESAN' => 'Gestora do Projecto FRESAN',
+    'Consultor(a) Subvenções' => 'Consultor(a) Subvenções',
+    'Consultor(a) Sistemas de Irrigação' => 'Consultor(a) Sistemas de Irrigação',
+    'Coordenador(a) Geral' => 'Coordenador(a) Geral',
+    'Coordenador(a) Adjunto(a) CG' => 'Coordenador(a) Adjunto(a) CG',
+    'Coordenador(a) Adjunto(a) Cunene' => 'Coordenador(a) Adjunto(a) Cunene',
+    'Coordenador(a) Adjunto(a) Huíla' => 'Coordenador(a) Adjunto(a) Huíla',
+    'Coordenador(a) Adjunto(a) Namibe' => 'Coordenador(a) Adjunto(a) Namibe',
+    'Coordenador(a) de Projecto' => 'Coordenador(a) de Projecto',
+    'Director(a) do Serviço de Cooperação Multilateral' => 'Director(a) do Serviço de Cooperação Multilateral',
+    'Engenheiro(a) Hidraúlico(a)' => 'Engenheiro(a) Hidraúlico(a)',
+    'Especialista em Hidrologia' => 'Especialista em Hidrologia',
+    'Gestor(a) de Fundos' => 'Gestor(a) de Fundos',
+    'Gestor(a) de Dados' => 'Gestor(a) de Dados',
+    'Gestor(a) do Sistema de Gestão de Informação' => 'Gestor(a) do Sistema de Gestão de Informação',
+    'Gestor(a) de Subvenções' => 'Gestor(a) de Subvenções',
+    'Gestor(a) de Projecto' => 'Gestor(a) de Projecto',
     'Motorista' => 'Motorista',
-    'Perita Agrária' => 'Perita Agrária',
-    'Perita de M&A' => 'Perita de M&A',
-    'Perita de Subvenções' => 'Perita de Subvenções',
-    'Perita em Nutrição' => 'Perita em Nutrição',
-    'Perita Externo' => 'Perita Externo',
-    'Perito Agrário' => 'Perito Agrário',
-    'Perito em Água' => 'Perito em Água',
-    'Perito Hidraúlico' => 'Perito Hidraúlico',
-    'Perito Veterinário' => 'Perito Veterinário',
+    'Perito(a) Agrário(a)' => 'Perito(a) Agrário(a)',
+    'Perito(a) de M&A' => 'Perito(a) de M&A',
+    'Perito(a) de Subvenções' => 'Perito(a) de Subvenções',
+    'Perito(a) em Nutrição' => 'Perito(a) em Nutrição',
+    'Perito(a) Externo(a)' => 'Perito(a) Externo(a)',
+    'Perito(a) em Água' => 'Perito(a) em Água',
+    'Perito(a) Hidraúlico(a)' => 'Perito(a) Hidraúlico(a)',
+    'Perito(a) Veterinário(a)' => 'Perito(a) Veterinário(a)',
     'Presidente' => 'Presidente',
     'Responsável do Departamento Administrativo e Financeiro' => 'Responsável do Departamento Administrativo e Financeiro',
-    'Técnica de Comunicação e Visibilidade' => 'Técnica de Comunicação e Visibilidade',
-    'Técnica Superior' => 'Técnica Superior',
-    'Técnico de Comunicação e Visibilidade Adjunto' => 'Técnico de Comunicação e Visibilidade Adjunto',
-    'Técnico de Subvenções' => 'Técnico de Subvenções',
-    'Técnico de Subvenções para Nutrição' => 'Técnico de Subvenções para Nutrição',
-    'Técnico Extensionista para as ECA' => 'Técnico Extensionista para as ECA',
-    'Técnico Hidraúlico' => 'Técnico Hidraúlico',
+    'Responsável de M&A' => 'Responsável de M&A',
+    'Técnico(a) de Comunicação e Visibilidade' => 'Técnico(a) de Comunicação e Visibilidade',
+    'Técnico(a) Superior' => 'Técnico(a) Superior',
+    'Técnico(a) Adjunto(a) de Comunicação e Visibilidade' => 'Técnico(a) Adjunto(a) de Comunicação e Visibilidade',
+    'Técnico(a) de Campo'=> 'Técnico(a) de Campo',
+    'Técnico(a) de Subvenções Cunene' => 'Técnico(a) de Subvenções Cunene',
+    'Técnico(a) de Subvenções Huíla' => 'Técnico(a) de Subvenções Huíla',
+    'Técnico(a) de Subvenções Namibe' => 'Técnico(a) de Subvenções Namibe',
+    'Técnico(a) de Subvenções Nutrição' => 'Técnico de Subvenções Nutrição',
+    'Técnico(a) Extensionista Cunene' => 'Técnico(a) Extensionista Cunene',
+    'Técnico(a) Extensionista Huíla' => 'Técnico(a) Extensionista Huíla',
+    'Técnico(a) Extensionista Namibe' => 'Técnico(a) Extensionista Namibe',
+    'Técnico(a) Hidraúlico(a)' => 'Técnico(a) Hidraúlico(a)',
     'Vice-Presidente' => 'Vice-Presidente',
     'Outra' => 'Outra'
 ];
@@ -282,7 +289,7 @@ $countries = [
 
     <?= $form->field($model, 'instituicao')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'contacto')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'contacto')->textInput(['placeholder' => 'Comece com o indicativo (Exemplo: +244929680377)'], ['maxlength' => true]) ?>
 
     <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
 
@@ -341,30 +348,30 @@ $countries = [
     $form->field($model, 'entidade')->widget(Select2::classname(), [
         'data' => [
             'Camões, I.P. | ADESPOV/C4' => 'Camões, I.P. | ADESPOV/C4',
-            'Camões, I.P. | ADPP/C1' => 'Camões, I.P. | ADPP/C1',
-            'Camões, I.P. | ADRA/C4' => 'Camões, I.P. | ADRA/C4',
-            'Camões, I.P. | CODESPA/C2' => 'Camões, I.P. | CODESPA/C2',
-            'Camões, I.P. | CODESPA/C2' => 'Camões, I.P. | CODESPA/C4',
-            'Camões, I.P. | COSPE/C1' => 'Camões, I.P. | COSPE/C1',
-            'Camões, I.P. | CUAMM/C2' => 'Camões, I.P. | CUAMM/C2',
-            'Camões, I.P. | CUAMM/C4' => 'Camões, I.P. | CUAMM/C4',
-            'Camões, I.P. | DW/C1' => 'Camões, I.P. | DW/C1',
-            'Camões, I.P. | DW/C4' => 'Camões, I.P. | DW/C4',
-            'Camões, I.P. | FEC/C2' => 'Camões, I.P. | FEC/C2',
-            'Camões, I.P. | FEC/C2' => 'Camões, I.P. | FEC/C4',
-            'Camões, I.P. | NCA/C4' => 'Camões, I.P. | NCA/C1',
-            'Camões, I.P. | NCA/C4' => 'Camões, I.P. | NCA/C4',
-            'Camões, I.P. | PIN/C2' => 'Camões, I.P. | PIN/C2',
-            'Camões, I.P. | PIN/C4' => 'Camões, I.P. | PIN/C4',
-            'Camões, I.P. | TESE/C4' => 'Camões, I.P. | TESE/C4',
-            'Camões, I.P. | UIC' => 'Camões, I.P. | UIC',
-            'Camões, I.P. | WVI/C1' => 'Camões, I.P. | WVI/C1',
-            'Camões, I.P. | WVI/C4' => 'Camões, I.P. | WVI/C4',
-            'FAO' => 'FAO',
-            'Governo' => 'Governo',
-            'PNUD' => 'PNUD',
-            'Vall d´Hebron' => 'Vall d´Hebron',
-            'Outra' => 'Outra'
+                    'Camões, I.P. | ADPP/C1' => 'Camões, I.P. | ADPP/C1',
+                    'Camões, I.P. | ADRA/C4' => 'Camões, I.P. | ADRA/C4',
+                    'Camões, I.P. | CODESPA/C2' => 'Camões, I.P. | CODESPA/C2',
+                    'Camões, I.P. | CODESPA/C4' => 'Camões, I.P. | CODESPA/C4',
+                    'Camões, I.P. | COSPE/C1' => 'Camões, I.P. | COSPE/C1',
+                    'Camões, I.P. | CUAMM/C2' => 'Camões, I.P. | CUAMM/C2',
+                    'Camões, I.P. | CUAMM/C4' => 'Camões, I.P. | CUAMM/C4',
+                    'Camões, I.P. | DW/C1' => 'Camões, I.P. | DW/C1',
+                    'Camões, I.P. | DW/C4' => 'Camões, I.P. | DW/C4',
+                    'Camões, I.P. | FEC/C2' => 'Camões, I.P. | FEC/C2',
+                    'Camões, I.P. | FEC/C4' => 'Camões, I.P. | FEC/C4',
+                    'Camões, I.P. | NCA/C1' => 'Camões, I.P. | NCA/C1',
+                    'Camões, I.P. | NCA/C4' => 'Camões, I.P. | NCA/C4',
+                    'Camões, I.P. | PIN/C2' => 'Camões, I.P. | PIN/C2',
+                    'Camões, I.P. | PIN/C4' => 'Camões, I.P. | PIN/C4',
+                    'Camões, I.P. | TESE/C4' => 'Camões, I.P. | TESE/C4',
+                    'Camões, I.P. | UIC' => 'Camões, I.P. | UIC',
+                    'Camões, I.P. | WVI/C1' => 'Camões, I.P. | WVI/C1',
+                    'Camões, I.P. | WVI/C4' => 'Camões, I.P. | WVI/C4',
+                    'FAO' => 'FAO',
+                    'Governo' => 'Governo',
+                    'PNUD' => 'PNUD',
+                    'Vall d´Hebron' => 'Vall d´Hebron',
+                    'Outra' => 'Outra'
             ],
         'options' => [
             'placeholder' => 'Selecione a Entidade...',
@@ -413,48 +420,84 @@ $countries = [
 <?php
 $script = <<< JS
 $(document).ready(function(){
-    // Preencher município e comuna com valores do modelo
-    var municipioID = {$model->municipioID};
-    var comunaID = {$model->comunaID};
-    var provinciaID = {$model->provinciaID};
-    
-    if(provinciaID){
+    $('#provincia-select').change(function(){
+        var provinciaID = $(this).val();
+        if(provinciaID){
+            $.ajax({
+                type: 'GET',
+                url: 'contacto/get-municipios',
+                data: {
+                   id: provinciaID
+                },                
+                dataType: 'json', // Especifica o tipo de dados esperado como JSON
+                success: function(data){
+                    // Limpa a dropdownlist de municípios
+                    $('#municipio-select').empty();
+                    // Adiciona a opção padrão
+                    $('#municipio-select').append($('<option>', {
+                        value: '',
+                        text: 'Selecione o município'
+                    }));
+                    // Adiciona cada município retornado pela requisição AJAX à dropdownlist
+                    $.each(data, function(index, municipio) {
+                        $('#municipio-select').append($('<option>').text(municipio.nome).attr('value', municipio.id));
+                    });
+//                     $('#municipio-select').append($('<option>', {
+//                        value: '',
+//                        text: 'Outro'
+//                    }));
+                    // Limpa o conteúdo do elemento com id comuna-select
+                    $('#comuna-select').html('<option value="">Selecione a comuna</option>');
+                },
+                error: function() {
+                    // Trata erros caso ocorram na requisição AJAX
+                    alert('Erro ao obter os municípios.');
+                }
+            });
+        } else {
+            // Limpa o conteúdo dos elementos município-select e comuna-select
+            $('#municipio-select').html('<option value="">Selecione o município</option>');
+            $('#comuna-select').html('<option value="">Selecione a comuna</option>');
+        }
+    });
+        
+$('#municipio-select').change(function(){
+    var municipioID = $(this).val();
+    if(municipioID){
         $.ajax({
             type: 'GET',
-            url: 'event/get-municipios',
-            data: { id: provinciaID },
-            dataType: 'json',
-            success: function(data){
-                $('#municipio-select').empty().append('<option value="">Selecione o município</option>');
-                $.each(data, function(index, municipio) {
-                    var selected = municipio.id == municipioID ? 'selected' : '';
-                    $('#municipio-select').append('<option value="'+municipio.id+'" '+selected+'>'+municipio.nome+'</option>');
+            url: 'contacto/get-comunas',
+            data: {
+                id: municipioID
+            },
+             dataType: 'json', // Especifica o tipo de dados esperado como JSON
+            success: function(data){            
+                // Limpa a dropdownlist de comunas
+                $('#comuna-select').empty();
+                // Adiciona a opção padrão
+                $('#comuna-select').append($('<option>', {
+                    
+                    value: '',
+                    text: 'Selecione a comuna'
+                }));
+                // Adiciona cada comuna retornada pela requisição AJAX à dropdownlist
+                $.each(data, function(index, value) {
+                    $('#comuna-select').append($('<option>').text(value.nome).attr('value', value.id));
+                    
                 });
-                
-                if(municipioID){
-                    $.ajax({
-                        type: 'GET',
-                        url: 'event/get-comunas',
-                        data: { id: municipioID },
-                        dataType: 'json',
-                        success: function(data){
-                            $('#comuna-select').empty().append('<option value="">Selecione a comuna</option>');
-                            $.each(data, function(index, comuna) {
-                                var selected = comuna.id == comunaID ? 'selected' : '';
-                                $('#comuna-select').append('<option value="'+comuna.id+'" '+selected+'>'+comuna.nome+'</option>');
-                            });
-                        },
-                        error: function() {
-                            alert('Erro ao obter as comunas.');
-                        }
-                    });
-                }
             },
             error: function() {
-                alert('Erro ao obter os municípios.');
+                // Trata erros caso ocorram na requisição AJAX
+                alert('Erro ao obter as comunas.');
             }
         });
+    } else {
+        // Limpa o conteúdo do elemento com id comuna-select
+        $('#comuna-select').html('<option value="">Selecione a comuna</option>');
     }
+});
+
+        
 });
 JS;
 $this->registerJs($script);
@@ -471,3 +514,4 @@ $this->registerJs("
     });
 ");
 ?>
+

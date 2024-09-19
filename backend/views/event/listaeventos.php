@@ -136,6 +136,7 @@ $areas = [
     "Reforço Institucional" => "Reforço Institucional",
     "Coordenação UIC" => "Coordenação UIC",
     'M&A/Subvenções' => 'M&A/Subvenções',
+     "Governo" => "Governo",
     "Outras" => "Outras"
 ];
 ?>
@@ -266,6 +267,7 @@ $areas = [
                 "Reforço Institucional",
                 "Coordenação UIC",
                 'Subvenções/M&A',
+                'Governo',
                 "Outras"
             ];
 
@@ -302,6 +304,7 @@ $areas = [
                 "Coordenação UIC" => "#71b13c",
                 "Subvenções/M&A" => "#663399",
                 "Outras" => "black",
+                "Governo"=>"#BB0E22",
                 "Reforço Institucional" => "#003399"
             ];
             ?>
@@ -338,7 +341,7 @@ $areas = [
                     }
                     // Exibir os nomes dos participantes
                     echo '<div class="participants-container" style="max-height: 200px; overflow-y: auto;">';
-                    echo '<span style="font-weight: bold;">Participantes:</span> ' . implode(', ', $nomes) . '<br>';
+                    echo '<span style="font-weight: bold;">Convidados:</span> ' . implode(', ', $nomes) . '<br>';
                     echo '</div>';
 
                     echo '</div>';

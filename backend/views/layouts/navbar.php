@@ -27,6 +27,40 @@
             display: none !important;
         }
     }
+
+    .navbar {
+        display: flex;
+        /*justify-content: space-between;*/
+        align-items: center;
+        flex-wrap: nowrap;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .user-section {
+        display: flex;
+        /*align-items: center;*/
+        /*margin-left: auto;*/
+        margin-right: 5px;
+         /*margin-right: 1250px;*/
+    }
+
+    .user-section img {
+        width: 30px;
+        height: 30px;
+    }
+
+    .user-section b {
+        color: #888C00 !important;
+        margin-left: 10px;
+        margin-right: -5px;
+        margin-top: -5px;
+        white-space: nowrap; /* Impede que o texto quebre em várias linhas */
+    }
+
+    .logout-button {
+        margin-top: -2px;
+    }
 </style>
 
 <?php
@@ -80,13 +114,15 @@ if ($user1->can('Perfil Lancamento')) {
 $totalNotificacoes += count($notificacoesEventos);
 ?>
 <!-- Navbar -->
-<nav class="main-header navbar navbar-expand navbar-white navbar-light" style="width: 83vw;">
+<nav class="main-header navbar navbar-expand navbar-white navbar-light">
     <ul class="navbar-nav">
         <li class="nav-item d-none d-custom-block">
             <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
     </ul>
-
+    
+    <div class="col-12 row">
+    <div class="col-6 text-left">
     <ul class="navbar-nav">
         <li class="nav-item dropdown">
             <a class="nav-link" data-toggle="dropdown" href="#">
@@ -142,27 +178,28 @@ $totalNotificacoes += count($notificacoesEventos);
             <a class="nav-link" href="<?= Url::home() ?>">Interface Privada</a>
         </li>
     </ul>
-
-    <ul class="navbar-nav ml-auto" style="margin-right:1% !important;">
+    </div>
+<div class="col-6 text-right">
+    <div class="user-section">
         <?php if (!Yii::$app->user->isGuest && !empty(Yii::$app->user->identity)): ?>
-            <li class="nav-item">
+            <div class="nav-item">
                 <div class="image">
-                    <img style="width: 30px; height: 30px;" src="images/userGeral.png" class="img-circle elevation-2">
+                    <img src="images/userGeral.png" class="img-circle elevation-2">
                 </div>
-            </li>
+            </div>
 
-            <li class="nav-item">
+            <div class="nav-item">
                 <div class="info d-flex align-items-center">
-                    <b style="color: #888C00 !important; margin-left: 10px; margin-right: -5px; margin-top: -5px;">
-                        <?= strtoupper(Yii::$app->user->identity->username) ?> | <?= Yii::$app->user->identity->entidade ?>
-                    </b>
-                    <div style="margin-top:-2px;">
+                    <b><?= strtoupper(Yii::$app->user->identity->username) ?> | <?= Yii::$app->user->identity->entidade ?></b>
+                    <div>
                         <?= Html::a('<i class="fas fa-sign-out-alt"></i>', ['/site/logout'], ['data-method' => 'post', 'class' => 'nav-link logout-button', 'title' => 'Sair']) ?>
                     </div>
                 </div>
-            </li>
+            </div>
         <?php endif; ?>
-    </ul>
+    </div>
+</div>
+    </div>
 </nav>
 
 <!-- Modal para exibir informações do evento -->

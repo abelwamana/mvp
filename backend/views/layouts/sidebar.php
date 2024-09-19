@@ -1,6 +1,6 @@
 <style>
-    .nav-item .nav-link.active {
-        background-color: #919733; /* Substitua "red" pela cor desejada */
+    .nav-item .nav-link.active a.nav-link.active {
+        background-color: #999900 !important; /* Substitua "red" pela cor desejada */
     }
 
     /* CSS para esconder o submenu do menu "Calendário" por padrão */
@@ -20,13 +20,37 @@
     {
         background-color: #888C00 !important; /* Defina a cor que deseja para links clicados */
     }
-    /*.submenu-item:active {
-        background-color: #ff0000 !important;  Substitua #ff0000 pela cor desejada 
-         Outros estilos que você deseja aplicar quando o item do menu está ativo 
-    }
+    /*    .submenu-item:active {
+            background-color: #ff0000 !important; 
+             
+        }*/
     .active-menu {
-        background-color: #ff0000;  Substitua 'your-color' pela cor desejada 
-    }*/
+        background-color: #ff0000;  /*Substitua 'your-color' pela cor desejada*/
+    }
+
+    .filter-area.active {
+
+        background-color: #999900; /* Ou qualquer cor de destaque desejada */
+        color: yellow !important; /* Ajuste a cor do texto conforme necessário */
+        border-radius: 3px;
+        .nav-link p
+        {
+            color: #FFFFFF;
+        }
+
+    }
+
+    .sidebar {
+        width: 250px; /* Define a largura fixa */
+        transition: none; /* Remove qualquer transição */
+    }
+
+    /* Remova ou desative isso */
+    .sidebar.collapsed {
+        width: 0; /* Ou qualquer valor que cause o colapso */
+    }
+
+
 </style>
 
 <aside class="main-sidebar elevation-4" style="background-color: whitesmoke;">
@@ -44,7 +68,9 @@
             $resultadosAtivo = (Yii::$app->controller->id === 'site' && ((Yii::$app->controller->action->id === 'index') || (Yii::$app->controller->action->id === 'resultadosagricultura') || (Yii::$app->controller->action->id === 'resultadosnutricao') || (Yii::$app->controller->action->id === 'resultadosagua') || (Yii::$app->controller->action->id === 'resultadosreforcoinstitucional')));
             $coberturaAtivo = (Yii::$app->controller->id === 'site' && ((Yii::$app->controller->action->id === 'fresan') || (Yii::$app->controller->action->id === 'fresancunene') || (Yii::$app->controller->action->id === 'fresanhuila') || (Yii::$app->controller->action->id === 'fresannamibe')));
             $calendarioAtivo = (Yii::$app->controller->id === 'site' && Yii::$app->controller->action->id === 'calendario');
-            // Inicie uma lista de itens de menu
+            $usuariosPermitidos = ['Miguel Malta', 'Ânia Soares', 'Carmen Paulo', 'Valéria Luís', 'Abel Wamana'];
+            $usuarioAtual = Yii::$app->user->identity->nomeCompleto;
+// Inicie uma lista de itens de menu
             $menuItems[] = ['label' => 'Resultados', 'url' => ['/site/index']];
             if ($resultadosAtivo) {
 
@@ -97,49 +123,57 @@
                     'label' => '<span class="event-color" style="background-color: #999900;"></span> Agricultura e Pecuária', 'icon' => 'none',
                     'url' => ['site/calendario', 'area' => 'Agricultura e Pecuária'],
                     'encode' => false,
-                    'options' => ['class' => 'pb-(-5)', 'class' => 'submenu-item'], // Adiciona classe de bootstrap para espaço inferior (pb = padding-bottom)
+                    'options' => ['class' => 'pb-(-5) submenu-item filter-area',
+                        'data-area' => 'Agricultura e Pecuária'], // Adiciona classe de bootstrap para espaço inferior (pb = padding-bottom)
                 ];
                 $menuItems[] = [
                     'label' => '<span class="event-color" style="background-color: #cccc33;"></span> Nutrição', 'icon' => 'none',
                     'url' => ['site/calendario', 'area' => 'Nutrição'],
                     'encode' => false,
-                    'options' => ['class' => 'pb-(-5)', 'class' => 'submenu-item'], // Adiciona classe de bootstrap para espaço inferior (pb = padding-bottom)
+                    'options' => ['class' => 'pb-(-5) submenu-item filter-area',
+                        'data-area' => 'Nutrição'], // Adiciona classe de bootstrap para espaço inferior (pb = padding-bottom)
                 ];
                 $menuItems[] = [
                     'label' => '<span class="event-color" style="background-color: #00c3ff;"></span> Água', 'icon' => 'none',
                     'url' => ['site/calendario', 'area' => 'Água'],
                     'encode' => false,
-                    'options' => ['class' => 'pb-(-5)', 'class' => 'submenu-item'], // Adiciona classe de bootstrap para espaço inferior (pb = padding-bottom)
+                    'options' => ['class' => 'pb-(-5) submenu-item filter-area',
+                        'data-area' => 'Água'], // Adiciona classe de bootstrap para espaço inferior (pb = padding-bottom)
                 ];
                 $menuItems[] = [
                     'label' => '<span class="event-color" style="background-color: #003399;"></span> Reforço Institucional', 'icon' => 'none',
                     'url' => ['site/calendario', 'area' => 'Reforço Institucional'],
                     'encode' => false,
-                    'options' => ['class' => 'pb-(-5)', 'class' => 'submenu-item'], // Adiciona classe de bootstrap para espaço inferior (pb = padding-bottom)
+                    'options' => ['class' => 'pb-(-5)  submenu-item filter-area',
+                        'data-area' => 'Reforço Institucional'], // Adiciona classe de bootstrap para espaço inferior (pb = padding-bottom)
                 ];
                 $menuItems[] = [
-                    'label' => '<span class="event-color" style="background-color: #71b13c;"></span> Coordenação', 'icon' => 'none',
+                    'label' => '<span class="event-color" style="background-color: #71b13c;"></span> Coordenação UIC', 'icon' => 'none',
                     'url' => ['site/calendario', 'area' => 'Coordenação'],
                     'encode' => false,
-                    'options' => ['class' => 'pb-(-5)', 'class' => 'submenu-item'], // Adiciona classe de bootstrap para espaço inferior (pb = padding-bottom)
+                    'options' => ['class' => 'pb-(-5)  submenu-item filter-area',
+                        'data-area' => 'Coordenação UIC'], // Adiciona classe de bootstrap para espaço inferior (pb = padding-bottom)
                 ];
                 $menuItems[] = [
                     'label' => '<span class="event-color" style="background-color: #663399;"></span> Subvenções/M&A', 'icon' => 'none',
-                    'url' => ['site/calendario', 'area' => 'M&A'],
+                    'url' => ['site/calendario', 'area' => 'Subvenções/M&A'],
                     'encode' => false,
-                    'options' => ['class' => 'pb-(-5)', 'class' => 'submenu-item'], // Adiciona classe de bootstrap para espaço inferior (pb = padding-bottom)
+                    'options' => ['class' => 'pb-(-5) submenu-item filter-area',
+                        'data-area' => 'Subvenções/M&A'], // Adiciona classe de bootstrap para espaço inferior (pb = padding-bottom)
                 ];
                 $menuItems[] = [
-                    'label' => '<span class="event-color" style="background-color: #BB0E22;"></span> Governação', 'icon' => 'none',
-                    'url' => ['site/calendario', 'area' => 'Governação'],
+                    'label' => '<span class="event-color" style="background-color: #BB0E22;"></span> Governo', 'icon' => 'none',
+                    'url' => ['site/calendario', 'area' => 'Governo'],
                     'encode' => false,
-                    'options' => ['class' => 'pb-20', 'class' => 'submenu-item'], // Adiciona classe de bootstrap para espaço inferior (pb = padding-bottom)
+                    'options' => ['class' => 'pb-20 submenu-item filter-area',
+                        'data-area' => 'Governo'], // Adiciona classe de bootstrap para espaço inferior (pb = padding-bottom)
                 ];
                 $menuItems[] = [
                     'label' => '<span class="event-color" style="background-color: black;"></span> Outras', 'icon' => 'none',
                     'url' => ['site/calendario', 'area' => 'Outra'],
                     'encode' => false,
-                    'options' => ['class' => 'pb-20', 'class' => 'submenu-item'], // Adiciona classe de bootstrap para espaço inferior (pb = padding-bottom)
+                    'options' => ['class' => 'pb-20 submenu-item filter-area',
+                        'data-area' => 'Outra'], // Adiciona classe de bootstrap para espaço inferior (pb = padding-bottom)
                 ];
             }
             $menuItems[] = ['label' => 'Lista de Eventos', 'url' => ['event/listaeventos']];
@@ -215,19 +249,29 @@
 // Agrupe os itens "Resumo Monitoria", "Resumo Recomendações" e "Resumo Boas Práticas" sob o item "Resumo"
 //$menuItems[] =  ['label' => 'Resultados Secundários', 'url' => ['/monitoria/index2']];
             $menuItems[] = ['label' => 'Biblioteca', 'url' => ['biblioteca/biblioteca']];
+            $menuItems[] = ['label' => 'Arquivos', 'url' => ['site/emconstrucao']];
             $menuItems[] = ['label' => 'Recomendações', 'url' => ['site/emconstrucao']];
             $menuItems[] = ['label' => 'Boas Práticas', 'url' => ['site/emconstrucao']];
-             $menuItems[] = ['label' => 'Sustentabilidade', 'url' => ['site/emconstrucao']];
+            $menuItems[] = ['label' => 'Sustentabilidade', 'url' => ['site/emconstrucao']];
 // $menuItems[] = ['label' => 'Galeria', 'url' => ['site/galeria']];
             $menuItems[] = ['template' => '<hr>'];
 
 // Itens de administração (se aplicável)...
             // Adicione itens de administração se o usuário for administrador
             if ($isAdmin) {
+                if (in_array($usuarioAtual, $usuariosPermitidos)) {
+                    $menuItems[] = [
+                        'label' => 'Testes com M&A',
+                        'items' => [
+                            ['label' => 'Arquivos', 'url' => ['arquivo/index']],
+                        ],
+                    ];
+                }
                 $menuItems[] = [
                     'label' => 'Administração',
                     'items' => [
                         ['label' => 'Biblioteca', 'url' => ['/biblioteca/index'], 'iconStyle' => 'far'],
+                        ['label' => 'Arquivos', 'url' => [''], 'iconStyle' => 'far'],
                         [
                             'label' => 'Configurações',
                             'items' => [
@@ -260,3 +304,49 @@
     </div>
     <!-- /.sidebar -->
 </aside>
+
+<script>
+// Função para aplicar o filtro de área
+    function filtrarPorArea(areaSelecionada) {
+        // Salve o valor da área selecionada no armazenamento local
+        localStorage.setItem('areasSelecionadas', areaSelecionada);
+
+        // Faça uma chamada AJAX para a ação 'get-events' com a área como parâmetro
+        $.ajax({
+            url: 'get-events',
+            type: 'GET',
+            data: {areas: [areaSelecionada]},
+            success: function (response) {
+                // Remova a fonte de eventos atual antes de adicionar a nova fonte
+                $('#meuCalendario').fullCalendar('removeEvents');
+                // Adicione a nova fonte de eventos filtrados
+                $('#meuCalendario').fullCalendar('addEventSource', response);
+            },
+            error: function (xhr, status, error) {
+                // Lide com erros, se necessário
+            }
+        });
+    }
+
+// Adicione um event listener para os itens do menu lateral com a classe 'filter-area'
+    $('.filter-area').on('click', function (e) {
+        e.preventDefault(); // Evita o comportamento padrão de redirecionamento
+
+        var areaSelecionada = $(this).data('area'); // Obtém o valor da área selecionada
+        filtrarPorArea(areaSelecionada); // Aplica o filtro
+    });
+
+    $('.filter-area').on('click', function (e) {
+        e.preventDefault(); // Evita o comportamento padrão de redirecionamento
+
+        // Remova a classe 'active' de todos os itens de menu
+        $('.filter-area').removeClass('active');
+
+        // Adicione a classe 'active' ao item clicado
+        $(this).addClass('active');
+
+        var areaSelecionada = $(this).data('area'); // Obtém o valor da área selecionada
+        filtrarPorArea(areaSelecionada); // Aplica o filtro
+    });
+
+</script>

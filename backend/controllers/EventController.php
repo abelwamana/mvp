@@ -118,7 +118,6 @@ class EventController extends Controller {
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionUpdate($Id) {
-        $provincias = Provincia::find()->all();
         $provinciasList = [];
         $limit = 4; // Defina o número de elementos que deseja manter      
         $isAdmin = Yii::$app->user->isGuest ? false : Yii::$app->user->can("Permissão de Administrador");
@@ -136,16 +135,41 @@ class EventController extends Controller {
             $participantesString = implode(',', $model->participantes);
             $model->participantes = $participantesString;
         }
-//        $participantesString = implode(',', $model->participantes);
-//        $model->participantes = $participantesString;
+        //$participantesString = implode(',', $model->participantes);
+        //$model->participantes = $participantesString;
         // Suponha que $model->start tenha o formato 'Y-m-d H:i:s'
         $dateTimeString = $model->start;
         $dataevento = date('d-m-Y', strtotime($dateTimeString)); // Obtém a data no formato 'dia-mês-ano'
         $anfitriaoNome = $model->convocadoPor;
         if ($isAdmin || ($nomeLogado == $model->convocadoPor)) {
-            foreach (array_slice($provincias, 0, $limit) as $provincia) {
-                $provinciasList[$provincia->Id] = $provincia->nomeProvincia;
+            $provincias = Provincia::find()->all();
+
+        // Separe "Interprovincial" e "Outra" das outras províncias
+            $provinciaInterprovincial = null;
+            $provinciaOutra = null;
+            $provinciasList = [];
+
+            foreach ($provincias as $provincia) {
+                if ($provincia->nomeProvincia === 'Interprovincial') {
+                    $provinciaInterprovincial = $provincia;
+                } elseif ($provincia->nomeProvincia === 'Outra') {
+                    $provinciaOutra = $provincia;
+                } else {
+                    $provinciasList[$provincia->Id] = $provincia->nomeProvincia;
+                }
             }
+
+            // Ordene o array de províncias em ordem alfabética
+            asort($provinciasList);
+
+            // Adicionando provincias "Interprovincial" e "Outra" ao final
+            if ($provinciaInterprovincial !== null) {
+                $provinciasList[$provinciaInterprovincial->Id] = $provinciaInterprovincial->nomeProvincia;
+            }
+            if ($provinciaOutra !== null) {
+                $provinciasList[$provinciaOutra->Id] = $provinciaOutra->nomeProvincia;
+            }
+            
             if ($this->request->isPost && $model->load($this->request->post())) {
                 // Verificar se os campos de upload de arquivo estão vazios antes de sobrescrevê-los
                 // Verificar se os campos de upload de arquivo estão vazios antes de sobrescrevê-los
@@ -234,11 +258,11 @@ class EventController extends Controller {
                         }
                         // Email ao Administrador que actualizou o evento
                         else if (($emailLogado !== null)) {
-                            $email = trim($email);
+                            $email = trim($emailLogado);
                             // Verificar se o email é válido
                             if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
                                 Yii::$app->mailer->compose()
-                                        ->setTo(trim($emailLogado))
+                                        ->setTo(trim($email))
                                         ->setFrom([Yii::$app->params['adminEmail'] => Yii::$app->name])
                                         ->setSubject('Actualização de Evento' . '[' . $titulo . ']')
                                         ->setHtmlBody("Olá $nomeLogado,<br><br> Actualizou o evento do <b>Calendário</b> para o dia <b>$dataevento,</b> com o nome <b>[$titulo].</b><br><br>  Para mais detalhes, clique <a href=\"https://sgi-fresancamoes.com/admin/calendario\">aqui.</a><br><br> Continuação de bom trabalho,<br><br> $signature")
@@ -300,12 +324,11 @@ class EventController extends Controller {
                                 'provinciasList' => $provinciasList,
                     ]);
                 }
-            }
-            else {
-            return $this->render('update', [
-                        'model' => $model,
-                        'provinciasList' => $provinciasList,
-            ]);
+            } else {
+                return $this->render('update', [
+                            'model' => $model,
+                            'provinciasList' => $provinciasList,
+                ]);
             }
         } else {
             Yii::$app->session->setFlash('error', 'So o Administrador ou anfitrião pode alterar eventos');
@@ -332,29 +355,33 @@ class EventController extends Controller {
 //    }
 //}
 
-    public function actionRemoveAnexo() {
+   public function actionRemoveAnexo() {
     \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
     $id = Yii::$app->request->post('id');
     $anexo = Yii::$app->request->post('anexo');
+    $campo = Yii::$app->request->post('campo');
 
-    if ($id && $anexo) {
+    if ($id && $anexo && $campo) {
         $model = $this->findModel($id);
-        $anexosArray = explode(',', $model->outrosAnexos);
 
-        if (($key = array_search($anexo, $anexosArray)) !== false) {
-            unset($anexosArray[$key]);
-            $model->outrosAnexos = implode(',', $anexosArray);
-
-            if ($model->save(false)) {
-                return ['success' => true];
-            } else {
-                return ['success' => false, 'message' => 'Erro ao salvar o modelo.'];
+        if ($campo === 'outrosAnexos') {
+            $anexosArray = explode(',', $model->outrosAnexos);
+            if (($key = array_search($anexo, $anexosArray)) !== false) {
+                unset($anexosArray[$key]);
+                $model->outrosAnexos = implode(',', $anexosArray);
             }
         } else {
-            return ['success' => false, 'message' => 'Anexo não encontrado.'];
+            // Remover o arquivo do campo específico
+            $model->$campo = null;
+        }
+
+        if ($model->save(false)) {
+            return ['success' => true];
+        } else {
+            return ['success' => false, 'message' => 'Erro ao salvar o modelo.'];
         }
     } else {
-        return ['success' => false, 'message' => 'ID ou Anexo ausente.'];
+        return ['success' => false, 'message' => 'ID, Anexo ou Campo ausente.'];
     }
 }
 

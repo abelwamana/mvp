@@ -51,8 +51,9 @@ $displayedItems = count($dataProvider->models);
 
 .biblioteca-item img {
     width: 80%;
-    height: 67%;
+    height: 63%;
     margin: 0px;
+    margin-top: 15px;
     padding: 0px -5px 0px 0px;
 }
 

@@ -115,31 +115,38 @@ $provincias = [
         'Namibe' => 'Namibe',
             // Adicione mais itens conforme necessário
     ];
+    
+    $municipios = \backend\models\Municipio::find()
+    ->select(['nomeMunicipio', 'nomeMunicipio'])
+    ->indexBy('nomeMunicipio')
+    ->column();
+
     $entidades = [
-        'Camões, I.P. | ADESPOV/C4' => 'Camões, I.P. | ADESPOV/C4',
-        'Camões, I.P. | ADPP/C1' => 'Camões, I.P. | ADPP/C1',
-        'Camões, I.P. | ADRA/C4' => 'Camões, I.P. | ADRA/C4',
-        'Camões, I.P. | CODESPA/C2' => 'Camões, I.P. | CODESPA/C2',
-        'Camões, I.P. | CODESPA/C2' => 'Camões, I.P. | CODESPA/C4',
-        'Camões, I.P. | COSPE/C1' => 'Camões, I.P. | COSPE/C1',
-        'Camões, I.P. | CUAMM/C2' => 'Camões, I.P. | CUAMM/C2',
-        'Camões, I.P. | CUAMM/C4' => 'Camões, I.P. | CUAMM/C4',
-        'Camões, I.P. | DW/C1' => 'Camões, I.P. | DW/C1',
-        'Camões, I.P. | DW/C4' => 'Camões, I.P. | DW/C4',
-        'Camões, I.P. | FEC/C2' => 'Camões, I.P. | FEC/C2',
-        'Camões, I.P. | FEC/C2' => 'Camões, I.P. | FEC/C4',
-        'Camões, I.P. | NCA/C4' => 'Camões, I.P. | NCA/C1',
-        'Camões, I.P. | NCA/C4' => 'Camões, I.P. | NCA/C4',
-        'Camões, I.P. | PIN/C2' => 'Camões, I.P. | PIN/C2',
-        'Camões, I.P. | PIN/C4' => 'Camões, I.P. | PIN/C4',
-        'Camões, I.P. | TESE/C4' => 'Camões, I.P. | TESE/C4',
-        'Camões, I.P. | UIC' => 'Camões, I.P. | UIC',
-        'Camões, I.P. | WVI/C1' => 'Camões, I.P. | WVI/C1',
-        'Camões, I.P. | WVI/C4' => 'Camões, I.P. | WVI/C4',
-        'FAO' => 'FAO',
-        'Governo' => 'Governo',
-        'PNUD' => 'PNUD',
-        'Vall d´Hebron' => 'Vall d´Hebron',
+         'Camões, I.P. | ADESPOV/C4' => 'Camões, I.P. | ADESPOV/C4',
+                    'Camões, I.P. | ADPP/C1' => 'Camões, I.P. | ADPP/C1',
+                    'Camões, I.P. | ADRA/C4' => 'Camões, I.P. | ADRA/C4',
+                    'Camões, I.P. | CODESPA/C2' => 'Camões, I.P. | CODESPA/C2',
+                    'Camões, I.P. | CODESPA/C4' => 'Camões, I.P. | CODESPA/C4',
+                    'Camões, I.P. | COSPE/C1' => 'Camões, I.P. | COSPE/C1',
+                    'Camões, I.P. | CUAMM/C2' => 'Camões, I.P. | CUAMM/C2',
+                    'Camões, I.P. | CUAMM/C4' => 'Camões, I.P. | CUAMM/C4',
+                    'Camões, I.P. | DW/C1' => 'Camões, I.P. | DW/C1',
+                    'Camões, I.P. | DW/C4' => 'Camões, I.P. | DW/C4',
+                    'Camões, I.P. | FEC/C2' => 'Camões, I.P. | FEC/C2',
+                    'Camões, I.P. | FEC/C4' => 'Camões, I.P. | FEC/C4',
+                    'Camões, I.P. | NCA/C1' => 'Camões, I.P. | NCA/C1',
+                    'Camões, I.P. | NCA/C4' => 'Camões, I.P. | NCA/C4',
+                    'Camões, I.P. | PIN/C2' => 'Camões, I.P. | PIN/C2',
+                    'Camões, I.P. | PIN/C4' => 'Camões, I.P. | PIN/C4',
+                    'Camões, I.P. | TESE/C4' => 'Camões, I.P. | TESE/C4',
+                    'Camões, I.P. | UIC' => 'Camões, I.P. | UIC',
+                    'Camões, I.P. | WVI/C1' => 'Camões, I.P. | WVI/C1',
+                    'Camões, I.P. | WVI/C4' => 'Camões, I.P. | WVI/C4',
+                    'FAO' => 'FAO',
+                    'Governo' => 'Governo',
+                    'PNUD' => 'PNUD',
+                    'Vall d´Hebron' => 'Vall d´Hebron',
+                    'Outra' => 'Outra'
     ];
     $areas = [
         "Agricultura e Pecuária" => "Agricultura e Pecuária",
@@ -148,7 +155,7 @@ $provincias = [
         "Reforço Institucional" => "Reforço Institucional",
         "Coordenação UIC" => "Coordenação UIC",
         'Subvenções/M&A' => 'Subvenções/M&A',
-        'Governação' => 'Governação',
+        'Governo' => 'Governo',
         "Outras" => "Outras"
     ];
     $this->title = 'Calendário';
@@ -200,42 +207,57 @@ $provincias = [
         <!--<div class="col-12 style="margin-left: 230px;" style="margin-top: 16px;" >-->  
         <div class="nao-imprimi">
             <div class="row align-items-center" style="margin-left: 1px; max-width: 99.7%;">    
-                <div class="col-md-4">
+                <div class="col-3">
                     <?=
                     Select2::widget([
                         'name' => 'provincias',
                         'id' => 'provincias',
                         'value' => '',
                         'data' => $provincias,
-                        'options' => ['multiple' => true, 'placeholder' => 'Selecione a(s) província(s)'],
-                        'pluginOptions' => ['width' => '95%'],
+                        'options' => ['multiple' => true, 'placeholder' => 'Filtrar por Província(s)'],
+                        'pluginOptions' => ['width' => '94%'],
                     ]);
                     ?>
                 </div>
-                <div class="col-md-4" style="margin-left: -26px;">
+                
+                 <div class="col-3" style="margin-left: -20px;">
+                    <?=
+                    Select2::widget([
+                        'name' => 'municipios',
+                        'id' => 'municipios',
+                        'value' => '',
+                        'data' => $municipios,
+                        'options' => ['multiple' => true, 'placeholder' => 'Filtrar por Município(s)'],
+                        'pluginOptions' => ['width' => '94%'],
+                    ]);
+                    ?>
+                </div>
+                
+                <div class="col-3" style="margin-left: -19px;">
                     <?=
                     Select2::widget([
                         'name' => 'entidades',
                         'id' => 'entidades',
                         'value' => '',
                         'data' => $entidades,
-                        'options' => ['multiple' => true, 'placeholder' => 'Selecione a(s) Entidade(s)'],
-                        'pluginOptions' => ['width' => '95%'],
+                        'options' => ['multiple' => true, 'placeholder' => 'Filtrar por Entidade(s)'],
+                        'pluginOptions' => ['width' => '94%'],
                     ]);
                     ?>
                 </div>
-                <div class="col-md-4" style="margin-left: -26px;">
+                <div class="col-3" style="margin-left: -19px;">
                     <?=
                     Select2::widget([
                         'name' => 'areas',
                         'id' => 'areas',
                         'value' => '',
                         'data' => $areas,
-                        'options' => ['multiple' => true, 'placeholder' => 'Selecione a(s) área(s)'],
-                        'pluginOptions' => ['width' => '95%'],
+                        'options' => ['multiple' => true, 'placeholder' => 'Filtrar por área(s)'],
+                        'pluginOptions' => ['width' => '94%'],
                     ]);
                     ?>
                 </div>
+               
                 <div class="col-md-12 mt-2" style="margin-right: 10px;">
                     <?= Html::submitButton('Filtrar', ['class' => 'btn btn-primary custom-button float-right', 'id' => 'filter-btn']) ?>
                 </div>
@@ -306,15 +328,14 @@ $provincias = [
                 ?>
                 <?= $form->field($eventModel, 'summary')->textInput(['placeholder' => 'Título do Evento']) ?>
                 <?= $form->field($eventModel, 'description')->textInput(['placeholder' => 'Breve enquadramento e público alvo']) ?>
-                <?=
-                $form->field($eventModel, 'area')->dropDownList([
+                <?= $form->field($eventModel, 'area')->dropDownList([
                     'Agricultura e Pecuária' => 'Agricultura e Pecuária',
                     'Nutrição' => 'Nutrição',
                     'Água' => 'Água',
                     'Reforço Institucional' => 'Reforço Institucional',
                     'Coordenação UIC' => 'Coordenação UIC',
                     'Subvenções/M&A' => 'Subvenções/M&A',
-                    'Governação' => 'Governação',
+                    'Governo' => 'Governo',
                     'Outras' => 'Outras',
                         ], ['prompt' => 'Selecione a área'])
                 ?>
@@ -332,15 +353,15 @@ $provincias = [
                     'Camões, I.P. | ADPP/C1' => 'Camões, I.P. | ADPP/C1',
                     'Camões, I.P. | ADRA/C4' => 'Camões, I.P. | ADRA/C4',
                     'Camões, I.P. | CODESPA/C2' => 'Camões, I.P. | CODESPA/C2',
-                    'Camões, I.P. | CODESPA/C2' => 'Camões, I.P. | CODESPA/C4',
+                    'Camões, I.P. | CODESPA/C4' => 'Camões, I.P. | CODESPA/C4',
                     'Camões, I.P. | COSPE/C1' => 'Camões, I.P. | COSPE/C1',
                     'Camões, I.P. | CUAMM/C2' => 'Camões, I.P. | CUAMM/C2',
                     'Camões, I.P. | CUAMM/C4' => 'Camões, I.P. | CUAMM/C4',
                     'Camões, I.P. | DW/C1' => 'Camões, I.P. | DW/C1',
                     'Camões, I.P. | DW/C4' => 'Camões, I.P. | DW/C4',
                     'Camões, I.P. | FEC/C2' => 'Camões, I.P. | FEC/C2',
-                    'Camões, I.P. | FEC/C2' => 'Camões, I.P. | FEC/C4',
-                    'Camões, I.P. | NCA/C4' => 'Camões, I.P. | NCA/C1',
+                    'Camões, I.P. | FEC/C4' => 'Camões, I.P. | FEC/C4',
+                    'Camões, I.P. | NCA/C1' => 'Camões, I.P. | NCA/C1',
                     'Camões, I.P. | NCA/C4' => 'Camões, I.P. | NCA/C4',
                     'Camões, I.P. | PIN/C2' => 'Camões, I.P. | PIN/C2',
                     'Camões, I.P. | PIN/C4' => 'Camões, I.P. | PIN/C4',
@@ -349,20 +370,23 @@ $provincias = [
                     'Camões, I.P. | WVI/C1' => 'Camões, I.P. | WVI/C1',
                     'Camões, I.P. | WVI/C4' => 'Camões, I.P. | WVI/C4',
                     'FAO' => 'FAO',
-                    'Governação' => 'Governação',
+                    'Governo' => 'Governo',
                     'PNUD' => 'PNUD',
-                    'Vall d´Hebron' => 'Vall d´Hebron'
+                    'Vall d´Hebron' => 'Vall d´Hebron',
+                    'Outra' => 'Outra'
                         ], ['prompt' => 'Selecione a Entidade'])
                 ?>
                 <?= $form->field($eventModel, 'convocadoPor')->textInput(['value' => $nomeUsuario, 'readonly' => true]) ?>
                 <?=
                 $form->field($eventModel, 'participantes')->widget(Select2::classname(), [
-                    'data' => ArrayHelper::map(Contacto::find()->all(), 'email', function ($model) {
+                    'data' => ArrayHelper::map(Contacto::find()->where(['<>', 'estado', 'Inactivo'])->all(), 'email', function ($model) {
                         return $model->nome . ' - ' . $model->instituicao;
                     }),
                     'options' => ['placeholder' => 'Selecione os participantes...', 'multiple' => true, 'id' => 'select-participantes'], 'showToggleAll' => true,
                     'pluginOptions' => [
+                         'tags' => true, // Permite adicionar novos valores
                         'allowClear' => true,
+                        'tokenSeparators' => [','], // Permite separadores para múltiplos valores
                     ],
                 ]);
                 ?>
@@ -424,7 +448,7 @@ $provincias = [
                 <p><strong>Coordenadas:</strong> <span id="modalCoordenadas"></span></p>
                 <p><strong>Entidade Organizadora:</strong> <span id="modalEntidade"></span></p>
                 <p><strong>Convocado Por:</strong> <span id="modalConvocadoPor"></span></p>
-                <p><strong>Participantes:</strong> <span id="modalParticipantes"></span></p>
+                <p><strong>Convidados:</strong> <span id="modalParticipantes"></span></p>
                 <p><strong>Agenda:</strong> <a href="#" id="modalAgenda" target="_blank">A Confirmar</a></p>
                 <p><strong>Lista de Convidados:</strong> <a href="#" id="modallistaConvidados" target="_blank">A Confirmar</a></p>
                 <p><strong>PADA:</strong> <a href="#" id="modalPADA" target="_blank">A Confirmar</a></p>
@@ -443,102 +467,102 @@ $provincias = [
 
 <script>
     function showEventDetails(event) {
-    const basePath = "uploads/";  // Caminho base onde os arquivos estão armazenados
-    $("#eventInfoModal").modal("show");
-    $("#modalId").text(event.id);
-    $("#modalTitle").text(event.summary);
-    $("#modalDescription").text(event.description);
-    $("#modalArea").text(event.area);
-    $("#modalStart").text(event.start.format("DD/MM/YYYY HH:mm"));
-    $("#modalEnd").text(event.end.format("DD/MM/YYYY HH:mm"));
-    $("#modalDuracao").text(event.duracao);
-    $("#modalProvincia").text(event.provincia);
-    $("#modalMunicipio").text(event.municipio);
-    $("#modalComuna").text(event.comuna);
-    $("#modalLocal").text(event.local);
-    $("#modalCoordenadas").text(event.coordenadas);
-    $("#modalEntidade").text(event.entidadeOrganizadora);
-    $("#modalConvocadoPor").text(event.convocadoPor);
-    $("#modalParticipantes").text(event.participantes);
+        const basePath = "uploads/";  // Caminho base onde os arquivos estão armazenados
+        $("#eventInfoModal").modal("show");
+        $("#modalId").text(event.id);
+        $("#modalTitle").text(event.summary);
+        $("#modalDescription").text(event.description);
+        $("#modalArea").text(event.area);
+        $("#modalStart").text(event.start.format("DD/MM/YYYY HH:mm"));
+        $("#modalEnd").text(event.end.format("DD/MM/YYYY HH:mm"));
+        $("#modalDuracao").text(event.duracao);
+        $("#modalProvincia").text(event.provincia);
+        $("#modalMunicipio").text(event.municipio);
+        $("#modalComuna").text(event.comuna);
+        $("#modalLocal").text(event.local);
+        $("#modalCoordenadas").text(event.coordenadas);
+        $("#modalEntidade").text(event.entidadeOrganizadora);
+        $("#modalConvocadoPor").text(event.convocadoPor);
+        $("#modalParticipantes").text(event.participantes);
 
-    var participants = event.participantes.split(",");
-    var participantsHtml = "";
-    for (var i = 0; i < participants.length; i += 2) {
-        if (i === participants.length - 1) {
-            participantsHtml += participants[i];
-        } else {
-            participantsHtml += participants[i] + ", " + (participants[i + 1] || "") + "<br>";
+        var participants = event.participantes.split(",");
+        var participantsHtml = "";
+        for (var i = 0; i < participants.length; i += 2) {
+            if (i === participants.length - 1) {
+                participantsHtml += participants[i];
+            } else {
+                participantsHtml += participants[i] + ", " + (participants[i + 1] || "") + "<br>";
+            }
         }
-    }
-    $("#modalParticipantes").html(participantsHtml);
+        $("#modalParticipantes").html(participantsHtml);
 
-    function setFileLink(elementId, fileName) {
-        if (fileName) {
-            $(elementId).attr("href", basePath + fileName).text(fileName);
-        } else {
-            $(elementId).removeAttr("href").text("A Confirmar");
+        function setFileLink(elementId, fileName) {
+            if (fileName) {
+                $(elementId).attr("href", basePath + fileName).text(fileName);
+            } else {
+                $(elementId).removeAttr("href").text("A Confirmar");
+            }
         }
+
+        setFileLink("#modalAgenda", event.agenda);
+        setFileLink("#modallistaConvidados", event.listaConvidados);
+        setFileLink("#modalPADA", event.pada);
+        setFileLink("#modalactaRelatorio", event.actaRelatorio);
+        setFileLink("#modallistaParticipantes", event.listaParticipantes);
+
+        if (event.outrosAnexos === "A confirmar") {
+            $("#modalOutrosAnexos").text("A Confirmar");
+        } else if (event.outrosAnexos) {
+            var outrosAnexos = event.outrosAnexos.split(",");
+            var anexosHtml = "";
+            outrosAnexos.forEach(function (anexo, index) {
+                anexosHtml += '<a href="' + basePath + anexo.trim() + '" target="_blank">' + anexo.trim() + '</a><br>';
+            });
+            $("#modalOutrosAnexos").html(anexosHtml);
+        } else {
+            $("#modalOutrosAnexos").text("A Confirmar");
+        }
+
+        $("#editEventButton").data("eventId", event.id);
+        $("#deleteEventButton").data("eventId", event.id);
     }
 
-    setFileLink("#modalAgenda", event.agenda);
-    setFileLink("#modallistaConvidados", event.listaConvidados);
-    setFileLink("#modalPADA", event.pada);
-    setFileLink("#modalactaRelatorio", event.actaRelatorio);
-    setFileLink("#modallistaParticipantes", event.listaParticipantes);
-
-    if (event.outrosAnexos === "A confirmar") {
-        $("#modalOutrosAnexos").text("A Confirmar");
-    } else if (event.outrosAnexos) {
-        var outrosAnexos = event.outrosAnexos.split(",");
-        var anexosHtml = "";
-        outrosAnexos.forEach(function (anexo, index) {
-            anexosHtml += '<a href="'+ basePath + anexo.trim() + '" target="_blank">' + anexo.trim() + '</a><br>';
-        });
-        $("#modalOutrosAnexos").html(anexosHtml);
-    } else {
-        $("#modalOutrosAnexos").text("A Confirmar");
+    function showAddEventModal(date) {
+        $("#addEventModal").modal("show");
+        $("#eventDate").val(date.format());
     }
 
-    $("#editEventButton").data("eventId", event.id);
-    $("#deleteEventButton").data("eventId", event.id);
-}
+    function styleEventElement(event, element) {
+        element.css("background-color", "transparent");
+        element.css("color", "#000000");
+        element.css("border-width", "3px");
+        element.find(".fc-content").append("<span class=\"fc-title\">" + event.summary + "</span>");
 
-function showAddEventModal(date) {
-    $("#addEventModal").modal("show");
-    $("#eventDate").val(date.format());
-}
+        if (event.area === "Agricultura e Pecuária") {
+            element.css("border-color", "#999900");
+        } else if (event.area === "Nutrição") {
+            element.css("border-color", "#eae018");
+        } else if (event.area === "Água") {
+            element.css("border-color", "#00c3ff");
+        } else if (event.area === "Coordenação UIC") {
+            element.css("border-color", "#71b13c");
+        } else if (event.area === "Reforço Institucional") {
+            element.css("border-color", "#003399");
+        } else if (event.area === "Outra") {
+            element.css("border-color", "black");
+        } else if (event.area === "Subvenções/M&A") {
+            element.css("border-color", "#663399");
+        } else if (event.area === "Governo") {
+            element.css("border-color", "#BB0E22");
+        }
 
-function styleEventElement(event, element) {
-    element.css("background-color", "transparent");
-    element.css("color", "#000000");
-    element.css("border-width", "3px");
-    element.find(".fc-content").append("<span class=\"fc-title\">" + event.summary + "</span>");
-
-    if (event.area === "Agricultura e Pecuária") {
-        element.css("border-color", "#999900");
-    } else if (event.area === "Nutrição") {
-        element.css("border-color", "#eae018");
-    } else if (event.area === "Água") {
-        element.css("border-color", "#00c3ff");
-    } else if (event.area === "Coordenação UIC") {
-        element.css("border-color", "#71b13c");
-    } else if (event.area === "Reforço Institucional") {
-        element.css("border-color", "#003399");
-    } else if (event.area === "Outra") {
-        element.css("border-color", "black");
-    } else if (event.area === "Subvenções/M&A") {
-        element.css("border-color", "#663399");
-    } else if (event.area === "Governação") {
-        element.css("border-color", "#BB0E22");
+        element.find(".fc-content").append("<br>");
     }
 
-    element.find(".fc-content").append("<br>");
-}
-
-$(document).on('click', '#editEventButton', function () {
-    var eventId = $(this).data('event-id');
-    window.location.href = 'update-event?id=' + eventId;
-});
+    $(document).on('click', '#editEventButton', function () {
+        var eventId = $(this).data('event-id');
+        window.location.href = 'update-event?id=' + eventId;
+    });
 </script>
 
 
@@ -560,44 +584,96 @@ $(document).ready(function() {
     }
 
     // Ouça o evento de clique no botão "Filtrar"
-    $('#filter-btn').click(function(e) {
-        e.preventDefault(); // Evite o comportamento padrão de enviar o formulário
-        // Obtenha os valores selecionados nos filtros
-        var entidadesSelecionadas = $('#entidades').val();
-        var provinciasSelecionadas = $('#provincias').val();
-        var areasSelecionadas = $('#areas').val();
+        
+        $('#filter-btn').click(function(e) {
+    e.preventDefault(); // Evite o comportamento padrão de enviar o formulário
 
-        // Salve os valores dos campos de filtro no armazenamento local antes de enviar o formulário
-        localStorage.setItem('provinciasSelecionadas', provinciasSelecionadas);
-        localStorage.setItem('entidadesSelecionadas', entidadesSelecionadas);
-        localStorage.setItem('areasSelecionadas', areasSelecionadas);
+    // Obtenha os valores selecionados nos filtros
+    var entidadesSelecionadas = $('#entidades').val();
+    var provinciasSelecionadas = $('#provincias').val();
+    var areasSelecionadas = $('#areas').val();
+    var municipiosSelecionados = $('#municipios').val(); // Novo campo de municípios
 
-        // Faça uma chamada AJAX para a ação 'get-events' com os filtros como parâmetros
-        $.ajax({
-            url: 'get-events',
-            type: 'GET',
-            data: { entidades: entidadesSelecionadas, provincias: provinciasSelecionadas, areas: areasSelecionadas },
-            success: function(response) {
-                // Remova a fonte de eventos atual antes de adicionar a nova fonte
-                $('#meuCalendario').fullCalendar('removeEvents');
-                // Adicione a nova fonte de eventos filtrados
-                $('#meuCalendario').fullCalendar('addEventSource', response);
+    // Salve os valores dos campos de filtro no armazenamento local antes de enviar o formulário
+    localStorage.setItem('provinciasSelecionadas', provinciasSelecionadas);
+    localStorage.setItem('entidadesSelecionadas', entidadesSelecionadas);
+    localStorage.setItem('areasSelecionadas', areasSelecionadas);
+    localStorage.setItem('municipiosSelecionados', municipiosSelecionados); // Novo campo de municípios
 
-                // Limpe os valores armazenados localmente após aplicar os filtros
-                localStorage.removeItem('provinciasSelecionadas');
-                localStorage.removeItem('entidadesSelecionadas');
-                localStorage.removeItem('areasSelecionadas');
+    // Faça uma chamada AJAX para a ação 'get-events' com os filtros como parâmetros
+    $.ajax({
+        url: 'get-events',
+        type: 'GET',
+        data: { 
+            entidades: entidadesSelecionadas, 
+            provincias: provinciasSelecionadas, 
+            areas: areasSelecionadas,
+            municipios: municipiosSelecionados // Novo campo de municípios
+        },
+        success: function(response) {
+            // Remova a fonte de eventos atual antes de adicionar a nova fonte
+            $('#meuCalendario').fullCalendar('removeEvents');
+            // Adicione a nova fonte de eventos filtrados
+            $('#meuCalendario').fullCalendar('addEventSource', response);
 
-                // Limpe os campos de filtro
-                $('#provincias').val('').trigger('change');
-                $('#entidades').val('').trigger('change');
-                $('#areas').val('').trigger('change');
-            },
-            error: function(xhr, status, error) {
-                // Lide com erros, se necessário
-            }
-        });
+            // Limpe os valores armazenados localmente após aplicar os filtros
+            localStorage.removeItem('provinciasSelecionadas');
+            localStorage.removeItem('entidadesSelecionadas');
+            localStorage.removeItem('areasSelecionadas');
+            localStorage.removeItem('municipiosSelecionados'); // Novo campo de municípios
+
+            // Limpe os campos de filtro
+            $('#provincias').val('').trigger('change');
+            $('#entidades').val('').trigger('change');
+            $('#areas').val('').trigger('change');
+            $('#municipios').val('').trigger('change'); // Novo campo de municípios
+        },
+        error: function(xhr, status, error) {
+            // Lide com erros, se necessário
+        }
     });
+});
+
+        
+        
+//    $('#filter-btn').click(function(e) {
+//        e.preventDefault(); // Evite o comportamento padrão de enviar o formulário
+//        // Obtenha os valores selecionados nos filtros
+//        var entidadesSelecionadas = $('#entidades').val();
+//        var provinciasSelecionadas = $('#provincias').val();
+//        var areasSelecionadas = $('#areas').val();
+//
+//        // Salve os valores dos campos de filtro no armazenamento local antes de enviar o formulário
+//        localStorage.setItem('provinciasSelecionadas', provinciasSelecionadas);
+//        localStorage.setItem('entidadesSelecionadas', entidadesSelecionadas);
+//        localStorage.setItem('areasSelecionadas', areasSelecionadas);
+//
+//        // Faça uma chamada AJAX para a ação 'get-events' com os filtros como parâmetros
+//        $.ajax({
+//            url: 'get-events',
+//            type: 'GET',
+//            data: { entidades: entidadesSelecionadas, provincias: provinciasSelecionadas, areas: areasSelecionadas },
+//            success: function(response) {
+//                // Remova a fonte de eventos atual antes de adicionar a nova fonte
+//                $('#meuCalendario').fullCalendar('removeEvents');
+//                // Adicione a nova fonte de eventos filtrados
+//                $('#meuCalendario').fullCalendar('addEventSource', response);
+//
+//                // Limpe os valores armazenados localmente após aplicar os filtros
+//                localStorage.removeItem('provinciasSelecionadas');
+//                localStorage.removeItem('entidadesSelecionadas');
+//                localStorage.removeItem('areasSelecionadas');
+//
+//                // Limpe os campos de filtro
+//                $('#provincias').val('').trigger('change');
+//                $('#entidades').val('').trigger('change');
+//                $('#areas').val('').trigger('change');
+//            },
+//            error: function(xhr, status, error) {
+//                // Lide com erros, se necessário
+//            }
+//        });
+//    });
 
     // Ouça o evento de clique no botão de eliminar evento
     $(document).on('click', '#deleteEventButton', function() {
@@ -694,11 +770,8 @@ $(document).ready(function(){
         // Limpa o conteúdo do elemento com id comuna-select
         $('#comuna-select').html('<option value="">Selecione a comuna</option>');
     }
+});      
 });
-
-        
-});
-
 JS;
 $this->registerJs($script);
 ?>
@@ -734,8 +807,7 @@ $(document).ready(function() {
     $('#event-end').change(function() {
         calcularDuracao();
     });
-});
-        
+});       
 JS;
 $this->registerJs($script);
 ?>

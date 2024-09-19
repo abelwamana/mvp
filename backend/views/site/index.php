@@ -606,10 +606,11 @@ $entidades = array_unique($entidades);
 
  <!--/ Agricultura -->
  <section class="container" style="background-color: whitesmoke;">
-          <div class="row">
-         
+              <p style="font-size: 11px"><b>Dados referentes ao período: 2018 a Março de 2024 (1º Trimestre de 2024)</b></p>
 
-          <div class="col-xl-4 col-lg-6 col-md-7 evento"><br><br>
+          <div class="row">
+
+          <div class="col-xl-4 col-lg-6 col-md-7 evento">
               <div class="text-center">
                 <div style="border-style: solid; border-color: #999900; border-width: 1.5px;">
                           <p class="font1" style="text-align: center; color: #999900; line-height: 28px; font-size: initial"><b>RESILIÊNCIA E PRODUÇÃO AGRÍCOLA FAMILIAR SUSTENTÁVEL [COMPONENTE I]</b><br>
@@ -646,6 +647,7 @@ $entidades = array_unique($entidades);
                     <div class="col-4" style="border-right-color: #7CB9E8; border-right-style: solid; border-width: 1px; text-align: center; color: #003399; line-height: 20px; font-size: 15px;">Huíla<br><b>127</b></div>
                     <div class="col-4" style="text-align: center; color: #003399; line-height: 20px; font-size: 15px;">Namibe<br><b>50</b></div>
                   </div>
+                 <!-- <p style="line-height: 8"><img style="width: 100%;" src="images/resultado/r121t124.png"></p>-->
                 </div> 
                 <div class="col-xl-4 col-lg-6 col-md-7 evento"><br><br>
                   <img style="width: 20%;" src="images/resultado/icones soltos_23_agricultura_sementes.png"><b style="color: #003399; font-size: 23px;">&nbsp;270 de 224</b><p style="color: #003399;">hectares foram cultivados com tecnologia inovadora e métodos adequados disseminados pelo projecto para reforçar a produtividade nos campos</p>
@@ -1150,7 +1152,7 @@ $entidades = array_unique($entidades);
                               </div>
                               <div class="col-xl-4 col-lg-6 col-md-7 evento">
                                     <div class=" row">
-                                    <p style="text-align: right; line-height: 20px; font-size: 11px"><br><br><br><br><br><br><br><br><br><b>Dados referentes ao período: 2018 a Março de 2024<br>Publicação de dados: Maio de 2024<br>Última actualização: Maio de 2024</b><br><b style="font-size: 11px; color: gray">[Fonte: SGI FRESAN | Camões, I.P.]</b></p>
+                                    <p style="text-align: right; line-height: 20px; font-size: 11px"><br><br><br><br><br><br><br><br><br><b>Dados referentes ao período: 2018 a Março de 2024 (1º Trimestre de 2024)<br>Publicação de dados: Maio de 2024<br>Última actualização: Maio de 2024</b><br><b style="font-size: 11px; color: gray">[Fonte: SGI FRESAN | Camões, I.P.]</b></p>
                                     </div>
                               </div>
             </div>

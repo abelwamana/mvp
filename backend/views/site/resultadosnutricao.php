@@ -224,19 +224,20 @@ $metaInfraestrutura = Meta::find()->where(['nomeMeta' => 'pequenas infra-estrutu
 
 
 <section class="container" style="background-color: white">
-                <h3 class="section-sub-title" style="text-align: center !important;"><b>INDICADORES DO QUADRO LÓGICO | NUTRIÇÃO</b></h3>
+                <h3 class="section-sub-title" style="text-align: center !important;"><b>INDICADORES DO QUADRO LÓGICO/NUTRIÇÃO</b></h3>
                 <br>
                 </section>
 
  <!--/ Nutrição -->
-    <section class="container" style="background-color: white;">
+    <section class="container" style="background-color: whitesmoke;">
+                              <p style="font-size: 11px"><b>Dados referentes ao período: 2018 a Março de 2024 (1º Trimestre de 2024)</b></p>
+
                     <div class="row">
 
                     <div class="col-xl-4 col-lg-6 col-md-7 evento">
-                    <br><br>
                               <div class="text-center">
-                                <div style="border-style: solid; border-color: #888C00; border-width: 1.5px;">
-                                          <p style="text-align: center; color: #888C00; line-height: 28px"><b>MELHORIA DA NUTRIÇÃO [COMPONENTE II]</b><br>
+                                <div style="border-style: solid; border-color: #999900; border-width: 1.5px;">
+                                          <p class="font1" style="text-align: center; color: #999900; line-height: 28px; font-size: initial"><b>MELHORIA DA NUTRIÇÃO [COMPONENTE II]</b><br>
                                           <img style="width: 10%;" src="images/resultado/elemento4.png"><br>Melhorar o consumo alimentar e a qualidade da alimentação da população vulnerável</p>
                                   </div>
                                     <img style="width: 35%;" src="images/resultado/iconografia indicadores-05.png">
@@ -245,8 +246,8 @@ $metaInfraestrutura = Meta::find()->where(['nomeMeta' => 'pequenas infra-estrutu
                                 </div>  
                                 <div class="col-xl-4 col-lg-6 col-md-7 evento"><br>
                                   <br>
-                                  <img style="width: 18.9%;" src="images/resultado/iconografia indicadores-21.png"><b style="color: lightsteelblue; font-size: 23px;">&nbsp;em análise</b><p style="color: darkblue;">reduzido à prevalência da vulnerabilidade à insegurança alimentar e nutricional</p>
-                                    <div class="bar" style="margin-top: -10px; line-height: 35px;"><div class="progressbar-text" style="color: darkblue; position: relative; right: 0px; padding: 0px; text-align: right; line-height: 0px;"><b>0 %</b></div><svg viewBox="0 0 100 4" preserveAspectRatio="none" style="width: 100%; height: 100%;"><path d="M 0,2 L 100,2" stroke="#7CB9E8" stroke-width="1" fill-opacity="0"></path><path d="M 0,2 L 0,2" stroke="#7CB9E8" stroke-width="4" fill-opacity="0" style="stroke-dasharray: 100, 100; stroke-dashoffset: 0;"></path></svg></div>
+                                  <img style="width: 18.9%;" src="images/resultado/iconografia indicadores-21.png"><b style="color: lightsteelblue; font-size: 23px;">&nbsp;em análise</b><p style="color: #003399;">reduzido à prevalência da vulnerabilidade à insegurança alimentar e nutricional</p>
+                                    <div class="bar" style="margin-top: -10px; line-height: 35px;"><div class="progressbar-text" style="color: #003399; position: relative; right: 0px; padding: 0px; text-align: right; line-height: 0px;"><b>0 %</b></div><svg viewBox="0 0 100 4" preserveAspectRatio="none" style="width: 100%; height: 100%;"><path d="M 0,2 L 100,2" stroke="#7CB9E8" stroke-width="1" fill-opacity="0"></path><path d="M 0,2 L 0,2" stroke="#7CB9E8" stroke-width="4" fill-opacity="0" style="stroke-dasharray: 100, 100; stroke-dashoffset: 0;"></path></svg></div>
                                       <div class=" row">
                                         <div class="col-4" style="border-right-color: #7CB9E8; border-right-style: solid; border-width: 1px; text-align: center; color: lightsteelblue; line-height: 20px; font-size: 15px;"><b>Cunene<br>em análise</b></div>
                                         <div class="col-4" style="border-right-color: #7CB9E8; border-right-style: solid; border-width: 1px; text-align: center; color: lightsteelblue; line-height: 20px; font-size: 15px;"><b>Huíla<br>em análise</b></div>
@@ -255,8 +256,8 @@ $metaInfraestrutura = Meta::find()->where(['nomeMeta' => 'pequenas infra-estrutu
                                     </div>
                                     <div class="col-xl-4 col-lg-6 col-md-7 evento"><br>
                                       <br>
-                                      <img style="width: 22.9%;" src="images/resultado/iconografia indicadores-19.png"><b style="color: lightsteelblue; font-size: 23px;">&nbsp;em análise</b><p style="color: darkblue;">reduzido à prevalência da malnutrição crónica nas crianças com idade < 5 anos</p>
-                                        <div class="bar" style="margin-top: -10px; line-height: 35px;"><div class="progressbar-text" style="color: darkblue; position: relative; right: 0px; padding: 0px; text-align: right; line-height: 0px;"><b>0 %</b></div><svg viewBox="0 0 100 4" preserveAspectRatio="none" style="width: 100%; height: 100%;"><path d="M 0,2 L 100,2" stroke="#7CB9E8" stroke-width="1" fill-opacity="0"></path><path d="M 0,2 L 0,2" stroke="#7CB9E8" stroke-width="4" fill-opacity="0" style="stroke-dasharray: 100, 100; stroke-dashoffset: 0;"></path></svg></div>
+                                      <img style="width: 22.9%;" src="images/resultado/iconografia indicadores-19.png"><b style="color: lightsteelblue; font-size: 23px;">&nbsp;em análise</b><p style="color: #003399;">reduzido à prevalência da malnutrição crónica nas crianças com idade < 5 anos</p>
+                                        <div class="bar" style="margin-top: -10px; line-height: 35px;"><div class="progressbar-text" style="color: #003399; position: relative; right: 0px; padding: 0px; text-align: right; line-height: 0px;"><b>0 %</b></div><svg viewBox="0 0 100 4" preserveAspectRatio="none" style="width: 100%; height: 100%;"><path d="M 0,2 L 100,2" stroke="#7CB9E8" stroke-width="1" fill-opacity="0"></path><path d="M 0,2 L 0,2" stroke="#7CB9E8" stroke-width="4" fill-opacity="0" style="stroke-dasharray: 100, 100; stroke-dashoffset: 0;"></path></svg></div>
                                           <div class=" row">
                                             <div class="col-4" style="border-right-color: #7CB9E8; border-right-style: solid; border-width: 1px; text-align: center; color: lightsteelblue; line-height: 20px; font-size: 15px;"><b>Cunene<br>em análise</b></div>
                                             <div class="col-4" style="border-right-color: #7CB9E8; border-right-style: solid; border-width: 1px; text-align: center; color: lightsteelblue; line-height: 20px; font-size: 15px;"><b>Huíla<br>em análise</b></div>
@@ -266,8 +267,8 @@ $metaInfraestrutura = Meta::find()->where(['nomeMeta' => 'pequenas infra-estrutu
                                         
                             <div class="col-xl-4 col-lg-6 col-md-7 evento"><br>
                               <br>
-                              <img style="width: 46.6%;" src="images/resultado/icones soltos_20_agricultura_.png"><b style="color: lightsteelblue; font-size: 23px;">&nbsp;em análise</b><p style="color: darkblue;">de beneficiários aumentaram o consumo e a diversidade de alimentos nutritivos</p>
-                                <div class="bar" style="margin-top: -10px; line-height: 35px;"><div class="progressbar-text" style="color: darkblue; position: relative; right: 0px; padding: 0px; text-align: right; line-height: 0px;"><b>0 %</b></div><svg viewBox="0 0 100 4" preserveAspectRatio="none" style="width: 100%; height: 100%;"><path d="M 0,2 L 100,2" stroke="#7CB9E8" stroke-width="1" fill-opacity="0"></path><path d="M 0,2 L 0,2" stroke="#7CB9E8" stroke-width="4" fill-opacity="0" style="stroke-dasharray: 100, 100; stroke-dashoffset: 0;"></path></svg></div>
+                              <img style="width: 46.6%;" src="images/resultado/icones soltos_20_agricultura_.png"><b style="color: lightsteelblue; font-size: 23px;">&nbsp;em análise</b><p style="color: #003399;">beneficiários do projecto que aumentaram o consumo e a diversidade alimentar</p>
+                                <div class="bar" style="margin-top: -10px; line-height: 35px;"><div class="progressbar-text" style="color: #003399; position: relative; right: 0px; padding: 0px; text-align: right; line-height: 0px;"><b>0 %</b></div><svg viewBox="0 0 100 4" preserveAspectRatio="none" style="width: 100%; height: 100%;"><path d="M 0,2 L 100,2" stroke="#7CB9E8" stroke-width="1" fill-opacity="0"></path><path d="M 0,2 L 0,2" stroke="#7CB9E8" stroke-width="4" fill-opacity="0" style="stroke-dasharray: 100, 100; stroke-dashoffset: 0;"></path></svg></div>
                                   <div class=" row">
                                     <div class="col-4" style="border-right-color: #7CB9E8; border-right-style: solid; border-width: 1px; text-align: center; color: lightsteelblue; line-height: 20px; font-size: 15px;"><b>Cunene<br>em análise</b></div>
                                     <div class="col-4" style="border-right-color: #7CB9E8; border-right-style: solid; border-width: 1px; text-align: center; color: lightsteelblue; line-height: 20px; font-size: 15px;"><b>Huíla<br>em análise</b></div>
@@ -276,8 +277,8 @@ $metaInfraestrutura = Meta::find()->where(['nomeMeta' => 'pequenas infra-estrutu
                                 </div>  
                                 <div class="col-xl-4 col-lg-6 col-md-7 evento"><br>
                                   <br>
-                                  <img style="width: 35%;" src="images/resultado/icones soltos_09_familia.png"><b style="color: lightsteelblue; font-size: 23px;">&nbsp;em análise</b><p style="color: darkblue;">agregados familiares que consomem alimentos nutritivos promovidos pelo projecto</p>
-                                    <div class="bar" style="margin-top: -10px; line-height: 35px;"><div class="progressbar-text" style="color: darkblue; position: relative; right: 0px; padding: 0px; text-align: right; line-height: 0px;"><b>0 %</b></div><svg viewBox="0 0 100 4" preserveAspectRatio="none" style="width: 100%; height: 100%;"><path d="M 0,2 L 100,2" stroke="#7CB9E8" stroke-width="1" fill-opacity="0"></path><path d="M 0,2 L 0,2" stroke="#7CB9E8" stroke-width="4" fill-opacity="0" style="stroke-dasharray: 100, 100; stroke-dashoffset: 0;"></path></svg></div>
+                                  <img style="width: 35%;" src="images/resultado/icones soltos_09_familia.png"><b style="color: lightsteelblue; font-size: 23px;">&nbsp;em análise</b><p style="color: #003399;">agregados familiares que reportaram o consumo de alimentos nutritivos</p>
+                                    <div class="bar" style="margin-top: -10px; line-height: 35px;"><div class="progressbar-text" style="color: #003399; position: relative; right: 0px; padding: 0px; text-align: right; line-height: 0px;"><b>0 %</b></div><svg viewBox="0 0 100 4" preserveAspectRatio="none" style="width: 100%; height: 100%;"><path d="M 0,2 L 100,2" stroke="#7CB9E8" stroke-width="1" fill-opacity="0"></path><path d="M 0,2 L 0,2" stroke="#7CB9E8" stroke-width="4" fill-opacity="0" style="stroke-dasharray: 100, 100; stroke-dashoffset: 0;"></path></svg></div>
                                       <div class=" row">
                                         <div class="col-4" style="border-right-color: #7CB9E8; border-right-style: solid; border-width: 1px; text-align: center; color: lightsteelblue; line-height: 20px; font-size: 15px;"><b>Cunene<br>em análise</b></div>
                                         <div class="col-4" style="border-right-color: #7CB9E8; border-right-style: solid; border-width: 1px; text-align: center; color: lightsteelblue; line-height: 20px; font-size: 15px;"><b>Huíla<br>em análise</b></div>
@@ -287,17 +288,30 @@ $metaInfraestrutura = Meta::find()->where(['nomeMeta' => 'pequenas infra-estrutu
 
                                     <div class="col-xl-4 col-lg-6 col-md-7 evento"><br>
                                       <br>
-                                      <img style="width: 21.5%;" src="images/resultado/iconografia indicadores-22.png"><b style="color: darkblue; font-size: 23px;">&nbsp;73.944 de 60.000</b><p style="color: darkblue;">mulheres em idade reprodutiva sensibilizadas em <br>nutrição</p>
-                                        <div class="bar" style="margin-top: -10px; line-height: 35px;"><div class="progressbar-text" style="color: darkblue; position: relative; right: 0px; padding: 0px; text-align: right; line-height: 0px;"><b>>100 %</b></div><svg viewBox="0 0 100 4" preserveAspectRatio="none" style="width: 100%; height: 100%;"><path d="M 0,2 L 100,2" stroke="#7CB9E8" stroke-width="1" fill-opacity="0"></path><path d="M 0,2 L 100,2" stroke="#7CB9E8" stroke-width="4" fill-opacity="0" style="stroke-dasharray: 100, 100; stroke-dashoffset: 0;"></path></svg></div>
+                                      <img style="width: 21.5%;" src="images/resultado/iconografia indicadores-22.png"><b style="color: #003399; font-size: 23px;">&nbsp;77.636 de 60.000</b><p style="color: #003399;">mulheres em idade reprodutiva beneficiadas por sensibilizações em nutrição</p>
+                                        <div class="bar" style="margin-top: -10px; line-height: 35px;"><div class="progressbar-text" style="color: #003399; position: relative; right: 0px; padding: 0px; text-align: right; line-height: 0px;"><b>>100 %</b></div><svg viewBox="0 0 100 4" preserveAspectRatio="none" style="width: 100%; height: 100%;"><path d="M 0,2 L 100,2" stroke="#7CB9E8" stroke-width="1" fill-opacity="0"></path><path d="M 0,2 L 100,2" stroke="#7CB9E8" stroke-width="4" fill-opacity="0" style="stroke-dasharray: 100, 100; stroke-dashoffset: 0;"></path></svg></div>
                                           <div class=" row">
-                                            <div class="col-4" style="border-right-color: #7CB9E8; border-right-style: solid; border-width: 1px; text-align: center; color: darkblue; line-height: 20px; font-size: 15px;">Cunene<br><b>23.449</b></div>
-                                            <div class="col-4" style="border-right-color: #7CB9E8; border-right-style: solid; border-width: 1px; text-align: center; color: darkblue; line-height: 20px; font-size: 15px;">Huíla<br><b>41.380</b></div>
-                                            <div class="col-4" style="text-align: center; color: darkblue; line-height: 20px; font-size: 15px;">Namibe<br><b>8.688</b></div>
+                                            <div class="col-4" style="border-right-color: #7CB9E8; border-right-style: solid; border-width: 1px; text-align: center; color: #003399; line-height: 20px; font-size: 15px;">Cunene<br><b>23.449</b></div>
+                                            <div class="col-4" style="border-right-color: #7CB9E8; border-right-style: solid; border-width: 1px; text-align: center; color: #003399; line-height: 20px; font-size: 15px;">Huíla<br><b>41.426</b></div>
+                                            <div class="col-4" style="text-align: center; color: #003399; line-height: 20px; font-size: 15px;">Namibe<br><b>12.761</b></div>
                                           </div>
-                                        </div> 
-                   
-                    </div>
-         
+                                        </div>
+                                        <div class="col-xl-4 col-lg-6 col-md-7 evento">
+                                    <div class=" row">
+                                    <p style="text-align: right; line-height: 20px; font-size: 13px;"><br><b></b></p>
+                                    </div>
+                              </div>
+                              <div class="col-xl-4 col-lg-6 col-md-7 evento">
+                                    <div class=" row">
+                                    <p style="text-align: right; line-height: 20px; font-size: 13px;"><br><b></b></p>
+                                    </div>
+                              </div>
+                              <div class="col-xl-4 col-lg-6 col-md-7 evento">
+                                    <div class=" row">
+                                    <p style="text-align: right; line-height: 20px; font-size: 11px"><br><b>Dados referentes ao período: 2018 a Março de 2024 (1º Trimestre de 2024)<br>Publicação de dados: Maio de 2024<br>Última actualização: Maio de 2024</b><br><b style="font-size: 11px; color: gray">[Fonte: SGI FRESAN | Camões, I.P.]</b></p>
+                                    </div>
+                              </div>
+                            </div>
 </section>
  
     <!-- Nutrição -->

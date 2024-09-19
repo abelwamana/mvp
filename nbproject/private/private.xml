@@ -3,13 +3,19 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/xampp/htdocs/mvp/backend/views/arquivo/_folders.php</file>
             <file>file:/C:/xampp/htdocs/mvp/backend/controllers/SiteController.php</file>
-            <file>file:/C:/xampp/htdocs/mvp/backend/views/site/calendario.php</file>
-            <file>file:/C:/xampp/htdocs/mvp/backend/views/event/listaeventos.php</file>
-            <file>file:/C:/xampp/htdocs/mvp/backend/views/contacto/_form.php</file>
-            <file>file:/C:/xampp/htdocs/mvp/backend/views/event/update.php</file>
-            <file>file:/C:/xampp/htdocs/mvp/backend/controllers/EventController.php</file>
+            <file>file:/C:/xampp/htdocs/mvp/backend/models/Arquivo.php</file>
+            <file>file:/C:/xampp/htdocs/mvp/backend/views/arquivo/index.php</file>
+            <file>file:/C:/xampp/htdocs/mvp/backend/views/arquivo/ficheiros.php</file>
+            <file>file:/C:/xampp/htdocs/mvp/backend/views/biblioteca/index.php</file>
             <file>file:/C:/xampp/htdocs/mvp/backend/views/event/_form.php</file>
+            <file>file:/C:/xampp/htdocs/mvp/backend/views/layouts/sidebar.php</file>
+            <file>file:/C:/xampp/htdocs/mvp/backend/views/site/calendario.php</file>
+            <file>file:/C:/xampp/htdocs/mvp/backend/controllers/ArquivoController.php</file>
+            <file>file:/C:/xampp/htdocs/mvp/backend/views/arquivo/update.php</file>
+            <file>file:/C:/xampp/htdocs/mvp/backend/views/arquivo/_form.php</file>
+            <file>file:/C:/xampp/htdocs/mvp/backend/views/arquivo/_formU.php</file>
         </group>
     </open-files>
 </project-private>

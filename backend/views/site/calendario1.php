@@ -139,7 +139,7 @@ $provincias = [
         "Reforço Institucional" => "Reforço Institucional",
         "Coordenação UIC" => "Coordenação UIC",
         'Subvenções/M&A' => 'Subvenções/M&A',
-        'Governação' => 'Governação',
+        'Governo' => 'Governo',
         "Outras" => "Outras"
     ];
     $this->title = 'Calendário';
@@ -305,7 +305,7 @@ $provincias = [
                     'Reforço Institucional' => 'Reforço Institucional',
                     'Coordenação UIC' => 'Coordenação UIC',
                     'Subvenções/M&A' => 'Subvenções/M&A',
-                    'Governação' => 'Governação',
+                    'Governo' => 'Governo',
                     'Outras' => 'Outras',
                         ], ['prompt' => 'Selecione a área'])
                 ?>
@@ -340,7 +340,7 @@ $provincias = [
                     'Camões, I.P. | WVI/C1' => 'Camões, I.P. | WVI/C1',
                     'Camões, I.P. | WVI/C4' => 'Camões, I.P. | WVI/C4',
                     'FAO' => 'FAO',
-                    'Governação' => 'Governação',
+                    'Governo' => 'Governo',
                     'PNUD' => 'PNUD',
                     'Vall d´Hebron' => 'Vall d´Hebron'
                         ], ['prompt' => 'Selecione a Entidade'])
@@ -506,7 +506,7 @@ $provincias = [
             element.css("border-color", "black");
         } else if (event.area === "Subvenções/M&A") {
             element.css("border-color", "#663399");
-        } else if (event.area === "Governação") {
+        } else if (event.area === "Governo") {
             element.css("border-color", "#BB0E22");
         }
 

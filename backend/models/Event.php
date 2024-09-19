@@ -82,7 +82,7 @@ class Event extends \yii\db\ActiveRecord {
             'coordenadas' => Yii::t('app', 'Coordenadas'),
             'entidadeOrganizadora' => Yii::t('app', 'Entidade Organizadora'),
             'convocadoPor' => Yii::t('app', 'Convocado Por'),
-            'participantes' => Yii::t('app', 'Participantes'),
+            'participantes' => Yii::t('app', 'Convidados'),
             'agenda' => Yii::t('app', 'Agenda'),
             'listaConvidados' => Yii::t('app', 'Lista de Convidados'),
             'pada' => Yii::t('app', 'PADA (UIC FRESAN/Camões, I.P.)'),

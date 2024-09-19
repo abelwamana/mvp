@@ -88,9 +88,10 @@ $config = [
                 'viewpage' => 'biblioteca/viewpage', 
                 'actualizarEvento' => 'event/update', 
                 'event/remove-anexo' => 'event/remove-anexo',
-
-                
-                
+                'arquivo' => 'arquivo/index',
+                 'VerArquivo' => 'arquivo/viewpage',
+                 'VerDetalhesArquivo' => 'arquivo/view',
+                'AdicionarArquivo'=>'arquivo/create'
             ],
         ],
         'urlManagerFrontend' => [

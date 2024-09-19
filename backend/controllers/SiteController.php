@@ -107,7 +107,6 @@ class SiteController extends Controller {
 
             $query = Yii::createObject(['class' => $modelClass])->find()
                     ->andWhere(['<=', 'YEAR(primeiroReporte)', 2023]);
-
 //            // Verifique se o trimestre está definido e adicione-o à consulta
 //            if (!empty($trimestre)) {
 //                // Converta o trimestre para o mês inicial e final
@@ -118,11 +117,9 @@ class SiteController extends Controller {
 //                // Exemplo para MySQL:
 //                $query->andWhere(['BETWEEN', 'MONTH(primeiroReporte)', $mesInicial, $mesFinal]);
 //            }
-
             if (!empty($trimestre)) {
                 $mesInicial = ($trimestre - 1) * 3 + 1;
                 $mesFinal = $trimestre * 3;
-
                 $query->andWhere(['OR',
                     ['<', 'YEAR(primeiroReporte)', $ano],
                     ['AND',
@@ -131,7 +128,6 @@ class SiteController extends Controller {
                     ],
                 ]);
             }
-
             if (!empty($provincia)) {
                 $query->andWhere(['provinciaID' => $provincia]);
             }
@@ -319,28 +315,49 @@ class SiteController extends Controller {
     }
 
     public function actionGetMunicipios($id) {
-
-        $limite = 10;
-        if ($id == 2) {
-
-            $limite = 7;
-        }
-
+        $limite = 7;
+        if($id==1)
+        {$limite=5;     }
+        else if($id==3)
+        {$limite=6;     }
+        else if($id==16)
+        {$limite=0;     }
+        // Busca os primeiros 7 municípios (sem ordenação) da base de dados
         $municipios = Municipio::find()
                 ->where(['provinciaID' => $id])
-                ->limit($limite) // Limita o resultado a três municípios
+                ->limit($limite)
                 ->all();
 
+        // Ordena os 7 municípios obtidos em ordem alfabética
+        usort($municipios, function ($a, $b) {
+            return strcmp($a->nomeMunicipio, $b->nomeMunicipio);
+        });
+
+        // Inicializa a lista de municípios
         $municipios_list = [];
+
+        // Adiciona os municípios à lista
         foreach ($municipios as $municipio) {
             $municipios_list[] = ['id' => $municipio->Id, 'nome' => $municipio->nomeMunicipio];
+        }
+
+        // Adiciona o município "Intermunicipal" como o oitavo elemento, caso ele exista
+        $intermunicipal = Municipio::find()
+                ->where(['nomeMunicipio' => 'Intermunicipal'])
+                ->one();
+
+        if ($intermunicipal) {
+            $municipios_list[] = ['id' => $intermunicipal->Id, 'nome' => $intermunicipal->nomeMunicipio];
         }
 
         return json_encode($municipios_list);
     }
 
     public function actionGetComunas($id) {
-        $comunas = Comuna::find()->where(['municipioID' => $id])->all();
+        $comunas = Comuna::find()
+                ->where(['municipioID' => $id])
+                ->orderBy(['nomeComuna' => SORT_ASC])
+                ->all();
         $comunas_list = [];
         foreach ($comunas as $comuna) {
             $comunas_list[] = ['id' => $comuna->Id, 'nome' => $comuna->nomeComuna];
@@ -374,14 +391,38 @@ class SiteController extends Controller {
         $provinciasSelecionadas = Yii::$app->request->get('provincias');
         $areasSelecionadas = Yii::$app->request->get('areas');
 
+        // Busca todas as províncias e ordena em ordem alfabética
+        // Obtenha todas as províncias
         $provincias = Provincia::find()->all();
+
+// Separe "Interprovincial" e "Outra" das outras províncias
+        $provinciaInterprovincial = null;
+        $provinciaOutra = null;
         $provinciasList = [];
-        $limit = 4; // Defina o número de elementos que deseja manter
-// Use array_slice para pegar apenas os primeiros N elementos
-        foreach (array_slice($provincias, 0, $limit) as $provincia) {
-            $provinciasList[$provincia->Id] = $provincia->nomeProvincia;
+        $count = 0;
+        foreach ($provincias as $provincia) {
+            if ($provincia->nomeProvincia === 'Interprovincial') {
+                $provinciaInterprovincial = $provincia;
+            } elseif ($provincia->nomeProvincia === 'Outra') {
+                $provinciaOutra = $provincia;
+            } else {
+                if ($count < 3) {
+                    $provinciasList[$provincia->Id] = $provincia->nomeProvincia;
+                    $count++;
+                }
+            }
         }
 
+// Ordene o array de províncias em ordem alfabética
+        asort($provinciasList);
+
+// Adicione "Interprovincial" e "Outra" ao final
+        if ($provinciaInterprovincial !== null) {
+            $provinciasList[$provinciaInterprovincial->Id] = $provinciaInterprovincial->nomeProvincia;
+        }
+        if ($provinciaOutra !== null) {
+            $provinciasList[$provinciaOutra->Id] = $provinciaOutra->nomeProvincia;
+        }
         $eventModel = new \backend\models\Event();
 
         return $this->render('calendario', [
@@ -408,9 +449,8 @@ class SiteController extends Controller {
         }
         return $out;
     }
-    
-    public function actionUpload()
-    {
+
+    public function actionUpload() {
         $model = new UploadForm();
 
         if (Yii::$app->request->isPost) {
@@ -423,15 +463,8 @@ class SiteController extends Controller {
 
         return $this->render('upload', ['model' => $model]);
     }
-    
-    public function actionAddEvents() {
-        $provincias = Provincia::find()->all();
-        $provinciasList = [];
-        $limit = 4; // Defina o número de elementos que deseja manter
-        foreach (array_slice($provincias, 0, $limit) as $provincia) {
-            $provinciasList[$provincia->Id] = $provincia->nomeProvincia;
-        }
 
+    public function actionAddEvents() {
         $eventModel = new \backend\models\Event();
 
         if (Yii::$app->request->post('Event')) {
@@ -461,12 +494,33 @@ class SiteController extends Controller {
                 $calendarEvento->local = empty($calendarEvento->local) ? "A confirmar" : $calendarEvento->local;
                 $calendarEvento->outrosAnexos = empty($calendarEvento->outrosAnexos) ? "A confirmar" : $calendarEvento->outrosAnexos;
 
-                if ($calendarEvento->uploadFiles()) {
-                     if (is_array($calendarEvento->outrosAnexos)) {
-                        $calendarEvento->outrosAnexos = implode(',', $calendarEvento->outrosAnexos);
-                    }
-                    if ($calendarEvento->save(false)) { // Usar save(false) para ignorar validações temporariamente
-                        $signature = "
+                $existingEvent = \backend\models\Event::find()
+                        ->where(['summary' => $calendarEvento->summary,
+                            'description' => $calendarEvento->description,
+                            'area' => $calendarEvento->area,
+                            'start' => $calendarEvento->start,
+                            'end' => $calendarEvento->end,
+                            'provinciaID' => $calendarEvento->provinciaID,
+                            'municipioID' => $calendarEvento->municipioID,
+                            'comunaID' => $calendarEvento->comunaID,
+                            'local' => $calendarEvento->local,
+                            'coordenadas' => $calendarEvento->coordenadas,
+                            'entidadeOrganizadora' => $calendarEvento->entidadeOrganizadora,
+                            'convocadoPor' => $calendarEvento->convocadoPor,
+                            'participantes' => $calendarEvento->participantes
+                        ])
+                        ->one();
+
+                if ($existingEvent) {
+                    Yii::$app->session->setFlash('error', 'Já existe um evento com os mesmos dados');
+                    return $this->redirect(['site/calendario']);
+                } else {
+                    if ($calendarEvento->uploadFiles()) {
+                        if (is_array($calendarEvento->outrosAnexos)) {
+                            $calendarEvento->outrosAnexos = implode(',', $calendarEvento->outrosAnexos);
+                        }
+                        if ($calendarEvento->save(false)) { // Usar save(false) para ignorar validações temporariamente
+                            $signature = "
                                         <div style=\"color: #003399;font-family: Georgia, serif; font-size: 11px;\">
                                         SGI FRESAN/Camões, I.P.
                                         <br>
@@ -482,62 +536,63 @@ class SiteController extends Controller {
                                         <br>
                                         <img src=\"https://sgi-fresancamoes.com/admin/images/rodapeEm.jpg\" alt=\"Imagem Rodapé\" style=\"width: 430px; max-width: 100%;\">
                                          ";
-                        // Enviar notificações por email ao anfitrião
-                        $anfitriaoEmail = User::find()->select('email')->where(['nomeCompleto' => $anfitriaoNome])->scalar();
-                        if ($anfitriaoEmail !== null) {
-                            //Remover quaiquer possíveis espaços em branco
-                            $anfitriaoEmail = trim($anfitriaoEmail);
-                            // Verificar se o email é válido
-                            if (filter_var($anfitriaoEmail, FILTER_VALIDATE_EMAIL)) {
-                                Yii::$app->mailer->compose()
-                                        ->setTo(trim($anfitriaoEmail))
-                                        ->setFrom([Yii::$app->params['adminEmail'] => Yii::$app->name])
-                                        ->setSubject('Novo Evento Adicionado' . '[' . $titulo . ']')
-                                        ->setHtmlBody("Olá $anfitriaoNome,<br><br> Adicionou um novo evento ao <b>Calendário</b> para o dia <b>$dataevento,</b> com o nome <b>[$titulo].</b><br><br>  Para mais detalhes, clique <a href=\"https://sgi-fresancamoes.com/admin/calendario\">aqui.</a><br><br> Continuação de bom trabalho,<br><br>$signature")
-                                        ->send();
-                            }
-                        }
-                        // Enviar notificações por email para os participantes
-                        $currentDate = new \DateTime();
-                        $eventStartDate = new \DateTime($calendarEvento->start);
-
-                        if ($calendarEvento->participantes != "A confirmar" && $eventStartDate >= $currentDate) {
-                            $participantesArray = explode(',', $calendarEvento->participantes);
-                            foreach ($participantesArray as $email) {
-                                //Remover quaisquer possíveis espaços em branco
-                                $email = trim($email);
+                            // Enviar notificações por email ao anfitrião
+                            $anfitriaoEmail = User::find()->select('email')->where(['nomeCompleto' => $anfitriaoNome])->scalar();
+                            if ($anfitriaoEmail !== null) {
+                                //Remover quaiquer possíveis espaços em branco
+                                $anfitriaoEmail = trim($anfitriaoEmail);
                                 // Verificar se o email é válido
-                                if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                                    $nomeContacto = Contacto::find()->select('nome')->where(['email' => $email])->scalar();
-                                    if ($nomeContacto !== null) {
-                                        Yii::$app->mailer->compose()
-                                                ->setTo(trim($email))
-                                                ->setFrom([Yii::$app->params['adminEmail'] => Yii::$app->name])
-                                                ->setSubject('Novo Evento Adicionado' . '[' . $titulo . ']')
-                                                ->setHtmlBody("Olá $nomeContacto,<br><br> Contamos com a sua participação para o evento <b>[$titulo]</b> marcado para o dia <b>$dataevento</b>. <br><br> Aceda ao <b>Calendário</b> para <a href=\"https://sgi-fresancamoes.com/admin/calendario\">mais detalhes.</a><br><br> Continuação de bom trabalho,<br><br> $signature")
-                                                ->send();
+                                if (filter_var($anfitriaoEmail, FILTER_VALIDATE_EMAIL)) {
+                                    Yii::$app->mailer->compose()
+                                            ->setTo(trim($anfitriaoEmail))
+                                            ->setFrom([Yii::$app->params['adminEmail'] => Yii::$app->name])
+                                            ->setSubject('Novo Evento Adicionado' . '[' . $titulo . ']')
+                                            ->setHtmlBody("Olá $anfitriaoNome,<br><br> Adicionou um novo evento ao <b>Calendário</b> para o dia <b>$dataevento,</b> com o nome <b>[$titulo].</b><br><br>  Para mais detalhes, clique <a href=\"https://sgi-fresancamoes.com/admin/calendario\">aqui.</a><br><br> Continuação de bom trabalho,<br><br>$signature")
+                                            ->send();
+                                }
+                            }
+                            // Enviar notificações por email para os participantes
+                            $currentDate = new \DateTime();
+                            $eventStartDate = new \DateTime($calendarEvento->start);
+
+                            if ($calendarEvento->participantes != "A confirmar" && $eventStartDate >= $currentDate) {
+                                $participantesArray = explode(',', $calendarEvento->participantes);
+                                foreach ($participantesArray as $email) {
+                                    //Remover quaisquer possíveis espaços em branco
+                                    $email = trim($email);
+                                    // Verificar se o email é válido
+                                    if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                                        $nomeContacto = Contacto::find()->select('nome')->where(['email' => $email])->scalar();
+                                        if ($nomeContacto !== null) {
+                                            Yii::$app->mailer->compose()
+                                                    ->setTo(trim($email))
+                                                    ->setFrom([Yii::$app->params['adminEmail'] => Yii::$app->name])
+                                                    ->setSubject('Novo Evento Adicionado' . '[' . $titulo . ']')
+                                                    ->setHtmlBody("Olá $nomeContacto,<br><br> Contamos com a sua participação no evento <b>[$titulo]</b> marcado para o dia <b>$dataevento</b>. <br><br> Aceda ao <b>Calendário</b> para <a href=\"https://sgi-fresancamoes.com/admin/calendario\">mais detalhes.</a><br><br> Continuação de bom trabalho,<br><br> $signature")
+                                                    ->send();
+                                        }
                                     }
                                 }
                             }
-                        }
-                        // Adicionar notificação
-                        $usuarios = User::find()->all();
-                        foreach ($usuarios as $usuario) {
-                            $notificacao = new Notificacoes();
-                            $notificacao->mensagem = "Novo evento com título [$titulo]";
-                            $notificacao->estado = 0;
-                            $notificacao->id_event = $calendarEvento->Id;
-                            $notificacao->id_usuario = $usuario->id;
-                            $notificacao->save();
-                        }
+                            // Adicionar notificação
+                            $usuarios = User::find()->all();
+                            foreach ($usuarios as $usuario) {
+                                $notificacao = new Notificacoes();
+                                $notificacao->mensagem = "Novo evento com título [$titulo]";
+                                $notificacao->estado = 0;
+                                $notificacao->id_event = $calendarEvento->Id;
+                                $notificacao->id_usuario = $usuario->id;
+                                $notificacao->save();
+                            }
 //                    if (is_array($calendarEvento->outrosAnexos)){
-                        Yii::$app->session->setFlash('success', 'Evento criado e notificações enviadas!');
+                            Yii::$app->session->setFlash('success', 'Evento criado e notificações enviadas!');
 //                } 
+                        } else {
+                            Yii::$app->session->setFlash('error', 'Ocorreu um erro ao salvar o evento: ');
+                        }
                     } else {
-                        Yii::$app->session->setFlash('error', 'Ocorreu um erro ao salvar o evento: ');
+                        Yii::$app->session->setFlash('error', 'Ocorreu um erro ao fazer upload dos arquivos: ');
                     }
-                } else {
-                    Yii::$app->session->setFlash('error', 'Ocorreu um erro ao fazer upload dos arquivos: ');
                 }
             }
         }
@@ -548,40 +603,18 @@ class SiteController extends Controller {
         Yii::$app->response->format = Response::FORMAT_JSON;
         $entidadesSelecionadas = Yii::$app->request->get('entidades');
         $provinciasSelecionadas = Yii::$app->request->get('provincias');
+        $municipiosSelecionados = Yii::$app->request->get('municipios'); // Novo filtro por município
         $areasSelecionadas = Yii::$app->request->get('areas');
-        //$areasSelecionadas =["Água"];
         $events = \backend\models\Event::find()->all();
         $formattedEvents = [];
 
-        if (($entidadesSelecionadas !== null && !empty($entidadesSelecionadas)) || ($provinciasSelecionadas !== null && !empty($provinciasSelecionadas)) || ($areasSelecionadas !== null && !empty($areasSelecionadas))) {
+        if (($entidadesSelecionadas !== null && !empty($entidadesSelecionadas)) || ($provinciasSelecionadas !== null && !empty($provinciasSelecionadas)) || ($municipiosSelecionados !== null && !empty($municipiosSelecionados)) || ($areasSelecionadas !== null && !empty($areasSelecionadas))) {
+
             if (!empty($entidadesSelecionadas)) {
                 foreach ($entidadesSelecionadas as $entidade) {
                     foreach ($events as $event) {
                         if ($entidade == $event->entidadeOrganizadora) {
-
-                            $formattedEvents[] = [
-                                'id' => $event->Id,
-                                'summary' => $event->summary,
-                                'description' => $event->description,
-                                'area' => $event->area,
-                                'start' => $event->start,
-                                'end' => $event->end,
-                                'duracao' => $event->duracao,
-                                'provincia' => $event->provincia->nomeProvincia,
-                                'municipio' => $event->municipio->nomeMunicipio,
-                                'comuna' => $event->comuna->nomeComuna,
-                                'local' => $event->local,
-                                'coordenadas' => $event->coordenadas,
-                                'entidadeOrganizadora' => $event->entidadeOrganizadora,
-                                'convocadoPor' => $event->convocadoPor,
-                                'participantes' => $event->participantes,
-                                'agenda' => $event->agenda,
-                                'listaConvidados' => $event->listaConvidados,
-                                'pada' => $event->pada,
-                                'actaRelatorio' => $event->actaRelatorio,
-                                'listaParticipantes' => $event->listaParticipantes,
-                                'outrosAnexos' => $event->outrosAnexos,
-                            ];
+                            $formattedEvents[] = $this->formatEvent($event);
                         }
                     }
                 }
@@ -592,29 +625,19 @@ class SiteController extends Controller {
                     foreach ($events as $event) {
                         if ($provincia == $event->provincia->nomeProvincia) {
                             if (!in_array($event, $formattedEvents)) {
-                                $formattedEvents[] = [
-                                    'id' => $event->Id,
-                                    'summary' => $event->summary,
-                                    'description' => $event->description,
-                                    'area' => $event->area,
-                                    'start' => $event->start,
-                                    'end' => $event->end,
-                                    'duracao' => $event->duracao,
-                                    'provincia' => $event->provincia->nomeProvincia,
-                                    'municipio' => $event->municipio->nomeMunicipio,
-                                    'comuna' => $event->comuna->nomeComuna,
-                                    'local' => $event->local,
-                                    'coordenadas' => $event->coordenadas,
-                                    'entidadeOrganizadora' => $event->entidadeOrganizadora,
-                                    'convocadoPor' => $event->convocadoPor,
-                                    'participantes' => $event->participantes,
-                                    'agenda' => $event->agenda,
-                                    'listaConvidados' => $event->listaConvidados,
-                                    'pada' => $event->pada,
-                                    'actaRelatorio' => $event->actaRelatorio,
-                                    'listaParticipantes' => $event->listaParticipantes,
-                                    'outrosAnexos' => $event->outrosAnexos,
-                                ];
+                                $formattedEvents[] = $this->formatEvent($event);
+                            }
+                        }
+                    }
+                }
+            }
+
+            if (!empty($municipiosSelecionados)) { // Filtro por município
+                foreach ($municipiosSelecionados as $municipio) {
+                    foreach ($events as $event) {
+                        if ($municipio == $event->municipio->nomeMunicipio) {
+                            if (!in_array($event, $formattedEvents)) {
+                                $formattedEvents[] = $this->formatEvent($event);
                             }
                         }
                     }
@@ -626,7 +649,7 @@ class SiteController extends Controller {
                     foreach ($events as $event) {
                         if ($area == $event->area) {
                             if (!in_array($event, $formattedEvents)) {
-                                $formattedEvents[] = $event;
+                                $formattedEvents[] = $this->formatEvent($event);
                             }
                         }
                     }
@@ -634,32 +657,37 @@ class SiteController extends Controller {
             }
         } else {
             foreach ($events as $event) {
-                $formattedEvents[] = [
-                    'id' => $event->Id,
-                    'summary' => $event->summary,
-                    'description' => $event->description,
-                    'area' => $event->area,
-                    'start' => $event->start,
-                    'end' => $event->end,
-                    'duracao' => $event->duracao,
-                    'provincia' => $event->provincia->nomeProvincia,
-                    'municipio' => $event->municipio->nomeMunicipio,
-                    'comuna' => $event->comuna->nomeComuna,
-                    'local' => $event->local,
-                    'coordenadas' => $event->coordenadas,
-                    'entidadeOrganizadora' => $event->entidadeOrganizadora,
-                    'convocadoPor' => $event->convocadoPor,
-                    'participantes' => $event->participantes,
-                    'agenda' => $event->agenda,
-                    'listaConvidados' => $event->listaConvidados,
-                    'pada' => $event->pada,
-                    'actaRelatorio' => $event->actaRelatorio,
-                    'listaParticipantes' => $event->listaParticipantes,
-                    'outrosAnexos' => $event->outrosAnexos,
-                ];
+                $formattedEvents[] = $this->formatEvent($event);
             }
         }
+
         return $formattedEvents;
+    }
+
+    private function formatEvent($event) {
+        return [
+            'id' => $event->Id,
+            'summary' => $event->summary,
+            'description' => $event->description,
+            'area' => $event->area,
+            'start' => $event->start,
+            'end' => $event->end,
+            'duracao' => $event->duracao,
+            'provincia' => $event->provincia->nomeProvincia,
+            'municipio' => $event->municipio->nomeMunicipio,
+            'comuna' => $event->comuna->nomeComuna,
+            'local' => $event->local,
+            'coordenadas' => $event->coordenadas,
+            'entidadeOrganizadora' => $event->entidadeOrganizadora,
+            'convocadoPor' => $event->convocadoPor,
+            'participantes' => $event->participantes,
+            'agenda' => $event->agenda,
+            'listaConvidados' => $event->listaConvidados,
+            'pada' => $event->pada,
+            'actaRelatorio' => $event->actaRelatorio,
+            'listaParticipantes' => $event->listaParticipantes,
+            'outrosAnexos' => $event->outrosAnexos,
+        ];
     }
 
     public function actionDeleteEvent() {
@@ -690,9 +718,7 @@ class SiteController extends Controller {
                 foreach ($notificacoes as $notificacao) {
                     $notificacao->delete();
                 }
-                // Enviar notificação por email ao anfitrião original do evento
-                if (($anfitriaoEmail !== null) && ($emailLogado == $anfitriaoEmail)) {
-                    $signature = "
+                $signature = "
                                         <div style=\"color: #003399;font-family: Georgia, serif; font-size: 11px;\">
                                         SGI FRESAN/Camões, I.P.
                                         <br>
@@ -708,6 +734,9 @@ class SiteController extends Controller {
                                         <br>
                                         <img src=\"https://sgi-fresancamoes.com/admin/images/rodapeEm.jpg\" alt=\"Imagem Rodapé\" style=\"width: 430px; max-width: 100%;\">
                                          ";
+                // Enviar notificação por email ao anfitrião original do evento
+                if (($anfitriaoEmail !== null) && ($emailLogado == $anfitriaoEmail)) {
+
                     //Remover quaisquer possíveis espaços em branco   
                     $anfitriaoEmail = trim($anfitriaoEmail);
                     // Verificar se o email é válido
@@ -719,13 +748,12 @@ class SiteController extends Controller {
                                 ->setHtmlBody("Olá $anfitriaoNome,<br><br> Eliminou o evento do <b>Calendário</b> do dia <b>$dataevento,</b> com o nome <b>[$titulo].</b><br><br> Para mais detalhes, clique <a href=\"https://sgi-fresancamoes.com/admin/calendario\">aqui.</a><br><br> Continuação de bom trabalho,<br><br> $signature")
                                 ->send();
                     }
-                    }
-                    else if ($emailLogado !== null) {
-                         //Remover quaisquer possíveis espaços em branco   
+                } else if ($emailLogado !== null) {
+                    //Remover quaisquer possíveis espaços em branco   
                     $emailLogado = trim($emailLogado);
                     // Verificar se o email é válido
                     if (filter_var($emailLogado, FILTER_VALIDATE_EMAIL)) {
-                        // Email ao Administrador que atualizou o evento
+                        // Email ao Administrador que elimnou o evento
                         Yii::$app->mailer->compose()
                                 ->setTo(trim($emailLogado))
                                 ->setFrom([Yii::$app->params['adminEmail'] => Yii::$app->name])
@@ -733,11 +761,11 @@ class SiteController extends Controller {
                                 ->setHtmlBody("Olá $nomeLogado,<br><br> Eliminou o evento do <b>Calendário</b> para o dia <b>$dataevento,</b> com o nome <b>[$titulo].</b><br><br> Para mais detalhes, clique <a href=\"https://sgi-fresancamoes.com/admin/calendario\">aqui.</a><br><br> Continuação de bom trabalho,<br><br> $signature")
                                 ->send();
                     }
-                        //Remover quaisquer possíveis espaços em branco   
+                    //Remover quaisquer possíveis espaços em branco   
                     $anfitriaoEmail = trim($anfitriaoEmail);
                     // Verificar se o email é válido
                     if (filter_var($anfitriaoEmail, FILTER_VALIDATE_EMAIL)) {
-                        // Email ao anfitrião que não atualizou o evento
+                        // Email ao anfitrião que não está eliminando o evento
                         Yii::$app->mailer->compose()
                                 ->setTo(trim($anfitriaoEmail))
                                 ->setFrom([Yii::$app->params['adminEmail'] => Yii::$app->name])
@@ -745,10 +773,12 @@ class SiteController extends Controller {
                                 ->setHtmlBody("Olá $anfitriaoNome,<br><br>Foi eliminado pela administração o evento <b>[$titulo]</b> adicionado por si ao <b>Calendário</b>, para o dia <b>$dataevento</b>.<br><br> Para mais detalhes, clique <a href=\"https://sgi-fresancamoes.com/admin/calendario\">aqui.</a><br><br> Continuação de bom trabalho,<br><br> $signature")
                                 ->send();
                     }
-                    }
+                }
+                $algo = "Nada";
                 // Enviar notificações por email para os participantes
                 if ($participantes !== null && $participantes != "A confirmar" && $participantes != "Por confirmar em breve") {
                     $participantesArray = explode(',', $participantes);
+                    $algo = "Algo";
                     foreach ($participantesArray as $email) {
                         $email = trim($email);
                         // Verificar se o email é válido
@@ -770,7 +800,7 @@ class SiteController extends Controller {
                         }
                     }
                 }
-                Yii::$app->session->setFlash('success', 'Evento eliminado e notificações enviadas.');
+                Yii::$app->session->setFlash('success', 'Evento eliminado e notificações enviadas.' . $algo);
                 return $this->redirect(['site/calendario']);
             } else {
                 Yii::$app->session->setFlash('error', 'Não foi possível eliminar este evento');
