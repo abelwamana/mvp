@@ -44,7 +44,7 @@ class SiteController extends Controller {
                         'allow' => true,
                     ],
                     [
-                        'actions' => ['logout', 'index', 'folhatrimestral', 'exportfolhatrimestral', 'calendario', 'fresan', 'beneficiario', 'galeria', 'get-events', 'filtragem', 'duracao', 'get-provincias', 'experiencia', 'get-municipios', 'get-comunas', 'events-area', 'add-events', 'emconstrucao', 'fresancunene', 'fresanhuila', 'fresannamibe', 'resultadosagricultura', 'resultadosnutricao', 'resultadosagua', 'resultadosreforcoinstitucional', 'edit-event', 'delete-event', 'update-event', 'update', 'contact-list', 'upload'],
+                        'actions' => ['logout', 'index', 'folhatrimestral', 'exportfolhatrimestral', 'calendario', 'fresan', 'beneficiario', 'galeria', 'get-events', 'filtragem', 'duracao', 'get-provincias', 'experiencia', 'get-municipios', 'get-comunas', 'events-area', 'add-events', 'emconstrucao', 'fresancunene', 'fresanhuila', 'fresannamibe', 'resultadosagricultura', 'resultadosnutricao', 'resultadosagua', 'resultadosreforcoinstitucional', 'edit-event', 'delete-event', 'update-event', 'update', 'contact-list', 'upload','boaspraticas','recomendacoes','sustentabilidade'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -354,10 +354,7 @@ class SiteController extends Controller {
     }
 
     public function actionGetComunas($id) {
-        $comunas = Comuna::find()
-                ->where(['municipioID' => $id])
-                ->orderBy(['nomeComuna' => SORT_ASC])
-                ->all();
+        $comunas = Comuna::find()->where(['municipioID' => $id])->all();
         $comunas_list = [];
         foreach ($comunas as $comuna) {
             $comunas_list[] = ['id' => $comuna->Id, 'nome' => $comuna->nomeComuna];
@@ -931,9 +928,7 @@ class SiteController extends Controller {
 
         $model->password = '';
 
-        return $this->render('login', [
-                    'model' => $model,
-        ]);
+        return $this->redirect(Yii::$app->urlManagerFrontend->createUrl(['site/login']));
     }
 
     /**
@@ -960,6 +955,21 @@ class SiteController extends Controller {
     public function actionBeneficiario() {
 
         return $this->render('beneficiario');
+    }
+    
+    public function actionBoaspraticas() {
+
+        return $this->render('boaspraticas');
+    }
+    
+    public function actionRecomendacoes() {
+
+        return $this->render('recomendacoes');
+    }
+    
+    public function actionSustentabilidade() {
+
+        return $this->render('sustentabilidade');
     }
 
     public function actionEmconstrucao() {

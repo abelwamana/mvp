@@ -14,7 +14,7 @@
     }
     .btn.btn-primary.botao {
         background-color: #919733; /* Cor de fundo do botão primário Bootstrap */
-        color: #fff; /* Cor do texto para legibilidade */
+        color: #fff; /* Cor do texto pause kartik\grid\GridView;ra legibilidade */
         /* Outros estilos conforme necessário */
     }
 
@@ -293,11 +293,6 @@ $this->params['breadcrumbs'][] = $this->title;
                 ]
         ;
         ?>
-
-
-
-
-
         <?=
         GridView::widget([
             'dataProvider' => $dataProvider,

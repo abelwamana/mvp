@@ -1,3 +1,15 @@
+<style>
+    .btn{
+        margin-left: 5px;
+        color: #fff;
+        border-color: #919733;
+        background-color: #919733;
+         background-color: #919733;
+         color: #fff; 
+        border-radius: 4px 4px 4px 4px;
+    }
+    
+</style>
 <?php
 
 use yii\helpers\Html;
@@ -15,15 +27,17 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <p>
-        <?= Html::a(Yii::t('app', 'Update'), ['update', 'Id' => $model->Id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a(Yii::t('app', 'Delete'), ['delete', 'Id' => $model->Id], [
+   <p>
+        <?= Html::a(Yii::t('app', '<i class="fas fa-edit"></i> Editar'), ['update', 'Id' => $model->Id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a(Yii::t('app', '<i class="fas fa-trash"></i> Eliminar'), ['delete', 'Id' => $model->Id], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => Yii::t('app', 'Are you sure you want to delete this item?'),
+                'confirm' => Yii::t('app', 'Tem certeza que deseja eliminar este Evento?'),
                 'method' => 'post',
             ],
         ]) ?>
+       
+        <?= Html::a(Yii::t('app', '<i class="fas fa-arrow-left"></i> Voltar'), ['index'], ['class' => 'btn btn-primary']) ?>
     </p>
 
     <?= DetailView::widget([

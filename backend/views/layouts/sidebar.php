@@ -69,7 +69,7 @@
             $coberturaAtivo = (Yii::$app->controller->id === 'site' && ((Yii::$app->controller->action->id === 'fresan') || (Yii::$app->controller->action->id === 'fresancunene') || (Yii::$app->controller->action->id === 'fresanhuila') || (Yii::$app->controller->action->id === 'fresannamibe')));
             $calendarioAtivo = (Yii::$app->controller->id === 'site' && Yii::$app->controller->action->id === 'calendario');
             $usuariosPermitidos = ['Miguel Malta', 'Ânia Soares', 'Carmen Paulo', 'Valéria Luís', 'Abel Wamana'];
-            $usuarioAtual = Yii::$app->user->identity->nomeCompleto;
+            $usuarioAtual = Yii::$app->user->isGuest ? false :Yii::$app->user->identity->nomeCompleto;
 // Inicie uma lista de itens de menu
             $menuItems[] = ['label' => 'Resultados', 'url' => ['/site/index']];
             if ($resultadosAtivo) {
@@ -250,8 +250,8 @@
 //$menuItems[] =  ['label' => 'Resultados Secundários', 'url' => ['/monitoria/index2']];
             $menuItems[] = ['label' => 'Biblioteca', 'url' => ['biblioteca/biblioteca']];
             $menuItems[] = ['label' => 'Arquivos', 'url' => ['site/emconstrucao']];
-            $menuItems[] = ['label' => 'Recomendações', 'url' => ['site/emconstrucao']];
-            $menuItems[] = ['label' => 'Boas Práticas', 'url' => ['site/emconstrucao']];
+            $menuItems[] = ['label' => 'Boas Práticas', 'url' => ['boaspraticas/boaspraticas']];
+            $menuItems[] = ['label' => 'Recomendações', 'url' => ['recomendacoes/recomendacoes']];
             $menuItems[] = ['label' => 'Sustentabilidade', 'url' => ['site/emconstrucao']];
 // $menuItems[] = ['label' => 'Galeria', 'url' => ['site/galeria']];
             $menuItems[] = ['template' => '<hr>'];
@@ -271,7 +271,10 @@
                     'label' => 'Administração',
                     'items' => [
                         ['label' => 'Biblioteca', 'url' => ['/biblioteca/index'], 'iconStyle' => 'far'],
-                        ['label' => 'Arquivos', 'url' => [''], 'iconStyle' => 'far'],
+                         ['label' => 'Boas Práticas', 'url' => ['boaspraticas/index']],
+                        ['label' => 'Recomendações', 'url' => ['recomendacoes/index']],
+                        ['label' => 'Eventos do Calendário', 'url' => ['event/index']],
+                        ['label' => 'Arquivos', 'url' => ['arquivo/index'], 'iconStyle' => 'far'],
                         [
                             'label' => 'Configurações',
                             'items' => [

@@ -7,28 +7,25 @@ use yii\data\ActiveDataProvider;
 use backend\models\Arquivo;
 use yii\helpers\ArrayHelper;
 
-
 /**
- * ArquivoSearch represents the model behind the search form of `backend\models\Biblioteca`.
+ * ArquivoSearch represents the model behind the search form of `backend\models\Arquivo`.
  */
-class ArquivoSearch extends Arquivo
-{
+class ArquivoSearch extends Arquivo {
+
     /**
      * {@inheritdoc}
      */
-    public function rules()
-    {
+    public function rules() {
         return [
-            [['id', 'anoConcluido', 'numPagina', 'monitoriatemarquivo', 'estaNoSiteFRESANLBC', 'tamanho_arquivo'], 'integer'],
-            [['convite', 'actividade', 'organizacao', 'codigo', 'nome', 'autores', 'tema', 'descricao', 'classificacao', 'tipo', 'estado', 'dataEstado', 'responsavelGestorUIC', 'usuarios', 'informacaoPlanilha', 'linkFresanLbc','caminho','arquivo', 'tipo_arquivo', 'data_upload'], 'safe'],
+            [['Id', 'entidade', 'provinciaID', 'municipioID', 'area', 'tipo', 'ano', 'tamanho_arquivo'], 'integer'],
+            [['referencia', 'biblioteca', 'meio_de_verificacao', 'arquivo', 'descricao', 'caminho', 'foto_da_capa', 'tipo_arquivo', 'data_upload'], 'safe'],
         ];
     }
 
     /**
      * {@inheritdoc}
      */
-    public function scenarios()
-    {
+    public function scenarios() {
         // bypass scenarios() implementation in the parent class
         return Model::scenarios();
     }
@@ -40,8 +37,7 @@ class ArquivoSearch extends Arquivo
      *
      * @return ActiveDataProvider
      */
-    public function search($params)
-    {
+    public function search($params) {
         $query = Arquivo::find();
 
         // add conditions that should always apply here
@@ -60,81 +56,59 @@ class ArquivoSearch extends Arquivo
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'id' => $this->id,
-            'dataEstado' => $this->dataEstado,
-            'anoConcluido' => $this->anoConcluido,
-            'numPagina' => $this->numPagina,
-            'monitoriatemarquivo' => $this->monitoriatemarquivo,
-            'estaNoSiteFRESANLBC' => $this->estaNoSiteFRESANLBC,
+            'Id' => $this->Id,
+            'entidade' => $this->entidade,
+            'provinciaID' => $this->provinciaID,
+            'municipioID' => $this->municipioID,
+            'area' => $this->area,
+            'tipo' => $this->tipo,
+            'ano' => $this->ano,
             'tamanho_arquivo' => $this->tamanho_arquivo,
             'data_upload' => $this->data_upload,
         ]);
 
-        $query->andFilterWhere(['like', 'convite', $this->convite])
-            ->andFilterWhere(['like', 'actividade', $this->actividade])
-            ->andFilterWhere(['like', 'organizacao', $this->organizacao])
-            ->andFilterWhere(['like', 'codigo', $this->codigo])
-            ->andFilterWhere(['like', 'nome', $this->nome])
-            ->andFilterWhere(['like', 'autores', $this->autores])
-            ->andFilterWhere(['like', 'tema', $this->tema])
-            ->andFilterWhere(['like', 'descricao', $this->descricao])
-            ->andFilterWhere(['like', 'classificacao', $this->classificacao])
-            ->andFilterWhere(['like', 'tipo', $this->tipo])
-            ->andFilterWhere(['like', 'estado', $this->estado])
-            ->andFilterWhere(['like', 'responsavelGestorUIC', $this->responsavelGestorUIC])
-            ->andFilterWhere(['like', 'usuarios', $this->usuarios])
-            ->andFilterWhere(['like', 'informacaoPlanilha', $this->informacaoPlanilha])
-            ->andFilterWhere(['like', 'informacaoPlanilha', $this->caminho])
-            ->andFilterWhere(['like', 'linkFresanLbc', $this->linkFresanLbc])
-            ->andFilterWhere(['like', 'tipo_arquivo', $this->tipo_arquivo]);
+        $query->andFilterWhere(['like', 'referencia', $this->referencia])
+                ->andFilterWhere(['like', 'biblioteca', $this->biblioteca])
+                ->andFilterWhere(['like', 'meio_de_verificacao', $this->meio_de_verificacao])
+                ->andFilterWhere(['like', 'arquivo', $this->arquivo])
+                ->andFilterWhere(['like', 'descricao', $this->descricao])
+                ->andFilterWhere(['like', 'caminho', $this->caminho])
+                ->andFilterWhere(['like', 'foto_da_capa', $this->foto_da_capa])
+                ->andFilterWhere(['like', 'tipo_arquivo', $this->tipo_arquivo]);
 
         return $dataProvider;
     }
-    
-    public function getTipoOptions()
-{
-    $tipos = Arquivo::find()
-        ->select('tipo')
-        ->distinct()
-        ->orderBy('tipo')
-        ->asArray()
-        ->all();
-    
-    return ArrayHelper::map($tipos, 'tipo', 'tipo');
-}
 
-public function getOrganizacaoOptions()
-{
-    $organizacoes = Arquivo::find()
-        ->select('organizacao')
-        ->distinct()
-        ->orderBy('organizacao')
-        ->asArray()
-        ->all();
-    
-    return ArrayHelper::map($organizacoes, 'organizacao', 'organizacao');
-}
+    public function getTipoOptions() {
+        $tipos = Arquivo::find()
+                ->select('tipo')
+                ->distinct()
+                ->orderBy('tipo')
+                ->asArray()
+                ->all();
 
-public function getAnoOptions()
-{
-    $anos = Arquivo::find()
-        ->select('anoConcluido')
-        ->distinct()
-        ->orderBy('anoConcluido')
-        ->asArray()
-        ->all();
-    
-    return ArrayHelper::map($anos, 'anoConcluido', 'anoConcluido');
-}
+        return ArrayHelper::map($tipos, 'tipo', 'tipo');
+    }
 
-public function getEstadoOptions()
-{
-    $estados = Arquivo::find()
-        ->select('estado')
-        ->distinct()
-        ->orderBy('estado')
-        ->asArray()
-        ->all();
-    
-    return ArrayHelper::map($estados, 'estado', 'estado');
-}}
+    public function getOrganizacaoOptions() {
+        $organizacoes = Arquivo::find()
+                ->select('entidade')
+                ->distinct()
+                ->orderBy('entidade')
+                ->asArray()
+                ->all();
+
+        return ArrayHelper::map($organizacoes, 'entidade', 'entidade');
+    }
+
+    public function getAnoOptions() {
+        $anos = Arquivo::find()
+                ->select('ano')
+                ->distinct()
+                ->orderBy('ano')
+                ->asArray()
+                ->all();
+
+        return ArrayHelper::map($anos, 'anoConcluido', 'anoConcluido');
+    }
+}

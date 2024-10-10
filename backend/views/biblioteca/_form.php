@@ -42,7 +42,7 @@ use yii\widgets\ActiveForm;
                 ?>
     <?= $form->field($model, 'linkFresanLbc')->textInput(['maxlength' => true]) ?>
      <?= $form->field($model, 'data_upload')->textInput(['id' => 'data_upload', 'type' => 'date', 'placeholder' => 'Data do Upload']) ?>
-    <?= $form->field($model, 'file')->fileInput() ?>
+    
     <?= $form->field($model, 'printFile')->fileInput() ?>
 
     <div class="form-group">

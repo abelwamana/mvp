@@ -1,13 +1,4 @@
 <style>
-/*.btn.btn-primary{
-        margin-left: 5px;
-        color: #fff;
-        border-color: #919733;
-        background-color: #919733;
-         background-color: #919733;
-         color: #fff; 
-        border-radius: 4px 4px 4px 4px;
-    }*/
     .btn{
         margin-left: 5px;
         color: #fff;
